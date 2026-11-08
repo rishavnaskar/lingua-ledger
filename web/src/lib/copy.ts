@@ -5,7 +5,7 @@ export const copy = {
     name: "Lingua Ledger",
     tag: "DataNova 2026 · DN-AI-01",
     description:
-      "Multilingual document extraction that checks its own work. Every field gets a calibrated confidence, and only the doubtful ones go to a person.",
+      "Pulls data from documents in any language and checks its own work. Each field gets an honest score, and only unsure ones go to a person.",
     nav: { workbench: "Workbench", evidence: "Evidence", about: "About" },
     navLabel: "Main",
     footer: "Lingua Ledger. Built for DataNova 2026, problem statement DN-AI-01.",
@@ -27,61 +27,61 @@ export const copy = {
   workbench: {
     heading: "Workbench",
     intro:
-      "Drop an invoice, receipt, form or contract in any language. Each field comes back with a confidence score, and the doubtful ones are flagged for review.",
+      "Drop in an invoice, receipt, form, or contract in any language. Each field gets a score, and anything uncertain is flagged for review.",
     input: {
       title: "Document",
       dropTitle: "Drop a file here",
-      dropHint: "PDF, PNG or JPG, up to 15 MB. Any language.",
+      dropHint: "PDF, PNG or JPG up to 15 MB. Any language.",
       dropBrowse: "Choose a file",
-      dropActive: "Release to read it",
-      dropCompact: "Drop another file, or click to choose one",
+      dropActive: "Drop it here to read",
+      dropCompact: "Drop another file or click to pick one",
       dropLabel: "Upload a document",
-      wrongType: "Only PDF, PNG and JPG files are supported.",
+      wrongType: "Only PDF, PNG and JPG files work here.",
       tooLarge: "That file is larger than 15 MB.",
     },
     samples: {
       title: "Sample documents",
       loading: "Loading samples",
-      empty: "No samples on this server yet.",
-      failed: "Could not load samples from the API.",
+      empty: "No sample files on this server yet.",
+      failed: "Could not load sample files from the API.",
     },
     options: {
       title: "Options",
       docType: "Document type",
       docTypeAuto: "Detect automatically",
-      docTypeNote: "Applies to uploads. Samples already know their type.",
+      docTypeNote: "For uploads. Sample files already know their type.",
       threshold: "Review threshold",
       thresholdNote: "Fields scoring below this go to review.",
     },
     idle: {
       title: "Pick a document to start",
-      body: "The document is read twice, by a vision model and by OCR plus a text model. Validators check the numbers and formats, the signals are combined into one calibrated confidence per field, and anything below the threshold is flagged for a person.",
+      body: "We read your document twice: once with a vision model, and once with OCR and a text model. Built-in checks verify the math and formats, we combine everything into one score for each field, and anything below your cutoff gets sent to a person.",
       points: [
-        "Every value shows where it came from and why it was trusted.",
+        "See where each value came from and why it was trusted.",
         "Boxes on the page show where each value was found.",
-        "Move the threshold to trade review effort against accuracy.",
+        "Adjust the threshold to balance review work against accuracy.",
       ],
     },
     steps: [
       { label: "Reading pages", detail: "Turning each page into an image" },
-      { label: "Vision reader", detail: "A vision model reads the page image" },
-      { label: "OCR + text reader", detail: "OCR text goes to a separate text model" },
-      { label: "Validators", detail: "Arithmetic, dates, IBAN and VAT formats" },
-      { label: "Confidence", detail: "Signals combined and calibrated per field" },
-      { label: "Routing", detail: "Low-confidence fields sent to review" },
+      { label: "Vision reader", detail: "Reading the page image with a vision model" },
+      { label: "OCR + text reader", detail: "Passing OCR text to a separate text model" },
+      { label: "Validators", detail: "Checking math, dates, IBAN and VAT formats" },
+      { label: "Confidence", detail: "Combining signals into a calibrated score for each field" },
+      { label: "Routing", detail: "Sending unsure fields to human review" },
     ],
     progress: {
       title: (name: string) => `Reading ${name}`,
       elapsed: (s: string) => `${s} elapsed`,
-      note: "Both readers run at the same time. Most of the wait is spent there.",
+      note: "Both readers run at the same time. Most of the wait happens here.",
     },
     error: {
-      title: "That did not work",
+      title: "Something went wrong",
       retry: "Try again",
       network: (url: string) =>
         `Could not reach the API at ${url}. Check that the backend is running and that NEXT_PUBLIC_API_URL points to it.`,
       server: (status: number, detail: string | null) =>
-        detail ? `The server answered ${status}: ${detail}` : `The server answered ${status}.`,
+        detail ? `The server replied with ${status}: ${detail}` : `The server replied with ${status}.`,
     },
     result: {
       pages: (n: number) => plural(n, "page", "pages"),
@@ -89,14 +89,14 @@ export const copy = {
       typeConfidence: (c: string) => `type confidence ${c}`,
       headline: (review: number, total: number) =>
         total === 0
-          ? "No fields were found"
+          ? "No fields found"
           : review === 0
             ? `All ${total} fields accepted`
             : `${review} of ${total} fields need review`,
       subline: (accepted: number, threshold: string) =>
         `${accepted} accepted automatically at threshold ${threshold}.`,
       threshold: "Review threshold",
-      thresholdHint: "Moving it re-routes fields instantly. Nothing is re-run.",
+      thresholdHint: "Moving this updates routing right away. Nothing runs again.",
       exportJson: "Download JSON",
       exportCsv: "Download CSV",
       accepted: "Accepted",
@@ -108,10 +108,10 @@ export const copy = {
       showBoxes: "Show boxes",
       pageLabel: (i: number, n: number) => `Page ${i} of ${n}`,
       unlocated: (n: number) =>
-        n === 1 ? "1 field could not be located on the page." : `${n} fields could not be located on the page.`,
+        n === 1 ? "Could not find 1 field on the page." : `Could not find ${n} fields on the page.`,
       alt: (i: number) => `Page ${i} of the document`,
       reading: "Reading",
-      noPreview: "Preview appears when reading finishes.",
+      noPreview: "Preview appears once reading is done.",
     },
     fields: {
       title: "Fields",
@@ -126,9 +126,9 @@ export const copy = {
       expand: "Show details",
       collapse: "Hide details",
       evidence: {
-        agree: "Readers agree",
+        agree: "Both readers agree",
         disagree: "Readers disagree",
-        single: "One reader",
+        single: "Only one reader",
         ocr: (c: string) => `OCR ${c}`,
         noOcr: "Not found by OCR",
         pass: "Checks pass",
@@ -149,8 +149,8 @@ export const copy = {
         location: "Location",
         locatedOn: (p: number) => `page ${p}`,
         notLocated: "not found on the page",
-        rules: "Rules that touch this field",
-        noRules: "No rule checks this field.",
+        rules: "Rules for this field",
+        noRules: "No rules check this field.",
       },
       listItem: { line_items: "Line item", fields: "Field", parties: "Party" } as Record<string, string>,
       names: {
@@ -211,16 +211,16 @@ export const copy = {
         vision: "Reads the page image directly.",
         ocr_text: "Reads OCR text only, without the image.",
       } as Record<string, string>,
-      latency: "Latency",
+      latency: "Time taken",
       tokensIn: "Input tokens",
       tokensOut: "Output tokens",
       fieldsFound: "Fields found",
-      notRun: "Not run for this document.",
+      notRun: "Did not run for this document.",
       failed: "This reader failed",
-      agreement: (a: number, n: number) => `Readers agree on ${a} of ${n} fields`,
-      onlyOne: (n: number) => `${plural(n, "field", "fields")} found by only one reader.`,
+      agreement: (a: number, n: number) => `Both readers agree on ${a} of ${n} fields`,
+      onlyOne: (n: number) => `Only one reader found ${plural(n, "field", "fields")}.`,
       differences: "Where they differ",
-      noDifferences: "No disagreements.",
+      noDifferences: "Both readers agree on everything.",
       more: (n: number) => `and ${n} more`,
     },
   },
@@ -228,22 +228,22 @@ export const copy = {
   metrics: {
     heading: "Evidence",
     intro:
-      "Results from the offline evaluation on public benchmarks. Every number here is reproducible from the repository.",
+      "Results from tests on public benchmarks. You can reproduce every number here using the code in the repository.",
     loading: "Loading results",
     failedTitle: "Could not load results",
     empty: {
-      title: "No evaluation results yet",
-      body: "The backend has not published a summary. Run the evaluation on the backend, then reload this page.",
+      title: "No test results yet",
+      body: "The backend has not published a summary yet. Run the tests on the backend, then reload this page.",
       command: "uv run ll eval run && uv run ll eval report",
     },
     cards: {
       documents: {
-        label: "Documents evaluated",
+        label: "Documents tested",
         sub: (failed: number) => (failed ? `${failed} could not be processed` : "All processed"),
       },
       accuracy: {
         label: "Field accuracy",
-        sub: (n: string) => `On ${n} held-out fields, before any review`,
+        sub: (n: string) => `Across ${n} test fields, before any review`,
       },
       ece: {
         label: "Calibration error (ECE)",
@@ -255,7 +255,7 @@ export const copy = {
         notReached: "Not reached",
         notReachedSub: "No threshold reached 98% accuracy on this run.",
       },
-      latency: { label: "Median latency", sub: (p95: string) => `p95 ${p95}, per document` },
+      latency: { label: "Median time", sub: (p95: string) => `p95 ${p95}, per document` },
       cost: { label: "Cost per 1,000 documents", sub: (total: string) => `${total} for the whole evaluation` },
     },
     details: {
@@ -270,21 +270,21 @@ export const copy = {
     },
     charts: {
       title: "Charts",
-      missing: "Chart not available yet.",
+      missing: "Chart is not available yet.",
       items: {
         review_curve: {
           title: "Review load versus accuracy",
           caption:
-            "Share of fields sent to a person (x) against the accuracy of what posts automatically (y). The dashed line is accuracy with no review at all.",
+            "Share of fields sent to a person (x) against the accuracy of what saves automatically (y). The dashed line shows accuracy without any review.",
         },
         reliability: {
           title: "Reliability, before and after calibration",
           caption:
-            "Predicted confidence against the share actually correct. On the diagonal, a 0.9 is right about 90% of the time.",
+            "Predicted confidence against the share actually correct. On the diagonal line, a 0.9 is right about 90% of the time.",
         },
         f1_by_language: {
           title: "Form extraction by language",
-          caption: "Key-value F1 per language on XFUND, with FUNSD for English, using the full pipeline.",
+          caption: "Key-value score by language on XFUND, with FUNSD for English, using the full pipeline.",
         },
         ablation: {
           title: "Ablation",
@@ -306,12 +306,12 @@ export const copy = {
       fields: "Fields",
       accuracy: "Accuracy",
       names: {
-        "agree=True": "Readers agree",
+        "agree=True": "Both readers agree",
         "agree=False": "Readers disagree",
         "agree=None": "Only one reader",
-        "validator=pass": "Validator passed",
-        "validator=fail": "Validator failed",
-        "validator=na": "No validator applies",
+        "validator=pass": "Check passed",
+        "validator=fail": "Check failed",
+        "validator=na": "No check applies",
       } as Record<string, string>,
     },
   },
@@ -319,42 +319,42 @@ export const copy = {
   about: {
     heading: "How it works",
     intro:
-      "Extraction models are usually confident and sometimes wrong. Lingua Ledger does not trust a single reading. It collects independent evidence for every field and turns it into a confidence you can set a policy on.",
+      "Extraction models are usually confident, but sometimes wrong. Lingua Ledger never relies on a single reading. It collects independent evidence for every field and turns it into a clear confidence score you can trust.",
     diagramLabel: "Pipeline diagram",
     diagram: {
       document: { title: "Document", body: "PDF or image, any language" },
-      vision: { title: "Vision reader", body: "Model reads the page image" },
-      ocr: { title: "OCR + text reader", body: "OCR text, separate model" },
-      validators: { title: "Validators", body: "Sums, dates, IBAN, VAT" },
-      confidence: { title: "Confidence", body: "Four signals, calibrated" },
-      accept: { title: "Accepted", body: "Posts automatically" },
+      vision: { title: "Vision reader", body: "Reads the page image directly" },
+      ocr: { title: "OCR + text reader", body: "Reads OCR text with a separate model" },
+      validators: { title: "Validators", body: "Checks sums, dates, IBAN, and VAT" },
+      confidence: { title: "Confidence", body: "Four signals combined into one score" },
+      accept: { title: "Accepted", body: "Saves automatically" },
       review: { title: "Review", body: "A person checks it" },
     },
     signalsTitle: "Four signals per field",
     signals: [
       {
         title: "Reader agreement",
-        body: "The vision reader and the OCR + text reader work independently. When they return the same value, it is rarely wrong.",
+        body: "The vision reader and the OCR + text reader work on their own. When they both return the same value, it is almost always right.",
       },
       {
         title: "OCR confidence",
-        body: "The value is located on the page and the OCR engine's confidence for those words is used. This is also where the boxes come from.",
+        body: "We find the value on the page and use the OCR score for those words. This is also how we draw the boxes on the page.",
       },
       {
         title: "Validators",
-        body: "Deterministic checks: line items add up to the subtotal, tax math holds, dates parse and are in order, IBAN and VAT formats are valid.",
+        body: "Rule checks: line items add up to the subtotal, tax math is correct, dates make sense and are in order, and IBAN and VAT numbers are valid.",
       },
       {
         title: "Self-reported confidence",
-        body: "Each reader also says how sure it is. On its own this is the weakest signal, so it only nudges the score.",
+        body: "Each reader reports how sure it feels. This is the weakest signal on its own, so it only gives the score a small push.",
       },
     ],
     calibrationTitle: "Calibration",
     calibration:
-      "The signals are combined into a raw score, then mapped through an isotonic regression fitted on labelled fields and checked on documents it never saw. After that, a confidence of 0.9 means about 90% of such fields are correct. The Evidence page shows the reliability curve before and after.",
+      "All signals are combined into a raw score and calibrated using isotonic regression tested on unseen documents. After that, a 0.9 confidence means the field is right about 90% of the time. The Evidence page shows the reliability curve before and after.",
     routingTitle: "Routing",
     routing:
-      "Any field below the review threshold goes to a person, with its box on the page and the evidence beside it. Raise the threshold for higher accuracy, lower it for less review. The Evidence page shows that trade-off on real data.",
+      "Any field below the review threshold goes to a person, along with its box on the page and the evidence behind it. Raise the threshold for higher accuracy, or lower it to reduce human review. The Evidence page shows this trade-off on real data.",
   },
 } as const;
 
