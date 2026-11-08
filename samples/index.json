@@ -1,0 +1,128 @@
+[
+  {
+    "id": "synth_invoices-de-1",
+    "title": "Invoice · German",
+    "doc_type": "invoice",
+    "language": "de",
+    "dataset": "synth_invoices",
+    "file": "synth_invoices-de-1.jpg",
+    "doc_id": "synth_de_000"
+  },
+  {
+    "id": "synth_invoices-fr-1",
+    "title": "Invoice · French",
+    "doc_type": "invoice",
+    "language": "fr",
+    "dataset": "synth_invoices",
+    "file": "synth_invoices-fr-1.jpg",
+    "doc_id": "synth_fr_000"
+  },
+  {
+    "id": "synth_invoices-ja-1",
+    "title": "Invoice · Japanese",
+    "doc_type": "invoice",
+    "language": "ja",
+    "dataset": "synth_invoices",
+    "file": "synth_invoices-ja-1.jpg",
+    "doc_id": "synth_ja_000"
+  },
+  {
+    "id": "synth_invoices-es-1",
+    "title": "Invoice · Spanish",
+    "doc_type": "invoice",
+    "language": "es",
+    "dataset": "synth_invoices",
+    "file": "synth_invoices-es-1.jpg",
+    "doc_id": "synth_es_000"
+  },
+  {
+    "id": "synth_invoices-en-1",
+    "title": "Invoice · English",
+    "doc_type": "invoice",
+    "language": "en",
+    "dataset": "synth_invoices",
+    "file": "synth_invoices-en-1.jpg",
+    "doc_id": "synth_en_000"
+  },
+  {
+    "id": "cord-id-1",
+    "title": "Receipt · Indonesian",
+    "doc_type": "receipt",
+    "language": "id",
+    "dataset": "cord",
+    "file": "cord-id-1.png",
+    "doc_id": "cord_test_000"
+  },
+  {
+    "id": "cord-id-2",
+    "title": "Receipt · Indonesian",
+    "doc_type": "receipt",
+    "language": "id",
+    "dataset": "cord",
+    "file": "cord-id-2.png",
+    "doc_id": "cord_test_001"
+  },
+  {
+    "id": "sroie-en-1",
+    "title": "Receipt · English",
+    "doc_type": "receipt",
+    "language": "en",
+    "dataset": "sroie",
+    "file": "sroie-en-1.jpg",
+    "doc_id": "sroie_X00016469670"
+  },
+  {
+    "id": "xfund-zh-1",
+    "title": "Form · Chinese",
+    "doc_type": "form",
+    "language": "zh",
+    "dataset": "xfund",
+    "file": "xfund-zh-1.jpg",
+    "doc_id": "xfund_zh_val_0"
+  },
+  {
+    "id": "xfund-ja-1",
+    "title": "Form · Japanese",
+    "doc_type": "form",
+    "language": "ja",
+    "dataset": "xfund",
+    "file": "xfund-ja-1.jpg",
+    "doc_id": "xfund_ja_val_0"
+  },
+  {
+    "id": "xfund-de-1",
+    "title": "Form · German",
+    "doc_type": "form",
+    "language": "de",
+    "dataset": "xfund",
+    "file": "xfund-de-1.jpg",
+    "doc_id": "xfund_de_val_0"
+  },
+  {
+    "id": "xfund-es-1",
+    "title": "Form · Spanish",
+    "doc_type": "form",
+    "language": "es",
+    "dataset": "xfund",
+    "file": "xfund-es-1.jpg",
+    "doc_id": "xfund_es_val_0"
+  },
+  {
+    "id": "xfund-pt-1",
+    "title": "Form · Portuguese",
+    "doc_type": "form",
+    "language": "pt",
+    "dataset": "xfund",
+    "file": "xfund-pt-1.jpg",
+    "doc_id": "xfund_pt_val_0"
+  },
+  {
+    "id": "funsd-en-1",
+    "title": "Form · English",
+    "doc_type": "form",
+    "language": "en",
+    "dataset": "funsd",
+    "file": "funsd-en-1.png",
+    "doc_id": "funsd_82092117"
+  }
+]
