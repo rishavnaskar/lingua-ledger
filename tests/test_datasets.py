@@ -35,7 +35,7 @@ def dataset(request):
 
 
 def test_samples_present_and_unique(dataset):
-    name, samples = dataset
+    _, samples = dataset
     assert len(samples) > 0
     assert len({s.doc_id for s in samples}) == len(samples)
 
@@ -136,7 +136,11 @@ def test_form_from_entities_pairs_links_in_order():
     ]
     form = form_from_entities(entities)
     assert form.title == "Application"
-    assert [(f.key, f.value) for f in form.fields] == [("Name:", "Ada"), ("Name:", "Lovelace"), ("Date:", "1843")]
+    assert [(f.key, f.value) for f in form.fields] == [
+        ("Name:", "Ada"),
+        ("Name:", "Lovelace"),
+        ("Date:", "1843"),
+    ]
 
 
 def test_cord_receipt_mapping():
@@ -153,12 +157,19 @@ def test_cord_receipt_mapping():
         ("NASI", 2.0, 12500.0, 25000.0),
         ("TEH", 1.0, None, 5000.0),
     ]
-    assert (receipt.subtotal, receipt.tax_amount, receipt.discount, receipt.total) == (30000, 3000, 1000, 32000)
+    assert (receipt.subtotal, receipt.tax_amount, receipt.discount, receipt.total) == (
+        30000,
+        3000,
+        1000,
+        32000,
+    )
     assert (receipt.cash_paid, receipt.change, receipt.currency) == (50000, 18000, "IDR")
 
 
 def test_sroie_receipt_mapping():
-    receipt = sroie_receipt({"company": "ABC SDN BHD", "date": "25 DEC 2018", "address": "JOHOR", "total": "RM9.00"})
+    receipt = sroie_receipt(
+        {"company": "ABC SDN BHD", "date": "25 DEC 2018", "address": "JOHOR", "total": "RM9.00"}
+    )
     assert (receipt.merchant_name, receipt.date, receipt.total, receipt.currency) == (
         "ABC SDN BHD",
         "2018-12-25",

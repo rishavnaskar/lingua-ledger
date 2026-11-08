@@ -142,7 +142,7 @@ export function Workbench() {
         <p className="mt-1.5 text-muted">{c.intro}</p>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(320px,440px)_minmax(0,1fr)]">
+      <div className="grid gap-6 lg:grid-cols-[minmax(320px,400px)_minmax(0,1fr)] xl:grid-cols-[minmax(360px,5fr)_minmax(0,7fr)]">
         <div className="flex min-w-0 flex-col gap-6">
           <Card>
             <h2 className="mb-3 text-sm font-semibold tracking-wide text-ink uppercase">{c.input.title}</h2>
@@ -172,7 +172,7 @@ export function Workbench() {
               />
             </div>
           )}
-          {busy && job?.preview && <PendingPreview src={job.preview} />}
+          {busy && job?.preview && <PendingPreview key={job.preview} src={job.preview} />}
         </div>
 
         <div className="flex min-w-0 flex-col gap-6">

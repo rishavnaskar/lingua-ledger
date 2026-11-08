@@ -19,6 +19,24 @@ from .metrics import score_document
 RESULTS_DIR = ARTIFACTS / "eval"
 ALL_DATASETS = [*DATASETS, "synth_invoices"]
 
+EVAL_FIELDS = {
+    "sroie": {"merchant_name", "merchant_address", "date", "total"},
+    "cord": {"line_items", "subtotal", "tax_amount", "service_charge", "discount", "total", "cash_paid", "change"},
+    "cuad": {"document_name", "parties", "agreement_date", "effective_date", "governing_law"},
+    "xfund": {"title", "fields"},
+    "funsd": {"title", "fields"},
+}
+ABS_FIELDS = {"discount"}
+
+
+def restrict(data: dict, dataset: str) -> dict:
+    keep = EVAL_FIELDS.get(dataset)
+    out = {k: v for k, v in data.items() if keep is None or k in keep}
+    for k in ABS_FIELDS:
+        if isinstance(out.get(k), (int, float)):
+            out[k] = abs(out[k])
+    return out
+
 
 def _load_samples(name: str):
     if name == "synth_invoices":
@@ -41,12 +59,13 @@ def _process(sample, paths: tuple[str, ...], classify_too: bool) -> dict:
     t0 = time.perf_counter()
     images = _images(sample)
     doc_type = DocType(sample.doc_type)
+    gold = restrict(sample.gold, sample.dataset)
     record: dict = {"doc_id": sample.doc_id, "dataset": sample.dataset, "language": sample.language,
-                    "doc_type": sample.doc_type, "gold": sample.gold}
+                    "doc_type": sample.doc_type, "gold": gold}
     try:
         if images:
             result = run(b"", filename=None, doc_type=doc_type, language=sample.language, paths=paths,
-                         images=images, doc_id=sample.doc_id)
+                         images=images, doc_id=sample.doc_id, text_layer=sample.text)
         else:
             from ..extract import extract_text
             from ..validate import validate
@@ -54,20 +73,22 @@ def _process(sample, paths: tuple[str, ...], classify_too: bool) -> dict:
             out = extract_text(sample.text or "", doc_type)
             record.update({"text_only": True, "pred": out.data, "paths": [out.model_dump()],
                            "rules": [r.model_dump() for r in validate(doc_type.value, out.data)], "fields": []})
-            record["scores"] = {"merged": score_document(out.data, sample.gold).counts.as_dict()}
+            record["pred"] = restrict(out.data, sample.dataset)
+            record["scores"] = {"merged": score_document(record["pred"], gold).counts.as_dict()}
             record["latency_s"] = round(time.perf_counter() - t0, 3)
             return record
         record.update({
-            "pred": result.data,
+            "pred": restrict(result.data, sample.dataset),
+            "pred_full": result.data,
             "fields": [f.model_dump() for f in result.fields],
             "rules": [r.model_dump() for r in result.rules],
             "paths": [p.model_dump() for p in result.paths],
             "review_rate": result.review_rate,
             "pages": result.pages,
         })
-        scores = {"merged": score_document(result.data, sample.gold).counts.as_dict()}
+        scores = {"merged": score_document(record["pred"], gold).counts.as_dict()}
         for p in result.paths:
-            scores[p.path] = score_document(p.data, sample.gold).counts.as_dict()
+            scores[p.path] = score_document(restrict(p.data, sample.dataset), gold).counts.as_dict()
         record["scores"] = scores
         if classify_too:
             cls = classify(images[:1])

@@ -88,7 +88,7 @@ def score_fields(doc_type: DocType, merged: dict[str, Any], paths: list[PathOutp
 def run(source: str | Path | bytes, filename: str | None = None, doc_type: DocType | None = None,
         language: str | None = None, threshold: float = DEFAULT_REVIEW_THRESHOLD,
         paths: tuple[str, ...] = ("vision", "ocr_text"), images: list[Image.Image] | None = None,
-        doc_id: str | None = None) -> ExtractionResult:
+        doc_id: str | None = None, text_layer: str | None = None) -> ExtractionResult:
     t0 = time.perf_counter()
     pages = images or load_pages(source, filename)
     ocr: list[OcrPage] = []
@@ -99,7 +99,7 @@ def run(source: str | Path | bytes, filename: str | None = None, doc_type: DocTy
     else:
         cls = Classification(doc_type=doc_type, language=language, confidence=1.0)
     ocr = ocr_pages(pages, language)
-    text = pages_text(ocr)
+    text = text_layer or pages_text(ocr)
     jobs = {}
     with ThreadPoolExecutor(max_workers=2) as ex:
         if "vision" in paths:

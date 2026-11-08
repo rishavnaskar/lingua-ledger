@@ -103,9 +103,10 @@ def download(url: str, dest: Path) -> Path:
         ) as resp:
             resp.raise_for_status()
             total = int(resp.headers.get("content-length") or 0) or None
-            with part.open("wb") as fh, tqdm(
-                total=total, unit="B", unit_scale=True, desc=dest.name, leave=False
-            ) as bar:
+            with (
+                part.open("wb") as fh,
+                tqdm(total=total, unit="B", unit_scale=True, desc=dest.name, leave=False) as bar,
+            ):
                 for chunk in resp.iter_bytes(1 << 20):
                     fh.write(chunk)
                     bar.update(len(chunk))
@@ -177,8 +178,10 @@ def _write_jsonl(path: Path, rows: list[dict]) -> None:
 
 _NUMBER = re.compile(r"\d(?:[\d.,]|\s(?=\d{3}(?!\d)))*")
 _MONTHS = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    m: i
+    for i, m in enumerate(
+        ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1
+    )
 }
 _MONTH = (
     r"(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?"

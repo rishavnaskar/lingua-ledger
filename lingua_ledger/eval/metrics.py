@@ -104,6 +104,8 @@ def score_document(pred: dict[str, Any], gold: dict[str, Any]) -> DocScore:
                     for sub, sv in item.items():
                         if not _present(sv):
                             continue
+                        if j is not None and sub != a and not _present(gv[j].get(sub)):
+                            continue
                         ok = j is not None and (sub in (a,) or values_match(sub, sv, gv[j].get(sub))
                                                 or text_match(str(sv), str(gv[j].get(sub) or "")) >= 0.85)
                         correct[f"{key}[{i}].{sub}"] = bool(ok)

@@ -97,6 +97,7 @@ export function DocumentViewer({
                 const dim = hovered !== null && !active;
                 const label = fieldLabel(f.field, data);
                 const nearTop = y0 / page.height < 0.06;
+                const alignRight = x0 / page.width > 0.5;
                 return (
                   <button
                     key={f.field}
@@ -128,8 +129,9 @@ export function DocumentViewer({
                     {active && (
                       <span
                         className={cn(
-                          "pointer-events-none absolute left-0 rounded px-1.5 py-0.5 text-[11px] font-medium whitespace-nowrap text-white",
+                          "pointer-events-none absolute rounded px-1.5 py-0.5 text-[11px] font-medium whitespace-nowrap text-white",
                           nearTop ? "top-full mt-1" : "bottom-full mb-1",
+                          alignRight ? "right-0" : "left-0",
                           f.needs_review ? "bg-amber-ink" : "bg-teal-ink",
                         )}
                       >
@@ -171,11 +173,13 @@ function area(f: FieldResult): number {
 
 export function PendingPreview({ src }: { src: string }) {
   const c = copy.workbench.viewer;
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
   return (
     <Card>
       <CardTitle icon={FileText}>{c.title}</CardTitle>
       <div className="relative overflow-hidden rounded-xl border border-line bg-white">
-        <img src={src} alt={c.alt(1)} className="block h-auto w-full opacity-60" />
+        <img src={src} alt={c.alt(1)} onError={() => setFailed(true)} className="block h-auto w-full opacity-60" />
         <span className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-medium text-navy shadow-sm">
           <span className="h-2 w-2 animate-pulse rounded-full bg-teal" aria-hidden />
           {c.reading}
