@@ -1,0 +1,4 @@
+node_modules/
+.venv/
+deck/render/*.jpg
+.DS_Store
