@@ -58,6 +58,9 @@ def _kind(value) -> str:
 
 def _score(kind: str, target: str, chunk_text: str) -> float:
     if kind == "number":
+        toks = chunk_text.split()
+        if not re.search(r"\d", toks[0]) or not re.search(r"\d", toks[-1]):
+            return 0.0
         cand = _non_digit.sub("", chunk_text)
         if not cand:
             return 0.0
