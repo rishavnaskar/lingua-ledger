@@ -60,7 +60,7 @@ export function ResultHeader({
 
       <div className="mt-5 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(220px,300px)]">
         <div aria-live="polite">
-          <p className="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+          <p className="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink 2xl:text-3xl">
             {reviewCount > 0 ? (
               <UserCheck className="h-7 w-7 shrink-0 text-amber" aria-hidden />
             ) : (

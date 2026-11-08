@@ -45,25 +45,25 @@ export default function AboutPage() {
       </header>
 
       <Card>
-        <div role="img" aria-label={c.diagramLabel} className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
-          <div className="lg:w-40">
+        <div role="figure" aria-label={c.diagramLabel} className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
+          <div className="lg:min-w-0 lg:flex-1">
             <Box {...d.document} />
           </div>
           <Arrow />
-          <div className="flex flex-col gap-2 lg:w-48">
+          <div className="flex flex-col gap-2 lg:min-w-0 lg:flex-1">
             <Box {...d.vision} tone="navy" />
             <Box {...d.ocr} tone="navy" />
           </div>
           <Arrow />
-          <div className="lg:w-40">
+          <div className="lg:min-w-0 lg:flex-1">
             <Box {...d.validators} tone="navy" />
           </div>
           <Arrow />
-          <div className="lg:w-44">
+          <div className="lg:min-w-0 lg:flex-1">
             <Box {...d.confidence} tone="teal" />
           </div>
           <Arrow />
-          <div className="flex flex-col gap-2 lg:w-40">
+          <div className="flex flex-col gap-2 lg:min-w-0 lg:flex-1">
             <Box {...d.accept} tone="teal" />
             <Box {...d.review} tone="amber" />
           </div>

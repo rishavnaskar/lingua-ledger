@@ -14,7 +14,7 @@ const links = [
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-white/95 backdrop-blur">
+    <header className="z-30 border-b border-line bg-white/95 backdrop-blur md:sticky md:top-0">
       <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="text-lg font-semibold tracking-tight text-ink">
           {copy.site.name}

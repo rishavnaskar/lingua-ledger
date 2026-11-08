@@ -346,12 +346,12 @@ export const copy = {
       },
       {
         title: "Self-reported confidence",
-        body: "Each reader also says how sure it is. It is the weakest signal on its own, so it carries the least weight.",
+        body: "Each reader also says how sure it is. On its own this is the weakest signal, so it only nudges the score.",
       },
     ],
     calibrationTitle: "Calibration",
     calibration:
-      "The signals are combined into a raw score, then mapped through an isotonic regression fitted on labelled fields from a held-out split. After that, a confidence of 0.9 means about 90% of such fields are correct. The Evidence page shows the reliability curve before and after.",
+      "The signals are combined into a raw score, then mapped through an isotonic regression fitted on labelled fields and checked on documents it never saw. After that, a confidence of 0.9 means about 90% of such fields are correct. The Evidence page shows the reliability curve before and after.",
     routingTitle: "Routing",
     routing:
       "Any field below the review threshold goes to a person, with its box on the page and the evidence beside it. Raise the threshold for higher accuracy, lower it for less review. The Evidence page shows that trade-off on real data.",

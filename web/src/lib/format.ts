@@ -49,8 +49,10 @@ export function languageName(code: string): string {
   }
 }
 
+const ACRONYMS = /\b(iban|vat|id|ocr|iso|bic|swift|tin)\b/gi;
+
 export function humanize(key: string): string {
-  const s = key.replace(/_/g, " ").trim();
+  const s = key.replace(/_/g, " ").trim().replace(ACRONYMS, (m) => m.toUpperCase());
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 

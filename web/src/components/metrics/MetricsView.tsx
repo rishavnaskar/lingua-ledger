@@ -175,7 +175,7 @@ function Results({ data }: { data: MetricsSummary }) {
         </div>
       </section>
 
-      <div className="grid gap-6 xl:grid-cols-2">
+      <div className="grid items-start gap-6 xl:grid-cols-2">
         {data.f1 && Object.keys(data.f1).length > 0 && <F1Table f1={data.f1} />}
         {data.signals && Object.keys(data.signals).length > 0 && <SignalsTable signals={data.signals} />}
       </div>
@@ -193,7 +193,7 @@ function ChartCard({ name }: { name: ChartName }) {
       <p className="mt-1 text-sm text-muted">{item.caption}</p>
       <div className="mt-3 overflow-hidden rounded-xl border border-line bg-white">
         {failed ? (
-          <p className="flex aspect-[16/9] items-center justify-center text-sm text-muted">{c.missing}</p>
+          <p className="flex h-40 items-center justify-center text-sm text-muted">{c.missing}</p>
         ) : (
           <img
             src={chartUrl(name)}

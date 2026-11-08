@@ -59,7 +59,7 @@ export function ReadersPanel({
                       {c.failed}: {out.error}
                     </p>
                   )}
-                  <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+                  <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm [&_dt]:whitespace-nowrap">
                     <dt className="text-muted">{c.latency}</dt>
                     <dd className="text-right font-mono tabular-nums">{fmt.seconds(out.latency_s)}</dd>
                     <dt className="text-muted">{c.tokensIn}</dt>

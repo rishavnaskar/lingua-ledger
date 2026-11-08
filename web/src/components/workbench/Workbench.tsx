@@ -129,7 +129,7 @@ export function Workbench() {
 
   const exportCsv = () => {
     if (!result) return;
-    downloadText(`${exportBaseName(result.filename)}.csv`, toCsv(routed), "text/csv;charset=utf-8");
+    downloadText(`${exportBaseName(result.filename)}.csv`, `﻿${toCsv(routed)}`, "text/csv;charset=utf-8");
   };
 
   const busy = phase === "loading";
@@ -220,7 +220,7 @@ export function Workbench() {
                 selection={selection}
                 onSelect={(f) => select(f, "table")}
               />
-              <div className="grid gap-6 xl:grid-cols-2">
+              <div className="grid gap-6 2xl:grid-cols-2">
                 <ValidatorsPanel
                   rules={result.rules}
                   data={result.data}
