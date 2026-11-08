@@ -8,7 +8,15 @@ const Lu = require("react-icons/lu");
 const path = require("path");
 const { applyTheme } = require(process.env.PPTX_SKILL_DIR + "/scripts/apply_theme.js");
 
+const fs = require("fs");
+
 const OUT = process.argv[2] || path.join(__dirname, "LinguaLedger-DataNova2026-Round1.pptx");
+const ART = path.join(__dirname, "..", "artifacts");
+const SUMMARY = fs.existsSync(path.join(ART, "summary.json"))
+  ? JSON.parse(fs.readFileSync(path.join(ART, "summary.json"), "utf8"))
+  : null;
+const chart = (name) => (fs.existsSync(path.join(ART, `${name}.png`)) ? path.join(ART, `${name}.png`) : null);
+const pct = (x, d = 0) => (x == null ? "n/a" : `${(x * 100).toFixed(d)}%`);
 
 const THEME = {
   name: "Lingua Ledger",
@@ -290,6 +298,81 @@ async function iconPng(name, hex, px = 256) {
     }
     text(s, "All datasets are public research benchmarks used under their published licences; no customer documents are used. Synthetic multilingual invoices rendered from templates cover the invoice type across the same seven languages.", { x: 0.5, y: 4.65, w: 9.0, h: 0.45, fontSize: 10, italic: true, color: "7A8696" });
     s.addNotes("Seven languages from XFUND alone, four document types across the five datasets. Every number in the Round 2 update will be reproducible from the public repo with one command.");
+  }
+
+  // Results (only when the evaluation has been run)
+  if (SUMMARY && SUMMARY.documents) {
+    const f1 = SUMMARY.f1 || {};
+    const stat = (s, x, y, big, label, color) => {
+      text(s, big, { x, y, w: 2.1, h: 0.65, fontSize: 30, bold: true, color: color || H.accent1 });
+      text(s, label, { x, y: y + 0.65, w: 2.1, h: 0.5, fontSize: 10.5, color: C.text2, valign: "top" });
+    };
+    const datasets = ["xfund", "funsd", "cord", "sroie", "synth_invoices", "cuad"];
+    const names = { xfund: "XFUND forms (7 langs)", funsd: "FUNSD forms (EN)", cord: "CORD receipts (ID)",
+      sroie: "SROIE receipts (EN)", synth_invoices: "Synthetic invoices (7 langs)", cuad: "CUAD contracts (EN)" };
+
+    // Results overview
+    {
+      const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
+      s.addText(`Results on ${SUMMARY.documents} public benchmark documents`, { placeholder: "title" });
+      const rows = [[
+        { text: "Benchmark", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
+        { text: "Vision only", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
+        { text: "OCR + text only", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
+        { text: "Both + validators", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
+      ]];
+      for (const d of datasets) {
+        if (f1[`${d}/all/merged`] == null) continue;
+        rows.push([names[d], pct(f1[`${d}/all/vision`]), pct(f1[`${d}/all/ocr_text`]),
+          { text: pct(f1[`${d}/all/merged`]), options: { bold: true, color: H.accent1 } }]);
+      }
+      s.addTable(rows, { x: 0.5, y: 1.25, w: 5.6, colW: [2.3, 1.1, 1.1, 1.1], fontSize: 11, color: C.text2,
+        border: { type: "solid", pt: 0.5, color: "D5DCE4" }, fill: { color: H.lt1 }, rowH: 0.36, valign: "middle",
+        margin: 0.05, objectName: "results table" });
+      if (chart("f1_by_language")) {
+        s.addImage({ path: chart("f1_by_language"), x: 6.3, y: 1.25, w: 3.3, h: 1.76, objectName: "f1 by language" });
+      }
+      const cls = SUMMARY.classification || {};
+      stat(s, 6.3, 3.3, pct(cls.doc_type_acc), "document type detected correctly", H.accent4);
+      stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4);
+      text(s, "Field-level F1 against published ground truth. Forms: key-value pairs. Receipts and invoices: every labelled field and line item. Contracts: parties, dates, governing law. Same prompts and schema for every path.",
+        { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
+      s.addNotes("Every number is produced by one command in the public repository. The last column is the full pipeline; the two before it are each reader alone.");
+    }
+
+    // Calibration and review load
+    {
+      const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
+      s.addText("Calibrated confidence turns into a review budget", { placeholder: "title" });
+      const cal = SUMMARY.calibration || {};
+      const rev = SUMMARY.review || {};
+      if (chart("reliability")) s.addImage({ path: chart("reliability"), x: 0.5, y: 1.2, w: 4.4, h: 2.08, objectName: "reliability" });
+      if (chart("review_curve")) s.addImage({ path: chart("review_curve"), x: 5.1, y: 1.2, w: 4.4, h: 2.64, objectName: "review curve" });
+      stat(s, 0.5, 3.5, cal.ece_calibrated != null ? `${cal.ece_raw.toFixed(3)} → ${cal.ece_calibrated.toFixed(3)}` : "n/a",
+        "expected calibration error, raw score → calibrated (lower is better)", H.accent1);
+      stat(s, 2.8, 3.5, pct(cal.field_accuracy), "fields correct with no human review at all", H.accent4);
+      const r98 = rev.review_rate_at_98pct_accuracy;
+      stat(s, 5.1, 3.95, pct(r98), "of fields need a human to reach 98% accuracy on what posts automatically", H.accent2);
+      const r95 = rev.review_rate_at_95pct_accuracy;
+      stat(s, 7.4, 3.95, pct(r95), "of fields need a human to reach 95% accuracy", H.accent2);
+      s.addNotes("Left: a reliability diagram on the held-out half of the fields. Right: the operating curve an operator actually uses. The amber numbers are the headline: how much human work buys how much accuracy.");
+    }
+
+    // Cost and latency
+    {
+      const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
+      s.addText("What it costs to run", { placeholder: "title" });
+      const lat = SUMMARY.latency_s || {};
+      const tok = SUMMARY.tokens || {};
+      const cost = SUMMARY.cost_usd || {};
+      if (chart("ablation")) s.addImage({ path: chart("ablation"), x: 0.5, y: 1.2, w: 5.4, h: 2.62, objectName: "ablation" });
+      stat(s, 6.3, 1.25, lat.p50 != null ? `${lat.p50.toFixed(1)} s` : "n/a", "median end-to-end time per document, both readers in parallel", H.accent4);
+      stat(s, 6.3, 2.55, lat.p95 != null ? `${lat.p95.toFixed(1)} s` : "n/a", "95th percentile", H.accent4);
+      stat(s, 6.3, 3.85, cost.per_1000_docs != null ? `$${cost.per_1000_docs.toFixed(0)}` : "n/a", "model cost per 1,000 documents at list prices", H.accent1);
+      text(s, `Tokens per document: about ${tok.per_doc_input || "n/a"} in, ${tok.per_doc_output || "n/a"} out across both readers. Review effort scales with low-confidence fields, not with document volume.`,
+        { x: 0.5, y: 4.0, w: 5.4, h: 0.9, fontSize: 11, color: C.text2 });
+      s.addNotes("Ablation on the left: each reader alone versus the pair with validators. Cost on the right at public list prices, no caching or batching, so this is an upper bound.");
+    }
   }
 
   // 8. Demo
