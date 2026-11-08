@@ -1,0 +1,52 @@
+[project]
+name = "lingua-ledger"
+version = "0.1.0"
+description = "Self-verifying multilingual document extraction with calibrated per-field confidence (DataNova 2026, DN-AI-01)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Rishav Naskar", email = "rishavnaskar.r@gmail.com" }]
+dependencies = [
+  "anthropic>=0.60",
+  "pydantic>=2.8",
+  "pypdfium2>=4.30",
+  "pytesseract>=0.3.13",
+  "pillow>=10.4",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "scikit-learn>=1.5",
+  "rapidfuzz>=3.9",
+  "python-dateutil>=2.9",
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "python-multipart>=0.0.9",
+  "httpx>=0.27",
+  "datasets>=3.0",
+  "pyarrow>=17",
+  "matplotlib>=3.9",
+  "tqdm>=4.66",
+  "typer>=0.12",
+  "python-dotenv>=1.0",
+  "reportlab>=4.2",
+  "orjson>=3.10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24", "ruff>=0.6", "python-pptx", "defusedxml", "lxml"]
+
+[project.scripts]
+ll = "lingua_ledger.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lingua_ledger"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

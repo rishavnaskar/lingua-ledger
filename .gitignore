@@ -2,3 +2,14 @@ node_modules/
 .venv/
 deck/render/*.jpg
 .DS_Store
+data/raw/
+data/processed/
+artifacts/*.pkl
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+web/node_modules/
+web/.next/
+CLAUDE.md
