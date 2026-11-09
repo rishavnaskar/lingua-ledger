@@ -456,11 +456,11 @@ export const copy = {
       ocr: { title: "OCR + text reader", body: "Reads OCR text with a separate model" },
       validators: { title: "Validators", body: "Checks sums, dates, IBAN, and VAT" },
       arbiter: { title: "Arbiter", body: "Settles reader disagreements using a crop" },
-      confidence: { title: "Confidence", body: "Four signals combined into one score" },
+      confidence: { title: "Confidence", body: "Five signals combined into one score" },
       accept: { title: "Accepted", body: "Saves automatically" },
       review: { title: "Review", body: "A person checks it" },
     },
-    signalsTitle: "Four signals per field",
+    signalsTitle: "Five signals per field",
     signals: [
       {
         title: "Reader agreement",
