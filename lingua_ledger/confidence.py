@@ -62,6 +62,31 @@ def agreement(path: str, a: Any, b: Any) -> bool | None:
     return values_match(leaf_name(path), a, b)
 
 
+def pairs_by_key(data: dict[str, Any]) -> dict[str, Any]:
+    """Form key-value pairs keyed by their normalised label, so readers can be compared by label."""
+    from .normalize import normalize_text
+
+    out: dict[str, Any] = {}
+    for item in data.get("fields") or []:
+        if isinstance(item, dict) and item.get("key") is not None:
+            out.setdefault(normalize_text(item["key"]), item.get("value"))
+    return out
+
+
+def form_counterpart(path: str, merged: dict[str, Any], other: dict[str, Any]) -> tuple[bool, Any]:
+    """For a fields[i].key or fields[i].value path, whether the other reader has the same label and
+    what value it gave for it."""
+    idx = int(path.split("[", 1)[1].split("]", 1)[0])
+    items = merged.get("fields") or []
+    if idx >= len(items) or not isinstance(items[idx], dict):
+        return False, None
+    from .normalize import normalize_text
+
+    key = normalize_text(items[idx].get("key"))
+    found = key in other
+    return found, (other.get(key) if found else None)
+
+
 def raw_score(
     agree: bool | None,
     ocr_conf: float | None,

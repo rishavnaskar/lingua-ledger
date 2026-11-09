@@ -197,5 +197,37 @@ def label_fields(pred: dict[str, Any], gold: dict[str, Any]) -> dict[str, bool]:
     return score_document(pred, gold).correct_paths
 
 
+def label_form_lenient(pred: dict[str, Any], gold: dict[str, Any]) -> dict[str, bool]:
+    """Per-pair correctness for forms under the lenient rule, for both the key and the value path."""
+    gp = [(str(g.get("key") or ""), _squash(g.get("value"))) for g in gold.get("fields") or []]
+    gp = [(k, v) for k, v in gp if v]
+    gold_text: dict[str, list[str]] = {}
+    for k, v in gp:
+        gold_text.setdefault(normalize_text(k), []).append(v)
+    out: dict[str, bool] = {}
+    for i, item in enumerate(pred.get("fields") or []):
+        pk, pv = str(item.get("key") or ""), _squash(item.get("value"))
+        if not pv:
+            continue
+        ok = any(pv == gv for _, gv in gp)
+        if not ok:
+            for gk, vals in gold_text.items():
+                if _loose_key(pk, gk) and (
+                    pv in "".join(vals) or any(text_match(pv, v) >= 0.85 for v in vals)
+                ):
+                    ok = True
+                    break
+        out[f"fields[{i}].key"] = ok
+        out[f"fields[{i}].value"] = ok
+    return out
+
+
+def label_for_calibration(pred: dict[str, Any], gold: dict[str, Any]) -> dict[str, bool]:
+    """Correctness labels used to fit and test the calibrator: lenient for form pairs, strict otherwise."""
+    if isinstance(gold.get("fields"), list):
+        return label_form_lenient(pred, gold)
+    return label_fields(pred, gold)
+
+
 def flatten_present(data: dict[str, Any]) -> dict[str, Any]:
     return {k: v for k, v in flatten(data).items() if _present(v)}

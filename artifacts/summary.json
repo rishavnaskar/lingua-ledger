@@ -2,9 +2,9 @@
   "documents": 198,
   "failed_documents": 0,
   "f1": {
-    "all/all/merged": 0.6395,
-    "all/all/ocr_text": 0.4972,
-    "all/all/vision": 0.6418,
+    "all/all/merged": 0.6497,
+    "all/all/ocr_text": 0.4892,
+    "all/all/vision": 0.6526,
     "cord/all/merged": 0.9468,
     "cord/all/ocr_text": 0.5245,
     "cord/all/vision": 0.9493,
@@ -17,14 +17,14 @@
     "cuad/en/merged": 0.602,
     "cuad/en/ocr_text": 0.6014,
     "cuad/en/vision": 0.609,
-    "funsd/all/lenient": 0.5776,
-    "funsd/all/merged": 0.5327,
-    "funsd/all/ocr_text": 0.3902,
-    "funsd/all/vision": 0.5388,
-    "funsd/en/lenient": 0.5776,
-    "funsd/en/merged": 0.5327,
-    "funsd/en/ocr_text": 0.3902,
-    "funsd/en/vision": 0.5388,
+    "funsd/all/lenient": 0.6752,
+    "funsd/all/merged": 0.5018,
+    "funsd/all/ocr_text": 0.4071,
+    "funsd/all/vision": 0.5046,
+    "funsd/en/lenient": 0.6752,
+    "funsd/en/merged": 0.5018,
+    "funsd/en/ocr_text": 0.4071,
+    "funsd/en/vision": 0.5046,
     "sroie/all/merged": 0.95,
     "sroie/all/ocr_text": 0.8861,
     "sroie/all/vision": 0.95,
@@ -55,38 +55,38 @@
     "synth_invoices/pt/merged": 0.9861,
     "synth_invoices/pt/ocr_text": 1.0,
     "synth_invoices/pt/vision": 0.9861,
-    "xfund/all/lenient": 0.6345,
-    "xfund/all/merged": 0.5086,
-    "xfund/all/ocr_text": 0.319,
-    "xfund/all/vision": 0.5094,
-    "xfund/de/lenient": 0.6599,
-    "xfund/de/merged": 0.5012,
-    "xfund/de/ocr_text": 0.4306,
-    "xfund/de/vision": 0.5024,
-    "xfund/es/lenient": 0.5732,
+    "xfund/all/lenient": 0.6428,
+    "xfund/all/merged": 0.5194,
+    "xfund/all/ocr_text": 0.2946,
+    "xfund/all/vision": 0.5216,
+    "xfund/de/lenient": 0.6703,
+    "xfund/de/merged": 0.5926,
+    "xfund/de/ocr_text": 0.3824,
+    "xfund/de/vision": 0.6011,
+    "xfund/es/lenient": 0.5678,
     "xfund/es/merged": 0.4798,
-    "xfund/es/ocr_text": 0.3807,
-    "xfund/es/vision": 0.4835,
-    "xfund/fr/lenient": 0.623,
-    "xfund/fr/merged": 0.6781,
-    "xfund/fr/ocr_text": 0.3392,
-    "xfund/fr/vision": 0.6985,
-    "xfund/it/lenient": 0.7601,
-    "xfund/it/merged": 0.6525,
-    "xfund/it/ocr_text": 0.5291,
-    "xfund/it/vision": 0.6495,
-    "xfund/ja/lenient": 0.5092,
-    "xfund/ja/merged": 0.3457,
-    "xfund/ja/ocr_text": 0.1278,
-    "xfund/ja/vision": 0.3457,
-    "xfund/pt/lenient": 0.5358,
-    "xfund/pt/merged": 0.4331,
-    "xfund/pt/ocr_text": 0.2923,
-    "xfund/pt/vision": 0.4295,
-    "xfund/zh/lenient": 0.7195,
-    "xfund/zh/merged": 0.4725,
-    "xfund/zh/ocr_text": 0.1323,
-    "xfund/zh/vision": 0.4741
+    "xfund/es/ocr_text": 0.3439,
+    "xfund/es/vision": 0.4821,
+    "xfund/fr/lenient": 0.6431,
+    "xfund/fr/merged": 0.7151,
+    "xfund/fr/ocr_text": 0.3312,
+    "xfund/fr/vision": 0.7198,
+    "xfund/it/lenient": 0.7429,
+    "xfund/it/merged": 0.6106,
+    "xfund/it/ocr_text": 0.4024,
+    "xfund/it/vision": 0.6106,
+    "xfund/ja/lenient": 0.5682,
+    "xfund/ja/merged": 0.3717,
+    "xfund/ja/ocr_text": 0.1684,
+    "xfund/ja/vision": 0.3761,
+    "xfund/pt/lenient": 0.564,
+    "xfund/pt/merged": 0.4433,
+    "xfund/pt/ocr_text": 0.2869,
+    "xfund/pt/vision": 0.4439,
+    "xfund/zh/lenient": 0.7136,
+    "xfund/zh/merged": 0.4779,
+    "xfund/zh/ocr_text": 0.1525,
+    "xfund/zh/vision": 0.4787
   },
   "classification": {
     "n": 198,
@@ -94,122 +94,154 @@
     "language_acc": 0.8889
   },
   "calibration": {
+    "by_dataset": {
+      "cord": {
+        "fields": 358,
+        "ece": 0.0163,
+        "accuracy": 0.9385
+      },
+      "cuad": {
+        "fields": 123,
+        "ece": 0.1872,
+        "accuracy": 0.7317
+      },
+      "funsd": {
+        "fields": 346,
+        "ece": 0.0451,
+        "accuracy": 0.8035
+      },
+      "sroie": {
+        "fields": 120,
+        "ece": 0.0102,
+        "accuracy": 0.95
+      },
+      "synth_invoices": {
+        "fields": 848,
+        "ece": 0.0123,
+        "accuracy": 0.9917
+      },
+      "xfund": {
+        "fields": 2166,
+        "ece": 0.053,
+        "accuracy": 0.8366
+      }
+    },
     "folds": 2,
     "fold_fields": [
-      2480,
-      2060
+      2271,
+      1690
     ],
-    "test_fields": 4540,
-    "field_accuracy": 0.7485,
-    "ece_raw": 0.1461,
-    "ece_calibrated": 0.0157,
-    "brier_raw": 0.1828,
-    "brier_calibrated": 0.1484
+    "test_fields": 3961,
+    "field_accuracy": 0.8763,
+    "ece_raw": 0.1895,
+    "ece_calibrated": 0.037,
+    "brier_raw": 0.1655,
+    "brier_calibrated": 0.1039
   },
   "review": {
-    "baseline_accuracy_no_review": 0.7485,
-    "review_rate_at_95pct_accuracy": 0.6383,
-    "threshold_at_95pct_accuracy": 0.89,
-    "review_rate_at_98pct_accuracy": 0.7599,
+    "baseline_accuracy_no_review": 0.8763,
+    "review_rate_at_95pct_accuracy": 0.6516,
+    "threshold_at_95pct_accuracy": 0.91,
+    "review_rate_at_98pct_accuracy": 0.7208,
     "threshold_at_98pct_accuracy": 0.94,
     "at_threshold_0.85": {
-      "review_rate": 0.5711,
-      "auto_accuracy": 0.944
+      "review_rate": 0.3176,
+      "auto_accuracy": 0.9256
     }
   },
   "signals": {
     "agree=False": {
-      "n": 2721,
-      "accuracy": 0.6218
+      "n": 1756,
+      "accuracy": 0.7961
     },
     "agree=True": {
-      "n": 1819,
-      "accuracy": 0.9379
+      "n": 2205,
+      "accuracy": 0.9401
     },
     "arbiter=ocr": {
-      "n": 12,
+      "n": 9,
       "accuracy": 0.3333
     },
     "arbiter=other": {
-      "n": 4,
-      "accuracy": 0.75
+      "n": 2,
+      "accuracy": 1.0
     },
     "arbiter=vision": {
-      "n": 102,
-      "accuracy": 0.8137
+      "n": 79,
+      "accuracy": 0.8861
     },
     "validator=fail": {
-      "n": 157,
-      "accuracy": 0.1401
+      "n": 25,
+      "accuracy": 0.84
     },
     "validator=na": {
-      "n": 465,
-      "accuracy": 0.8925
+      "n": 378,
+      "accuracy": 0.963
     },
     "validator=pass": {
-      "n": 3918,
-      "accuracy": 0.7557
+      "n": 3558,
+      "accuracy": 0.8673
     }
   },
   "arbiter": {
     "documents": 198,
-    "documents_with_disputes": 101,
-    "disputes": 233,
+    "documents_with_disputes": 92,
+    "disputes": 224,
     "verdicts": {
-      "vision": 195,
+      "vision": 186,
       "unreadable": 2,
-      "other": 12,
-      "ocr": 24
+      "other": 11,
+      "ocr": 25
     },
-    "disputed_fields_scored": 118,
-    "disputed_accuracy_base": 0.7627,
-    "disputed_accuracy_override": 0.7542,
+    "disputed_fields_scored": 109,
+    "disputed_accuracy_base": 0.7798,
+    "disputed_accuracy_override": 0.7982,
     "override_accuracy_by_choice": {
       "ocr": {
-        "n": 12,
-        "accuracy": 0.4167
+        "n": 13,
+        "accuracy": 0.5385
       },
       "other": {
-        "n": 4,
-        "accuracy": 0.25
+        "n": 3,
+        "accuracy": 0.3333
       },
       "vision": {
-        "n": 102,
-        "accuracy": 0.8137
+        "n": 93,
+        "accuracy": 0.8495
       }
     },
-    "fields_flipped_by_override": 11,
-    "latency_p50": 8.28,
-    "tokens_in": 275150,
-    "tokens_out": 9361,
-    "tokens_in_per_document_with_disputes": 2724,
+    "fields_flipped_by_override": 12,
+    "latency_p50": 7.0,
+    "tokens_in": 263797,
+    "tokens_out": 8831,
+    "tokens_in_per_document_with_disputes": 2867,
     "without_signal": {
-      "ece_calibrated": 0.022,
-      "brier_calibrated": 0.1481,
-      "review_rate_at_95pct_accuracy": 0.6388,
-      "review_rate_at_98pct_accuracy": 0.759
+      "ece_calibrated": 0.0379,
+      "brier_calibrated": 0.1042,
+      "review_rate_at_95pct_accuracy": 0.6554,
+      "review_rate_at_98pct_accuracy": 0.7198
     },
     "with_signal": {
-      "ece_calibrated": 0.0157,
-      "brier_calibrated": 0.1484,
-      "review_rate_at_95pct_accuracy": 0.6383,
-      "review_rate_at_98pct_accuracy": 0.7599
+      "ece_calibrated": 0.037,
+      "brier_calibrated": 0.1039,
+      "review_rate_at_95pct_accuracy": 0.6516,
+      "review_rate_at_98pct_accuracy": 0.7208
     }
   },
   "latency_s": {
-    "p50": 21.19,
-    "p95": 63.81,
-    "reader_p50": 11.82,
-    "reader_p95": 43.05
+    "p50": 18.06,
+    "p95": 72.72,
+    "reader_p50": 9.98,
+    "reader_p95": 60.55
   },
   "tokens": {
-    "input": 757271,
-    "output": 315906,
-    "per_doc_input": 3825,
-    "per_doc_output": 1595
+    "input": 766851,
+    "output": 354303,
+    "per_doc_input": 3873,
+    "per_doc_output": 1789
   },
   "cost_usd": {
-    "total": 1.02,
-    "per_1000_docs": 5.14
+    "total": 1.12,
+    "per_1000_docs": 5.64
   }
 }

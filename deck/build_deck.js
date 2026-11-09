@@ -341,7 +341,7 @@ async function iconPng(name, hex, px = 256) {
       stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4, 1.55);
       text(s, "Field F1 scored against published ground truth. Forms: key-value pairs. Receipts and invoices: every labeled field and line item. Contracts: parties, dates, governing law. Same prompts and schema throughout.",
         { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
-      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone. We tested the arbiter honestly: letting it overwrite values did not improve accuracy on disputed fields. Because of that, we ship it as a confidence signal instead, which cuts calibration error from 0.022 to 0.016.");
+      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone. We tested the arbiter honestly: letting it overwrite values did not improve accuracy on disputed fields. Because of that, we ship it as a confidence signal instead, which cuts calibration error from 0.038 to 0.037");
     }
 
     // Calibration and review load

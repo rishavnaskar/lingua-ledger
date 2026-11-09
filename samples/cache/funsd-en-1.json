@@ -1,0 +1,551 @@
+{
+ "doc_id": "funsd-en-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "en",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+  "fields": [
+   {
+    "key": "TO",
+    "value": "George Baroody"
+   },
+   {
+    "key": "FAX NUMBER",
+    "value": "(336) 335-7392"
+   },
+   {
+    "key": "PHONE NUMBER",
+    "value": "(336) 335-7363"
+   },
+   {
+    "key": "DATE",
+    "value": "12/10/98"
+   },
+   {
+    "key": "NUMBER OF PAGES INCLUDING COVER SHEET",
+    "value": "3"
+   },
+   {
+    "key": "SENDER/PHONE NUMBER",
+    "value": "June Flynn for Eric Brown/(614) 466-8980"
+   },
+   {
+    "key": "SPECIAL INSTRUCTIONS",
+    "value": "PLEASE CONTACT SENDER AS SOON AS POSSIBLE"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+   "confidence": 0.9021,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+   "ocr_value": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].key",
+   "value": "TO",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.56,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "TO",
+   "ocr_value": "TO",
+   "bbox": [
+    104,
+    348,
+    128,
+    357
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].value",
+   "value": "George Baroody",
+   "confidence": 0.9021,
+   "raw_score": 0.9788,
+   "agree": true,
+   "ocr_conf": 0.465,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "George Baroody",
+   "ocr_value": "Geore Baroody",
+   "bbox": [
+    137,
+    331,
+    236,
+    368
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[1].key",
+   "value": "FAX NUMBER",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.885,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "FAX NUMBER",
+   "ocr_value": "FAX NUMBER",
+   "bbox": [
+    104,
+    375,
+    204,
+    396
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[1].value",
+   "value": "(336) 335-7392",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.76,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "(336) 335-7392",
+   "ocr_value": "(336) 335-7392",
+   "bbox": [
+    231,
+    379,
+    309,
+    391
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].key",
+   "value": "PHONE NUMBER",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.955,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "PHONE NUMBER",
+   "ocr_value": "PHONE NUMBER",
+   "bbox": [
+    386,
+    375,
+    496,
+    397
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].value",
+   "value": "(336) 335-7363",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.825,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "(336) 335-7363",
+   "ocr_value": "(336) 335-7363",
+   "bbox": [
+    511,
+    379,
+    589,
+    392
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[3].key",
+   "value": "DATE",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "DATE",
+   "ocr_value": "DATE",
+   "bbox": [
+    105,
+    406,
+    146,
+    428
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[3].value",
+   "value": "12/10/98",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "12/10/98",
+   "ocr_value": "2/0/98",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].key",
+   "value": "NUMBER OF PAGES INCLUDING COVER SHEET",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.905,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "NUMBER OF PAGES INCLUDING COVER SHEET",
+   "ocr_value": "NUMBER OF PAGES INCLUDING COVER SHEET",
+   "bbox": [
+    104,
+    443,
+    418,
+    456
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[4].value",
+   "value": "3",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "3",
+   "ocr_value": "3",
+   "bbox": [
+    465,
+    444,
+    471,
+    456
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[5].key",
+   "value": "SENDER/PHONE NUMBER",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.555,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "SENDER/PHONE NUMBER",
+   "ocr_value": "SENDER/PHONE NUMBER",
+   "bbox": [
+    104,
+    475,
+    278,
+    485
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[5].value",
+   "value": "June Flynn for Eric Brown/(614) 466-8980",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.673,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "June Flynn for Eric Brown/(614) 466-8980",
+   "ocr_value": "June Fiynn for Erie Brown/(614) 466-8980",
+   "bbox": [
+    285,
+    464,
+    538,
+    494
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[6].key",
+   "value": "SPECIAL INSTRUCTIONS",
+   "confidence": 0.7558,
+   "raw_score": 0.3913,
+   "agree": false,
+   "ocr_conf": 0.435,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": null,
+   "ocr_value": "SPECIAL INSTRUCTIONS",
+   "bbox": [
+    104,
+    506,
+    273,
+    517
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].value",
+   "value": "PLEASE CONTACT SENDER AS SOON AS POSSIBLE",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": null,
+   "ocr_value": "PLEASE CONTACT SENDER AS SOON AS POSSIBLE",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[0].key",
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[4].key",
+    "fields[5].key",
+    "fields[6].key"
+   ],
+   "passed": true,
+   "message": "All keys are unique"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "7 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+    "fields": [
+     {
+      "key": "TO",
+      "value": "George Baroody"
+     },
+     {
+      "key": "FAX NUMBER",
+      "value": "(336) 335-7392"
+     },
+     {
+      "key": "PHONE NUMBER",
+      "value": "(336) 335-7363"
+     },
+     {
+      "key": "DATE",
+      "value": "12/10/98"
+     },
+     {
+      "key": "NUMBER OF PAGES INCLUDING COVER SHEET",
+      "value": "3"
+     },
+     {
+      "key": "SENDER/PHONE NUMBER",
+      "value": "June Flynn for Eric Brown/(614) 466-8980"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.99,
+    "fields": 0.95
+   },
+   "latency_s": 13.813,
+   "input_tokens": 1401,
+   "output_tokens": 203,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "CONFIDENTIAL FACSIMILE TRANSMISSION COVER SHEET",
+    "fields": [
+     {
+      "key": "TO",
+      "value": "Geore Baroody"
+     },
+     {
+      "key": "FAX NUMBER",
+      "value": "(336) 335-7392"
+     },
+     {
+      "key": "PHONE NUMBER",
+      "value": "(336) 335-7363"
+     },
+     {
+      "key": "DATE",
+      "value": "2/0/98"
+     },
+     {
+      "key": "NUMBER OF PAGES INCLUDING COVER SHEET",
+      "value": "3"
+     },
+     {
+      "key": "SENDER/PHONE NUMBER",
+      "value": "June Fiynn for Erie Brown/(614) 466-8980"
+     },
+     {
+      "key": "SPECIAL INSTRUCTIONS",
+      "value": "PLEASE CONTACT SENDER AS SOON AS POSSIBLE"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.95,
+    "fields": 0.9
+   },
+   "latency_s": 8.875,
+   "input_tokens": 769,
+   "output_tokens": 322,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.2,
+ "pages": 1,
+ "latency_s": 14.201,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 0,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

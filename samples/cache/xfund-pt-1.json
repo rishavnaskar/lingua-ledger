@@ -1,0 +1,2482 @@
+{
+ "doc_id": "xfund-pt-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "pt",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "PROGRAMA NACIONAL DE CONTROLE DA DENGUE - PNCD",
+  "fields": [
+   {
+    "key": "01 Controle Digitação",
+    "value": "456002019"
+   },
+   {
+    "key": "02 Município",
+    "value": "Embraer S.A."
+   },
+   {
+    "key": "03 Código e nome da localidade",
+    "value": "7899 São Paulo"
+   },
+   {
+    "key": "04 Zona",
+    "value": "sul"
+   },
+   {
+    "key": "05 Categ. localid.",
+    "value": "construção"
+   },
+   {
+    "key": "06 Tipo",
+    "value": "1"
+   },
+   {
+    "key": "07 Ciclo/ano",
+    "value": "3 / 2018"
+   },
+   {
+    "key": "08 Data início",
+    "value": "12 / 12 / 2009"
+   },
+   {
+    "key": "09 Data final",
+    "value": "12 / 12 / 2019"
+   },
+   {
+    "key": "10 Concluído?",
+    "value": "S"
+   },
+   {
+    "key": "11 Sem. Epidem.",
+    "value": "500 / 564"
+   },
+   {
+    "key": "14 Residência",
+    "value": "12"
+   },
+   {
+    "key": "15 Comércio",
+    "value": "10"
+   },
+   {
+    "key": "16 TB",
+    "value": "12"
+   },
+   {
+    "key": "17 PE",
+    "value": "20"
+   },
+   {
+    "key": "18 Outro",
+    "value": "15"
+   },
+   {
+    "key": "19 Total",
+    "value": "69"
+   },
+   {
+    "key": "20 Trat. Focal",
+    "value": "10"
+   },
+   {
+    "key": "21 Trat. Perifocal",
+    "value": "12"
+   },
+   {
+    "key": "22 Inspecionados",
+    "value": "34"
+   },
+   {
+    "key": "23 Amostras Coletadas",
+    "value": "7"
+   },
+   {
+    "key": "24 Recusa",
+    "value": "sim"
+   },
+   {
+    "key": "25 Fechados",
+    "value": "não"
+   },
+   {
+    "key": "26 Recuperados",
+    "value": "não"
+   },
+   {
+    "key": "27 A1",
+    "value": "10"
+   },
+   {
+    "key": "28 A2",
+    "value": "2"
+   },
+   {
+    "key": "29 B",
+    "value": "3"
+   },
+   {
+    "key": "30 C",
+    "value": "5"
+   },
+   {
+    "key": "31 D1",
+    "value": "5"
+   },
+   {
+    "key": "32 D2",
+    "value": "20"
+   },
+   {
+    "key": "33 E",
+    "value": "10"
+   },
+   {
+    "key": "34 Total",
+    "value": "55"
+   },
+   {
+    "key": "35 Depósito Eliminado",
+    "value": "sim"
+   },
+   {
+    "key": "36 Tipo de tempo",
+    "value": "32"
+   },
+   {
+    "key": "37 Qtde. (Gramas)",
+    "value": "34"
+   },
+   {
+    "key": "39 Tipo à vista",
+    "value": "23"
+   },
+   {
+    "key": "40 Qtde. (Gramas)",
+    "value": "33"
+   },
+   {
+    "key": "42 Tipo",
+    "value": "44"
+   },
+   {
+    "key": "43 Qtde (Cargas)",
+    "value": "9"
+   },
+   {
+    "key": "44 Total de Agentes na semana",
+    "value": "78"
+   },
+   {
+    "key": "45 Total Dias Trabalhados na semana",
+    "value": "90"
+   },
+   {
+    "key": "67 Visto do Supervisor",
+    "value": "Ana Correia"
+   },
+   {
+    "key": "68 Data do visto",
+    "value": "1 / 12 / 2019"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "PROGRAMA NACIONAL DE CONTROLE DA DENGUE - PNCD",
+   "confidence": 0.7558,
+   "raw_score": 0.3366,
+   "agree": false,
+   "ocr_conf": 0.946,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": "PROGRAMA NACIONAL DE CONTROLE DA DENGUE - PNCD",
+   "bbox": [
+    723,
+    560,
+    1814,
+    592
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].key",
+   "value": "01 Controle Digitação",
+   "confidence": 0.7558,
+   "raw_score": 0.4125,
+   "agree": false,
+   "ocr_conf": 0.77,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "01 Controle Digitação",
+   "ocr_value": null,
+   "bbox": [
+    1825,
+    548,
+    2157,
+    604
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].value",
+   "value": "456002019",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "456002019",
+   "ocr_value": null,
+   "bbox": [
+    1870,
+    602,
+    2047,
+    631
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].key",
+   "value": "02 Município",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "02 Município",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].value",
+   "value": "Embraer S.A.",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "Embraer S.A.",
+   "ocr_value": null,
+   "bbox": [
+    512,
+    777,
+    729,
+    806
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[2].key",
+   "value": "03 Código e nome da localidade",
+   "confidence": 0.8149,
+   "raw_score": 0.4595,
+   "agree": false,
+   "ocr_conf": 0.958,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "03 Código e nome da localidade",
+   "ocr_value": null,
+   "bbox": [
+    1387,
+    728,
+    1783,
+    772
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[2].value",
+   "value": "7899 São Paulo",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "7899 São Paulo",
+   "ocr_value": null,
+   "bbox": [
+    1217,
+    781,
+    1571,
+    819
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].key",
+   "value": "04 Zona",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "04 Zona",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].value",
+   "value": "sul",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "sul",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].key",
+   "value": "05 Categ. localid.",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "05 Categ. localid.",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].value",
+   "value": "construção",
+   "confidence": 0.7558,
+   "raw_score": 0.365,
+   "agree": false,
+   "ocr_conf": 0.58,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "construção",
+   "ocr_value": null,
+   "bbox": [
+    437,
+    872,
+    875,
+    932
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].key",
+   "value": "06 Tipo",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "06 Tipo",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].value",
+   "value": "1",
+   "confidence": 0.7523,
+   "raw_score": 0.285,
+   "agree": false,
+   "ocr_conf": 0.26,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "1",
+   "ocr_value": null,
+   "bbox": [
+    706,
+    868,
+    720,
+    944
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].key",
+   "value": "07 Ciclo/ano",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "07 Ciclo/ano",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].value",
+   "value": "3 / 2018",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "3 / 2018",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[7].key",
+   "value": "08 Data início",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "08 Data início",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[7].value",
+   "value": "12 / 12 / 2009",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "12 / 12 / 2009",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[8].key",
+   "value": "09 Data final",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "09 Data final",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[8].value",
+   "value": "12 / 12 / 2019",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "12 / 12 / 2019",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[9].key",
+   "value": "10 Concluído?",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "10 Concluído?",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[9].value",
+   "value": "S",
+   "confidence": 0.7558,
+   "raw_score": 0.3975,
+   "agree": false,
+   "ocr_conf": 0.71,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "S",
+   "ocr_value": null,
+   "bbox": [
+    1770,
+    868,
+    1809,
+    944
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[10].key",
+   "value": "11 Sem. Epidem.",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "11 Sem. Epidem.",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[10].value",
+   "value": "500 / 564",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "500 / 564",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[11].key",
+   "value": "14 Residência",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "14 Residência",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[11].value",
+   "value": "12",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "12",
+   "ocr_value": null,
+   "bbox": [
+    2097,
+    204,
+    2128,
+    231
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[12].key",
+   "value": "15 Comércio",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "15 Comércio",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[12].value",
+   "value": "10",
+   "confidence": 0.7558,
+   "raw_score": 0.3775,
+   "agree": false,
+   "ocr_conf": 0.63,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "10",
+   "ocr_value": null,
+   "bbox": [
+    417,
+    2840,
+    520,
+    2922
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[13].key",
+   "value": "16 TB",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "16 TB",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[13].value",
+   "value": "12",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "12",
+   "ocr_value": null,
+   "bbox": [
+    2097,
+    204,
+    2128,
+    231
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[14].key",
+   "value": "17 PE",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "17 PE",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[14].value",
+   "value": "20",
+   "confidence": 0.7558,
+   "raw_score": 0.4175,
+   "agree": false,
+   "ocr_conf": 0.79,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "20",
+   "ocr_value": null,
+   "bbox": [
+    1044,
+    1248,
+    1103,
+    1326
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[15].key",
+   "value": "18 Outro",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "18 Outro",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[15].value",
+   "value": "15",
+   "confidence": 0.7558,
+   "raw_score": 0.3575,
+   "agree": false,
+   "ocr_conf": 0.55,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "15",
+   "ocr_value": null,
+   "bbox": [
+    1207,
+    1248,
+    1279,
+    1326
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[16].key",
+   "value": "19 Total",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "19 Total",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[16].value",
+   "value": "69",
+   "confidence": 0.7674,
+   "raw_score": 0.43,
+   "agree": false,
+   "ocr_conf": 0.84,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "69",
+   "ocr_value": null,
+   "bbox": [
+    1298,
+    1248,
+    1337,
+    1326
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[17].key",
+   "value": "20 Trat. Focal",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "20 Trat. Focal",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[17].value",
+   "value": "10",
+   "confidence": 0.7558,
+   "raw_score": 0.3775,
+   "agree": false,
+   "ocr_conf": 0.63,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "10",
+   "ocr_value": null,
+   "bbox": [
+    417,
+    2840,
+    520,
+    2922
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[18].key",
+   "value": "21 Trat. Perifocal",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "21 Trat. Perifocal",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[18].value",
+   "value": "12",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "12",
+   "ocr_value": null,
+   "bbox": [
+    2097,
+    204,
+    2128,
+    231
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[19].key",
+   "value": "22 Inspecionados",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "22 Inspecionados",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[19].value",
+   "value": "34",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "34",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[20].key",
+   "value": "23 Amostras Coletadas",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "23 Amostras Coletadas",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[20].value",
+   "value": "7",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "7",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[21].key",
+   "value": "24 Recusa",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "24 Recusa",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[21].value",
+   "value": "sim",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "sim",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[22].key",
+   "value": "25 Fechados",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "25 Fechados",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[22].value",
+   "value": "não",
+   "confidence": 0.7558,
+   "raw_score": 0.375,
+   "agree": false,
+   "ocr_conf": 0.62,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "não",
+   "ocr_value": null,
+   "bbox": [
+    2028,
+    1251,
+    2087,
+    1329
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[23].key",
+   "value": "26 Recuperados",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "26 Recuperados",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[23].value",
+   "value": "não",
+   "confidence": 0.7558,
+   "raw_score": 0.375,
+   "agree": false,
+   "ocr_conf": 0.62,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "não",
+   "ocr_value": null,
+   "bbox": [
+    2028,
+    1251,
+    2087,
+    1329
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[24].key",
+   "value": "27 A1",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "27 A1",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[24].value",
+   "value": "10",
+   "confidence": 0.7558,
+   "raw_score": 0.3775,
+   "agree": false,
+   "ocr_conf": 0.63,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "10",
+   "ocr_value": null,
+   "bbox": [
+    417,
+    2840,
+    520,
+    2922
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[25].key",
+   "value": "28 A2",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "28 A2",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[25].value",
+   "value": "2",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "2",
+   "ocr_value": null,
+   "bbox": [
+    464,
+    1030,
+    482,
+    1058
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[26].key",
+   "value": "29 B",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "29 B",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[26].value",
+   "value": "3",
+   "confidence": 0.7908,
+   "raw_score": 0.44,
+   "agree": false,
+   "ocr_conf": 0.88,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "3",
+   "ocr_value": null,
+   "bbox": [
+    923,
+    896,
+    939,
+    924
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[27].key",
+   "value": "30 C",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "30 C",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[27].value",
+   "value": "5",
+   "confidence": 0.7558,
+   "raw_score": 0.3375,
+   "agree": false,
+   "ocr_conf": 0.47,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "5",
+   "ocr_value": null,
+   "bbox": [
+    1514,
+    2181,
+    1674,
+    2242
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[28].key",
+   "value": "31 D1",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "31 D1",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[28].value",
+   "value": "5",
+   "confidence": 0.7558,
+   "raw_score": 0.3375,
+   "agree": false,
+   "ocr_conf": 0.47,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "5",
+   "ocr_value": null,
+   "bbox": [
+    1514,
+    2181,
+    1674,
+    2242
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[29].key",
+   "value": "32 D2",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "32 D2",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[29].value",
+   "value": "20",
+   "confidence": 0.7558,
+   "raw_score": 0.4175,
+   "agree": false,
+   "ocr_conf": 0.79,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "20",
+   "ocr_value": null,
+   "bbox": [
+    1044,
+    1248,
+    1103,
+    1326
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[30].key",
+   "value": "33 E",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "33 E",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[30].value",
+   "value": "10",
+   "confidence": 0.7558,
+   "raw_score": 0.3775,
+   "agree": false,
+   "ocr_conf": 0.63,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "10",
+   "ocr_value": null,
+   "bbox": [
+    417,
+    2840,
+    520,
+    2922
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[31].key",
+   "value": "34 Total",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "34 Total",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[31].value",
+   "value": "55",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "55",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[32].key",
+   "value": "35 Depósito Eliminado",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "35 Depósito Eliminado",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[32].value",
+   "value": "sim",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "sim",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[33].key",
+   "value": "36 Tipo de tempo",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "36 Tipo de tempo",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[33].value",
+   "value": "32",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "32",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[34].key",
+   "value": "37 Qtde. (Gramas)",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "37 Qtde. (Gramas)",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[34].value",
+   "value": "34",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "34",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[35].key",
+   "value": "39 Tipo à vista",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "39 Tipo à vista",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[35].value",
+   "value": "23",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "23",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[36].key",
+   "value": "40 Qtde. (Gramas)",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "40 Qtde. (Gramas)",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[36].value",
+   "value": "33",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "33",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[37].key",
+   "value": "42 Tipo",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "42 Tipo",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[37].value",
+   "value": "44",
+   "confidence": 0.7558,
+   "raw_score": 0.3525,
+   "agree": false,
+   "ocr_conf": 0.53,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "44",
+   "ocr_value": null,
+   "bbox": [
+    745,
+    2840,
+    862,
+    2922
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[38].key",
+   "value": "43 Qtde (Cargas)",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "43 Qtde (Cargas)",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[38].value",
+   "value": "9",
+   "confidence": 0.7558,
+   "raw_score": 0.3125,
+   "agree": false,
+   "ocr_conf": 0.37,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "9",
+   "ocr_value": null,
+   "bbox": [
+    1753,
+    1633,
+    1821,
+    1693
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[39].key",
+   "value": "44 Total de Agentes na semana",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "44 Total de Agentes na semana",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[39].value",
+   "value": "78",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "78",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[40].key",
+   "value": "45 Total Dias Trabalhados na semana",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "45 Total Dias Trabalhados na semana",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[40].value",
+   "value": "90",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "90",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[41].key",
+   "value": "67 Visto do Supervisor",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "67 Visto do Supervisor",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[41].value",
+   "value": "Ana Correia",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "Ana Correia",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[42].key",
+   "value": "68 Data do visto",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "68 Data do visto",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[42].value",
+   "value": "1 / 12 / 2019",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "1 / 12 / 2019",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[7].key",
+    "fields[7].value"
+   ],
+   "passed": true,
+   "message": "Field 8 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[8].key",
+    "fields[8].value"
+   ],
+   "passed": true,
+   "message": "Field 9 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[9].key",
+    "fields[9].value"
+   ],
+   "passed": true,
+   "message": "Field 10 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[10].key",
+    "fields[10].value"
+   ],
+   "passed": true,
+   "message": "Field 11 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[11].key",
+    "fields[11].value"
+   ],
+   "passed": true,
+   "message": "Field 12 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[12].key",
+    "fields[12].value"
+   ],
+   "passed": true,
+   "message": "Field 13 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[13].key",
+    "fields[13].value"
+   ],
+   "passed": true,
+   "message": "Field 14 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[14].key",
+    "fields[14].value"
+   ],
+   "passed": true,
+   "message": "Field 15 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[15].key",
+    "fields[15].value"
+   ],
+   "passed": true,
+   "message": "Field 16 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[16].key",
+    "fields[16].value"
+   ],
+   "passed": true,
+   "message": "Field 17 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[17].key",
+    "fields[17].value"
+   ],
+   "passed": true,
+   "message": "Field 18 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[18].key",
+    "fields[18].value"
+   ],
+   "passed": true,
+   "message": "Field 19 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[19].key",
+    "fields[19].value"
+   ],
+   "passed": true,
+   "message": "Field 20 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[20].key",
+    "fields[20].value"
+   ],
+   "passed": true,
+   "message": "Field 21 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[21].key",
+    "fields[21].value"
+   ],
+   "passed": true,
+   "message": "Field 22 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[22].key",
+    "fields[22].value"
+   ],
+   "passed": true,
+   "message": "Field 23 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[23].key",
+    "fields[23].value"
+   ],
+   "passed": true,
+   "message": "Field 24 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[24].key",
+    "fields[24].value"
+   ],
+   "passed": true,
+   "message": "Field 25 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[25].key",
+    "fields[25].value"
+   ],
+   "passed": true,
+   "message": "Field 26 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[26].key",
+    "fields[26].value"
+   ],
+   "passed": true,
+   "message": "Field 27 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[27].key",
+    "fields[27].value"
+   ],
+   "passed": true,
+   "message": "Field 28 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[28].key",
+    "fields[28].value"
+   ],
+   "passed": true,
+   "message": "Field 29 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[29].key",
+    "fields[29].value"
+   ],
+   "passed": true,
+   "message": "Field 30 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[30].key",
+    "fields[30].value"
+   ],
+   "passed": true,
+   "message": "Field 31 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[31].key",
+    "fields[31].value"
+   ],
+   "passed": true,
+   "message": "Field 32 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[32].key",
+    "fields[32].value"
+   ],
+   "passed": true,
+   "message": "Field 33 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[33].key",
+    "fields[33].value"
+   ],
+   "passed": true,
+   "message": "Field 34 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[34].key",
+    "fields[34].value"
+   ],
+   "passed": true,
+   "message": "Field 35 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[35].key",
+    "fields[35].value"
+   ],
+   "passed": true,
+   "message": "Field 36 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[36].key",
+    "fields[36].value"
+   ],
+   "passed": true,
+   "message": "Field 37 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[37].key",
+    "fields[37].value"
+   ],
+   "passed": true,
+   "message": "Field 38 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[38].key",
+    "fields[38].value"
+   ],
+   "passed": true,
+   "message": "Field 39 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[39].key",
+    "fields[39].value"
+   ],
+   "passed": true,
+   "message": "Field 40 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[40].key",
+    "fields[40].value"
+   ],
+   "passed": true,
+   "message": "Field 41 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[41].key",
+    "fields[41].value"
+   ],
+   "passed": true,
+   "message": "Field 42 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[42].key",
+    "fields[42].value"
+   ],
+   "passed": true,
+   "message": "Field 43 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[0].key",
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[4].key",
+    "fields[5].key",
+    "fields[6].key",
+    "fields[7].key",
+    "fields[8].key",
+    "fields[9].key",
+    "fields[10].key",
+    "fields[11].key",
+    "fields[12].key",
+    "fields[13].key",
+    "fields[14].key",
+    "fields[15].key",
+    "fields[16].key",
+    "fields[17].key",
+    "fields[18].key",
+    "fields[19].key",
+    "fields[20].key",
+    "fields[21].key",
+    "fields[22].key",
+    "fields[23].key",
+    "fields[24].key",
+    "fields[25].key",
+    "fields[26].key",
+    "fields[27].key",
+    "fields[28].key",
+    "fields[29].key",
+    "fields[30].key",
+    "fields[31].key",
+    "fields[32].key",
+    "fields[33].key",
+    "fields[34].key",
+    "fields[35].key",
+    "fields[36].key",
+    "fields[37].key",
+    "fields[38].key",
+    "fields[39].key",
+    "fields[40].key",
+    "fields[41].key",
+    "fields[42].key"
+   ],
+   "passed": true,
+   "message": "All keys are unique"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "43 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": null,
+    "fields": [
+     {
+      "key": "01 Controle Digitação",
+      "value": "456002019"
+     },
+     {
+      "key": "02 Município",
+      "value": "Embraer S.A."
+     },
+     {
+      "key": "03 Código e nome da localidade",
+      "value": "7899 São Paulo"
+     },
+     {
+      "key": "04 Zona",
+      "value": "sul"
+     },
+     {
+      "key": "05 Categ. localid.",
+      "value": "construção"
+     },
+     {
+      "key": "06 Tipo",
+      "value": "1"
+     },
+     {
+      "key": "07 Ciclo/ano",
+      "value": "3 / 2018"
+     },
+     {
+      "key": "08 Data início",
+      "value": "12 / 12 / 2009"
+     },
+     {
+      "key": "09 Data final",
+      "value": "12 / 12 / 2019"
+     },
+     {
+      "key": "10 Concluído?",
+      "value": "S"
+     },
+     {
+      "key": "11 Sem. Epidem.",
+      "value": "500 / 564"
+     },
+     {
+      "key": "14 Residência",
+      "value": "12"
+     },
+     {
+      "key": "15 Comércio",
+      "value": "10"
+     },
+     {
+      "key": "16 TB",
+      "value": "12"
+     },
+     {
+      "key": "17 PE",
+      "value": "20"
+     },
+     {
+      "key": "18 Outro",
+      "value": "15"
+     },
+     {
+      "key": "19 Total",
+      "value": "69"
+     },
+     {
+      "key": "20 Trat. Focal",
+      "value": "10"
+     },
+     {
+      "key": "21 Trat. Perifocal",
+      "value": "12"
+     },
+     {
+      "key": "22 Inspecionados",
+      "value": "34"
+     },
+     {
+      "key": "23 Amostras Coletadas",
+      "value": "7"
+     },
+     {
+      "key": "24 Recusa",
+      "value": "sim"
+     },
+     {
+      "key": "25 Fechados",
+      "value": "não"
+     },
+     {
+      "key": "26 Recuperados",
+      "value": "não"
+     },
+     {
+      "key": "27 A1",
+      "value": "10"
+     },
+     {
+      "key": "28 A2",
+      "value": "2"
+     },
+     {
+      "key": "29 B",
+      "value": "3"
+     },
+     {
+      "key": "30 C",
+      "value": "5"
+     },
+     {
+      "key": "31 D1",
+      "value": "5"
+     },
+     {
+      "key": "32 D2",
+      "value": "20"
+     },
+     {
+      "key": "33 E",
+      "value": "10"
+     },
+     {
+      "key": "34 Total",
+      "value": "55"
+     },
+     {
+      "key": "35 Depósito Eliminado",
+      "value": "sim"
+     },
+     {
+      "key": "36 Tipo de tempo",
+      "value": "32"
+     },
+     {
+      "key": "37 Qtde. (Gramas)",
+      "value": "34"
+     },
+     {
+      "key": "39 Tipo à vista",
+      "value": "23"
+     },
+     {
+      "key": "40 Qtde. (Gramas)",
+      "value": "33"
+     },
+     {
+      "key": "42 Tipo",
+      "value": "44"
+     },
+     {
+      "key": "43 Qtde (Cargas)",
+      "value": "9"
+     },
+     {
+      "key": "44 Total de Agentes na semana",
+      "value": "78"
+     },
+     {
+      "key": "45 Total Dias Trabalhados na semana",
+      "value": "90"
+     },
+     {
+      "key": "67 Visto do Supervisor",
+      "value": "Ana Correia"
+     },
+     {
+      "key": "68 Data do visto",
+      "value": "1 / 12 / 2019"
+     }
+    ]
+   },
+   "self_confidence": {
+    "data": 0.95
+   },
+   "latency_s": 7.446,
+   "input_tokens": 1391,
+   "output_tokens": 2859,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "PROGRAMA NACIONAL DE CONTROLE DA DENGUE - PNCD",
+    "fields": [
+     {
+      "key": "Código e nome da localidade",
+      "value": "Embraer S.A. 7899 São Paulo"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.9,
+    "fields": 0.8
+   },
+   "latency_s": 5.657,
+   "input_tokens": 857,
+   "output_tokens": 89,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 1.0,
+ "pages": 1,
+ "latency_s": 9.408,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 0,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

@@ -1,0 +1,1114 @@
+{
+ "doc_id": "xfund-de-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "de",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+  "fields": [
+   {
+    "key": "Wintersemester (Auslandsaufenthalte beginnend ab 01. Juli)",
+    "value": "Bewerbungsfrist: 30.04.2019"
+   },
+   {
+    "key": "Vor- und Nachname",
+    "value": "Hans Schnitt"
+   },
+   {
+    "key": "Matrikelnummer",
+    "value": "35141214"
+   },
+   {
+    "key": "Adresse (Straße, PLZ, Ort)",
+    "value": "66981 Münchweiler, Industriestraße 12"
+   },
+   {
+    "key": "Telefon",
+    "value": "17542341232"
+   },
+   {
+    "key": "E-Mail",
+    "value": "fasd@gmail.de"
+   },
+   {
+    "key": "Staatsangehörigkeit",
+    "value": "Deutschland"
+   },
+   {
+    "key": "Haben Sie ein deutsches Abitur?",
+    "value": "Ja"
+   },
+   {
+    "key": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+    "value": "Ja"
+   },
+   {
+    "key": "Muttersprache",
+    "value": "Deutsch"
+   },
+   {
+    "key": "Gastland",
+    "value": "China"
+   },
+   {
+    "key": "Unterrichtssprache",
+    "value": "Deutsch"
+   },
+   {
+    "key": "Art des Auslandsaufenthaltes",
+    "value": "Studium:"
+   },
+   {
+    "key": "Gastuniversität /-einrichtung",
+    "value": "Hochschule"
+   },
+   {
+    "key": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution*",
+    "value": "von 2003 (Tag/Monat/Jahr)\nbis 2009 (Tag/Monat/Jahr)"
+   },
+   {
+    "key": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+    "value": "ja\nAuslandsstudium\nHochschuljahr: 2018\nAufenthalt in Monaten: 12"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+   "confidence": 0.9021,
+   "raw_score": 0.905,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 1.0,
+   "vision_value": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+   "ocr_value": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].key",
+   "value": "Wintersemester (Auslandsaufenthalte beginnend ab 01. Juli)",
+   "confidence": 0.878,
+   "raw_score": 0.5188,
+   "agree": false,
+   "ocr_conf": 0.945,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Wintersemester (Auslandsaufenthalte beginnend ab 01. Juli)",
+   "ocr_value": null,
+   "bbox": [
+    388,
+    668,
+    1420,
+    710
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].value",
+   "value": "Bewerbungsfrist: 30.04.2019",
+   "confidence": 0.8286,
+   "raw_score": 0.5038,
+   "agree": false,
+   "ocr_conf": 0.885,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Bewerbungsfrist: 30.04.2019",
+   "ocr_value": null,
+   "bbox": [
+    1598,
+    674,
+    2187,
+    718
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].key",
+   "value": "Vor- und Nachname",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.947,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Vor- und Nachname",
+   "ocr_value": "Vor- und Nachname",
+   "bbox": [
+    322,
+    779,
+    678,
+    811
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[1].value",
+   "value": "Hans Schnitt",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.945,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Hans Schnitt",
+   "ocr_value": "Hans Schnitt",
+   "bbox": [
+    1023,
+    779,
+    1356,
+    826
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].key",
+   "value": "Matrikelnummer",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Matrikelnummer",
+   "ocr_value": "Matrikelnummer",
+   "bbox": [
+    323,
+    857,
+    609,
+    909
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].value",
+   "value": "35141214",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "35141214",
+   "ocr_value": "35141214",
+   "bbox": [
+    1019,
+    871,
+    1230,
+    907
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[3].key",
+   "value": "Adresse (Straße, PLZ, Ort)",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Adresse (Straße, PLZ, Ort)",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].value",
+   "value": "66981 Münchweiler, Industriestraße 12",
+   "confidence": 0.8677,
+   "raw_score": 0.5156,
+   "agree": false,
+   "ocr_conf": 0.932,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "66981 Münchweiler, Industriestraße 12",
+   "ocr_value": null,
+   "bbox": [
+    1020,
+    984,
+    2199,
+    1049
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[4].key",
+   "value": "Telefon",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Telefon",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].value",
+   "value": "17542341232",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "17542341232",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].key",
+   "value": "E-Mail",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "E-Mail",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].value",
+   "value": "fasd@gmail.de",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "fasd@gmail.de",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].key",
+   "value": "Staatsangehörigkeit",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Staatsangehörigkeit",
+   "ocr_value": "Staatsangehörigkeit",
+   "bbox": [
+    317,
+    1223,
+    669,
+    1272
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[6].value",
+   "value": "Deutschland",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Deutschland",
+   "ocr_value": "Deutschland",
+   "bbox": [
+    1016,
+    1234,
+    1254,
+    1269
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[7].key",
+   "value": "Haben Sie ein deutsches Abitur?",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.924,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Haben Sie ein deutsches Abitur?",
+   "ocr_value": "Haben Sie ein deutsches Abitur?",
+   "bbox": [
+    1025,
+    1294,
+    1601,
+    1328
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[7].value",
+   "value": "Ja",
+   "confidence": 0.9021,
+   "raw_score": 0.8625,
+   "agree": true,
+   "ocr_conf": 0.0,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Ja",
+   "ocr_value": "Ja",
+   "bbox": [
+    403,
+    2325,
+    471,
+    2360
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[8].key",
+   "value": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.936,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+   "ocr_value": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+   "bbox": [
+    1025,
+    1340,
+    2090,
+    1386
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[8].value",
+   "value": "Ja",
+   "confidence": 0.9021,
+   "raw_score": 0.8625,
+   "agree": true,
+   "ocr_conf": 0.0,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Ja",
+   "ocr_value": "Ja",
+   "bbox": [
+    403,
+    2325,
+    471,
+    2360
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[9].key",
+   "value": "Muttersprache",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Muttersprache",
+   "ocr_value": "Muttersprache",
+   "bbox": [
+    316,
+    1438,
+    568,
+    1487
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[9].value",
+   "value": "Deutsch",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Deutsch",
+   "ocr_value": "Deutsch",
+   "bbox": [
+    315,
+    1359,
+    451,
+    1389
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[10].key",
+   "value": "Gastland",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Gastland",
+   "ocr_value": "Gastland",
+   "bbox": [
+    314,
+    1562,
+    469,
+    1613
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[10].value",
+   "value": "China",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "China",
+   "ocr_value": "China",
+   "bbox": [
+    1550,
+    1579,
+    1668,
+    1615
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[11].key",
+   "value": "Unterrichtssprache",
+   "confidence": 0.8492,
+   "raw_score": 0.51,
+   "agree": false,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Unterrichtssprache",
+   "ocr_value": null,
+   "bbox": [
+    659,
+    2833,
+    932,
+    2863
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[11].value",
+   "value": "Deutsch",
+   "confidence": 0.8903,
+   "raw_score": 0.5225,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Deutsch",
+   "ocr_value": null,
+   "bbox": [
+    315,
+    1359,
+    451,
+    1389
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[12].key",
+   "value": "Art des Auslandsaufenthaltes",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.933,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Art des Auslandsaufenthaltes",
+   "ocr_value": "Art des Auslandsaufenthaltes",
+   "bbox": [
+    309,
+    1734,
+    829,
+    1767
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[12].value",
+   "value": "Studium:",
+   "confidence": 0.9021,
+   "raw_score": 0.9675,
+   "agree": true,
+   "ocr_conf": 0.42,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Studium:",
+   "ocr_value": "Studium",
+   "bbox": [
+    1088,
+    1739,
+    1241,
+    1770
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[13].key",
+   "value": "Gastuniversität /-einrichtung",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Gastuniversität /-einrichtung",
+   "ocr_value": "Gastuniversität /-einrichtung",
+   "bbox": [
+    311,
+    1830,
+    805,
+    1872
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[13].value",
+   "value": "Hochschule",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Hochschule",
+   "ocr_value": "Hochschule",
+   "bbox": [
+    1453,
+    1836,
+    1761,
+    1884
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[14].key",
+   "value": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution*",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution*",
+   "ocr_value": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution*",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[14].value",
+   "value": "von 2003 (Tag/Monat/Jahr)\nbis 2009 (Tag/Monat/Jahr)",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "von 2003 (Tag/Monat/Jahr)\nbis 2009 (Tag/Monat/Jahr)",
+   "ocr_value": "2003 bis 2009",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[15].key",
+   "value": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+   "ocr_value": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+   "bbox": [
+    276,
+    2274,
+    1248,
+    2316
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[15].value",
+   "value": "ja\nAuslandsstudium\nHochschuljahr: 2018\nAufenthalt in Monaten: 12",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "ja\nAuslandsstudium\nHochschuljahr: 2018\nAufenthalt in Monaten: 12",
+   "ocr_value": "ja",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[7].key",
+    "fields[7].value"
+   ],
+   "passed": true,
+   "message": "Field 8 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[8].key",
+    "fields[8].value"
+   ],
+   "passed": true,
+   "message": "Field 9 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[9].key",
+    "fields[9].value"
+   ],
+   "passed": true,
+   "message": "Field 10 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[10].key",
+    "fields[10].value"
+   ],
+   "passed": true,
+   "message": "Field 11 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[11].key",
+    "fields[11].value"
+   ],
+   "passed": true,
+   "message": "Field 12 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[12].key",
+    "fields[12].value"
+   ],
+   "passed": true,
+   "message": "Field 13 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[13].key",
+    "fields[13].value"
+   ],
+   "passed": true,
+   "message": "Field 14 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[14].key",
+    "fields[14].value"
+   ],
+   "passed": true,
+   "message": "Field 15 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[15].key",
+    "fields[15].value"
+   ],
+   "passed": true,
+   "message": "Field 16 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[0].key",
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[4].key",
+    "fields[5].key",
+    "fields[6].key",
+    "fields[7].key",
+    "fields[8].key",
+    "fields[9].key",
+    "fields[10].key",
+    "fields[11].key",
+    "fields[12].key",
+    "fields[13].key",
+    "fields[14].key",
+    "fields[15].key"
+   ],
+   "passed": true,
+   "message": "All keys are unique"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "16 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+    "fields": [
+     {
+      "key": "Wintersemester (Auslandsaufenthalte beginnend ab 01. Juli)",
+      "value": "Bewerbungsfrist: 30.04.2019"
+     },
+     {
+      "key": "Vor- und Nachname",
+      "value": "Hans Schnitt"
+     },
+     {
+      "key": "Matrikelnummer",
+      "value": "35141214"
+     },
+     {
+      "key": "Adresse (Straße, PLZ, Ort)",
+      "value": "66981 Münchweiler, Industriestraße 12"
+     },
+     {
+      "key": "Telefon",
+      "value": "17542341232"
+     },
+     {
+      "key": "E-Mail",
+      "value": "fasd@gmail.de"
+     },
+     {
+      "key": "Staatsangehörigkeit",
+      "value": "Deutschland"
+     },
+     {
+      "key": "Haben Sie ein deutsches Abitur?",
+      "value": "Ja"
+     },
+     {
+      "key": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+      "value": "Ja"
+     },
+     {
+      "key": "Muttersprache",
+      "value": "Deutsch"
+     },
+     {
+      "key": "Gastland",
+      "value": "China"
+     },
+     {
+      "key": "Unterrichtssprache",
+      "value": "Deutsch"
+     },
+     {
+      "key": "Art des Auslandsaufenthaltes",
+      "value": "Studium:"
+     },
+     {
+      "key": "Gastuniversität /-einrichtung",
+      "value": "Hochschule"
+     },
+     {
+      "key": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution*",
+      "value": "von 2003 (Tag/Monat/Jahr)\nbis 2009 (Tag/Monat/Jahr)"
+     },
+     {
+      "key": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+      "value": "ja\nAuslandsstudium\nHochschuljahr: 2018\nAufenthalt in Monaten: 12"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 1.0,
+    "fields": 0.95
+   },
+   "latency_s": 2.928,
+   "input_tokens": 1391,
+   "output_tokens": 664,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "Bewerbungsformular PROMOS-Stipendienprogramm 2019",
+    "fields": [
+     {
+      "key": "Vor- und Nachname",
+      "value": "Hans Schnitt"
+     },
+     {
+      "key": "Matrikelnummer",
+      "value": "35141214"
+     },
+     {
+      "key": "Staatsangehörigkeit",
+      "value": "Deutschland"
+     },
+     {
+      "key": "Haben Sie ein deutsches Abitur?",
+      "value": "Ja"
+     },
+     {
+      "key": "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?",
+      "value": "Ja"
+     },
+     {
+      "key": "Muttersprache",
+      "value": "Deutsch"
+     },
+     {
+      "key": "Wird Auslands-BAföG beantragt?",
+      "value": "Ja"
+     },
+     {
+      "key": "Gastland",
+      "value": "China"
+     },
+     {
+      "key": "Art des Auslandsaufenthaltes",
+      "value": "Studium"
+     },
+     {
+      "key": "Gastuniversität /-einrichtung",
+      "value": "Hochschule"
+     },
+     {
+      "key": "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution",
+      "value": "2003 bis 2009"
+     },
+     {
+      "key": "Haben Sie bereits ein PROMOS-Stipendium erhalten?",
+      "value": "ja"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.95,
+    "Vor- und Nachname": 0.99,
+    "Matrikelnummer": 0.99,
+    "Staatsangehörigkeit": 0.99,
+    "Haben Sie ein deutsches Abitur?": 0.9,
+    "Haben Sie einen deutschen Hochschulabschluss (BA, MA,)?": 0.9,
+    "Muttersprache": 0.99,
+    "Wird Auslands-BAföG beantragt?": 0.9,
+    "Gastland": 0.99,
+    "Art des Auslandsaufenthaltes": 0.95,
+    "Gastuniversität /-einrichtung": 0.9,
+    "Voraussichtlicher Aufenthaltszeitraum an der Gastinstitution": 0.85,
+    "Haben Sie bereits ein PROMOS-Stipendium erhalten?": 0.9
+   },
+   "latency_s": 2.768,
+   "input_tokens": 1147,
+   "output_tokens": 808,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.2727,
+ "pages": 1,
+ "latency_s": 4.997,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 0,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

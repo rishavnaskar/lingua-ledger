@@ -11,7 +11,16 @@ from PIL import Image
 from .anomaly import detect
 from .arbiter import arbitrate
 from .classify import classify
-from .confidence import Calibrator, agreement, flatten, raw_score, top_name, unflatten
+from .confidence import (
+    Calibrator,
+    agreement,
+    flatten,
+    form_counterpart,
+    pairs_by_key,
+    raw_score,
+    top_name,
+    unflatten,
+)
 from .config import ARBITER_ENABLED, DEFAULT_REVIEW_THRESHOLD
 from .extract import extract_text, extract_vision
 from .ingest import load_pages
@@ -86,10 +95,24 @@ def score_fields(
         else (by_path["ocr_text"].self_confidence if "ocr_text" in by_path else {})
     )
     cal = calibrator()
+    vision_pairs = pairs_by_key(by_path["vision"].data) if "vision" in by_path else {}
+    ocr_pairs = pairs_by_key(by_path["ocr_text"].data) if "ocr_text" in by_path else {}
     results: list[FieldResult] = []
     for path, value in flatten(merged).items():
         present = value is not None and value != "" and value != []
-        agree = agreement(path, fv.get(path), fo.get(path)) if fv and fo else None
+        vision_value, ocr_value = fv.get(path), fo.get(path)
+        if path.startswith("fields[") and fv and fo:
+            in_v, v_val = form_counterpart(path, merged, vision_pairs)
+            in_o, o_val = form_counterpart(path, merged, ocr_pairs)
+            if path.endswith(".key"):
+                agree = in_v and in_o
+                vision_value = value if in_v else None
+                ocr_value = value if in_o else None
+            else:
+                vision_value, ocr_value = v_val if in_v else None, o_val if in_o else None
+                agree = agreement(path, vision_value, ocr_value)
+        else:
+            agree = agreement(path, vision_value, ocr_value) if fv and fo else None
         loc = locate_value(value, ocr) if present and ocr else None
         ocr_conf = loc[0] if loc else None
         outcome = rule_outcome_for_field(rules, path)
@@ -107,8 +130,8 @@ def score_fields(
                 ocr_conf=None if ocr_conf is None else round(ocr_conf, 3),
                 validator=outcome,
                 self_conf=sc,
-                vision_value=fv.get(path),
-                ocr_value=fo.get(path),
+                vision_value=vision_value,
+                ocr_value=ocr_value,
                 bbox=loc[1] if loc else None,
                 page=loc[2] if loc else None,
                 arbiter=verdict.choice if verdict else None,

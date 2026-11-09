@@ -1,0 +1,540 @@
+{
+ "doc_id": "xfund-zh-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "zh",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "纾困申请表",
+  "fields": [
+   {
+    "key": "姓名",
+    "value": "夏艳辰"
+   },
+   {
+    "key": "出生日期",
+    "value": "1983 / 6 / 8"
+   },
+   {
+    "key": "电子邮件",
+    "value": "597494564@qq.com"
+   },
+   {
+    "key": "邮政地址",
+    "value": "湖南省怀化市辖区"
+   },
+   {
+    "key": "电话：家中",
+    "value": "0731-56494164"
+   },
+   {
+    "key": "手机",
+    "value": "15845878995"
+   },
+   {
+    "key": "申请针对的物业地址",
+    "value": "紫藤苑4号楼3单元301"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "纾困申请表",
+   "confidence": 0.7558,
+   "raw_score": 0.312,
+   "agree": false,
+   "ocr_conf": 0.848,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": "纾困申请表",
+   "bbox": [
+    1070,
+    298,
+    1349,
+    376
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].key",
+   "value": "姓名",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "姓名",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].value",
+   "value": "夏艳辰",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "夏艳辰",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].key",
+   "value": "出生日期",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.947,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "出生日期",
+   "ocr_value": "出生日期",
+   "bbox": [
+    268,
+    632,
+    450,
+    672
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[1].value",
+   "value": "1983 / 6 / 8",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.813,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "1983 / 6 / 8",
+   "ocr_value": "1983 / 6 / 8",
+   "bbox": [
+    459,
+    626,
+    829,
+    683
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].key",
+   "value": "电子邮件",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.915,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "电子邮件",
+   "ocr_value": "电子邮件",
+   "bbox": [
+    273,
+    705,
+    450,
+    781
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].value",
+   "value": "597494564@qq.com",
+   "confidence": 0.9021,
+   "raw_score": 0.9831,
+   "agree": true,
+   "ocr_conf": 0.733,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "597494564@qq.com",
+   "ocr_value": "597494564@qg.com",
+   "bbox": [
+    273,
+    705,
+    837,
+    781
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[3].key",
+   "value": "邮政地址",
+   "confidence": 0.8144,
+   "raw_score": 0.4533,
+   "agree": false,
+   "ocr_conf": 0.933,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "邮政地址",
+   "ocr_value": null,
+   "bbox": [
+    274,
+    794,
+    453,
+    873
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].value",
+   "value": "湖南省怀化市辖区",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "湖南省怀化市辖区",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].key",
+   "value": "电话：家中",
+   "confidence": 0.7879,
+   "raw_score": 0.4388,
+   "agree": false,
+   "ocr_conf": 0.875,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "电话：家中",
+   "ocr_value": null,
+   "bbox": [
+    327,
+    882,
+    549,
+    954
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].value",
+   "value": "0731-56494164",
+   "confidence": 0.7558,
+   "raw_score": 0.31,
+   "agree": false,
+   "ocr_conf": 0.36,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "0731-56494164",
+   "ocr_value": null,
+   "bbox": [
+    598,
+    882,
+    873,
+    954
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].key",
+   "value": "手机",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "手机",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].value",
+   "value": "15845878995",
+   "confidence": 0.8142,
+   "raw_score": 0.45,
+   "agree": false,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "15845878995",
+   "ocr_value": null,
+   "bbox": [
+    418,
+    992,
+    631,
+    1021
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].key",
+   "value": "申请针对的物业地址",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.863,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "申请针对的物业地址",
+   "ocr_value": "申请针对的物业地址",
+   "bbox": [
+    273,
+    1055,
+    692,
+    1127
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[6].value",
+   "value": "紫藤苑4号楼3单元301",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.774,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "紫藤苑4号楼3单元301",
+   "ocr_value": "紫腾苑4号楼3单元301",
+   "bbox": [
+    482,
+    1152,
+    800,
+    1208
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[0].key",
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[4].key",
+    "fields[5].key",
+    "fields[6].key"
+   ],
+   "passed": true,
+   "message": "All keys are unique"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "7 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": null,
+    "fields": [
+     {
+      "key": "姓名",
+      "value": "夏艳辰"
+     },
+     {
+      "key": "出生日期",
+      "value": "1983 / 6 / 8"
+     },
+     {
+      "key": "电子邮件",
+      "value": "597494564@qq.com"
+     },
+     {
+      "key": "邮政地址",
+      "value": "湖南省怀化市辖区"
+     },
+     {
+      "key": "电话：家中",
+      "value": "0731-56494164"
+     },
+     {
+      "key": "手机",
+      "value": "15845878995"
+     },
+     {
+      "key": "申请针对的物业地址",
+      "value": "紫藤苑4号楼3单元301"
+     }
+    ]
+   },
+   "self_confidence": {
+    "data": 0.95
+   },
+   "latency_s": 2.505,
+   "input_tokens": 1391,
+   "output_tokens": 160,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "纾困申请表",
+    "fields": [
+     {
+      "key": "出生日期",
+      "value": "1983 / 6 / 8"
+     },
+     {
+      "key": "电子邮件",
+      "value": "597494564@qg.com"
+     },
+     {
+      "key": "工作电话",
+      "value": "0731-56494164"
+     },
+     {
+      "key": "家中",
+      "value": "0731-56494164"
+     },
+     {
+      "key": "申请针对的物业地址",
+      "value": "紫腾苑4号楼3单元301"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.95
+   },
+   "latency_s": 2.066,
+   "input_tokens": 733,
+   "output_tokens": 239,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.6,
+ "pages": 1,
+ "latency_s": 5.316,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 0,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

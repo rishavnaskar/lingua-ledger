@@ -52,3 +52,19 @@ def test_clean_form_drops_booleans_and_trailing_colons():
 def test_form_task_has_extra_rules_only_for_forms():
     assert "checkboxes" in _task(DocType.form, "Extract")
     assert "checkboxes" not in _task(DocType.invoice, "Extract")
+
+
+def test_form_agreement_matches_pairs_by_label():
+    from lingua_ledger.pipeline import score_fields
+    from lingua_ledger.schemas import PathOutput
+
+    vision = {
+        "title": None,
+        "fields": [{"key": "Name:", "value": "Hans"}, {"key": "Telefon", "value": "123"}],
+    }
+    ocr = {"title": None, "fields": [{"key": "Telefon", "value": "124"}, {"key": "Name", "value": "Hans"}]}
+    paths = [PathOutput(path="vision", data=vision), PathOutput(path="ocr_text", data=ocr)]
+    out = {f.field: f for f in score_fields(DocType.form, vision, paths, [], [], 0.85)}
+    assert out["fields[0].value"].agree is True
+    assert out["fields[1].value"].agree is False and out["fields[1].value"].ocr_value == "124"
+    assert out["fields[0].key"].agree is True

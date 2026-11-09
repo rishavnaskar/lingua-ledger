@@ -72,19 +72,38 @@ def test_duplicate_by_fingerprint_without_number(tmp_path):
     receipt = {"merchant_name": "Kopitiam", "date": "2026-10-01", "total": 12.5}
     assert fingerprint(receipt) == "2026-10-01|12.50"
     st.remember("r1", "receipt", receipt)
-    assert "duplicate_document" in codes(detect("receipt", receipt, "id", st.vendor_for(receipt), today=TODAY))
+    assert "duplicate_document" in codes(
+        detect("receipt", receipt, "id", st.vendor_for(receipt), today=TODAY)
+    )
 
 
 def test_corrections_persist(tmp_path):
     st = Store(tmp_path / "state.json")
-    st.add_corrections([Correction(doc_id="d", doc_type="invoice", field="iban", raw_score=0.4, accepted=False)])
+    st.add_corrections(
+        [Correction(doc_id="d", doc_type="invoice", field="iban", raw_score=0.4, accepted=False)]
+    )
     assert Store(tmp_path / "state.json").summary()["fields_fixed"] == 1
 
 
 def test_disputes_skip_forms_and_missing_values():
-    merged = {"total": 10, "vendor_name": "A", "fields": [{"key": "k", "value": "v"}], "line_items": [{"total": 5}]}
-    vision = {"total": 10, "vendor_name": "A GmbH", "fields": [{"key": "k", "value": "x"}], "line_items": [{"total": 5}]}
-    ocr = {"total": 11, "vendor_name": None, "fields": [{"key": "k", "value": "v"}], "line_items": [{"total": 6}]}
+    merged = {
+        "total": 10,
+        "vendor_name": "A",
+        "fields": [{"key": "k", "value": "v"}],
+        "line_items": [{"total": 5}],
+    }
+    vision = {
+        "total": 10,
+        "vendor_name": "A GmbH",
+        "fields": [{"key": "k", "value": "x"}],
+        "line_items": [{"total": 5}],
+    }
+    ocr = {
+        "total": 11,
+        "vendor_name": None,
+        "fields": [{"key": "k", "value": "v"}],
+        "line_items": [{"total": 6}],
+    }
     assert disputes(merged, vision, ocr) == ["total", "line_items[0].total"]
 
 

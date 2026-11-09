@@ -26,7 +26,7 @@ def base_rows() -> tuple[Row, ...]:
     compact = ARTIFACTS / "calibration_rows.json"
     if compact.exists():
         return tuple((d, float(s), bool(c)) for d, s, c in json.loads(compact.read_text()))
-    from .eval.metrics import label_fields
+    from .eval.metrics import label_for_calibration
 
     rows: list[Row] = []
     for path in sorted((ARTIFACTS / "eval").glob("*.jsonl")):
@@ -34,7 +34,7 @@ def base_rows() -> tuple[Row, ...]:
             if "error" in r or not r.get("fields"):
                 continue
             fields = r.get("fields_arbiter") or r["fields"]
-            labels = label_fields(r.get("pred_arbiter") or r["pred"], r["gold"])
+            labels = label_for_calibration(r.get("pred_arbiter") or r["pred"], r["gold"])
             for f in fields:
                 if f["value"] in (None, "", []) or f["field"] not in labels:
                     continue

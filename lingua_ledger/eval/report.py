@@ -15,7 +15,7 @@ import numpy as np
 
 from ..confidence import Calibrator
 from ..config import ARTIFACTS
-from .metrics import Counts, label_fields, score_form_lenient
+from .metrics import Counts, label_fields, label_for_calibration, score_form_lenient
 
 RESULTS_DIR = ARTIFACTS / "eval"
 INK, MUTED, GRID = "#121A2B", "#4A5568", "#D5DCE4"
@@ -177,7 +177,7 @@ def _calibration_rows(rows: list[dict]) -> list[list]:
         if not r.get("fields"):
             continue
         fields = r.get("fields_arbiter") or r["fields"]
-        labels = label_fields(r.get("pred_arbiter") or r["pred"], r["gold"])
+        labels = label_for_calibration(r.get("pred_arbiter") or r["pred"], r["gold"])
         for f in fields:
             if f["value"] in (None, "", []) or f["field"] not in labels:
                 continue
@@ -187,32 +187,45 @@ def _calibration_rows(rows: list[dict]) -> list[list]:
 
 def _calibration(rows: list[dict], use_arbiter: bool):
     folds: list[list[tuple[str, float, bool]]] = [[], []]
+    fold_ds: list[list[str]] = [[], []]
     for r in rows:
         if not r.get("fields"):
             continue
         fields = (r.get("fields_arbiter") if use_arbiter else None) or r["fields"]
         pred = (r.get("pred_arbiter") if use_arbiter else None) or r["pred"]
-        labels = label_fields(pred, r["gold"])
-        bucket = folds[_stable_hash(r["doc_id"]) % 2]
+        labels = label_for_calibration(pred, r["gold"])
+        k = _stable_hash(r["doc_id"]) % 2
         for f in fields:
             if f["value"] in (None, "", []) or f["field"] not in labels:
                 continue
-            bucket.append((r["doc_type"], float(f["raw_score"]), bool(labels[f["field"]])))
+            folds[k].append((r["doc_type"], float(f["raw_score"]), bool(labels[f["field"]])))
+            fold_ds[k].append(r["dataset"])
     all_rows = folds[0] + folds[1]
     if len(all_rows) < 50:
         return {}, None, None, None, None
     cal = Calibrator.fit(all_rows)
     test: list[tuple[str, float, bool]] = []
     calibrated_list: list[float] = []
+    datasets: list[str] = []
     for k in (0, 1):
         cal_k = Calibrator.fit(folds[1 - k]) if len(folds[1 - k]) >= 50 else Calibrator()
-        for d, s, c in folds[k]:
+        for (d, s, c), ds in zip(folds[k], fold_ds[k], strict=True):
             test.append((d, s, c))
+            datasets.append(ds)
             calibrated_list.append(cal_k(s, d))
     raw = np.array([s for _, s, _ in test])
     correct = np.array([c for _, _, c in test], dtype=float)
     calibrated = np.array(calibrated_list)
+    by_dataset = {}
+    for name in sorted(set(datasets)):
+        m = np.array([d == name for d in datasets])
+        by_dataset[name] = {
+            "fields": int(m.sum()),
+            "ece": round(_ece(calibrated[m], correct[m]), 4),
+            "accuracy": round(float(correct[m].mean()), 4),
+        }
     summary = {
+        "by_dataset": by_dataset,
         "folds": 2,
         "fold_fields": [len(folds[0]), len(folds[1])],
         "test_fields": len(test),
@@ -269,7 +282,7 @@ def _signal_breakdown(rows: list[dict]) -> dict:
     out: dict[str, dict] = {}
     groups: dict[str, list[bool]] = defaultdict(list)
     for r in rows:
-        labels = label_fields(r.get("pred_arbiter") or r["pred"], r["gold"])
+        labels = label_for_calibration(r.get("pred_arbiter") or r["pred"], r["gold"])
         for f in r.get("fields_arbiter") or r["fields"]:
             if f["field"] not in labels or f["value"] in (None, "", []):
                 continue

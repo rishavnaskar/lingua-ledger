@@ -6,11 +6,11 @@
   "confidence": 1.0
  },
  "data": {
-  "merchant_name": null,
+  "merchant_name": "TICKET CP",
   "merchant_address": null,
   "date": null,
   "time": null,
-  "currency": "IDR",
+  "currency": "$",
   "line_items": [
    {
     "description": "-TICKET CP",
@@ -31,17 +31,22 @@
  "fields": [
   {
    "field": "merchant_name",
-   "value": null,
-   "confidence": 1.0,
-   "raw_score": 0.5,
-   "agree": null,
-   "ocr_conf": null,
-   "validator": "fail",
-   "self_conf": 0.0,
+   "value": "TICKET CP",
+   "confidence": 0.9111,
+   "raw_score": 0.3775,
+   "agree": false,
+   "ocr_conf": 0.63,
+   "validator": "pass",
+   "self_conf": null,
    "vision_value": null,
-   "ocr_value": null,
-   "bbox": null,
-   "page": null,
+   "ocr_value": "TICKET CP",
+   "bbox": [
+    151,
+    390,
+    218,
+    404
+   ],
+   "page": 0,
    "arbiter": null,
    "arbiter_value": null,
    "needs_review": false
@@ -54,7 +59,7 @@
    "agree": null,
    "ocr_conf": null,
    "validator": "na",
-   "self_conf": 0.0,
+   "self_conf": null,
    "vision_value": null,
    "ocr_value": null,
    "bbox": null,
@@ -70,8 +75,8 @@
    "raw_score": 0.5,
    "agree": null,
    "ocr_conf": null,
-   "validator": "fail",
-   "self_conf": 0.0,
+   "validator": "na",
+   "self_conf": null,
    "vision_value": null,
    "ocr_value": null,
    "bbox": null,
@@ -88,7 +93,7 @@
    "agree": null,
    "ocr_conf": null,
    "validator": "na",
-   "self_conf": 0.0,
+   "self_conf": null,
    "vision_value": null,
    "ocr_value": null,
    "bbox": null,
@@ -99,30 +104,35 @@
   },
   {
    "field": "currency",
-   "value": "IDR",
-   "confidence": 0.95,
-   "raw_score": 0.42,
+   "value": "$",
+   "confidence": 0.4331,
+   "raw_score": 0.02,
    "agree": false,
-   "ocr_conf": null,
-   "validator": "pass",
-   "self_conf": 0.9,
-   "vision_value": "IDR",
-   "ocr_value": null,
-   "bbox": null,
-   "page": null,
+   "ocr_conf": 0.87,
+   "validator": "fail",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": "$",
+   "bbox": [
+    229,
+    462,
+    234,
+    474
+   ],
+   "page": 0,
    "arbiter": null,
    "arbiter_value": null,
-   "needs_review": false
+   "needs_review": true
   },
   {
    "field": "line_items[0].description",
    "value": "-TICKET CP",
    "confidence": 0.9609,
-   "raw_score": 0.9,
+   "raw_score": 0.8875,
    "agree": true,
    "ocr_conf": 0.63,
    "validator": "na",
-   "self_conf": 0.95,
+   "self_conf": 0.9,
    "vision_value": "-TICKET CP",
    "ocr_value": "TICKET CP",
    "bbox": [
@@ -140,11 +150,11 @@
    "field": "line_items[0].quantity",
    "value": 2.0,
    "confidence": 0.9597,
-   "raw_score": 0.5425,
+   "raw_score": 0.53,
    "agree": true,
    "ocr_conf": null,
    "validator": "fail",
-   "self_conf": 0.95,
+   "self_conf": 0.9,
    "vision_value": 2.0,
    "ocr_value": 2.0,
    "bbox": null,
@@ -156,12 +166,12 @@
   {
    "field": "line_items[0].unit_price",
    "value": 60000.0,
-   "confidence": 0.4371,
-   "raw_score": 0.0275,
+   "confidence": 0.4331,
+   "raw_score": 0.02,
    "agree": false,
    "ocr_conf": 0.86,
    "validator": "fail",
-   "self_conf": 0.95,
+   "self_conf": 0.9,
    "vision_value": 60000.0,
    "ocr_value": null,
    "bbox": [
@@ -179,11 +189,11 @@
    "field": "line_items[0].total",
    "value": 60000.0,
    "confidence": 0.9597,
-   "raw_score": 0.6075,
+   "raw_score": 0.595,
    "agree": true,
    "ocr_conf": 0.86,
    "validator": "fail",
-   "self_conf": 0.95,
+   "self_conf": 0.9,
    "vision_value": 60000.0,
    "ocr_value": 60000.0,
    "bbox": [
@@ -201,11 +211,11 @@
    "field": "subtotal",
    "value": 60000.0,
    "confidence": 0.9597,
-   "raw_score": 0.615,
+   "raw_score": 0.595,
    "agree": true,
    "ocr_conf": 0.86,
    "validator": "fail",
-   "self_conf": 0.98,
+   "self_conf": 0.9,
    "vision_value": 60000.0,
    "ocr_value": 60000.0,
    "bbox": [
@@ -222,14 +232,14 @@
   {
    "field": "tax_amount",
    "value": 5455.0,
-   "confidence": 0.4331,
-   "raw_score": 0.02,
+   "confidence": 0.8649,
+   "raw_score": 0.2525,
    "agree": false,
    "ocr_conf": 0.77,
    "validator": "fail",
-   "self_conf": 0.98,
+   "self_conf": 0.9,
    "vision_value": 5455.0,
-   "ocr_value": null,
+   "ocr_value": 5.55,
    "bbox": [
     317,
     487,
@@ -237,9 +247,9 @@
     501
    ],
    "page": 0,
-   "arbiter": null,
-   "arbiter_value": null,
-   "needs_review": true
+   "arbiter": "vision",
+   "arbiter_value": 5455.0,
+   "needs_review": false
   },
   {
    "field": "service_charge",
@@ -261,14 +271,14 @@
   {
    "field": "discount",
    "value": 60000.0,
-   "confidence": 0.9111,
-   "raw_score": 0.2875,
+   "confidence": 0.4331,
+   "raw_score": 0.02,
    "agree": false,
    "ocr_conf": 0.86,
    "validator": "fail",
-   "self_conf": 0.95,
+   "self_conf": 0.9,
    "vision_value": 60000.0,
-   "ocr_value": 10000.0,
+   "ocr_value": null,
    "bbox": [
     178,
     414,
@@ -276,19 +286,19 @@
     427
    ],
    "page": 0,
-   "arbiter": "vision",
-   "arbiter_value": 60000.0,
-   "needs_review": false
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
   },
   {
    "field": "total",
    "value": 60000.0,
    "confidence": 0.9597,
-   "raw_score": 0.615,
+   "raw_score": 0.595,
    "agree": true,
    "ocr_conf": 0.86,
    "validator": "fail",
-   "self_conf": 0.98,
+   "self_conf": 0.9,
    "vision_value": 60000.0,
    "ocr_value": 60000.0,
    "bbox": [
@@ -363,11 +373,11 @@
   {
    "rule": "required_fields_present",
    "fields": [
-    "merchant_name",
-    "date"
+    "total",
+    "merchant_name"
    ],
-   "passed": false,
-   "message": "Missing required fields: merchant_name, date"
+   "passed": true,
+   "message": "Total and merchant name or date are present"
   },
   {
    "rule": "total_positive",
@@ -430,8 +440,8 @@
    "fields": [
     "currency"
    ],
-   "passed": true,
-   "message": "IDR is an ISO 4217 code"
+   "passed": false,
+   "message": "'$' is not a known ISO 4217 code"
   }
  ],
  "paths": [
@@ -442,7 +452,7 @@
     "merchant_address": null,
     "date": null,
     "time": null,
-    "currency": "IDR",
+    "currency": null,
     "line_items": [
      {
       "description": "-TICKET CP",
@@ -461,32 +471,27 @@
     "payment_method": "EDC CIMB NIAGA"
    },
    "self_confidence": {
-    "merchant_name": 0.0,
-    "merchant_address": 0.0,
-    "date": 0.0,
-    "time": 0.0,
-    "currency": 0.9,
-    "line_items": 0.95,
-    "subtotal": 0.98,
-    "tax_amount": 0.98,
-    "discount": 0.95,
-    "total": 0.98,
+    "line_items": 0.9,
+    "subtotal": 0.9,
+    "tax_amount": 0.9,
+    "discount": 0.9,
+    "total": 0.9,
     "payment_method": 0.95
    },
-   "latency_s": 23.47,
+   "latency_s": 5.05,
    "input_tokens": 1255,
-   "output_tokens": 3630,
-   "model": "gemini-3.5-flash",
+   "output_tokens": 1610,
+   "model": "gemini-3.5-flash-lite",
    "error": null
   },
   {
    "path": "ocr_text",
    "data": {
-    "merchant_name": null,
+    "merchant_name": "TICKET CP",
     "merchant_address": null,
     "date": null,
     "time": null,
-    "currency": null,
+    "currency": "$",
     "line_items": [
      {
       "description": "TICKET CP",
@@ -496,61 +501,63 @@
      }
     ],
     "subtotal": 60000.0,
-    "tax_amount": null,
+    "tax_amount": 5.55,
     "service_charge": null,
-    "discount": 10000.0,
+    "discount": null,
     "total": 60000.0,
     "cash_paid": null,
     "change": null,
     "payment_method": "EDC CIMB NIAGA"
    },
    "self_confidence": {
-    "merchant_name": 0.0,
-    "merchant_address": 0.0,
-    "date": 0.0,
-    "time": 0.0,
-    "currency": 0.0,
-    "line_items": 0.8,
+    "merchant_name": 0.8,
+    "currency": 0.5,
+    "line_items": 0.7,
     "subtotal": 0.9,
-    "tax_amount": 0.0,
-    "service_charge": 0.0,
-    "discount": 0.7,
-    "total": 0.95,
-    "cash_paid": 0.0,
-    "change": 0.0,
-    "payment_method": 0.85
+    "tax_amount": 0.8,
+    "total": 0.9,
+    "payment_method": 0.9
    },
-   "latency_s": 68.075,
+   "latency_s": 6.394,
    "input_tokens": 308,
-   "output_tokens": 1919,
-   "model": "gemini-3.5-flash",
+   "output_tokens": 918,
+   "model": "gemini-3.5-flash-lite",
    "error": null
   }
  ],
  "review_threshold": 0.85,
- "review_rate": 0.2,
+ "review_rate": 0.2727,
  "pages": 1,
- "latency_s": 82.361,
+ "latency_s": 47.468,
  "arbiter": {
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.5-flash-lite",
   "disputes": 1,
   "verdicts": [
    {
-    "field": "discount",
-    "vision_value": 60000.0,
-    "ocr_value": 10000.0,
+    "field": "tax_amount",
+    "vision_value": 5455.0,
+    "ocr_value": 5.55,
     "choice": "vision",
-    "value": 60000.0,
-    "confidence": 0.99,
+    "value": 5455.0,
+    "confidence": 1.0,
     "cropped": true
    }
   ],
-  "latency_s": 14.093,
-  "input_tokens": 1264,
-  "output_tokens": 244,
+  "latency_s": 40.884,
+  "input_tokens": 1250,
+  "output_tokens": 55,
   "error": null
  },
- "anomalies": [],
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "merchant_name"
+   ]
+  }
+ ],
  "memory": {
   "vendor_seen": false,
   "vendor_documents": 0

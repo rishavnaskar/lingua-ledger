@@ -1,0 +1,683 @@
+{
+ "doc_id": "xfund-es-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "es",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+  "fields": [
+   {
+    "key": "D/Dª",
+    "value": "Natalia Jimenez"
+   },
+   {
+    "key": "con DNI/NIE",
+    "value": "31927482"
+   },
+   {
+    "key": "con domicilio en",
+    "value": "Calle toro 33 3B"
+   },
+   {
+    "key": "de la población",
+    "value": "Malága"
+   },
+   {
+    "key": "CP",
+    "value": "29704"
+   },
+   {
+    "key": "con teléfono móvil",
+    "value": "657297632"
+   },
+   {
+    "key": "e-mail",
+    "value": "dolressdjue@gmail.com"
+   },
+   {
+    "key": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+    "value": "Hijo"
+   },
+   {
+    "key": "OBSERVACIONES",
+    "value": "visto bueno"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+   "confidence": 0.9021,
+   "raw_score": 0.5825,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+   "ocr_value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO",
+   "bbox": null,
+   "page": null,
+   "arbiter": "vision",
+   "arbiter_value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].key",
+   "value": "D/Dª",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "D/Dª",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].value",
+   "value": "Natalia Jimenez",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Natalia Jimenez",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].key",
+   "value": "con DNI/NIE",
+   "confidence": 0.7558,
+   "raw_score": 0.4113,
+   "agree": false,
+   "ocr_conf": 0.515,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "con DNI/NIE",
+   "ocr_value": null,
+   "bbox": [
+    1342,
+    440,
+    1576,
+    482
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].value",
+   "value": "31927482",
+   "confidence": 0.8821,
+   "raw_score": 0.52,
+   "agree": false,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "31927482",
+   "ocr_value": null,
+   "bbox": [
+    1613,
+    442,
+    1802,
+    474
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[2].key",
+   "value": "con domicilio en",
+   "confidence": 0.8162,
+   "raw_score": 0.4963,
+   "agree": false,
+   "ocr_conf": 0.855,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "con domicilio en",
+   "ocr_value": null,
+   "bbox": [
+    1850,
+    445,
+    2128,
+    484
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[2].value",
+   "value": "Calle toro 33 3B",
+   "confidence": 0.8471,
+   "raw_score": 0.5094,
+   "agree": false,
+   "ocr_conf": 0.907,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Calle toro 33 3B",
+   "ocr_value": null,
+   "bbox": [
+    478,
+    571,
+    783,
+    606
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].key",
+   "value": "de la población",
+   "confidence": 0.8348,
+   "raw_score": 0.5056,
+   "agree": false,
+   "ocr_conf": 0.892,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "de la población",
+   "ocr_value": null,
+   "bbox": [
+    1315,
+    577,
+    1637,
+    619
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].value",
+   "value": "Malága",
+   "confidence": 0.7733,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Malága",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].key",
+   "value": "CP",
+   "confidence": 0.8492,
+   "raw_score": 0.51,
+   "agree": false,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "CP",
+   "ocr_value": null,
+   "bbox": [
+    374,
+    712,
+    421,
+    744
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].value",
+   "value": "29704",
+   "confidence": 0.8327,
+   "raw_score": 0.505,
+   "agree": false,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "29704",
+   "ocr_value": null,
+   "bbox": [
+    470,
+    698,
+    588,
+    730
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].key",
+   "value": "con teléfono móvil",
+   "confidence": 0.8162,
+   "raw_score": 0.495,
+   "agree": false,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "con teléfono móvil",
+   "ocr_value": null,
+   "bbox": [
+    676,
+    712,
+    1038,
+    745
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].value",
+   "value": "657297632",
+   "confidence": 0.8162,
+   "raw_score": 0.4875,
+   "agree": false,
+   "ocr_conf": 0.82,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "657297632",
+   "ocr_value": null,
+   "bbox": [
+    1053,
+    701,
+    1265,
+    733
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].key",
+   "value": "e-mail",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.86,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "e-mail",
+   "ocr_value": "e-mail",
+   "bbox": [
+    1303,
+    714,
+    1420,
+    747
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[6].value",
+   "value": "dolressdjue@gmail.com",
+   "confidence": 0.8162,
+   "raw_score": 0.4975,
+   "agree": false,
+   "ocr_conf": 0.86,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "dolressdjue@gmail.com",
+   "ocr_value": "doloressdjue@gmail.es",
+   "bbox": [
+    1460,
+    708,
+    1907,
+    752
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[7].key",
+   "value": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.956,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+   "ocr_value": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+   "bbox": [
+    368,
+    1139,
+    1200,
+    1180
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[7].value",
+   "value": "Hijo",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "Hijo",
+   "ocr_value": "Hijo",
+   "bbox": [
+    1265,
+    1150,
+    1337,
+    1190
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[8].key",
+   "value": "OBSERVACIONES",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "OBSERVACIONES",
+   "ocr_value": "OBSERVACIONES",
+   "bbox": [
+    368,
+    1334,
+    705,
+    1381
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[8].value",
+   "value": "visto bueno",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.895,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": "visto bueno",
+   "ocr_value": "visto bueno",
+   "bbox": [
+    759,
+    1357,
+    987,
+    1391
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[7].key",
+    "fields[7].value"
+   ],
+   "passed": true,
+   "message": "Field 8 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[8].key",
+    "fields[8].value"
+   ],
+   "passed": true,
+   "message": "Field 9 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[0].key",
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[4].key",
+    "fields[5].key",
+    "fields[6].key",
+    "fields[7].key",
+    "fields[8].key"
+   ],
+   "passed": true,
+   "message": "All keys are unique"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "9 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+    "fields": [
+     {
+      "key": "D/Dª",
+      "value": "Natalia Jimenez"
+     },
+     {
+      "key": "con DNI/NIE",
+      "value": "31927482"
+     },
+     {
+      "key": "con domicilio en",
+      "value": "Calle toro 33 3B"
+     },
+     {
+      "key": "de la población",
+      "value": "Malága"
+     },
+     {
+      "key": "CP",
+      "value": "29704"
+     },
+     {
+      "key": "con teléfono móvil",
+      "value": "657297632"
+     },
+     {
+      "key": "e-mail",
+      "value": "dolressdjue@gmail.com"
+     },
+     {
+      "key": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+      "value": "Hijo"
+     },
+     {
+      "key": "OBSERVACIONES",
+      "value": "visto bueno"
+     }
+    ]
+   },
+   "self_confidence": {
+    "title": 0.99,
+    "fields": 0.95
+   },
+   "latency_s": 4.635,
+   "input_tokens": 1391,
+   "output_tokens": 1299,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO",
+    "fields": [
+     {
+      "key": "DNI/NIE",
+      "value": "31927482"
+     },
+     {
+      "key": "domicilio",
+      "value": "Calle toro 33 3B , de la población Malaga ; cp 29704"
+     },
+     {
+      "key": "teléfono movil",
+      "value": "657297632"
+     },
+     {
+      "key": "e-mail",
+      "value": "doloressdjue@gmail.es"
+     },
+     {
+      "key": "SOLICITA",
+      "value": "COPIA SIMPLE"
+     },
+     {
+      "key": "SOLICITO LA COPIA EN MI CONDICIÓN DE",
+      "value": "Hijo"
+     },
+     {
+      "key": "OBSERVACIONES",
+      "value": "visto bueno"
+     }
+    ]
+   },
+   "self_confidence": {
+    "data": 0.95
+   },
+   "latency_s": 1.561,
+   "input_tokens": 726,
+   "output_tokens": 303,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.6316,
+ "pages": 1,
+ "latency_s": 7.79,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "title",
+    "vision_value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+    "ocr_value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO",
+    "choice": "vision",
+    "value": "FORMULARIO DE SOLICITUD DE COPIA DE TESTAMENTO AL ARCHIVO GENERAL DE PROTOCOLOS DE MADRID",
+    "confidence": 1.0,
+    "cropped": true
+   }
+  ],
+  "latency_s": 2.158,
+  "input_tokens": 1203,
+  "output_tokens": 43,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

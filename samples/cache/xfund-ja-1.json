@@ -1,0 +1,942 @@
+{
+ "doc_id": "xfund-ja-1",
+ "classification": {
+  "doc_type": "form",
+  "language": "ja",
+  "confidence": 1.0
+ },
+ "data": {
+  "title": "身分証明書 独身証明書 交付申請書",
+  "fields": [
+   {
+    "key": "茅野市長宛",
+    "value": "令和1年2月28日"
+   },
+   {
+    "key": "住所",
+    "value": "〒391-0012長野県茅野市金沢2丁目409番地"
+   },
+   {
+    "key": "氏名",
+    "value": "木村奈々美"
+   },
+   {
+    "key": "生年月日",
+    "value": "明・大・昭・平・令 60年7月22日"
+   },
+   {
+    "key": "電話番号",
+    "value": "073-221-5935"
+   },
+   {
+    "key": "証明の種類と通数",
+    "value": "身分証明書 1通"
+   },
+   {
+    "key": "住所",
+    "value": "窓口に来た人と同じ"
+   },
+   {
+    "key": "氏名",
+    "value": "木村孝"
+   },
+   {
+    "key": "生年月日",
+    "value": "明・大・昭・平・令 58年4月13日"
+   },
+   {
+    "key": "本籍",
+    "value": "茅野市 金沢2丁目409番地"
+   },
+   {
+    "key": "筆頭者の氏名",
+    "value": "木村あゆみ"
+   },
+   {
+    "key": "本人確認",
+    "value": "A 保・年・住(無)・( ) B 学・法人身分証・( )"
+   },
+   {
+    "key": "茅野市役所において、",
+    "value": "身分証明書の交付を代理人に委任します。"
+   },
+   {
+    "key": "本籍",
+    "value": "茅野市"
+   }
+  ]
+ },
+ "fields": [
+  {
+   "field": "title",
+   "value": "身分証明書 独身証明書 交付申請書",
+   "confidence": 0.8492,
+   "raw_score": 0.51,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": "身分証明書 独身証明書 交付申請書",
+   "ocr_value": "独身証明書交付申請",
+   "bbox": null,
+   "page": null,
+   "arbiter": "vision",
+   "arbiter_value": "身分証明書 独身証明書 交付申請書",
+   "needs_review": true
+  },
+  {
+   "field": "fields[0].key",
+   "value": "茅野市長宛",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.912,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "茅野市長宛",
+   "ocr_value": "茅野市長宛",
+   "bbox": [
+    335,
+    607,
+    607,
+    647
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[0].value",
+   "value": "令和1年2月28日",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.911,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "令和1年2月28日",
+   "ocr_value": "令和1年2月28日",
+   "bbox": [
+    572,
+    608,
+    1486,
+    671
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[1].key",
+   "value": "住所",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "住所",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[1].value",
+   "value": "〒391-0012長野県茅野市金沢2丁目409番地",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "〒391-0012長野県茅野市金沢2丁目409番地",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[2].key",
+   "value": "氏名",
+   "confidence": 0.7558,
+   "raw_score": 0.3075,
+   "agree": false,
+   "ocr_conf": 0.35,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "氏名",
+   "ocr_value": null,
+   "bbox": [
+    497,
+    1880,
+    569,
+    1918
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[2].value",
+   "value": "木村奈々美",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "木村奈々美",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].key",
+   "value": "生年月日",
+   "confidence": 0.8148,
+   "raw_score": 0.4575,
+   "agree": false,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "生年月日",
+   "ocr_value": null,
+   "bbox": [
+    2125,
+    1438,
+    2317,
+    1505
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[3].value",
+   "value": "明・大・昭・平・令 60年7月22日",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "明・大・昭・平・令 60年7月22日",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].key",
+   "value": "電話番号",
+   "confidence": 0.815,
+   "raw_score": 0.46,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "電話番号",
+   "ocr_value": null,
+   "bbox": [
+    2124,
+    1532,
+    2297,
+    1571
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[4].value",
+   "value": "073-221-5935",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "073-221-5935",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].key",
+   "value": "証明の種類と通数",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "証明の種類と通数",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[5].value",
+   "value": "身分証明書 1通",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "身分証明書 1通",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].key",
+   "value": "住所",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "住所",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[6].value",
+   "value": "窓口に来た人と同じ",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "〒391-0012長野県茅野市金沢2丁目409番地",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[7].key",
+   "value": "氏名",
+   "confidence": 0.7558,
+   "raw_score": 0.3075,
+   "agree": false,
+   "ocr_conf": 0.35,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "氏名",
+   "ocr_value": null,
+   "bbox": [
+    497,
+    1880,
+    569,
+    1918
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[7].value",
+   "value": "木村孝",
+   "confidence": 0.7937,
+   "raw_score": 0.4413,
+   "agree": false,
+   "ocr_conf": 0.885,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "木村奈々美",
+   "ocr_value": null,
+   "bbox": [
+    1044,
+    1537,
+    1184,
+    1583
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[8].key",
+   "value": "生年月日",
+   "confidence": 0.8148,
+   "raw_score": 0.4575,
+   "agree": false,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "生年月日",
+   "ocr_value": null,
+   "bbox": [
+    2125,
+    1438,
+    2317,
+    1505
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[8].value",
+   "value": "明・大・昭・平・令 58年4月13日",
+   "confidence": 0.7558,
+   "raw_score": 0.4084,
+   "agree": false,
+   "ocr_conf": 0.754,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "明・大・昭・平・令 60年7月22日",
+   "ocr_value": null,
+   "bbox": [
+    829,
+    1629,
+    1582,
+    1703
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[9].key",
+   "value": "本籍",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "本籍",
+   "ocr_value": "本籍",
+   "bbox": [
+    2126,
+    1644,
+    2250,
+    1688
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[9].value",
+   "value": "茅野市 金沢2丁目409番地",
+   "confidence": 0.7811,
+   "raw_score": 0.4358,
+   "agree": false,
+   "ocr_conf": 0.863,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "茅野市 金沢2丁目409番地",
+   "ocr_value": "茅野市",
+   "bbox": [
+    637,
+    1724,
+    1270,
+    1799
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[10].key",
+   "value": "筆頭者の氏名",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.807,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "筆頭者の氏名",
+   "ocr_value": "筆頭者の氏名",
+   "bbox": [
+    315,
+    1870,
+    569,
+    1934
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[10].value",
+   "value": "木村あゆみ",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.923,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "木村あゆみ",
+   "ocr_value": "木村あゆみ",
+   "bbox": [
+    838,
+    1871,
+    1073,
+    1936
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[11].key",
+   "value": "本人確認",
+   "confidence": 0.8145,
+   "raw_score": 0.4542,
+   "agree": false,
+   "ocr_conf": 0.937,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "本人確認",
+   "ocr_value": null,
+   "bbox": [
+    2311,
+    2058,
+    2498,
+    2093
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[11].value",
+   "value": "A 保・年・住(無)・( ) B 学・法人身分証・( )",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "A 保・年・住(無)・( ) B 学・法人身分証・( )",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[12].key",
+   "value": "茅野市役所において、",
+   "confidence": 0.7864,
+   "raw_score": 0.4381,
+   "agree": false,
+   "ocr_conf": 0.873,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "茅野市役所において、",
+   "ocr_value": null,
+   "bbox": [
+    1358,
+    508,
+    2273,
+    574
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[12].value",
+   "value": "身分証明書の交付を代理人に委任します。",
+   "confidence": 0.7558,
+   "raw_score": 0.37,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "身分証明書の交付を代理人に委任します。",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "fields[13].key",
+   "value": "本籍",
+   "confidence": 0.9021,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "本籍",
+   "ocr_value": "本籍",
+   "bbox": [
+    2126,
+    1644,
+    2250,
+    1688
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "fields[13].value",
+   "value": "茅野市",
+   "confidence": 0.7558,
+   "raw_score": 0.4244,
+   "agree": false,
+   "ocr_conf": 0.818,
+   "validator": "pass",
+   "self_conf": null,
+   "vision_value": "茅野市 金沢2丁目409番地",
+   "ocr_value": "茅野市",
+   "bbox": [
+    1358,
+    508,
+    2082,
+    574
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  }
+ ],
+ "rules": [
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[0].key",
+    "fields[0].value"
+   ],
+   "passed": true,
+   "message": "Field 1 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[1].key",
+    "fields[1].value"
+   ],
+   "passed": true,
+   "message": "Field 2 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[2].key",
+    "fields[2].value"
+   ],
+   "passed": true,
+   "message": "Field 3 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[3].key",
+    "fields[3].value"
+   ],
+   "passed": true,
+   "message": "Field 4 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[4].key",
+    "fields[4].value"
+   ],
+   "passed": true,
+   "message": "Field 5 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[5].key",
+    "fields[5].value"
+   ],
+   "passed": true,
+   "message": "Field 6 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[6].key",
+    "fields[6].value"
+   ],
+   "passed": true,
+   "message": "Field 7 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[7].key",
+    "fields[7].value"
+   ],
+   "passed": true,
+   "message": "Field 8 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[8].key",
+    "fields[8].value"
+   ],
+   "passed": true,
+   "message": "Field 9 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[9].key",
+    "fields[9].value"
+   ],
+   "passed": true,
+   "message": "Field 10 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[10].key",
+    "fields[10].value"
+   ],
+   "passed": true,
+   "message": "Field 11 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[11].key",
+    "fields[11].value"
+   ],
+   "passed": true,
+   "message": "Field 12 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[12].key",
+    "fields[12].value"
+   ],
+   "passed": true,
+   "message": "Field 13 has a key and a value"
+  },
+  {
+   "rule": "fields_non_empty",
+   "fields": [
+    "fields[13].key",
+    "fields[13].value"
+   ],
+   "passed": true,
+   "message": "Field 14 has a key and a value"
+  },
+  {
+   "rule": "no_duplicate_keys",
+   "fields": [
+    "fields[1].key",
+    "fields[2].key",
+    "fields[3].key",
+    "fields[6].key",
+    "fields[7].key",
+    "fields[8].key",
+    "fields[9].key",
+    "fields[13].key"
+   ],
+   "passed": null,
+   "message": "Duplicate keys 住所, 本籍, 氏名, 生年月日"
+  },
+  {
+   "rule": "min_fields",
+   "fields": [
+    "fields"
+   ],
+   "passed": true,
+   "message": "14 fields extracted"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "title": "身分証明書 独身証明書 交付申請書",
+    "fields": [
+     {
+      "key": "茅野市長宛",
+      "value": "令和1年2月28日"
+     },
+     {
+      "key": "住所",
+      "value": "〒391-0012長野県茅野市金沢2丁目409番地"
+     },
+     {
+      "key": "氏名",
+      "value": "木村奈々美"
+     },
+     {
+      "key": "生年月日",
+      "value": "明・大・昭・平・令 60年7月22日"
+     },
+     {
+      "key": "電話番号",
+      "value": "073-221-5935"
+     },
+     {
+      "key": "証明の種類と通数",
+      "value": "身分証明書 1通"
+     },
+     {
+      "key": "住所",
+      "value": "窓口に来た人と同じ"
+     },
+     {
+      "key": "氏名",
+      "value": "木村孝"
+     },
+     {
+      "key": "生年月日",
+      "value": "明・大・昭・平・令 58年4月13日"
+     },
+     {
+      "key": "本籍",
+      "value": "茅野市 金沢2丁目409番地"
+     },
+     {
+      "key": "筆頭者の氏名",
+      "value": "木村あゆみ"
+     },
+     {
+      "key": "本人確認",
+      "value": "A 保・年・住(無)・( ) B 学・法人身分証・( )"
+     },
+     {
+      "key": "茅野市役所において、",
+      "value": "身分証明書の交付を代理人に委任します。"
+     },
+     {
+      "key": "本籍",
+      "value": "茅野市"
+     }
+    ]
+   },
+   "self_confidence": {
+    "data": 0.95
+   },
+   "latency_s": 3.413,
+   "input_tokens": 1391,
+   "output_tokens": 569,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "title": "独身証明書交付申請",
+    "fields": [
+     {
+      "key": "茅野市長宛",
+      "value": "令和1年2月28日"
+     },
+     {
+      "key": "証明を受ける方 住所",
+      "value": "茅野市金沢2丁目4〇9番地"
+     },
+     {
+      "key": "証明を受ける方 氏名",
+      "value": "木村孝"
+     },
+     {
+      "key": "証明を受ける方 生年月日",
+      "value": "明・大・昭・平・令58年4月13日"
+     },
+     {
+      "key": "本籍",
+      "value": "茅野市"
+     },
+     {
+      "key": "筆頭者の氏名",
+      "value": "木村あゆみ"
+     }
+    ]
+   },
+   "self_confidence": {
+    "data": 0.85
+   },
+   "latency_s": 1.84,
+   "input_tokens": 964,
+   "output_tokens": 173,
+   "model": "gemini-3.5-flash-lite",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.7931,
+ "pages": 1,
+ "latency_s": 7.667,
+ "arbiter": {
+  "model": "gemini-3.5-flash-lite",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "title",
+    "vision_value": "身分証明書 独身証明書 交付申請書",
+    "ocr_value": "独身証明書交付申請",
+    "choice": "vision",
+    "value": "身分証明書 独身証明書 交付申請書",
+    "confidence": 0.9,
+    "cropped": true
+   }
+  ],
+  "latency_s": 2.043,
+  "input_tokens": 1247,
+  "output_tokens": 65,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}
