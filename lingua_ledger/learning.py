@@ -8,6 +8,7 @@ benchmark fields plus the corrections, scored by the refit calibrator.
 from __future__ import annotations
 
 import itertools
+import json
 from functools import lru_cache
 from typing import Any
 
@@ -22,6 +23,9 @@ Row = tuple[str, float, bool]
 
 @lru_cache(maxsize=1)
 def base_rows() -> tuple[Row, ...]:
+    compact = ARTIFACTS / "calibration_rows.json"
+    if compact.exists():
+        return tuple((d, float(s), bool(c)) for d, s, c in json.loads(compact.read_text()))
     from .eval.metrics import label_fields
 
     rows: list[Row] = []

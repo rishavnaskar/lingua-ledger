@@ -103,6 +103,7 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     cal_summary, cal, raw, calibrated, correct = _calibration(rows, use_arbiter=True)
     if cal is not None:
         cal.save()
+        (ARTIFACTS / "calibration_rows.json").write_text(json.dumps(_calibration_rows(rows)))
         summary["calibration"] = cal_summary
         _reliability_chart(raw, calibrated, correct)
         summary["review"] = _review_curve(calibrated, correct, threshold, targets)
@@ -164,6 +165,20 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     _f1_charts(agg)
     (ARTIFACTS / "summary.json").write_text(json.dumps(summary, indent=2))
     return summary
+
+
+def _calibration_rows(rows: list[dict]) -> list[list]:
+    out = []
+    for r in rows:
+        if not r.get("fields"):
+            continue
+        fields = r.get("fields_arbiter") or r["fields"]
+        labels = label_fields(r.get("pred_arbiter") or r["pred"], r["gold"])
+        for f in fields:
+            if f["value"] in (None, "", []) or f["field"] not in labels:
+                continue
+            out.append([r["doc_type"], round(float(f["raw_score"]), 4), bool(labels[f["field"]])])
+    return out
 
 
 def _calibration(rows: list[dict], use_arbiter: bool):
