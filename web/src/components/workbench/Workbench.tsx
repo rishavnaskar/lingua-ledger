@@ -11,11 +11,13 @@ import {
   sampleFileUrl,
   type DocType,
   type ExtractResponse,
+  type LearningState,
   type Sample,
 } from "@/lib/api";
 import { copy } from "@/lib/copy";
 import { describeError } from "@/lib/errors";
 import { buildExport, downloadText, exportBaseName, isPresent, routeFields, toCsv } from "@/lib/format";
+import { AnomaliesPanel } from "./AnomaliesPanel";
 import { DocumentViewer, PendingPreview } from "./DocumentViewer";
 import { DropZone } from "./DropZone";
 import { FieldsTable } from "./FieldsTable";
@@ -23,6 +25,7 @@ import { OptionsPanel } from "./OptionsPanel";
 import { PipelineStepper } from "./PipelineStepper";
 import { ReadersPanel } from "./ReadersPanel";
 import { ResultHeader } from "./ResultHeader";
+import { ReviewPanel } from "./ReviewPanel";
 import { SampleChips } from "./SampleChips";
 import { ValidatorsPanel } from "./ValidatorsPanel";
 import type { Selection, SelectionSource } from "./types";
@@ -48,6 +51,8 @@ export function Workbench() {
   const [error, setError] = useState<string | null>(null);
   const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD);
   const [docType, setDocType] = useState<DocType | "">("");
+  const [arbiter, setArbiter] = useState(true);
+  const [learning, setLearning] = useState<LearningState | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -84,7 +89,7 @@ export function Workbench() {
     if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     const preview = file.type.startsWith("image/") ? URL.createObjectURL(file) : null;
     objectUrlRef.current = preview;
-    const opts = { threshold, docType: docType || null };
+    const opts = { threshold, docType: docType || null, arbiter };
     start({
       name: file.name,
       preview,
@@ -94,7 +99,7 @@ export function Workbench() {
   };
 
   const handleSample = (sample: Sample) => {
-    const opts = { threshold };
+    const opts = { threshold, arbiter };
     start({
       name: sample.title,
       preview: IMAGE_FILE.test(sample.file) ? sampleFileUrl(sample.id) : null,
@@ -154,6 +159,8 @@ export function Workbench() {
                 onDocType={setDocType}
                 threshold={threshold}
                 onThreshold={setThreshold}
+                arbiter={arbiter}
+                onArbiter={setArbiter}
                 disabled={busy}
               />
             </div>
@@ -221,6 +228,24 @@ export function Workbench() {
                 onSelect={(f) => select(f, "table")}
               />
               <div className="grid gap-6 2xl:grid-cols-2">
+                <AnomaliesPanel
+                  anomalies={result.anomalies ?? []}
+                  memory={result.memory}
+                  data={result.data}
+                  knownFields={knownFields}
+                  onHover={setHovered}
+                  onSelect={(f) => select(f, "panel")}
+                  postedDocuments={learning?.memory.documents_posted ?? null}
+                />
+                <ReviewPanel
+                  result={result}
+                  fields={routed}
+                  threshold={threshold}
+                  learning={learning}
+                  onLearning={setLearning}
+                  onHover={setHovered}
+                  onSelect={(f) => select(f, "panel")}
+                />
                 <ValidatorsPanel
                   rules={result.rules}
                   data={result.data}
@@ -232,6 +257,7 @@ export function Workbench() {
                   paths={result.paths}
                   fields={routed}
                   data={result.data}
+                  arbiter={result.arbiter}
                   onHover={setHovered}
                   onSelect={(f) => select(f, "panel")}
                 />

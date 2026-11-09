@@ -1,8 +1,8 @@
 "use client";
 
-import { Eye, GitCompareArrows, ScanText } from "lucide-react";
+import { Eye, Gavel, GitCompareArrows, ScanText } from "lucide-react";
 import { Card, CardTitle } from "@/components/ui/Card";
-import type { FieldResult, PathOutput, ReaderPath } from "@/lib/api";
+import type { ArbiterResult, FieldResult, PathOutput, ReaderPath } from "@/lib/api";
 import { copy } from "@/lib/copy";
 import { fieldLabel, fmt, formatValue, isPresent } from "@/lib/format";
 
@@ -17,16 +17,19 @@ export function ReadersPanel({
   paths,
   fields,
   data,
+  arbiter,
   onHover,
   onSelect,
 }: {
   paths: PathOutput[];
   fields: FieldResult[];
   data: Record<string, unknown>;
+  arbiter?: ArbiterResult | null;
   onHover: (field: string | null) => void;
   onSelect: (field: string) => void;
 }) {
   const c = copy.workbench.readers;
+  const a = copy.workbench.arbiter;
   const compared = fields.filter((f) => f.agree !== null);
   const agreed = compared.filter((f) => f.agree === true).length;
   const onlyOne = compared.filter(
@@ -113,6 +116,61 @@ export function ReadersPanel({
                 <li className="px-2 text-xs text-muted">{c.more(diffs.length - MAX_DIFFS)}</li>
               )}
             </ul>
+          )}
+        </div>
+      )}
+
+      {compared.length > 0 && (
+        <div className="mt-4 rounded-xl border border-teal/40 bg-teal/5 p-4">
+          <div className="flex items-center gap-2">
+            <Gavel className="h-4 w-4 text-teal-ink" aria-hidden />
+            <h3 className="text-sm font-semibold text-ink">{a.title}</h3>
+          </div>
+          <p className="mt-0.5 text-xs text-muted">{a.description}</p>
+          {!arbiter ? (
+            <p className="mt-3 text-sm text-muted">{a.skipped}</p>
+          ) : arbiter.error ? (
+            <p className="mt-3 rounded-lg bg-brick/10 px-2.5 py-1.5 text-xs break-words text-brick-ink">
+              {a.failed}: {arbiter.error}
+            </p>
+          ) : arbiter.disputes === 0 ? (
+            <p className="mt-3 text-sm text-muted">{a.none}</p>
+          ) : (
+            <>
+              <p className="mt-3 text-sm font-medium text-ink">{a.settled(arbiter.verdicts.length, arbiter.disputes)}</p>
+              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm [&_dt]:whitespace-nowrap">
+                <dt className="text-muted">{a.latency}</dt>
+                <dd className="text-right font-mono tabular-nums">{fmt.seconds(arbiter.latency_s)}</dd>
+                <dt className="text-muted">{a.tokensIn}</dt>
+                <dd className="text-right font-mono tabular-nums">{fmt.int(arbiter.input_tokens)}</dd>
+                <dt className="text-muted">{a.tokensOut}</dt>
+                <dd className="text-right font-mono tabular-nums">{fmt.int(arbiter.output_tokens)}</dd>
+              </dl>
+              <ul className="mt-3 space-y-1.5">
+                {arbiter.verdicts.map((v) => (
+                  <li key={v.field}>
+                    <button
+                      type="button"
+                      onMouseEnter={() => onHover(v.field)}
+                      onMouseLeave={() => onHover(null)}
+                      onClick={() => onSelect(v.field)}
+                      className="w-full rounded-lg bg-white px-2 py-1.5 text-left text-sm hover:bg-paper"
+                    >
+                      <span className="flex flex-wrap items-baseline justify-between gap-x-2">
+                        <span className="font-medium text-ink">{fieldLabel(v.field, data)}</span>
+                        <span className="text-xs text-teal-ink">
+                          {a.choices[v.choice]} · {v.cropped ? a.crop : a.page} · {fmt.score(v.confidence)}
+                        </span>
+                      </span>
+                      <span className="block font-mono text-xs break-words text-muted">
+                        {a.candidates(formatValue(v.vision_value), formatValue(v.ocr_value))}
+                        {v.choice === "other" && <> → {formatValue(v.value)}</>}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </div>
       )}

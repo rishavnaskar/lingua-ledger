@@ -153,7 +153,36 @@ class FieldResult(BaseModel):
     ocr_value: Any = None
     bbox: list[int] | None = None
     page: int | None = None
+    arbiter: Literal["vision", "ocr", "other", "unreadable"] | None = None
+    arbiter_value: Any = None
     needs_review: bool = False
+
+
+class ArbiterVerdict(BaseModel):
+    field: str
+    vision_value: Any = None
+    ocr_value: Any = None
+    choice: Literal["vision", "ocr", "other", "unreadable"]
+    value: Any = None
+    confidence: float = 0.0
+    cropped: bool = True
+
+
+class ArbiterResult(BaseModel):
+    model: str | None = None
+    disputes: int = 0
+    verdicts: list[ArbiterVerdict] = Field(default_factory=list)
+    latency_s: float = 0.0
+    input_tokens: int = 0
+    output_tokens: int = 0
+    error: str | None = None
+
+
+class Anomaly(BaseModel):
+    code: str
+    severity: Literal["info", "warn", "high"]
+    message: str
+    fields: list[str] = Field(default_factory=list)
 
 
 class ExtractionResult(BaseModel):
@@ -167,3 +196,6 @@ class ExtractionResult(BaseModel):
     review_rate: float
     pages: int
     latency_s: float
+    arbiter: ArbiterResult | None = None
+    anomalies: list[Anomaly] = Field(default_factory=list)
+    memory: dict[str, Any] = Field(default_factory=dict)

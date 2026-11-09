@@ -55,7 +55,8 @@ export default function AboutPage() {
             <Box {...d.ocr} tone="navy" />
           </div>
           <Arrow />
-          <div className="lg:min-w-0 lg:flex-1">
+          <div className="flex flex-col gap-2 lg:min-w-0 lg:flex-1">
+            <Box {...d.arbiter} tone="navy" />
             <Box {...d.validators} tone="navy" />
           </div>
           <Arrow />
@@ -72,7 +73,7 @@ export default function AboutPage() {
 
       <section>
         <h2 className="text-lg font-semibold text-ink">{c.signalsTitle}</h2>
-        <div className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {c.signals.map((s, i) => (
             <Card key={s.title} as="article">
               <div className="font-mono text-xs text-navy">{String(i + 1).padStart(2, "0")}</div>
@@ -83,7 +84,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Card as="article">
+          <h2 className="text-lg font-semibold text-ink">{c.memoryTitle}</h2>
+          <p className="mt-2 text-sm text-muted">{c.memory}</p>
+        </Card>
         <Card as="article">
           <h2 className="text-lg font-semibold text-ink">{c.calibrationTitle}</h2>
           <p className="mt-2 text-sm text-muted">{c.calibration}</p>

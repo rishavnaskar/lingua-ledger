@@ -100,49 +100,39 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
 
     # Calibration on field-level correctness: two folds by document hash, each half scored by a
     # calibrator fit on the other half; the saved calibrator is fit on everything.
-    folds: list[list[tuple[str, float, bool, str]]] = [[], []]
-    for r in rows:
-        if not r.get("fields"):
-            continue
-        labels = label_fields(r["pred"], r["gold"])
-        bucket = folds[_stable_hash(r["doc_id"]) % 2]
-        for f in r["fields"]:
-            if f["value"] in (None, "", []) or f["field"] not in labels:
-                continue
-            bucket.append((r["doc_type"], float(f["raw_score"]), bool(labels[f["field"]]), r["dataset"]))
-    all_rows = folds[0] + folds[1]
-    cal = Calibrator.fit([(d, s, c) for d, s, c, _ in all_rows]) if len(all_rows) >= 50 else Calibrator()
-    cal.save()
-    test_rows: list[tuple[str, float, bool, str]] = []
-    calibrated_list: list[float] = []
-    for k in (0, 1):
-        other = folds[1 - k]
-        cal_k = Calibrator.fit([(d, s, c) for d, s, c, _ in other]) if len(other) >= 50 else Calibrator()
-        for d, s, c, ds in folds[k]:
-            test_rows.append((d, s, c, ds))
-            calibrated_list.append(cal_k(s, d))
-    if test_rows:
-        raw = np.array([s for _, s, _, _ in test_rows])
-        correct = np.array([c for _, _, c, _ in test_rows], dtype=float)
-        calibrated = np.array(calibrated_list)
-        summary["calibration"] = {
-            "folds": 2,
-            "fold_fields": [len(folds[0]), len(folds[1])],
-            "test_fields": len(test_rows),
-            "field_accuracy": round(float(correct.mean()), 4),
-            "ece_raw": round(_ece(raw, correct), 4),
-            "ece_calibrated": round(_ece(calibrated, correct), 4),
-            "brier_raw": round(float(np.mean((raw - correct) ** 2)), 4),
-            "brier_calibrated": round(float(np.mean((calibrated - correct) ** 2)), 4),
-        }
+    cal_summary, cal, raw, calibrated, correct = _calibration(rows, use_arbiter=True)
+    if cal is not None:
+        cal.save()
+        summary["calibration"] = cal_summary
         _reliability_chart(raw, calibrated, correct)
         summary["review"] = _review_curve(calibrated, correct, threshold, targets)
         summary["signals"] = _signal_breakdown(rows)
+
+    arb = [r for r in rows if r.get("arbiter")]
+    if arb:
+        summary["arbiter"] = _arbiter_summary(arb)
+        without, _, _, cal_wo, cor_wo = _calibration(rows, use_arbiter=False)
+        if without:
+            curve_wo = _review_curve(cal_wo, cor_wo, threshold, targets, chart=False)
+            summary["arbiter"]["without_signal"] = {
+                "ece_calibrated": without["ece_calibrated"],
+                "brier_calibrated": without["brier_calibrated"],
+                "review_rate_at_95pct_accuracy": curve_wo.get("review_rate_at_95pct_accuracy"),
+                "review_rate_at_98pct_accuracy": curve_wo.get("review_rate_at_98pct_accuracy"),
+            }
+            summary["arbiter"]["with_signal"] = {
+                "ece_calibrated": summary["calibration"]["ece_calibrated"],
+                "brier_calibrated": summary["calibration"]["brier_calibrated"],
+                "review_rate_at_95pct_accuracy": summary["review"].get("review_rate_at_95pct_accuracy"),
+                "review_rate_at_98pct_accuracy": summary["review"].get("review_rate_at_98pct_accuracy"),
+            }
 
     # Latency and tokens.
     lat = [r["latency_s"] for r in rows if "latency_s" in r]
     toks_in = sum(p.get("input_tokens", 0) for r in rows for p in r.get("paths", []))
     toks_out = sum(p.get("output_tokens", 0) for r in rows for p in r.get("paths", []))
+    toks_in += sum(r["arbiter"].get("input_tokens", 0) for r in arb)
+    toks_out += sum(r["arbiter"].get("output_tokens", 0) for r in arb)
     reader = [
         max(p.get("latency_s", 0.0) for p in r["paths"])
         for r in rows
@@ -176,24 +166,106 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     return summary
 
 
+def _calibration(rows: list[dict], use_arbiter: bool):
+    folds: list[list[tuple[str, float, bool]]] = [[], []]
+    for r in rows:
+        if not r.get("fields"):
+            continue
+        fields = (r.get("fields_arbiter") if use_arbiter else None) or r["fields"]
+        pred = (r.get("pred_arbiter") if use_arbiter else None) or r["pred"]
+        labels = label_fields(pred, r["gold"])
+        bucket = folds[_stable_hash(r["doc_id"]) % 2]
+        for f in fields:
+            if f["value"] in (None, "", []) or f["field"] not in labels:
+                continue
+            bucket.append((r["doc_type"], float(f["raw_score"]), bool(labels[f["field"]])))
+    all_rows = folds[0] + folds[1]
+    if len(all_rows) < 50:
+        return {}, None, None, None, None
+    cal = Calibrator.fit(all_rows)
+    test: list[tuple[str, float, bool]] = []
+    calibrated_list: list[float] = []
+    for k in (0, 1):
+        cal_k = Calibrator.fit(folds[1 - k]) if len(folds[1 - k]) >= 50 else Calibrator()
+        for d, s, c in folds[k]:
+            test.append((d, s, c))
+            calibrated_list.append(cal_k(s, d))
+    raw = np.array([s for _, s, _ in test])
+    correct = np.array([c for _, _, c in test], dtype=float)
+    calibrated = np.array(calibrated_list)
+    summary = {
+        "folds": 2,
+        "fold_fields": [len(folds[0]), len(folds[1])],
+        "test_fields": len(test),
+        "field_accuracy": round(float(correct.mean()), 4),
+        "ece_raw": round(_ece(raw, correct), 4),
+        "ece_calibrated": round(_ece(calibrated, correct), 4),
+        "brier_raw": round(float(np.mean((raw - correct) ** 2)), 4),
+        "brier_calibrated": round(float(np.mean((calibrated - correct) ** 2)), 4),
+    }
+    return summary, cal, raw, calibrated, correct
+
+
+def _arbiter_summary(rows: list[dict]) -> dict:
+    disputes = sum(r["arbiter"]["disputes"] for r in rows)
+    choices: dict[str, int] = defaultdict(int)
+    base, override = [], []
+    by_choice: dict[str, list[bool]] = defaultdict(list)
+    changed = 0
+    for r in rows:
+        old = label_fields(r["pred"], r["gold"])
+        new = label_fields(r.get("pred_override") or r["pred_arbiter"], r["gold"])
+        for v in r["arbiter"]["verdicts"]:
+            choices[v["choice"]] += 1
+            f = v["field"]
+            if f in old and f in new:
+                base.append(old[f])
+                override.append(new[f])
+                by_choice[v["choice"]].append(new[f])
+                changed += old[f] != new[f]
+    lat = [r["arbiter"]["latency_s"] for r in rows if r["arbiter"].get("latency_s")]
+    with_disputes = [r for r in rows if r["arbiter"]["disputes"]]
+    return {
+        "documents": len(rows),
+        "documents_with_disputes": len(with_disputes),
+        "disputes": disputes,
+        "verdicts": dict(choices),
+        "disputed_fields_scored": len(base),
+        "disputed_accuracy_base": round(float(np.mean(base)), 4) if base else None,
+        "disputed_accuracy_override": round(float(np.mean(override)), 4) if override else None,
+        "override_accuracy_by_choice": {
+            k: {"n": len(v), "accuracy": round(float(np.mean(v)), 4)} for k, v in sorted(by_choice.items())
+        },
+        "fields_flipped_by_override": changed,
+        "latency_p50": round(float(np.percentile(lat, 50)), 2) if lat else None,
+        "tokens_in": sum(r["arbiter"].get("input_tokens", 0) for r in rows),
+        "tokens_out": sum(r["arbiter"].get("output_tokens", 0) for r in rows),
+        "tokens_in_per_document_with_disputes": round(
+            sum(r["arbiter"].get("input_tokens", 0) for r in with_disputes) / max(1, len(with_disputes))
+        ),
+    }
+
+
 def _signal_breakdown(rows: list[dict]) -> dict:
     out: dict[str, dict] = {}
     groups: dict[str, list[bool]] = defaultdict(list)
     for r in rows:
-        labels = label_fields(r["pred"], r["gold"])
-        for f in r["fields"]:
+        labels = label_fields(r.get("pred_arbiter") or r["pred"], r["gold"])
+        for f in r.get("fields_arbiter") or r["fields"]:
             if f["field"] not in labels or f["value"] in (None, "", []):
                 continue
             ok = labels[f["field"]]
             groups[f"agree={f['agree']}"].append(ok)
             groups[f"validator={f['validator']}"].append(ok)
+            if f.get("arbiter"):
+                groups[f"arbiter={f['arbiter']}"].append(ok)
     for k, v in sorted(groups.items()):
         out[k] = {"n": len(v), "accuracy": round(float(np.mean(v)), 4)}
     return out
 
 
 def _review_curve(
-    conf: np.ndarray, correct: np.ndarray, threshold: float, targets: tuple[float, ...]
+    conf: np.ndarray, correct: np.ndarray, threshold: float, targets: tuple[float, ...], chart: bool = True
 ) -> dict:
     grid = np.linspace(0, 1, 101)
     review, acc = [], []
@@ -214,6 +286,8 @@ def _review_curve(
         "review_rate": round(float(1 - auto.mean()), 4),
         "auto_accuracy": round(float(correct[auto].mean()) if auto.any() else 1.0, 4),
     }
+    if not chart:
+        return res
     fig, ax = plt.subplots(figsize=(6, 3.6), dpi=160)
     ax.plot(review * 100, acc * 100, color=TEAL, linewidth=2)
     ax.axhline(correct.mean() * 100, color=MUTED, linewidth=1, linestyle=(0, (4, 3)))
@@ -267,10 +341,9 @@ def _reliability_chart(raw: np.ndarray, calibrated: np.ndarray, correct: np.ndar
 
 
 def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
-    langs = [
-        (lang, c.f1) for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == "merged"
-    ]
-    funsd = [c.f1 for (d, lang, p), c in agg.items() if d == "funsd" and lang == "all" and p == "merged"]
+    best = "arbiter" if any(p == "arbiter" for (_, _, p) in agg) else "merged"
+    langs = [(lang, c.f1) for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == best]
+    funsd = [c.f1 for (d, lang, p), c in agg.items() if d == "funsd" and lang == "all" and p == best]
     if funsd:
         langs.append(("en", funsd[0]))
     if langs:
@@ -290,12 +363,24 @@ def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
         plt.close(fig)
 
     datasets = sorted({d for (d, lang, p) in agg if d != "all"})
-    paths = [p for p in ("vision", "ocr_text", "merged") if any((d, "all", p) in agg for d in datasets)]
+    paths = [
+        p for p in ("vision", "ocr_text", "merged", "arbiter") if any((d, "all", p) in agg for d in datasets)
+    ]
     if datasets and len(paths) > 1:
         fig, ax = plt.subplots(figsize=(7, 3.4), dpi=160)
         width = 0.8 / len(paths)
-        colors = {"vision": NAVY, "ocr_text": AMBER, "merged": TEAL}
-        labels = {"vision": "Vision reader", "ocr_text": "OCR + text reader", "merged": "Both + validators"}
+        colors = {
+            "vision": NAVY,
+            "ocr_text": AMBER,
+            "merged": "#9FD3C7" if "arbiter" in paths else TEAL,
+            "arbiter": TEAL,
+        }
+        labels = {
+            "vision": "Vision reader",
+            "ocr_text": "OCR + text reader",
+            "merged": "Both + validators",
+            "arbiter": "Both + validators + arbiter",
+        }
         x = np.arange(len(datasets))
         for i, p in enumerate(paths):
             vals = [agg[(d, "all", p)].f1 * 100 if (d, "all", p) in agg else 0 for d in datasets]
@@ -311,7 +396,7 @@ def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
         ax.set_ylim(0, 105)
         ax.set_ylabel("Field F1 (%)")
         ax.set_title("Ablation: each reader alone versus the full pipeline", fontsize=10, loc="left", pad=22)
-        ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3)
+        ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=len(paths))
         _style(ax)
         fig.tight_layout()
         fig.savefig(ARTIFACTS / "ablation.png")

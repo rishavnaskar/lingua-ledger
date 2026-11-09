@@ -3,12 +3,16 @@ from __future__ import annotations
 import base64
 import json
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
+from pydantic import BaseModel, Field
 
 from lingua_ledger.config import (
+    ARBITER_ENABLED,
+    ARBITER_MODEL,
     ARTIFACTS,
     CLASSIFY_MODEL,
     DEFAULT_REVIEW_THRESHOLD,
@@ -18,8 +22,10 @@ from lingua_ledger.config import (
     VISION_MODEL,
 )
 from lingua_ledger.ingest import load_pages, to_png_bytes
+from lingua_ledger.learning import learning_state, refit
 from lingua_ledger.llm import has_api_key
-from lingua_ledger.pipeline import run
+from lingua_ledger.memory import Correction, store
+from lingua_ledger.pipeline import run, set_calibrator
 from lingua_ledger.schemas import DocType
 
 SAMPLES_DIR = ROOT / "samples"
@@ -42,7 +48,13 @@ def _page_payload(images) -> list[dict]:
 
 
 def _extract(
-    data: bytes, filename: str, doc_type: str | None, language: str | None, threshold: float, paths: str
+    data: bytes,
+    filename: str,
+    doc_type: str | None,
+    language: str | None,
+    threshold: float,
+    paths: str,
+    arbiter: bool | None = None,
 ) -> dict:
     images = load_pages(data, filename)
     result = run(
@@ -53,7 +65,17 @@ def _extract(
         threshold=threshold,
         paths=tuple(p for p in paths.split(",") if p),
         images=images,
+        arbiter=arbiter,
+        vendor=None,
     )
+    vendor = store().vendor_for(result.data)
+    if vendor is not None or result.classification.doc_type in (DocType.invoice, DocType.receipt):
+        from lingua_ledger.anomaly import detect
+
+        result.anomalies = detect(
+            result.classification.doc_type, result.data, result.classification.language, vendor
+        )
+        result.memory = {"vendor_seen": bool(vendor), "vendor_documents": (vendor or {}).get("documents", 0)}
     payload = result.model_dump()
     payload["pages_preview"] = _page_payload(images)
     payload["filename"] = filename
@@ -68,7 +90,9 @@ def health() -> dict:
         "vision_model": VISION_MODEL,
         "text_model": TEXT_MODEL,
         "classify_model": CLASSIFY_MODEL,
+        "arbiter_model": ARBITER_MODEL if ARBITER_ENABLED else None,
         "has_key": has_api_key(),
+        "memory": store().summary(),
     }
 
 
@@ -79,12 +103,15 @@ async def extract(
     language: str | None = Form(None),
     threshold: float = Form(DEFAULT_REVIEW_THRESHOLD),
     paths: str = Form("vision,ocr_text"),
+    arbiter: bool | None = Form(None),
 ) -> JSONResponse:
     data = await file.read()
     if len(data) > MAX_UPLOAD_BYTES:
         raise HTTPException(413, "file too large")
     try:
-        return JSONResponse(_extract(data, file.filename or "upload", doc_type, language, threshold, paths))
+        return JSONResponse(
+            _extract(data, file.filename or "upload", doc_type, language, threshold, paths, arbiter)
+        )
     except ValueError as e:
         raise HTTPException(400, str(e)) from e
 
@@ -105,13 +132,70 @@ def sample_file(sample_id: str) -> FileResponse:
 
 @app.post("/samples/{sample_id}/extract")
 def extract_sample(
-    sample_id: str, threshold: float = DEFAULT_REVIEW_THRESHOLD, paths: str = "vision,ocr_text"
+    sample_id: str,
+    threshold: float = DEFAULT_REVIEW_THRESHOLD,
+    paths: str = "vision,ocr_text",
+    arbiter: bool | None = None,
 ) -> dict:
     path = _sample_path(sample_id)
     meta = next(s for s in samples() if s["id"] == sample_id)
     return _extract(
-        path.read_bytes(), path.name, meta.get("doc_type"), meta.get("language"), threshold, paths
+        path.read_bytes(), path.name, meta.get("doc_type"), meta.get("language"), threshold, paths, arbiter
     )
+
+
+class Decision(BaseModel):
+    field: str
+    raw_score: float
+    accepted: bool
+    value: Any = None
+    corrected_value: Any = None
+
+
+class ReviewRequest(BaseModel):
+    doc_id: str
+    doc_type: str
+    data: dict[str, Any] = Field(default_factory=dict)
+    decisions: list[Decision] = Field(default_factory=list)
+    post: bool = True
+
+
+@app.post("/review")
+def review(req: ReviewRequest) -> dict:
+    st = store()
+    items = [
+        Correction(
+            doc_id=req.doc_id,
+            doc_type=req.doc_type,
+            field=d.field,
+            raw_score=d.raw_score,
+            accepted=d.accepted,
+            value=d.value,
+            corrected_value=d.corrected_value,
+        )
+        for d in req.decisions
+    ]
+    if items:
+        st.add_corrections(items)
+    if req.post:
+        st.remember(req.doc_id, req.doc_type, req.data)
+    state = learning_state(st.state.corrections, req.doc_type)
+    set_calibrator(refit(st.state.corrections) if st.state.corrections else None)
+    return {**state, "memory": st.summary()}
+
+
+@app.get("/learning")
+def learning(doc_type: str | None = None) -> dict:
+    st = store()
+    return {**learning_state(st.state.corrections, doc_type), "memory": st.summary()}
+
+
+@app.post("/learning/reset")
+def learning_reset() -> dict:
+    st = store()
+    st.reset()
+    set_calibrator(None)
+    return {**learning_state([], None), "memory": st.summary()}
 
 
 @app.get("/metrics")

@@ -21,9 +21,9 @@ We built the backend with Python 3.13 and FastAPI, and the frontend with Next.js
 ## Results (198 public benchmark documents: synthetic multilingual invoices, CORD, SROIE, CUAD, FUNSD, XFUND)
 - Field F1 (both readers + validators): synthetic invoices 98.6%, SROIE receipts 95.0%, CORD receipts 94.7%, CUAD contracts 60.2%, FUNSD forms 53.3%, XFUND forms 50.9% (strict pair matching, see challenges).
 - Document type detected correctly 92.4%, language 88.9%.
-- Calibration: expected calibration error 0.153 raw -> 0.022 calibrated on held-out fields; Brier 0.186 -> 0.148.
-- Review routing: 74.9% of fields correct with no review; at threshold 0.85, 57.1% of fields go to a human and the rest are 94.4% correct; 63.9% reviewed gives 95%, 75.9% gives 98%.
-- Cost: $0.91 for the whole run at list prices, $4.60 per 1,000 documents; about 2,435 input and 1,548 output tokens per document.
+- Calibration: expected calibration error 0.146 raw -> 0.016 calibrated on held-out fields; Brier 0.183 -> 0.148
+- Review routing: 74.9% of fields correct with no review; at threshold 0.85, 57.1% of fields go to a human and the rest are 94.4% correct; 63.8% reviewed gives 95%, 76.0% gives 98%.
+- Cost: $1.02 for the whole run at list prices, $5.14 per 1,000 documents; about 3,825 input and 1,595 output tokens per document (arbiter included).
 - Latency: reader p50 11.82 s, end-to-end p50 21.19 s including Free Tier rate limiting.
 
 ## Challenges we ran into
@@ -32,18 +32,21 @@ We built the backend with Python 3.13 and FastAPI, and the frontend with Next.js
 - Schema constraints: Gemini structured output does not support free-form dictionaries, so we had to format per-field confidence values as a list of {field, confidence} pairs.
 
 ## Accomplishments that we're proud of
-- Calibration really works: Expected calibration error drops from 0.153 down to 0.022 on held-out test fields.
-- A practical operating curve: Instead of giving you a single vanity accuracy number, we show that reviewing just 63.9% of fields gets you 95 percent accuracy on everything that gets accepted automatically.
-- Very low cost: It runs at about $4.60 per 1,000 documents at standard list prices.
+- Calibration really works: Expected calibration error drops from 0.146 down to 0.016 on held-out test fields.
+- A practical operating curve: Instead of giving you a single vanity accuracy number, we show that reviewing just 63.8% of fields gets you 95 percent accuracy on everything that gets accepted automatically.
+- Very low cost: It runs at about $5.14 per 1,000 documents at standard list prices.
 - A live interactive demo featuring real sample documents in seven languages.
 
 ## What we learned
 Getting two independent readers to agree is our single strongest signal (93.8% correct when they agree vs 62.2% when they disagree). Whenever an arithmetic validation rule fails, it is almost always a real extraction error (only 14.0% correct). Calibrating on top of these concrete checks works far better than trusting the model's raw self-confidence.
 
+## What's new since the Round 1 deck
+Since our Round 1 deck, we added three things. First is an arbiter: when our two readers disagree on a field, a vision model looks at a tight crop around both candidate values and gives a verdict. This takes only one extra call per document, and only when there is a dispute. To be transparent, letting this verdict override values did not improve accuracy on the 118 disputed fields (76.3% to 75.4%), mostly because the vision reader was already right. Instead, we use the verdict as a confidence signal, which cuts calibration error from 0.022 to 0.016. Second, we added deterministic anomaly checks that compare against a ledger memory of posted documents to catch duplicates, changed bank accounts, future dates, tax rates that do not exist in the vendor's country, and currencies that do not fit. Third, our system learns directly from human review: every accept or fix in the review panel refits the calibrator on the spot, and the panel shows the review rate and calibration error before and after.
+
 ## What's next
 - Plugging larger reader models into the exact same pipeline (just change one environment variable).
 - Better Japanese and Chinese form processing with layout-aware prompting and key normalisation.
-- An active learning loop where human corrections continuously improve the calibrator.
+- Three-way matching between purchase orders, invoices, and receipts to flag mismatches; a stronger arbiter model; and storing vendor memory in a database.
 - Bounding-box evidence for individual line items and direct CSV export for accounting software.
 
 ## Links

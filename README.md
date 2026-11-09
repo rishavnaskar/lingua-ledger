@@ -17,14 +17,27 @@ Businesses receive invoices, receipts, forms, and contracts in many languages. P
 2. Classify. A fast, small model (gemini-3.5-flash-lite by default) detects the document type (invoice, receipt, form, contract) and its language.
 3. Two independent readers. Reader A (vision) sends page images directly to the vision model. Reader B (OCR text) runs Tesseract with the detected language pack and sends the extracted text to the text model. Both default to gemini-3.5-flash-lite; set LL_VISION_MODEL and LL_TEXT_MODEL to switch to a larger model like gemini-3.6-flash. Both readers fill out the same pydantic schema using structured JSON, and each scores its confidence from 0-1 for every field.
 4. Reconcile. We use the vision output as our base and fill in missing fields from the OCR reader. If a validation rule fails on the vision value but passes with the OCR value, we use the OCR value instead.
-5. Validate. We check deterministic rules without calling any models: line items sum to the subtotal, subtotal plus tax equals total, dates parse, due date comes after the invoice date, currency is a valid ISO 4217 code, IBAN checksum passes, VAT id format is valid, receipt change arithmetic matches, contract dates follow proper order, and form fields are non-empty.
-6. Score. Each field receives a raw score from four signals: agreement between both readers, Tesseract word confidence under the located value, validator pass or fail, and the model's self-reported confidence.
-7. Calibrate. An isotonic regression (scikit-learn) turns raw scores into calibrated probabilities. We fit this per document type with a global fallback, training on half of the evaluation documents and testing on the other half.
-8. Route. Any field below a threshold (default 0.85) is flagged for review. The output is a single JSON object with the data, per-field confidence, evidence box and page for each value, validator results, and raw outputs from both readers.
+5. Arbiter. When both readers find a value but do not agree, we do not guess. We crop a tight image of both values using the OCR word boxes, then send all crops for that document to the vision model in a single call. For each disputed field, the model chooses candidate a, candidate b, a different printed value, or marks it unreadable. This adds just one model call per document, and only for documents with disputes. Forms are skipped because their key-value pairs do not line up across readers. Turn it off with LL_ARBITER=0, and select the model with LL_ARBITER_MODEL. By default, the arbiter only updates the confidence score (`LL_ARBITER_MODE=signal`). If you set `LL_ARBITER_MODE=override`, it also replaces the merged value. We tested both options on our benchmark and decided to ship signal mode (see Results).
+6. Validate. We check deterministic rules without calling any models: line items sum to the subtotal, subtotal plus tax equals total, dates parse, due date comes after the invoice date, currency is a valid ISO 4217 code, IBAN checksum passes, VAT id format is valid, receipt change arithmetic matches, contract dates follow proper order, and form fields are non-empty.
+7. Score. Every field gets a raw score based on five signals: whether both readers agree, the Tesseract word confidence for the text found, whether validation checks passed, the model's self-reported confidence, and the arbiter's choice if there was a dispute.
+8. Calibrate. An isotonic regression (scikit-learn) turns raw scores into calibrated probabilities. We fit this per document type with a global fallback, training on half of the evaluation documents and testing on the other half.
+9. Route. Any field below a threshold (default 0.85) is flagged for review. The output is a single JSON object with the data, per-field confidence, evidence box and page for each value, validator results, and raw outputs from both readers.
 
 Provider: Gemini by default (GEMINI_API_KEY). Set ANTHROPIC_API_KEY instead to use Claude models. Optional: LL_FALLBACK_MODELS lists backup models to try if the main one hits a server error, and LL_GEMINI_RPM (default 15) caps requests per minute so a Free Tier key avoids 429 errors.
 
 Document types: invoice, receipt, form, contract. Languages tested in the evaluation: English, German, French, Spanish, Italian, Portuguese, Japanese, Chinese, Indonesian. The Docker image also includes OCR packs for Hindi.
+
+## Beyond one document
+
+Extraction is only half the job. The Workbench runs three extra steps for every document, without making any new model calls.
+
+Anomalies. Simple business rules in lingua_ledger/anomaly.py check for issues beyond a single page. They catch invoice dates set in the future or older than two years, payment terms past 180 days, contracts that have expired or are about to expire, wrong currencies, and invalid tax rates based on tables for 17 countries (matched using VAT id, IBAN, currency, or language). With ledger memory, the checks spot even more: repeated invoice numbers or identical vendor, date, and total combinations are flagged as duplicates, altered IBANs are marked as bank changes, and new currencies for known vendors are flagged. Every anomaly shows its affected fields and a severity: high, check, or note.
+
+Ledger memory. When you approve a document in the review screen, the system saves its details under the vendor's VAT id or normalised name. It tracks past invoice numbers, date and total fingerprints, IBANs, currencies, and tax rates. Any future document from that vendor is checked against this history. This data is saved in one JSON file under state/ (LL_STATE_DIR). The hosted demo resets this storage on redeploy, which works fine for testing and takes only a one-line change to switch to a database.
+
+Learning from review. Every accept or fix in the review panel serves as training data, tracking the field, raw score, and whether it was correct. The server adds each edit to the 4,540 labelled fields from the benchmark run with a weight of 10 (LL_CORRECTION_WEIGHT), then updates the isotonic calibrator right away. The response shows the review volume needed for 95% and 98% accuracy, the calibration error before and after, and the updated curve for that document type. Approving low-scoring fields that were actually right lowers your review load, while fixing incorrect fields sends more items for review where needed.
+
+The API provides three extra routes: POST /review saves your edits, updates the calibrator, and logs the document to memory; GET /learning returns current state and operating points; and POST /learning/reset clears the demo memory. Every extraction response now includes an arbiter block, an anomalies list, and a memory block.
 
 ## Quickstart
 
@@ -64,6 +77,7 @@ uv run ll eval run --datasets cord --limit 30 --workers 2
 uv run ll eval run --datasets funsd,cuad --limit 20 --workers 2
 uv run ll eval run --datasets xfund --limit 70 --workers 2
 uv run ll eval run --datasets sroie --limit 30 --workers 2
+uv run ll eval arbiter --workers 2
 uv run ll eval report --threshold 0.85
 ```
 
@@ -73,7 +87,7 @@ Each dataset is scored only on the fields it labels: SROIE on merchant name, add
 
 ## Results
 
-We tested the pipeline on 198 public benchmark documents (28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms). We ran the vision reader, the OCR-text reader, and the classifier using gemini-3.5-flash-lite entirely within the Gemini API Free Tier (no paid usage), with 2 parallel workers at 15 requests per minute. All scores show field-level F1 against published ground truth, evaluated only on the fields labeled in each dataset.
+We tested this on 198 public benchmark documents: 28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms. We ran the vision reader, the OCR-text reader, and the classifier on gemini-3.5-flash-lite, staying entirely within the Gemini API Free Tier (no paid usage). The run used 2 parallel workers capped at 15 requests per minute. Scores show field-level F1 against the published ground truth, scoring each dataset only on the fields it labels.
 
 ### Field extraction F1
 
@@ -87,43 +101,53 @@ We tested the pipeline on 198 public benchmark documents (28 synthetic invoices,
 | XFUND forms (DE, ES, FR, IT, JA, PT, ZH) | 70 | 50.9% | 31.9% | **50.9%** |
 | All | 198 | 64.2% | 49.7% | **63.9%** |
 
-Form benchmarks (XFUND and FUNSD) use strict key-value matching based on original linking annotations. Those annotations split a single logical field into fragments—for example, treating a postcode, prefecture, and street as three separate values under one key. When our reader extracts one clean key-value pair, it gets counted as one true positive and multiple false negatives. Because of this, treat the form scores as a lower bound. Japanese forms are our weakest result (34.6% F1) and our top target for improvement.
+Form datasets (XFUND, FUNSD) are scored by strict key-value pair matching against the original linking annotations. Those annotations split a single field into several pieces (for example, marking the postcode, the prefecture, and the street as three separate values under the same key). Because of this, if a reader returns one clean key-value pair, it gets counted as one true positive and several false negatives. You should treat these form scores as a lower bound. Japanese forms are our weakest result (34.6% F1) and our top priority for improvement.
 
-See artifacts/f1_by_language.png for language-by-language results, and artifacts/f1_table.csv for the full table including individual reader numbers.
+You can view the form F1 scores by language in artifacts/f1_by_language.png, and the complete table with standalone reader scores in artifacts/f1_table.csv.
+
+### Arbiter
+
+Across 101 of 198 documents (forms excluded), our readers disagreed on 233 fields. The arbiter agreed with the vision reader 195 times, picked the OCR reader 24 times, read a different value 12 times, and marked 2 crops as unreadable.
+
+We tested letting the arbiter overwrite values, but it did not help. On the 118 disputed fields with gold labels, accuracy went from 76.3% to 75.4%. The vision reader was usually right to begin with, and overrides were wrong more often than right (accuracy was 41.7% when it picked OCR, and 25.0% when it read a new value).
+
+Where the arbiter really helps is with confidence scoring. Fields confirmed by the arbiter are right 81.4% of the time, compared to 62.2% for disagreements overall. So by default, we leave the original value alone and only let the verdict adjust the score. That cuts our calibration error from 0.022 to 0.016 and drops the review rate at 95% accuracy from 63.9% to 63.8%.
+
+Median arbiter time is 8.3 s per document, using about 2,724 input tokens per document with disputes. We plan to test a stronger arbiter model in Round 2.
 
 ### Classification
 
-The model identified the correct document type on 92.4% of documents and the correct language on 88.9%.
+Document type was detected correctly on 92.4% of documents, and language was detected correctly on 88.9%.
 
 ### Calibration and review routing
 
-We evaluated calibration using two-fold cross-fitting based on document hashes. The calibrator trained on one half scored the other half, so none of the 4540 fields were scored by a model that had seen their document (split into 2480 and 2060 fields per half). The calibrator included in the demo is trained on all of them.
+We evaluated calibration using two-fold cross-fitting based on document hashes. We fit the calibrator on one half of the documents and scored the other half. That means each of the 4540 fields was evaluated by a calibrator that had never seen its document (2480 and 2060 fields per half). The calibrator included in the demo is fit on all of them.
 
 | | Raw score | Calibrated |
 |---|---|---|
-| Expected calibration error (lower is better) | 0.153 | 0.022 |
-| Brier score (lower is better) | 0.186 | 0.148 |
+| Expected calibration error (lower is better) | 0.146 | 0.016 |
+| Brier score (lower is better) | 0.183 | 0.148 |
 
-- 74.9% of fields were extracted correctly with no human review at all.
-- To reach 95 percent accuracy on auto-accepted fields: send 63.9% of fields to review (threshold 0.89).
-- To reach 98 percent accuracy: send 75.9% of fields to review (threshold 0.94).
-- At the default threshold 0.85: 57.1% of fields are routed to review, and auto-accepted fields reach 94.4% accuracy.
+- Fields correct with no human review at all: 74.9%
+- To reach 95 percent accuracy on auto-accepted fields: send 63.8% of fields to review (threshold 0.89)
+- To reach 98 percent accuracy: send 76.0% of fields to review (threshold 0.94)
+- At the default threshold 0.85: 57.1% of fields reviewed, 94.4% accuracy on what posts automatically
 
-What drives confidence scores: when both readers agree, the field is correct 93.8% of the time; when they disagree, accuracy drops to 62.2%. If a validator fails, the field is correct only 14.0% of the time, which is why a failed rule heavily lowers confidence.
+Signals behind the score: when the two readers agree, the field is correct 93.8% of the time; when they disagree, 62.2%. When a validator fails, the field is correct only 14.0% of the time, which is why a failed rule pulls the confidence down hard.
 
-Detailed plots are available in artifacts/reliability.png and artifacts/review_curve.png.
+Charts: artifacts/reliability.png and artifacts/review_curve.png.
 
 ### Cost and latency
 
 | | Value |
 |---|---|
-| Tokens per document (both readers) | 2,435 in, 1,548 out |
-| Model cost for the whole run | $0.91 at list prices (0.30 USD per million input tokens, 2.50 per million output tokens including thinking tokens) |
-| Cost per 1,000 documents | $4.60 |
+| Tokens per document (both readers) | 3,825 in, 1,595 out |
+| Model cost for the whole run | $1.02 at list prices (0.30 USD per million input tokens, 2.50 per million output tokens including thinking tokens) |
+| Cost per 1,000 documents | $5.14 |
 | Reader latency, p50 / p95 | 11.82 s / 43.05 s |
 | End-to-end latency, p50 / p95 | 21.19 s / 63.81 s |
 
-These latency numbers represent an upper bound because they include the Gemini Free Tier rate limit (15 requests per minute, including backoff and retries on 429 responses). Without rate limiting, the same model processes a document end to end in about 7 seconds.
+These latency numbers include Free Tier rate limiting (15 requests per minute, plus waits and retries on 429 responses), so they are an upper bound. Without rate limits, a document takes about 7 seconds end to end on the same model.
 
 ## Tests
 

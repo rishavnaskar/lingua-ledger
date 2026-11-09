@@ -246,14 +246,15 @@ async function iconPng(name, hex, px = 256) {
       ["Clear OCR evidence", "Average Tesseract word confidence inside the field box; drops on blur, skew or stamps.", H.accent1],
       ["Rule check outcome", "Passed, failed or not applicable for every deterministic rule checked against the field.", H.accent1],
       ["Raw model estimate", "The LLM's own 0 to 1 estimate, used as a small signal, never as the final answer.", H.accent2],
+      ["Arbiter decision", "During disputes, a vision model views a crop around both candidates and picks or re-reads the printed value.", H.accent1],
     ];
     text(s, "SIGNALS PER FIELD", { x: 0.5, y: 1.2, w: 4.4, h: 0.3, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
     for (let i = 0; i < sig.length; i++) {
-      const y = 1.55 + i * 0.82;
-      card(s, 0.5, y, 4.4, 0.72, { name: "signal " + i });
-      s.addShape(pres.shapes.OVAL, { x: 0.65, y: y + 0.24, w: 0.24, h: 0.24, fill: { color: sig[i][2] }, line: { color: sig[i][2], width: 0 }, objectName: "dot" });
-      text(s, sig[i][0], { x: 1.0, y: y + 0.06, w: 3.8, h: 0.28, fontSize: 13, bold: true, color: C.text1 });
-      text(s, sig[i][1], { x: 1.0, y: y + 0.34, w: 3.8, h: 0.36, fontSize: 10.5, color: C.text2 });
+      const y = 1.55 + i * 0.67;
+      card(s, 0.5, y, 4.4, 0.6, { name: "signal " + i });
+      s.addShape(pres.shapes.OVAL, { x: 0.65, y: y + 0.18, w: 0.24, h: 0.24, fill: { color: sig[i][2] }, line: { color: sig[i][2], width: 0 }, objectName: "dot" });
+      text(s, sig[i][0], { x: 1.0, y: y + 0.04, w: 3.8, h: 0.25, fontSize: 12, bold: true, color: C.text1 });
+      text(s, sig[i][1], { x: 1.0, y: y + 0.28, w: 3.8, h: 0.3, fontSize: 9.5, color: C.text2 });
     }
     text(s, "CALIBRATION AND ROUTING", { x: 5.3, y: 1.2, w: 4.2, h: 0.3, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
     card(s, 5.3, 1.55, 4.2, 3.35, { fill: H.lt2, name: "calibration card" });
@@ -315,18 +316,17 @@ async function iconPng(name, hex, px = 256) {
     {
       const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
       s.addText(`Results on ${SUMMARY.documents} public benchmark documents`, { placeholder: "title" });
-      const rows = [[
-        { text: "Benchmark", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
-        { text: "Vision only", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
-        { text: "OCR + text only", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
-        { text: "Both + validators", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } },
-      ]];
+      const hasArb = datasets.some((d) => f1[`${d}/all/arbiter`] != null);
+      const th = (t) => ({ text: t, options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } });
+      const rows = [[th("Benchmark"), th("Vision only"), th("OCR + text"), th("Both + validators"), ...(hasArb ? [th("+ arbiter")] : [])]];
       for (const d of datasets) {
         if (f1[`${d}/all/merged`] == null) continue;
+        const merged = pct(f1[`${d}/all/merged`]);
         rows.push([names[d], pct(f1[`${d}/all/vision`]), pct(f1[`${d}/all/ocr_text`]),
-          { text: pct(f1[`${d}/all/merged`]), options: { bold: true, color: H.accent1 } }]);
+          hasArb ? merged : { text: merged, options: { bold: true, color: H.accent1 } },
+          ...(hasArb ? [{ text: pct(f1[`${d}/all/arbiter`]), options: { bold: true, color: H.accent1 } }] : [])]);
       }
-      s.addTable(rows, { x: 0.5, y: 1.25, w: 5.6, colW: [2.3, 1.1, 1.1, 1.1], fontSize: 11, color: C.text2,
+      s.addTable(rows, { x: 0.5, y: 1.25, w: 5.6, colW: hasArb ? [2.0, 0.9, 0.9, 0.9, 0.9] : [2.3, 1.1, 1.1, 1.1], fontSize: hasArb ? 10 : 11, color: C.text2,
         border: { type: "solid", pt: 0.5, color: "D5DCE4" }, fill: { color: H.lt1 }, rowH: 0.36, valign: "middle",
         margin: 0.05, objectName: "results table" });
       if (chart("f1_by_language")) {
@@ -337,7 +337,7 @@ async function iconPng(name, hex, px = 256) {
       stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4, 1.55);
       text(s, "Field F1 scored against published ground truth. Forms: key-value pairs. Receipts and invoices: every labeled field and line item. Contracts: parties, dates, governing law. Same prompts and schema throughout.",
         { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
-      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone.");
+      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone. We tested the arbiter honestly: letting it overwrite values did not improve accuracy on disputed fields. Because of that, we ship it as a confidence signal instead, which cuts calibration error from 0.022 to 0.016.");
     }
 
     // Calibration and review load
@@ -447,9 +447,9 @@ async function iconPng(name, hex, px = 256) {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
     s.addText("Roadmap: pipeline, evidence, then production", { placeholder: "title" });
     const phases = [
-      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Runs both readers, validators, calibration, and review routing", "198 public benchmark documents, 9 languages; one command, all numbers", "Live hosted demo with sample documents", "225 unit tests under an MIT licence"], H.accent1],
-      ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini, Claude readers; one environment variable; compared cost, accuracy", "Japanese and Chinese forms: layout-aware prompts, key normalisation", "Lenient form scoring right next to the strict one", "Corrections from the review UI feed the calibrator"], H.accent4],
-      ["Beyond Round 2", "Moving into production", ["Active learning straight from reviewer corrections", "Open-weights model path for on-prem use", "Connectors for email inbox, SAP, and Tally", "Full table and handwriting extraction support"], H.dk2],
+      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Two readers, an arbiter for disputes, validators, calibration, and review routing", "198 public benchmark documents, 9 languages, and one command produces all numbers", "Live hosted demo with sample documents, anomaly checks, and calibrator review panel", "237 unit tests released under an MIT licence"], H.accent1],
+      ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini and Claude readers, one environment variable, comparing cost and accuracy", "Japanese, Chinese forms: layout-aware prompts, key normalisation, strict and lenient scoring", "Three-way match: reconciled purchase orders, invoices, and receipts, flagging any mismatches", "Backed vendor memory with a database instead of a file"], H.accent4],
+      ["Beyond Round 2", "Moving into production", ["Open-weights model path for on-prem use", "Connectors for email inbox, SAP, and Tally", "Full table and handwriting extraction support"], H.dk2],
     ];
     for (let i = 0; i < 3; i++) {
       const x = 0.5 + i * 3.05, y = 1.3, w = 2.9, h = 3.6;

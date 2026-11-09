@@ -63,7 +63,12 @@ def agreement(path: str, a: Any, b: Any) -> bool | None:
 
 
 def raw_score(
-    agree: bool | None, ocr_conf: float | None, validator: str, self_conf: float | None, present: bool
+    agree: bool | None,
+    ocr_conf: float | None,
+    validator: str,
+    self_conf: float | None,
+    present: bool,
+    arbiter: str | None = None,
 ) -> float:
     if not present:
         return 0.5
@@ -72,6 +77,12 @@ def raw_score(
         s += 0.28
     elif agree is False:
         s -= 0.30
+    if arbiter in ("vision", "ocr"):
+        s += 0.26
+    elif arbiter == "other":
+        s += 0.14
+    elif arbiter == "unreadable":
+        s -= 0.05
     if validator == "pass":
         s += 0.12
     elif validator == "fail":

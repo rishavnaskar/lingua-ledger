@@ -4,14 +4,22 @@
 import { useEffect, useState } from "react";
 import { ChartColumn, CircleAlert, LoaderCircle } from "lucide-react";
 import { Card, CardTitle } from "@/components/ui/Card";
-import { CHART_NAMES, chartUrl, getMetrics, type ChartName, type MetricsSummary, type ThresholdOutcome } from "@/lib/api";
+import {
+  CHART_NAMES,
+  chartUrl,
+  getMetrics,
+  type ArbiterSignalEffect,
+  type ChartName,
+  type MetricsSummary,
+  type ThresholdOutcome,
+} from "@/lib/api";
 import { copy } from "@/lib/copy";
 import { describeError, isAbort } from "@/lib/errors";
 import { fmt, languageName } from "@/lib/format";
 
 type State = { status: "loading" } | { status: "error"; message: string } | { status: "ready"; data: MetricsSummary };
 
-const PATH_ORDER = ["merged", "vision", "ocr_text"];
+const PATH_ORDER = ["arbiter", "merged", "vision", "ocr_text"];
 
 export function MetricsView() {
   const c = copy.metrics;
@@ -175,11 +183,53 @@ function Results({ data }: { data: MetricsSummary }) {
         </div>
       </section>
 
+      {data.arbiter && <ArbiterCard a={data.arbiter} documents={data.documents ?? 0} />}
+
       <div className="grid items-start gap-6 xl:grid-cols-2">
         {data.f1 && Object.keys(data.f1).length > 0 && <F1Table f1={data.f1} />}
         {data.signals && Object.keys(data.signals).length > 0 && <SignalsTable signals={data.signals} />}
       </div>
     </>
+  );
+}
+
+function ArbiterCard({ a, documents }: { a: NonNullable<MetricsSummary["arbiter"]>; documents: number }) {
+  const c = copy.metrics.arbiter;
+  const na = copy.common.notAvailable;
+  const pct = (v: number | null | undefined) => (typeof v === "number" ? fmt.pct(v) : na);
+  const ece = (e?: ArbiterSignalEffect) => (typeof e?.ece_calibrated === "number" ? fmt.ece(e.ece_calibrated) : na);
+  const r95 = (e?: ArbiterSignalEffect) => pct(e?.review_rate_at_95pct_accuracy);
+  const stats = [
+    { label: c.disputes, value: fmt.int(a.disputes ?? 0) },
+    { label: c.before, value: pct(a.disputed_accuracy_base) },
+    { label: c.after, value: pct(a.disputed_accuracy_override) },
+    { label: c.eceSignal, value: `${ece(a.without_signal)} → ${ece(a.with_signal)}` },
+    { label: c.reviewSignal, value: `${r95(a.without_signal)} → ${r95(a.with_signal)}` },
+    { label: c.latency, value: typeof a.latency_p50 === "number" ? fmt.seconds(a.latency_p50) : na },
+  ];
+  return (
+    <Card>
+      <CardTitle aside={<span className="text-xs text-muted">{c.documents(a.documents_with_disputes ?? 0, documents)}</span>}>
+        {c.title}
+      </CardTitle>
+      <p className="-mt-1 mb-3 text-sm text-muted">{c.body}</p>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {stats.map((s) => (
+          <div key={s.label} className="rounded-xl border border-line bg-white px-3 py-2.5">
+            <p className="text-xs text-muted">{s.label}</p>
+            <p className="mt-1 text-xl font-semibold text-ink tabular-nums">{s.value}</p>
+          </div>
+        ))}
+      </div>
+      {a.verdicts && (
+        <p className="mt-3 text-xs text-muted">
+          {c.verdicts}:{" "}
+          {Object.entries(a.verdicts)
+            .map(([k, v]) => `${c.choices[k] ?? k} ${fmt.int(v)}`)
+            .join(" · ")}
+        </p>
+      )}
+    </Card>
   );
 }
 

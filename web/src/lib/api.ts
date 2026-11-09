@@ -28,7 +28,45 @@ export interface FieldResult {
   ocr_value: unknown;
   bbox: [number, number, number, number] | null;
   page?: number | null;
+  arbiter?: ArbiterChoice | null;
+  arbiter_value?: unknown;
   needs_review: boolean;
+}
+
+export type ArbiterChoice = "vision" | "ocr" | "other" | "unreadable";
+
+export interface ArbiterVerdict {
+  field: string;
+  vision_value: unknown;
+  ocr_value: unknown;
+  choice: ArbiterChoice;
+  value: unknown;
+  confidence: number;
+  cropped: boolean;
+}
+
+export interface ArbiterResult {
+  model: string | null;
+  disputes: number;
+  verdicts: ArbiterVerdict[];
+  latency_s: number;
+  input_tokens: number;
+  output_tokens: number;
+  error: string | null;
+}
+
+export type Severity = "info" | "warn" | "high";
+
+export interface Anomaly {
+  code: string;
+  severity: Severity;
+  message: string;
+  fields: string[];
+}
+
+export interface MemoryInfo {
+  vendor_seen?: boolean;
+  vendor_documents?: number;
 }
 
 export interface RuleResult {
@@ -59,6 +97,51 @@ export interface ExtractionResult {
   review_rate: number;
   pages: number;
   latency_s: number;
+  arbiter?: ArbiterResult | null;
+  anomalies?: Anomaly[];
+  memory?: MemoryInfo;
+}
+
+export interface OperatingPoints {
+  fields?: number;
+  review_rate_at_95?: number | null;
+  review_rate_at_98?: number | null;
+  ece?: number;
+}
+
+export interface MemorySummary {
+  documents_posted: number;
+  vendors: number;
+  corrections: number;
+  fields_fixed: number;
+}
+
+export interface LearningState {
+  corrections: number;
+  fields_fixed: number;
+  weight: number;
+  doc_type: string;
+  before: OperatingPoints;
+  after: OperatingPoints;
+  curve_before: [number, number][];
+  curve_after: [number, number][];
+  memory: MemorySummary;
+}
+
+export interface Decision {
+  field: string;
+  raw_score: number;
+  accepted: boolean;
+  value?: unknown;
+  corrected_value?: unknown;
+}
+
+export interface ReviewRequest {
+  doc_id: string;
+  doc_type: string;
+  data: Record<string, unknown>;
+  decisions: Decision[];
+  post: boolean;
 }
 
 export interface PagePreview {
@@ -105,6 +188,26 @@ export interface MetricsSummary {
   tokens?: { input?: number; output?: number; per_doc_input?: number; per_doc_output?: number };
   cost_usd?: { total?: number; per_1000_docs?: number };
   signals?: Record<string, { n: number; accuracy: number }>;
+  arbiter?: {
+    documents?: number;
+    documents_with_disputes?: number;
+    disputes?: number;
+    verdicts?: Record<string, number>;
+    disputed_fields_scored?: number;
+    disputed_accuracy_base?: number | null;
+    disputed_accuracy_override?: number | null;
+    fields_flipped_by_override?: number;
+    latency_p50?: number | null;
+    with_signal?: ArbiterSignalEffect;
+    without_signal?: ArbiterSignalEffect;
+  };
+}
+
+export interface ArbiterSignalEffect {
+  ece_calibrated?: number;
+  brier_calibrated?: number;
+  review_rate_at_95pct_accuracy?: number | null;
+  review_rate_at_98pct_accuracy?: number | null;
 }
 
 export type ChartName = "review_curve" | "reliability" | "f1_by_language" | "ablation";
@@ -146,6 +249,7 @@ export interface ExtractOptions {
   docType?: DocType | null;
   language?: string | null;
   paths?: ReaderPath[];
+  arbiter?: boolean;
   signal?: AbortSignal;
 }
 
@@ -156,6 +260,7 @@ export function extractFile(file: File, opts: ExtractOptions): Promise<ExtractRe
   form.append("paths", (opts.paths ?? ["vision", "ocr_text"]).join(","));
   if (opts.docType) form.append("doc_type", opts.docType);
   if (opts.language) form.append("language", opts.language);
+  if (opts.arbiter !== undefined) form.append("arbiter", String(opts.arbiter));
   return request<ExtractResponse>("/extract", { method: "POST", body: form, signal: opts.signal });
 }
 
@@ -164,6 +269,7 @@ export function extractSample(id: string, opts: ExtractOptions): Promise<Extract
     threshold: String(opts.threshold),
     paths: (opts.paths ?? ["vision", "ocr_text"]).join(","),
   });
+  if (opts.arbiter !== undefined) params.set("arbiter", String(opts.arbiter));
   return request<ExtractResponse>(`/samples/${encodeURIComponent(id)}/extract?${params}`, {
     method: "POST",
     signal: opts.signal,
@@ -176,6 +282,23 @@ export function getSamples(signal?: AbortSignal): Promise<Sample[]> {
 
 export function getMetrics(signal?: AbortSignal): Promise<MetricsSummary> {
   return request<MetricsSummary>("/metrics", { signal, cache: "no-store" });
+}
+
+export function submitReview(body: ReviewRequest, signal?: AbortSignal): Promise<LearningState> {
+  return request<LearningState>("/review", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    signal,
+  });
+}
+
+export function getLearning(signal?: AbortSignal): Promise<LearningState> {
+  return request<LearningState>("/learning", { signal, cache: "no-store" });
+}
+
+export function resetLearning(): Promise<LearningState> {
+  return request<LearningState>("/learning/reset", { method: "POST" });
 }
 
 export const sampleFileUrl = (id: string) => `${API_URL}/samples/${encodeURIComponent(id)}/file`;

@@ -76,6 +76,13 @@ def eval_run(
     )
 
 
+@eval_app.command("arbiter")
+def eval_arbiter(datasets: str = "all", workers: int = 2, limit: int | None = None, rescore: bool = False):
+    from .eval.arbiter import run_arbiter
+
+    run_arbiter(datasets=datasets, workers=workers, limit=limit, rescore=rescore)
+
+
 @eval_app.command("report")
 def eval_report(threshold: float = DEFAULT_REVIEW_THRESHOLD):
     from .eval.report import build_report

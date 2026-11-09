@@ -8,7 +8,7 @@ import { cn, fmt } from "@/lib/format";
 
 const READERS_AFTER_MS = 1200;
 const STEP_MS = 220;
-const FINAL_STAGE = 5;
+const FINAL_STAGE = copy.workbench.steps.length - 1;
 
 type Status = "done" | "active" | "pending";
 

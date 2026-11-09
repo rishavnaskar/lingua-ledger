@@ -8,14 +8,18 @@ from typing import Any
 
 from PIL import Image
 
+from .anomaly import detect
+from .arbiter import arbitrate
 from .classify import classify
 from .confidence import Calibrator, agreement, flatten, raw_score, top_name, unflatten
-from .config import DEFAULT_REVIEW_THRESHOLD
+from .config import ARBITER_ENABLED, DEFAULT_REVIEW_THRESHOLD
 from .extract import extract_text, extract_vision
 from .ingest import load_pages
+from .llm import has_api_key
 from .ocr import locate_value, ocr_pages, pages_text
 from .schemas import (
     SCHEMAS,
+    ArbiterResult,
     Classification,
     DocType,
     ExtractionResult,
@@ -34,6 +38,11 @@ def calibrator() -> Calibrator:
     if _calibrator is None:
         _calibrator = Calibrator.load()
     return _calibrator
+
+
+def set_calibrator(cal: Calibrator | None) -> None:
+    global _calibrator
+    _calibrator = cal
 
 
 def reconcile(doc_type: DocType, vision: dict[str, Any], ocr: dict[str, Any]) -> dict[str, Any]:
@@ -65,7 +74,9 @@ def score_fields(
     rules: list[RuleResult],
     ocr: list[OcrPage],
     threshold: float,
+    arbiter: ArbiterResult | None = None,
 ) -> list[FieldResult]:
+    verdicts = {v.field: v for v in arbiter.verdicts} if arbiter else {}
     by_path = {p.path: p for p in paths}
     fv = flatten(by_path["vision"].data) if "vision" in by_path else {}
     fo = flatten(by_path["ocr_text"].data) if "ocr_text" in by_path else {}
@@ -83,7 +94,8 @@ def score_fields(
         ocr_conf = loc[0] if loc else None
         outcome = rule_outcome_for_field(rules, path)
         sc = self_conf.get(top_name(path))
-        raw = raw_score(agree, ocr_conf, outcome, sc, present)
+        verdict = verdicts.get(path)
+        raw = raw_score(agree, ocr_conf, outcome, sc, present, verdict.choice if verdict else None)
         conf = cal(raw, doc_type.value) if present else 1.0
         results.append(
             FieldResult(
@@ -99,6 +111,8 @@ def score_fields(
                 ocr_value=fo.get(path),
                 bbox=loc[1] if loc else None,
                 page=loc[2] if loc else None,
+                arbiter=verdict.choice if verdict else None,
+                arbiter_value=verdict.value if verdict else None,
                 needs_review=present and conf < threshold,
             )
         )
@@ -115,6 +129,8 @@ def run(
     images: list[Image.Image] | None = None,
     doc_id: str | None = None,
     text_layer: str | None = None,
+    arbiter: bool | None = None,
+    vendor: dict[str, Any] | None = None,
 ) -> ExtractionResult:
     t0 = time.perf_counter()
     pages = images or load_pages(source, filename)
@@ -135,12 +151,19 @@ def run(
             jobs["ocr_text"] = ex.submit(extract_text, text, doc_type)
     outputs = [jobs[k].result() for k in ("vision", "ocr_text") if k in jobs]
     by_path = {p.path: p.data for p in outputs}
+    arbiter_result: ArbiterResult | None = None
     if "vision" in by_path and "ocr_text" in by_path:
         merged = reconcile(doc_type, by_path["vision"], by_path["ocr_text"])
+        use_arbiter = ARBITER_ENABLED if arbiter is None else arbiter
+        if use_arbiter and has_api_key() and not any(p.error for p in outputs):
+            merged, arbiter_result = arbitrate(
+                doc_type, merged, by_path["vision"], by_path["ocr_text"], pages, ocr
+            )
     else:
         merged = next(iter(by_path.values()))
     rules = validate(doc_type.value, merged)
-    fields = score_fields(doc_type, merged, outputs, rules, ocr, threshold)
+    fields = score_fields(doc_type, merged, outputs, rules, ocr, threshold, arbiter_result)
+    anomalies = detect(doc_type, merged, language, vendor)
     reviewable = [f for f in fields if f.value not in (None, "", [])]
     review_rate = (sum(f.needs_review for f in reviewable) / len(reviewable)) if reviewable else 0.0
     return ExtractionResult(
@@ -154,4 +177,7 @@ def run(
         review_rate=round(review_rate, 4),
         pages=len(pages),
         latency_s=round(time.perf_counter() - t0, 3),
+        arbiter=arbiter_result,
+        anomalies=anomalies,
+        memory={"vendor_seen": bool(vendor), "vendor_documents": (vendor or {}).get("documents", 0)},
     )

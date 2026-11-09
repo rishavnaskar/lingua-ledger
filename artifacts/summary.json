@@ -91,19 +91,19 @@
     ],
     "test_fields": 4540,
     "field_accuracy": 0.7485,
-    "ece_raw": 0.1527,
-    "ece_calibrated": 0.022,
-    "brier_raw": 0.1864,
-    "brier_calibrated": 0.1481
+    "ece_raw": 0.1461,
+    "ece_calibrated": 0.0157,
+    "brier_raw": 0.1828,
+    "brier_calibrated": 0.1484
   },
   "review": {
     "baseline_accuracy_no_review": 0.7485,
-    "review_rate_at_95pct_accuracy": 0.6388,
+    "review_rate_at_95pct_accuracy": 0.6383,
     "threshold_at_95pct_accuracy": 0.89,
-    "review_rate_at_98pct_accuracy": 0.759,
+    "review_rate_at_98pct_accuracy": 0.7599,
     "threshold_at_98pct_accuracy": 0.94,
     "at_threshold_0.85": {
-      "review_rate": 0.5714,
+      "review_rate": 0.5711,
       "auto_accuracy": 0.944
     }
   },
@@ -115,6 +115,18 @@
     "agree=True": {
       "n": 1819,
       "accuracy": 0.9379
+    },
+    "arbiter=ocr": {
+      "n": 12,
+      "accuracy": 0.3333
+    },
+    "arbiter=other": {
+      "n": 4,
+      "accuracy": 0.75
+    },
+    "arbiter=vision": {
+      "n": 102,
+      "accuracy": 0.8137
     },
     "validator=fail": {
       "n": 157,
@@ -129,6 +141,51 @@
       "accuracy": 0.7557
     }
   },
+  "arbiter": {
+    "documents": 198,
+    "documents_with_disputes": 101,
+    "disputes": 233,
+    "verdicts": {
+      "vision": 195,
+      "unreadable": 2,
+      "other": 12,
+      "ocr": 24
+    },
+    "disputed_fields_scored": 118,
+    "disputed_accuracy_base": 0.7627,
+    "disputed_accuracy_override": 0.7542,
+    "override_accuracy_by_choice": {
+      "ocr": {
+        "n": 12,
+        "accuracy": 0.4167
+      },
+      "other": {
+        "n": 4,
+        "accuracy": 0.25
+      },
+      "vision": {
+        "n": 102,
+        "accuracy": 0.8137
+      }
+    },
+    "fields_flipped_by_override": 11,
+    "latency_p50": 8.28,
+    "tokens_in": 275150,
+    "tokens_out": 9361,
+    "tokens_in_per_document_with_disputes": 2724,
+    "without_signal": {
+      "ece_calibrated": 0.022,
+      "brier_calibrated": 0.1481,
+      "review_rate_at_95pct_accuracy": 0.6388,
+      "review_rate_at_98pct_accuracy": 0.759
+    },
+    "with_signal": {
+      "ece_calibrated": 0.0157,
+      "brier_calibrated": 0.1484,
+      "review_rate_at_95pct_accuracy": 0.6383,
+      "review_rate_at_98pct_accuracy": 0.7599
+    }
+  },
   "latency_s": {
     "p50": 21.19,
     "p95": 63.81,
@@ -136,13 +193,13 @@
     "reader_p95": 43.05
   },
   "tokens": {
-    "input": 482121,
-    "output": 306545,
-    "per_doc_input": 2435,
-    "per_doc_output": 1548
+    "input": 757271,
+    "output": 315906,
+    "per_doc_input": 3825,
+    "per_doc_output": 1595
   },
   "cost_usd": {
-    "total": 0.91,
-    "per_1000_docs": 4.6
+    "total": 1.02,
+    "per_1000_docs": 5.14
   }
 }

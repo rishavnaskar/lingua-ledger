@@ -11,16 +11,21 @@ export function OptionsPanel({
   onDocType,
   threshold,
   onThreshold,
+  arbiter,
+  onArbiter,
   disabled,
 }: {
   docType: DocType | "";
   onDocType: (v: DocType | "") => void;
   threshold: number;
   onThreshold: (v: number) => void;
+  arbiter: boolean;
+  onArbiter: (v: boolean) => void;
   disabled?: boolean;
 }) {
   const c = copy.workbench.options;
   const selectId = useId();
+  const arbiterId = useId();
   return (
     <details className="group rounded-xl border border-line bg-white">
       <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-medium text-ink [&::-webkit-details-marker]:hidden">
@@ -55,6 +60,20 @@ export function OptionsPanel({
           onChange={onThreshold}
           disabled={disabled}
         />
+        <div className="flex items-start gap-3">
+          <input
+            id={arbiterId}
+            type="checkbox"
+            checked={arbiter}
+            disabled={disabled}
+            onChange={(e) => onArbiter(e.target.checked)}
+            className="mt-1 h-4 w-4 cursor-pointer disabled:cursor-not-allowed"
+          />
+          <label htmlFor={arbiterId} className="text-sm">
+            <span className="font-medium text-ink">{c.arbiter}</span>
+            <span className="mt-0.5 block text-xs text-muted">{c.arbiterNote}</span>
+          </label>
+        </div>
       </div>
     </details>
   );

@@ -36,6 +36,10 @@ _DEFAULTS = {
 VISION_MODEL = os.getenv("LL_VISION_MODEL", _DEFAULTS["vision"])
 TEXT_MODEL = os.getenv("LL_TEXT_MODEL", _DEFAULTS["text"])
 CLASSIFY_MODEL = os.getenv("LL_CLASSIFY_MODEL", _DEFAULTS["classify"])
+ARBITER_MODEL = os.getenv("LL_ARBITER_MODEL", VISION_MODEL)
+ARBITER_ENABLED = os.getenv("LL_ARBITER", "1") not in ("0", "false", "no")
+ARBITER_MODE = os.getenv("LL_ARBITER_MODE", "signal")
+MAX_DISPUTES = int(os.getenv("LL_MAX_DISPUTES", "12"))
 FALLBACK_MODELS = [m for m in os.getenv("LL_FALLBACK_MODELS", "gemini-3.5-flash").split(",") if m.strip()]
 GEMINI_RPM = int(os.getenv("LL_GEMINI_RPM", "15"))
 PRICE_IN_PER_M = float(os.getenv("LL_PRICE_IN_PER_M", _DEFAULTS["price_in"]))
@@ -45,6 +49,8 @@ EXTRACT_EFFORT = os.getenv("LL_EXTRACT_EFFORT", "medium")
 RENDER_DPI = int(os.getenv("LL_RENDER_DPI", "150"))
 MAX_PAGES = int(os.getenv("LL_MAX_PAGES", "4"))
 DEFAULT_REVIEW_THRESHOLD = float(os.getenv("LL_REVIEW_THRESHOLD", "0.85"))
+STATE_DIR = Path(os.getenv("LL_STATE_DIR", ROOT / "state"))
+CORRECTION_WEIGHT = int(os.getenv("LL_CORRECTION_WEIGHT", "10"))
 
 TESSERACT_LANGS = {
     "en": "eng",

@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, CircleCheck, CircleMinus, CircleX, Equal, EqualNot, ListChecks, ScanText } from "lucide-react";
+import { ChevronDown, CircleCheck, CircleMinus, CircleX, Equal, EqualNot, Gavel, ListChecks, ScanText } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardTitle } from "@/components/ui/Card";
 import { ConfidencePill } from "@/components/ui/ConfidencePill";
@@ -249,6 +249,21 @@ function Evidence({ f }: { f: FieldResult }) {
         </Badge>
       )}
       {f.agree === null && <Badge tone="muted">{e.single}</Badge>}
+      {(f.arbiter === "vision" || f.arbiter === "ocr") && (
+        <Badge tone="teal" icon={Gavel}>
+          {e.arbiterConfirmed}
+        </Badge>
+      )}
+      {f.arbiter === "other" && (
+        <Badge tone="navy" icon={Gavel}>
+          {e.arbiterOther}
+        </Badge>
+      )}
+      {f.arbiter === "unreadable" && (
+        <Badge tone="muted" icon={Gavel}>
+          {e.arbiterUnreadable}
+        </Badge>
+      )}
       {f.ocr_conf !== null && f.ocr_conf !== undefined ? (
         <Badge tone={f.ocr_conf < 0.6 ? "amber" : "navy"} icon={ScanText}>
           {e.ocr(fmt.score(f.ocr_conf))}
@@ -304,6 +319,12 @@ function FieldDetail({ f, rules }: { f: FieldResult; rules: RuleResult[] }) {
           </dd>
           <dt className="text-muted">{d.location}</dt>
           <dd>{located}</dd>
+          {f.arbiter && (
+            <>
+              <dt className="text-muted">{d.arbiter}</dt>
+              <dd className="text-sm">{d.arbiterChoice[f.arbiter]}</dd>
+            </>
+          )}
         </dl>
       </div>
       <div>
