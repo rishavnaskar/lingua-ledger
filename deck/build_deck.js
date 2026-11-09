@@ -233,7 +233,7 @@ async function iconPng(name, hex, px = 256) {
     box(2.4, 3.0, 2.1, 0.9, "Review UI", "Next.js · highlights source region · one-click accept/fix", H.lt2, H.dk1);
     arrow(2.4, 3.45, 2.05, 3.45);
     box(0.5, 3.0, 1.55, 0.9, "Eval harness", "XFUND · FUNSD · CORD · SROIE · CUAD", H.lt2, H.dk1);
-    text(s, "Stack: Python 3.13, pydantic schemas, Anthropic Claude (vision + text, structured outputs), Tesseract, scikit-learn (isotonic regression), FastAPI, Next.js on Vercel. Public repo, MIT licence, one-command reproduction of every metric.", { x: 0.5, y: 4.2, w: 9.0, h: 0.75, fontSize: 11.5, color: C.text2 });
+    text(s, "Stack: Python 3.13, pydantic schemas, Google Gemini (gemini-3.5-flash-lite for vision, text and classification, structured JSON output; provider switchable to Claude), Tesseract, scikit-learn (isotonic regression), FastAPI, Next.js on Vercel. Public repo, MIT licence, one-command reproduction of every metric.", { x: 0.5, y: 4.2, w: 9.0, h: 0.75, fontSize: 11.5, color: C.text2 });
     s.addNotes("Walk left to right. Two readers never see each other's output. The validators are pure functions. The confidence engine is the only learned component on top of the LLMs, and it is trained on held-out ground truth so the number is honest.");
   }
 
@@ -478,7 +478,7 @@ async function iconPng(name, hex, px = 256) {
       "Evaluation harness, calibration and reporting",
       "Review UI, hosted demo, documentation and video",
     ], 13, H.lt1, 5), { x: 1.95, y: 2.05, w: 7, h: 1.6, isTextBox: true, margin: 0, valign: "top" });
-    text(s, "Third-party components acknowledged in the repository: XFUND, FUNSD, CORD, SROIE and CUAD datasets; Tesseract OCR; Anthropic Claude models; pypdfium2; scikit-learn; FastAPI; Next.js. All code released under the MIT licence.", { x: 0.6, y: 3.85, w: 8.6, h: 0.55, fontSize: 10, color: "9AA5B1" });
+    text(s, "Third-party components acknowledged in the repository: XFUND, FUNSD, CORD, SROIE and CUAD datasets; Tesseract OCR; Google Gemini API; pypdfium2; scikit-learn; FastAPI; Next.js. All code released under the MIT licence.", { x: 0.6, y: 3.85, w: 8.6, h: 0.55, fontSize: 10, color: "9AA5B1" });
     text(s, "Lingua Ledger  ·  rishavnaskar.r@gmail.com  ·  repo and demo links in the submission form", { x: 0.6, y: 4.55, w: 8.4, h: 0.3, fontSize: 12, color: H.lt1 });
     s.addNotes("Solo entry. Contributions listed per the submission rules. Links to the repository and hosted demo are in the Devpost and Unstop forms.");
   }

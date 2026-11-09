@@ -79,7 +79,7 @@ One-liner: Drop any invoice, receipt, form or contract in any language; get sche
 
 ### Stack
 
-- Python 3.13 + uv; pydantic schemas; pytesseract + pypdfium2; Anthropic SDK (claude-sonnet-5-5 for vision + text; claude-haiku-5-5 for classification) with structured outputs; scikit-learn for calibration; FastAPI backend.
+- Python 3.13 + uv; pydantic schemas; pytesseract + pypdfium2; google-genai SDK (gemini-3.5-flash-lite for vision, text and classification; Anthropic SDK kept as an alternative provider) with structured JSON output; scikit-learn for calibration; FastAPI backend.
 - Frontend: Next.js (App Router) + Tailwind; deployed on Vercel; backend on Fly.io/Render/Railway (needs Tesseract binary) or HF Space. Fallback: Gradio on HF Spaces if time gets tight.
 - Repo: github.com/rishavnaskar/lingua-ledger (public, MIT). README reproduces every metric with one command.
 
@@ -101,5 +101,5 @@ One-liner: Drop any invoice, receipt, form or contract in any language; get sche
 
 1. Log in to Devpost in the browser pane and click "Join hackathon" (page already open).
 2. Register + pay ₹100 on Unstop before midnight tonight; upload PPT v1 (I will produce it).
-3. Provide an Anthropic API key (export ANTHROPIC_API_KEY) for the extraction pipeline and demo. ~$20–40 budget for eval + demo.
+3. Provide a Gemini API key (GEMINI_API_KEY) for the extraction pipeline and demo. Free Tier allows 20 requests per day per Flash model, so the evaluation runs on Flash-Lite.
 4. Confirm the track choice (DN-AI-01) or veto now; anything later costs hours.
