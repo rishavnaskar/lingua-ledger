@@ -73,7 +73,7 @@ Each dataset is scored only on the fields it labels: SROIE on merchant name, add
 
 ## Results
 
-We tested this setup on 198 public benchmark documents: 28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms. We ran the vision reader, the OCR-text reader, and the classifier on gemini-3.5-flash-lite within the Gemini API Free Tier (no paid usage), using 2 parallel workers at 15 requests per minute. All scores reflect field-level F1 against the published ground truth, counting only the fields labeled by each dataset.
+We tested the pipeline on 198 public benchmark documents (28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms). We ran the vision reader, the OCR-text reader, and the classifier using gemini-3.5-flash-lite entirely within the Gemini API Free Tier (no paid usage), with 2 parallel workers at 15 requests per minute. All scores show field-level F1 against published ground truth, evaluated only on the fields labeled in each dataset.
 
 ### Field extraction F1
 
@@ -87,31 +87,31 @@ We tested this setup on 198 public benchmark documents: 28 synthetic invoices, 3
 | XFUND forms (DE, ES, FR, IT, JA, PT, ZH) | 70 | 50.9% | 31.9% | **50.9%** |
 | All | 198 | 64.2% | 49.7% | **63.9%** |
 
-Form datasets (XFUND, FUNSD) are scored by strict key-value matching against the original linking annotations. Because those annotations split single logical fields into separate fragments (such as postcode, prefecture, and street listed as three values under the same key), an extraction that produces one clean key-value pair is scored as one true positive and multiple false negatives. As a result, treat the form scores as a lower bound. Japanese forms are currently our weakest case at 34.6% F1 and are the main area we are working to improve.
+Form benchmarks (XFUND and FUNSD) use strict key-value matching based on original linking annotations. Those annotations split a single logical field into fragments—for example, treating a postcode, prefecture, and street as three separate values under one key. When our reader extracts one clean key-value pair, it gets counted as one true positive and multiple false negatives. Because of this, treat the form scores as a lower bound. Japanese forms are our weakest result (34.6% F1) and our top target for improvement.
 
-See artifacts/f1_by_language.png for form F1 broken down by language, and artifacts/f1_table.csv for the full table with results from each individual reader.
+See artifacts/f1_by_language.png for language-by-language results, and artifacts/f1_table.csv for the full table including individual reader numbers.
 
 ### Classification
 
-The model correctly identified the document type on 92.4% of documents and the language on 88.9%.
+The model identified the correct document type on 92.4% of documents and the correct language on 88.9%.
 
 ### Calibration and review routing
 
-We fitted calibration on documents with an even hash and evaluated it on the odd half (2162 fit fields, 2378 test fields).
+We evaluated calibration using two-fold cross-fitting based on document hashes. The calibrator trained on one half scored the other half, so none of the 4540 fields were scored by a model that had seen their document (split into 2480 and 2060 fields per half). The calibrator included in the demo is trained on all of them.
 
 | | Raw score | Calibrated |
 |---|---|---|
-| Expected calibration error (lower is better) | 0.157 | 0.017 |
-| Brier score (lower is better) | 0.182 | 0.139 |
+| Expected calibration error (lower is better) | 0.153 | 0.022 |
+| Brier score (lower is better) | 0.186 | 0.148 |
 
-- Fields correct with no human review at all: 77.1%
-- To reach 95 percent accuracy on auto-accepted fields: send 66.4% of fields to review (threshold 0.91)
-- To reach 98 percent accuracy: send 80.7% of fields to review (threshold 0.95)
-- At the default threshold 0.85: 54.8% of fields are reviewed, and auto-accepted fields reach 94.9% accuracy
+- 74.9% of fields were extracted correctly with no human review at all.
+- To reach 95 percent accuracy on auto-accepted fields: send 63.9% of fields to review (threshold 0.89).
+- To reach 98 percent accuracy: send 75.9% of fields to review (threshold 0.94).
+- At the default threshold 0.85: 57.1% of fields are routed to review, and auto-accepted fields reach 94.4% accuracy.
 
-What drives the confidence score: when both readers agree, the field is correct 93.8% of the time; when they disagree, that drops to 62.2%. When a validator fails, the field is correct only 14.0% of the time, which is why a failed rule sharply reduces confidence.
+What drives confidence scores: when both readers agree, the field is correct 93.8% of the time; when they disagree, accuracy drops to 62.2%. If a validator fails, the field is correct only 14.0% of the time, which is why a failed rule heavily lowers confidence.
 
-Detailed charts are available in artifacts/reliability.png and artifacts/review_curve.png.
+Detailed plots are available in artifacts/reliability.png and artifacts/review_curve.png.
 
 ### Cost and latency
 
@@ -123,7 +123,7 @@ Detailed charts are available in artifacts/reliability.png and artifacts/review_
 | Reader latency, p50 / p95 | 11.82 s / 43.05 s |
 | End-to-end latency, p50 / p95 | 21.19 s / 63.81 s |
 
-These latency figures reflect the Free Tier rate limit of 15 requests per minute, including wait times and retries on 429 responses, so they serve as an upper bound. Without rate limits, the same model processes a document end to end in about 7 seconds.
+These latency numbers represent an upper bound because they include the Gemini Free Tier rate limit (15 requests per minute, including backoff and retries on 429 responses). Without rate limiting, the same model processes a document end to end in about 7 seconds.
 
 ## Tests
 

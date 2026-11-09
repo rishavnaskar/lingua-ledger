@@ -84,23 +84,27 @@
     "language_acc": 0.8889
   },
   "calibration": {
-    "fit_fields": 2278,
-    "test_fields": 2262,
-    "field_accuracy": 0.737,
-    "ece_raw": 0.1352,
-    "ece_calibrated": 0.0288,
-    "brier_raw": 0.177,
-    "brier_calibrated": 0.1455
+    "folds": 2,
+    "fold_fields": [
+      2480,
+      2060
+    ],
+    "test_fields": 4540,
+    "field_accuracy": 0.7485,
+    "ece_raw": 0.1527,
+    "ece_calibrated": 0.022,
+    "brier_raw": 0.1864,
+    "brier_calibrated": 0.1481
   },
   "review": {
-    "baseline_accuracy_no_review": 0.737,
-    "review_rate_at_95pct_accuracy": 0.5831,
-    "threshold_at_95pct_accuracy": 0.8,
-    "review_rate_at_98pct_accuracy": 0.7546,
+    "baseline_accuracy_no_review": 0.7485,
+    "review_rate_at_95pct_accuracy": 0.6388,
+    "threshold_at_95pct_accuracy": 0.89,
+    "review_rate_at_98pct_accuracy": 0.759,
     "threshold_at_98pct_accuracy": 0.94,
     "at_threshold_0.85": {
-      "review_rate": 0.5911,
-      "auto_accuracy": 0.9557
+      "review_rate": 0.5714,
+      "auto_accuracy": 0.944
     }
   },
   "signals": {

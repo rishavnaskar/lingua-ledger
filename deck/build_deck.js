@@ -263,7 +263,7 @@ async function iconPng(name, hex, px = 256) {
       "A single threshold τ turns confidence into a routing decision; we publish the full review-rate versus accuracy curve so an operator picks their own point.",
       "Evidence travels with every field: which path, which rules fired, the crop of the page it came from.",
     ], 11.5, C.text2, 5), { x: 5.5, y: 1.7, w: 3.85, h: 3.1, isTextBox: true, margin: 0, valign: "top" });
-    s.addNotes("This is the innovation slide. Each signal is cheap; the value is in fusing them and calibrating against ground truth so the number is honest. The reliability diagram and the review-rate curve are the two charts that will appear in the Round 2 update with real numbers.");
+    s.addNotes("This slide shows where our real innovation happens. Each signal is cheap, but the real power comes from fusing them and calibrating against ground truth so our numbers stay honest. Two slides later, the reliability diagram and review-rate curve show the result on real data.");
   }
 
   // ======================================================================
@@ -297,15 +297,15 @@ async function iconPng(name, hex, px = 256) {
       text(s, kp[i][2], { x: x + 0.6, y: y + 0.28, w: 2.35, h: 0.75, fontSize: 10.5, color: C.text2, valign: "top" });
     }
     text(s, "All datasets are public research benchmarks used under their published licences; no customer documents are used. Synthetic multilingual invoices rendered from templates cover the invoice type across the same seven languages.", { x: 0.5, y: 4.65, w: 9.0, h: 0.45, fontSize: 10, italic: true, color: "7A8696" });
-    s.addNotes("Seven languages from XFUND alone, four document types across the five datasets. Every number in the Round 2 update will be reproducible from the public repo with one command.");
+    s.addNotes("We cover nine languages across five datasets, synthetic invoices, and four document types. Every number on the next three slides is reproducible from our public repo with one command.");
   }
 
   // Results (only when the evaluation has been run)
   if (SUMMARY && SUMMARY.documents) {
     const f1 = SUMMARY.f1 || {};
-    const stat = (s, x, y, big, label, color) => {
-      text(s, big, { x, y, w: 2.1, h: 0.65, fontSize: 30, bold: true, color: color || H.accent1 });
-      text(s, label, { x, y: y + 0.65, w: 2.1, h: 0.5, fontSize: 10.5, color: C.text2, valign: "top" });
+    const stat = (s, x, y, big, label, color, w = 2.1, size = 30) => {
+      text(s, big, { x, y, w, h: 0.65, fontSize: size, bold: true, color: color || H.accent1 });
+      text(s, label, { x, y: y + 0.65, w, h: 0.5, fontSize: 10.5, color: C.text2, valign: "top" });
     };
     const datasets = ["xfund", "funsd", "cord", "sroie", "synth_invoices", "cuad"];
     const names = { xfund: "XFUND forms (7 langs)", funsd: "FUNSD forms (EN)", cord: "CORD receipts (ID)",
@@ -333,8 +333,8 @@ async function iconPng(name, hex, px = 256) {
         s.addImage({ path: chart("f1_by_language"), x: 6.3, y: 1.25, w: 3.3, h: 1.76, objectName: "f1 by language" });
       }
       const cls = SUMMARY.classification || {};
-      stat(s, 6.3, 3.3, pct(cls.doc_type_acc), "document type detected correctly", H.accent4);
-      stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4);
+      stat(s, 6.3, 3.3, pct(cls.doc_type_acc), "document type detected correctly", H.accent4, 1.55);
+      stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4, 1.55);
       text(s, "Field-level F1 against published ground truth. Forms: key-value pairs. Receipts and invoices: every labelled field and line item. Contracts: parties, dates, governing law. Same prompts and schema for every path.",
         { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
       s.addNotes("Every number is produced by one command in the public repository. The last column is the full pipeline; the two before it are each reader alone.");
@@ -349,13 +349,13 @@ async function iconPng(name, hex, px = 256) {
       if (chart("reliability")) s.addImage({ path: chart("reliability"), x: 0.5, y: 1.2, w: 4.4, h: 2.08, objectName: "reliability" });
       if (chart("review_curve")) s.addImage({ path: chart("review_curve"), x: 5.1, y: 1.2, w: 4.4, h: 2.64, objectName: "review curve" });
       stat(s, 0.5, 3.5, cal.ece_calibrated != null ? `${cal.ece_raw.toFixed(3)} → ${cal.ece_calibrated.toFixed(3)}` : "n/a",
-        "expected calibration error, raw score → calibrated (lower is better)", H.accent1);
+        "expected calibration error, raw score → calibrated (lower is better)", H.accent1, 2.2, 24);
       stat(s, 2.8, 3.5, pct(cal.field_accuracy), "fields correct with no human review at all", H.accent4);
       const r98 = rev.review_rate_at_98pct_accuracy;
       stat(s, 5.1, 3.95, pct(r98), "of fields need a human to reach 98% accuracy on what posts automatically", H.accent2);
       const r95 = rev.review_rate_at_95pct_accuracy;
       stat(s, 7.4, 3.95, pct(r95), "of fields need a human to reach 95% accuracy", H.accent2);
-      s.addNotes("Left: a reliability diagram on the held-out half of the fields. Right: the operating curve an operator actually uses. The amber numbers are the headline: how much human work buys how much accuracy.");
+      s.addNotes("On the left is a reliability diagram scored with two-fold cross-fitting, so every field is scored by a calibrator that never saw its document. On the right is the operating curve an operator actually uses. The amber numbers are the headline, showing how much human work buys how much accuracy.");
     }
 
     // Cost and latency
@@ -366,9 +366,10 @@ async function iconPng(name, hex, px = 256) {
       const tok = SUMMARY.tokens || {};
       const cost = SUMMARY.cost_usd || {};
       if (chart("ablation")) s.addImage({ path: chart("ablation"), x: 0.5, y: 1.2, w: 5.4, h: 2.62, objectName: "ablation" });
-      stat(s, 6.3, 1.25, lat.p50 != null ? `${lat.p50.toFixed(1)} s` : "n/a", "median end-to-end time per document, both readers in parallel", H.accent4);
-      stat(s, 6.3, 2.55, lat.p95 != null ? `${lat.p95.toFixed(1)} s` : "n/a", "95th percentile", H.accent4);
-      stat(s, 6.3, 3.85, cost.per_1000_docs != null ? `$${cost.per_1000_docs.toFixed(0)}` : "n/a", "model cost per 1,000 documents at list prices", H.accent1);
+      const rp50 = lat.reader_p50 != null ? lat.reader_p50 : lat.p50;
+      stat(s, 6.3, 1.25, rp50 != null ? `${rp50.toFixed(1)} s` : "n/a", "median model reading time per document, both readers in parallel, Free Tier rate limits included", H.accent4, 3.2);
+      stat(s, 6.3, 2.55, lat.p50 != null ? `${lat.p50.toFixed(1)} s` : "n/a", "median end to end, with OCR, classification and throttling waits", H.accent4, 3.2);
+      stat(s, 6.3, 3.85, cost.per_1000_docs != null ? `$${cost.per_1000_docs.toFixed(2)}` : "n/a", "model cost per 1,000 documents at list prices", H.accent1, 3.2);
       text(s, `Tokens per document: about ${tok.per_doc_input || "n/a"} in, ${tok.per_doc_output || "n/a"} out across both readers. Review effort scales with low-confidence fields, not with document volume.`,
         { x: 0.5, y: 4.0, w: 5.4, h: 0.9, fontSize: 11, color: C.text2 });
       s.addNotes("Ablation on the left: each reader alone versus the pair with validators. Cost on the right at public list prices, no caching or batching, so this is an upper bound.");
@@ -446,9 +447,9 @@ async function iconPng(name, hex, px = 256) {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
     s.addText("Roadmap: pipeline, then evidence, then production", { placeholder: "title" });
     const phases = [
-      ["Round 1 · 10 Nov", "Working pipeline", ["Both extraction paths and validators", "Four document-type schemas", "Hosted demo with sample documents", "Eval harness wired to XFUND, CORD, SROIE"], H.accent1],
-      ["Round 2 · by 25 Nov", "Evidence", ["Per-language F1 and ablations", "Calibration curves and ECE", "Review-rate vs accuracy curve", "Cost and latency per page"], H.accent4],
-      ["Beyond", "Production", ["Active learning from reviewer corrections", "Open-weights model path for on-prem", "Connectors: email inbox, SAP, Tally", "Table and handwriting extraction"], H.dk2],
+      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Runs both readers, validators, calibration, and review routing", "198 public benchmark documents, 9 languages; one command, all numbers", "Live hosted demo with sample documents", "225 unit tests under an MIT licence"], H.accent1],
+      ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini, Claude readers; one environment variable; compared cost, accuracy", "Japanese and Chinese forms: layout-aware prompts, key normalisation", "Lenient form scoring right next to the strict one", "Corrections from the review UI feed the calibrator"], H.accent4],
+      ["Beyond Round 2", "Moving into production", ["Active learning straight from reviewer corrections", "Open-weights model path for on-prem use", "Connectors for email inbox, SAP, and Tally", "Full table and handwriting extraction support"], H.dk2],
     ];
     for (let i = 0; i < 3; i++) {
       const x = 0.5 + i * 3.05, y = 1.3, w = 2.9, h = 3.6;
@@ -456,10 +457,10 @@ async function iconPng(name, hex, px = 256) {
       s.addShape(pres.shapes.OVAL, { x: x + 0.2, y: y + 0.2, w: 0.42, h: 0.42, fill: { color: phases[i][4] }, line: { color: phases[i][4], width: 0 }, objectName: "num" });
       text(s, String(i + 1), { x: x + 0.2, y: y + 0.2, w: 0.42, h: 0.42, fontSize: 14, bold: true, color: H.lt1, align: "center", valign: "middle" });
       text(s, phases[i][0], { x: x + 0.75, y: y + 0.2, w: w - 0.9, h: 0.22, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
-      text(s, phases[i][1], { x: x + 0.75, y: y + 0.4, w: w - 0.9, h: 0.3, fontSize: 15, bold: true, color: C.text1 });
-      s.addText(bullets(phases[i][2], 11.5, C.text2, 6), { x: x + 0.2, y: y + 0.95, w: w - 0.4, h: 2.5, isTextBox: true, margin: 0, valign: "top" });
+      text(s, phases[i][1], { x: x + 0.75, y: y + 0.42, w: w - 0.9, h: 0.62, fontSize: 14, bold: true, color: C.text1, valign: "top" });
+      s.addText(bullets(phases[i][2], 11.5, C.text2, 6), { x: x + 0.2, y: y + 1.15, w: w - 0.4, h: 2.35, isTextBox: true, margin: 0, valign: "top" });
     }
-    s.addNotes("Honest about what exists at Round 1 and what Round 2 adds. The production items are the obvious asks from an enterprise buyer and show the path beyond the hackathon.");
+    s.addNotes("Round 1 already includes the evidence we promised. Round 2 focuses on boosting quality with bigger readers and fixing our weakest languages. Everything in production covers the obvious features enterprise buyers ask for.");
   }
 
   // ======================================================================

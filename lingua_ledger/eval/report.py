@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 from collections import defaultdict
 
@@ -45,6 +46,10 @@ def _style(ax):
     ax.title.set_color(INK)
     ax.xaxis.label.set_color(MUTED)
     ax.yaxis.label.set_color(MUTED)
+
+
+def _stable_hash(text: str) -> int:
+    return int(hashlib.sha1(text.encode()).hexdigest(), 16)
 
 
 def _ece(conf: np.ndarray, correct: np.ndarray, bins: int = 10) -> float:
@@ -93,25 +98,36 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
             ),
         }
 
-    # Calibration on field-level correctness, fit on even-hash docs, evaluate on odd-hash docs.
-    fit_rows, test_rows = [], []
+    # Calibration on field-level correctness: two folds by document hash, each half scored by a
+    # calibrator fit on the other half; the saved calibrator is fit on everything.
+    folds: list[list[tuple[str, float, bool, str]]] = [[], []]
     for r in rows:
         if not r.get("fields"):
             continue
         labels = label_fields(r["pred"], r["gold"])
-        bucket = fit_rows if (hash(r["doc_id"]) % 2 == 0) else test_rows
+        bucket = folds[_stable_hash(r["doc_id"]) % 2]
         for f in r["fields"]:
             if f["value"] in (None, "", []) or f["field"] not in labels:
                 continue
             bucket.append((r["doc_type"], float(f["raw_score"]), bool(labels[f["field"]]), r["dataset"]))
-    cal = Calibrator.fit([(d, s, c) for d, s, c, _ in fit_rows]) if len(fit_rows) >= 50 else Calibrator()
+    all_rows = folds[0] + folds[1]
+    cal = Calibrator.fit([(d, s, c) for d, s, c, _ in all_rows]) if len(all_rows) >= 50 else Calibrator()
     cal.save()
+    test_rows: list[tuple[str, float, bool, str]] = []
+    calibrated_list: list[float] = []
+    for k in (0, 1):
+        other = folds[1 - k]
+        cal_k = Calibrator.fit([(d, s, c) for d, s, c, _ in other]) if len(other) >= 50 else Calibrator()
+        for d, s, c, ds in folds[k]:
+            test_rows.append((d, s, c, ds))
+            calibrated_list.append(cal_k(s, d))
     if test_rows:
         raw = np.array([s for _, s, _, _ in test_rows])
         correct = np.array([c for _, _, c, _ in test_rows], dtype=float)
-        calibrated = np.array([cal(s, d) for d, s, _, _ in test_rows])
+        calibrated = np.array(calibrated_list)
         summary["calibration"] = {
-            "fit_fields": len(fit_rows),
+            "folds": 2,
+            "fold_fields": [len(folds[0]), len(folds[1])],
             "test_fields": len(test_rows),
             "field_accuracy": round(float(correct.mean()), 4),
             "ece_raw": round(_ece(raw, correct), 4),
@@ -294,7 +310,7 @@ def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
         ax.set_xticklabels([d.replace("_", " ") for d in datasets])
         ax.set_ylim(0, 105)
         ax.set_ylabel("Field F1 (%)")
-        ax.set_title("Ablation: each reader alone versus the full pipeline", fontsize=10, loc="left")
+        ax.set_title("Ablation: each reader alone versus the full pipeline", fontsize=10, loc="left", pad=22)
         ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3)
         _style(ax)
         fig.tight_layout()
