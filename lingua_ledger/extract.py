@@ -79,6 +79,7 @@ def extract_vision(images: list[Image.Image], doc_type: DocType) -> PathOutput:
             latency_s=meta["latency_s"],
             input_tokens=meta["input_tokens"],
             output_tokens=meta["output_tokens"],
+            model=meta.get("model"),
         )
     except Exception as e:  # noqa: BLE001
         return PathOutput(
@@ -98,6 +99,7 @@ def extract_text(ocr_text: str, doc_type: DocType) -> PathOutput:
             latency_s=meta["latency_s"],
             input_tokens=meta["input_tokens"],
             output_tokens=meta["output_tokens"],
+            model=meta.get("model"),
         )
     except Exception as e:  # noqa: BLE001
         return PathOutput(

@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import json
 import os
+import threading
 import time
 from functools import lru_cache
 from typing import Any
@@ -64,17 +65,7 @@ def call_structured(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     t0 = time.perf_counter()
     if PROVIDER == "gemini":
-        from google.genai import errors
-
-        candidates = [model, *[m for m in FALLBACK_MODELS if m != model]]
-        for i, m in enumerate(candidates):
-            try:
-                data, usage = _gemini(m, system, content, schema, max_tokens, effort)
-                model = m
-                break
-            except errors.ServerError:
-                if i == len(candidates) - 1:
-                    raise
+        data, usage, model = _gemini_with_fallback(model, system, content, schema, max_tokens, effort)
     else:
         data, usage = _anthropic(model, system, content, schema, max_tokens, effort)
     usage.update({"latency_s": round(time.perf_counter() - t0, 3), "model": model, "provider": PROVIDER})
@@ -115,17 +106,23 @@ def _anthropic(model, system, content, schema, max_tokens, effort):
     }
 
 
-@lru_cache(maxsize=1)
-def _gemini_client():
-    from google import genai
-    from google.genai import types
+_local = threading.local()
 
-    return genai.Client(
-        http_options=types.HttpOptions(
-            timeout=180_000,
-            retry_options=types.HttpRetryOptions(attempts=5, initial_delay=2.0, max_delay=30.0),
+
+def _gemini_client(fresh: bool = False):
+    client = None if fresh else getattr(_local, "gemini", None)
+    if client is None:
+        from google import genai
+        from google.genai import types
+
+        client = genai.Client(
+            http_options=types.HttpOptions(
+                timeout=120_000,
+                retry_options=types.HttpRetryOptions(attempts=3, initial_delay=2.0, max_delay=20.0),
+            )
         )
-    )
+        _local.gemini = client
+    return client
 
 
 def _gemini_parts(content):
@@ -145,12 +142,31 @@ def _gemini_parts(content):
     return parts
 
 
-def _gemini(model, system, content, schema, max_tokens, effort):
+def _gemini_with_fallback(model, system, content, schema, max_tokens, effort):
+    from google.genai import errors
+
+    candidates = [model, *[m for m in FALLBACK_MODELS if m != model]]
+    for i, m in enumerate(candidates):
+        try:
+            data, usage = _gemini(m, system, content, schema, max_tokens, effort)
+            return data, usage, m
+        except RuntimeError as e:
+            if "closed" not in str(e):
+                raise
+            data, usage = _gemini(m, system, content, schema, max_tokens, effort, fresh=True)
+            return data, usage, m
+        except errors.ServerError:
+            if i == len(candidates) - 1:
+                raise
+    raise RuntimeError("no model candidates")
+
+
+def _gemini(model, system, content, schema, max_tokens, effort, fresh: bool = False):
     from google.genai import types
 
     level = {"low": "low", "medium": "medium", "high": "high"}.get(effort, "medium")
     thinking = types.ThinkingConfig(thinking_level=level) if model.startswith("gemini-3") else None
-    resp = _gemini_client().models.generate_content(
+    resp = _gemini_client(fresh).models.generate_content(
         model=model,
         contents=[types.Content(role="user", parts=_gemini_parts(content))],
         config=types.GenerateContentConfig(

@@ -129,6 +129,7 @@ class PathOutput(BaseModel):
     latency_s: float = 0.0
     input_tokens: int = 0
     output_tokens: int = 0
+    model: str | None = None
     error: str | None = None
 
 
