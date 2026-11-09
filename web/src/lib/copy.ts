@@ -426,7 +426,7 @@ export const copy = {
     },
     arbiter: {
       title: "Arbiter",
-      body: "A closer look at fields where the two readers disagreed. The verdict helps score confidence. Letting it replace values didn't improve accuracy, so we keep the merged text.",
+      body: "Here is a closer look at where the two readers disagreed. We use the result to score confidence, but keep the merged text because replacing it barely improved accuracy.",
       disputes: "Disputed fields",
       documents: (n: number, total: number) => `${n} of ${total} documents had disputes`,
       before: "Disputed fields correct with merged values",
@@ -480,7 +480,7 @@ export const copy = {
       },
       {
         title: "Arbiter verdict",
-        body: "When the two readers disagree, a vision model looks at a cropped image of the text to pick the best match. Its verdict helps score confidence. Letting it replace values didn't help accuracy in tests, so we keep the merged value.",
+        body: "When the two readers disagree, a vision model looks at a crop of the page to help score confidence. We still keep the merged text because replacing it barely helped accuracy in tests.",
       },
     ],
     calibrationTitle: "Calibration",

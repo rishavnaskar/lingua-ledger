@@ -120,7 +120,7 @@ export function FieldsTable({
         {c.title}
       </CardTitle>
 
-      <div className="overflow-x-auto rounded-xl border border-line bg-white">
+      <div className="relative overflow-x-auto rounded-xl border border-line bg-white">
         <table className="w-full min-w-[680px] text-left text-sm">
           <thead className="text-xs text-muted">
             <tr>

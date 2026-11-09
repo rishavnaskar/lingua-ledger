@@ -8,6 +8,7 @@ import {
   DEFAULT_THRESHOLD,
   extractFile,
   extractSample,
+  getLearning,
   sampleFileUrl,
   type DocType,
   type ExtractResponse,
@@ -53,6 +54,7 @@ export function Workbench() {
   const [docType, setDocType] = useState<DocType | "">("");
   const [arbiter, setArbiter] = useState(true);
   const [learning, setLearning] = useState<LearningState | null>(null);
+  const [ledgerSize, setLedgerSize] = useState<number | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -65,6 +67,15 @@ export function Workbench() {
     },
     [],
   );
+
+  useEffect(() => {
+    if (!result) return;
+    const ctrl = new AbortController();
+    getLearning(ctrl.signal)
+      .then((state) => setLedgerSize(state.memory.documents_posted))
+      .catch(() => {});
+    return () => ctrl.abort();
+  }, [result]);
 
   const start = useCallback(async (next: Job) => {
     abortRef.current?.abort();
@@ -242,7 +253,7 @@ export function Workbench() {
                   knownFields={knownFields}
                   onHover={setHovered}
                   onSelect={(f) => select(f, "panel")}
-                  postedDocuments={learning?.memory.documents_posted ?? null}
+                  postedDocuments={Math.max(learning?.memory.documents_posted ?? 0, ledgerSize ?? 0) || null}
                 />
                 <ReviewPanel
                   result={result}

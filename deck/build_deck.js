@@ -341,7 +341,7 @@ async function iconPng(name, hex, px = 256) {
       stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4, 1.55);
       text(s, "Field F1 scored against published ground truth. Forms: key-value pairs. Receipts and invoices: every labeled field and line item. Contracts: parties, dates, governing law. Same prompts and schema throughout.",
         { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
-      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone. We tested the arbiter honestly: letting it overwrite values did not improve accuracy on disputed fields. Because of that, we ship it as a confidence signal instead, which cuts calibration error from 0.038 to 0.037");
+      s.addNotes("You can reproduce every single result here with one command from our public repository. The final column shows the complete system, while the two before it show each reader working on its own. We tested the arbiter thoroughly: letting it overwrite answers gave only a tiny bump on disputed fields, moving accuracy from 78.0% to 79.8% across 109 fields, and its OCR choices were right only about half the time (53.8%). Because of that, we use the arbiter as a confidence signal instead of an override, which lowers our calibration error from 0.038 to 0.037.");
     }
 
     // Calibration and review load
@@ -451,7 +451,7 @@ async function iconPng(name, hex, px = 256) {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
     s.addText("Roadmap: pipeline, evidence, then production", { placeholder: "title" });
     const phases = [
-      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Two readers, an arbiter for disputes, validators, calibration, and review routing", "198 public benchmark documents, 9 languages, and one command produces all numbers", "Live hosted demo with sample documents, anomaly checks, and calibrator review panel", "Forms scored strict and lenient; prompt updates showed no score gain", "241 unit tests released under an MIT licence"], H.accent1],
+      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Two readers, an arbiter for disputes, validators, calibration, and review routing", "198 public benchmark documents, 9 languages, and one command produces all numbers", "Live hosted demo with sample documents, anomaly checks, and calibrator review panel", "Forms scored strict and lenient; prompt updates showed no score gain", "242 unit tests released under an MIT licence"], H.accent1],
       ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini and Claude readers, one environment variable, comparing cost and accuracy", "Stronger arbiter model and more languages, starting with Hindi and Arabic forms", "Three-way match: reconciled purchase orders, invoices, and receipts, flagging any mismatches", "Backed vendor memory with a database instead of a file"], H.accent4],
       ["Beyond Round 2", "Moving into production", ["Open-weights model path for on-prem use", "Connectors for email inbox, SAP, and Tally", "Full table and handwriting extraction support"], H.dk2],
     ];

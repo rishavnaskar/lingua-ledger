@@ -116,7 +116,7 @@ You can check per-language form F1 in artifacts/f1_by_language.png, and the comp
 
 Across 92 of 198 documents (forms excluded), our readers disagreed on 224 fields. The arbiter agreed with the vision reader 186 times, picked the OCR reader 25 times, read a different value 11 times, and marked 2 crops as unreadable.
 
-We tested letting the arbiter overwrite values, but it did not help. On the 109 disputed fields with gold labels, accuracy went from 78.0% to 79.8%. The vision reader was usually right to begin with, and overrides were wrong more often than right (accuracy was 53.8% when it picked OCR, and 33.3% when it read a new value).
+We tried letting the arbiter step in and overwrite values, but it did not help much. On 109 disputed fields with gold labels, accuracy only edged up from 78.0% to 79.8%. The vision reader was usually already correct, and whenever the arbiter stepped in to change an answer, it was right only about half the time: 53.8% when choosing the OCR value, and only 33.3% when trying to read an entirely new value.
 
 Where the arbiter really helps is with confidence scoring. Fields confirmed by the arbiter are right 88.6% of the time, compared to 79.6% for disagreements overall. So by default, we leave the original value alone and only let the verdict adjust the score. That cuts our calibration error from 0.038 to 0.037 and drops the review rate at 95% accuracy from 65.5% to 65.2%.
 
@@ -163,7 +163,7 @@ uv run pytest -q
 uv run ruff check .
 ```
 
-225 tests cover the validators, normalization, confidence scoring, calibration, OCR value location, dataset loaders, and the synthetic generator.
+242 tests cover the validators, normalization, confidence scoring, calibration, OCR value location, dataset loaders, and the synthetic generator.
 
 ## Project layout
 

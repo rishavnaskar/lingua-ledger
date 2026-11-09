@@ -248,7 +248,7 @@ function ChartCard({ name }: { name: ChartName }) {
           <img
             src={chartUrl(name)}
             alt={item.title}
-            loading="lazy"
+            decoding="async"
             onError={() => setFailed(true)}
             className="block h-auto w-full"
           />
@@ -284,7 +284,7 @@ function F1Table({ f1 }: { f1: Record<string, number> }) {
     <Card>
       <CardTitle>{c.title}</CardTitle>
       {cols.includes("lenient") && <p className="-mt-1 mb-3 text-sm text-muted">{c.lenientNote}</p>}
-      <div className="overflow-x-auto rounded-xl border border-line bg-white">
+      <div className="relative overflow-x-auto rounded-xl border border-line bg-white">
         <table className="w-full min-w-[420px] text-left text-sm">
           <thead className="text-xs text-muted">
             <tr>
@@ -328,7 +328,7 @@ function SignalsTable({ signals }: { signals: Record<string, { n: number; accura
     <Card>
       <CardTitle>{c.title}</CardTitle>
       <p className="-mt-1 mb-3 text-sm text-muted">{c.body}</p>
-      <div className="overflow-x-auto rounded-xl border border-line bg-white">
+      <div className="relative overflow-x-auto rounded-xl border border-line bg-white">
         <table className="w-full min-w-[360px] text-left text-sm">
           <thead className="text-xs text-muted">
             <tr>
