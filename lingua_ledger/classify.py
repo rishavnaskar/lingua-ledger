@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import re
+from typing import Literal
 
 from PIL import Image
+from pydantic import BaseModel, Field
 
 from .config import CLASSIFY_MODEL
 from .llm import call_structured, has_api_key, image_blocks
@@ -15,20 +17,36 @@ SYSTEM = (
     "applications), contract (legal agreement between parties). Use ISO 639-1 language codes."
 )
 
-SCHEMA = {
-    "type": "object",
-    "properties": {
-        "doc_type": {"type": "string", "enum": [t.value for t in DocType]},
-        "language": {"type": "string", "description": "ISO 639-1 code such as en, de, ja, zh"},
-        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-    },
-    "required": ["doc_type", "language", "confidence"],
-}
+
+class ClassifyOut(BaseModel):
+    doc_type: Literal["invoice", "receipt", "form", "contract"]
+    language: str = Field(description="ISO 639-1 code such as en, de, ja, zh")
+    confidence: float = Field(ge=0, le=1)
+
 
 _KEYWORDS = {
-    DocType.invoice: ["invoice", "rechnung", "facture", "factura", "fattura", "fatura", "請求書", "发票", "iban", "due date"],
+    DocType.invoice: [
+        "invoice",
+        "rechnung",
+        "facture",
+        "factura",
+        "fattura",
+        "fatura",
+        "請求書",
+        "发票",
+        "iban",
+        "due date",
+    ],
     DocType.receipt: ["receipt", "total", "cash", "change", "thank you", "kasir", "tunai", "kembali", "qty"],
-    DocType.contract: ["agreement", "hereinafter", "party", "parties", "governing law", "whereas", "witnesseth"],
+    DocType.contract: [
+        "agreement",
+        "hereinafter",
+        "party",
+        "parties",
+        "governing law",
+        "whereas",
+        "witnesseth",
+    ],
 }
 
 
@@ -36,10 +54,13 @@ def classify(images: list[Image.Image], ocr_text: str | None = None) -> Classifi
     if has_api_key():
         content = image_blocks(images[:1], max_side=1200)
         content.append({"type": "text", "text": "Classify this document."})
-        out, _ = call_structured(CLASSIFY_MODEL, SYSTEM, content, SCHEMA, max_tokens=300, effort="low")
+        out, _ = call_structured(CLASSIFY_MODEL, SYSTEM, content, ClassifyOut, max_tokens=2000, effort="low")
         try:
-            return Classification(doc_type=DocType(out["doc_type"]), language=out.get("language", "en")[:2].lower(),
-                                  confidence=float(out.get("confidence", 0.5)))
+            return Classification(
+                doc_type=DocType(out["doc_type"]),
+                language=out.get("language", "en")[:2].lower(),
+                confidence=float(out.get("confidence", 0.5)),
+            )
         except (KeyError, ValueError):
             pass
     return heuristic(ocr_text or "")

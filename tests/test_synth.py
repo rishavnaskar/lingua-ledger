@@ -22,9 +22,18 @@ from lingua_ledger.synth import (
 )
 from lingua_ledger.validate import validate
 
-CORE_RULES = ("required_fields_present", "total_positive", "line_items_sum_subtotal", "line_item_arithmetic",
-              "tax_math", "total_equals_subtotal_plus_tax", "date_parseable", "due_after_invoice",
-              "currency_valid", "vat_id_valid")
+CORE_RULES = (
+    "required_fields_present",
+    "total_positive",
+    "line_items_sum_subtotal",
+    "line_item_arithmetic",
+    "tax_math",
+    "total_equals_subtotal_plus_tax",
+    "date_parseable",
+    "due_after_invoice",
+    "currency_valid",
+    "vat_id_valid",
+)
 
 
 @pytest.fixture(scope="module")

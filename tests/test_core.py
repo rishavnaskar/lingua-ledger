@@ -5,8 +5,11 @@ from lingua_ledger.schemas import Invoice, OcrPage, Word
 
 
 def test_flatten_roundtrip():
-    data = Invoice(vendor_name="ACME", line_items=[{"description": "Widget", "quantity": 2, "unit_price": 5, "total": 10}],
-                   total=10).model_dump()
+    data = Invoice(
+        vendor_name="ACME",
+        line_items=[{"description": "Widget", "quantity": 2, "unit_price": 5, "total": 10}],
+        total=10,
+    ).model_dump()
     flat = flatten(data)
     assert flat["line_items[0].total"] == 10
     assert flat["vendor_name"] == "ACME"
@@ -42,8 +45,10 @@ def test_calibrator_fit_monotone():
 
 
 def _page():
-    words = [Word(text=t, conf=c, x0=10 + 60 * i, y0=10, x1=60 + 60 * i, y1=30, line=0)
-             for i, (t, c) in enumerate([("Gesamtbetrag", 96), ("1", 80), ("475,60", 92), ("EUR", 95)])]
+    words = [
+        Word(text=t, conf=c, x0=10 + 60 * i, y0=10, x1=60 + 60 * i, y1=30, line=0)
+        for i, (t, c) in enumerate([("Gesamtbetrag", 96), ("1", 80), ("475,60", 92), ("EUR", 95)])
+    ]
     return [OcrPage(page=0, width=400, height=100, words=words)]
 
 

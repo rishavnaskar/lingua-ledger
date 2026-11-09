@@ -64,7 +64,9 @@ class KeyValue(BaseModel):
 
 class Form(BaseModel):
     title: str | None = None
-    fields: list[KeyValue] = Field(default_factory=list, description="Every labelled field with its filled value")
+    fields: list[KeyValue] = Field(
+        default_factory=list, description="Every labelled field with its filled value"
+    )
 
 
 class Contract(BaseModel):
@@ -121,7 +123,9 @@ class Classification(BaseModel):
 class PathOutput(BaseModel):
     path: Literal["vision", "ocr_text"]
     data: dict[str, Any]
-    self_confidence: dict[str, float] = Field(default_factory=dict, description="Model self-reported 0-1 per field")
+    self_confidence: dict[str, float] = Field(
+        default_factory=dict, description="Model self-reported 0-1 per field"
+    )
     latency_s: float = 0.0
     input_tokens: int = 0
     output_tokens: int = 0

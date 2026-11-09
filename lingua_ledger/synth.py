@@ -43,18 +43,90 @@ LOGO_SHAPES = ("square", "circle", "round")
 TEMPLATES = ("classic", "band", "minimal")
 
 MONTH_NAMES = {
-    "en": ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-           "November", "December"),
-    "de": ("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
-           "November", "Dezember"),
-    "fr": ("janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre",
-           "novembre", "décembre"),
-    "es": ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
-           "noviembre", "diciembre"),
-    "it": ("gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre",
-           "ottobre", "novembre", "dicembre"),
-    "pt": ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro",
-           "novembro", "dezembro"),
+    "en": (
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ),
+    "de": (
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+    ),
+    "fr": (
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+    ),
+    "es": (
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre",
+    ),
+    "it": (
+        "gennaio",
+        "febbraio",
+        "marzo",
+        "aprile",
+        "maggio",
+        "giugno",
+        "luglio",
+        "agosto",
+        "settembre",
+        "ottobre",
+        "novembre",
+        "dicembre",
+    ),
+    "pt": (
+        "janeiro",
+        "fevereiro",
+        "março",
+        "abril",
+        "maio",
+        "junho",
+        "julho",
+        "agosto",
+        "setembro",
+        "outubro",
+        "novembro",
+        "dezembro",
+    ),
 }
 
 
@@ -63,24 +135,49 @@ def _month(lang: str, d: date) -> str:
 
 
 DATE_FORMATS = {
-    "en": (lambda d: f"{d:%d/%m/%Y}", lambda d: f"{d.day} {_month('en', d)[:3]} {d.year}",
-           lambda d: f"{d.day} {_month('en', d)} {d.year}"),
+    "en": (
+        lambda d: f"{d:%d/%m/%Y}",
+        lambda d: f"{d.day} {_month('en', d)[:3]} {d.year}",
+        lambda d: f"{d.day} {_month('en', d)} {d.year}",
+    ),
     "de": (lambda d: f"{d:%d.%m.%Y}", lambda d: f"{d.day}. {_month('de', d)} {d.year}"),
-    "fr": (lambda d: f"{d:%d/%m/%Y}", lambda d: f"{'1er' if d.day == 1 else d.day} {_month('fr', d)} {d.year}"),
+    "fr": (
+        lambda d: f"{d:%d/%m/%Y}",
+        lambda d: f"{'1er' if d.day == 1 else d.day} {_month('fr', d)} {d.year}",
+    ),
     "es": (lambda d: f"{d:%d/%m/%Y}", lambda d: f"{d.day} de {_month('es', d)} de {d.year}"),
     "it": (lambda d: f"{d:%d/%m/%Y}", lambda d: f"{d.day} {_month('it', d)} {d.year}"),
-    "pt": (lambda d: f"{d:%d/%m/%Y}", lambda d: f"{d:%d-%m-%Y}", lambda d: f"{d.day} de {_month('pt', d)} de {d.year}"),
+    "pt": (
+        lambda d: f"{d:%d/%m/%Y}",
+        lambda d: f"{d:%d-%m-%Y}",
+        lambda d: f"{d.day} de {_month('pt', d)} de {d.year}",
+    ),
     "ja": (lambda d: f"{d.year}年{d.month}月{d.day}日", lambda d: f"{d:%Y/%m/%d}"),
 }
 
 LOCALES: dict[str, dict] = {
     "en": {
-        "country": "GB", "currency": "GBP", "symbol": "£", "symbol_after": False, "vat_rate": 20,
+        "country": "GB",
+        "currency": "GBP",
+        "symbol": "£",
+        "symbol_after": False,
+        "vat_rate": 20,
         "labels": {
-            "invoice": "INVOICE", "number": "Invoice No.", "date": "Invoice Date", "due": "Due Date",
-            "bill_to": "Bill To", "desc": "Description", "qty": "Qty", "unit": "Unit Price", "amount": "Amount",
-            "subtotal": "Subtotal", "total": "Total Due", "vat_id": "VAT Reg. No.", "bank": "Bank",
-            "terms": "Payment terms", "thanks": "Thank you for your business.",
+            "invoice": "INVOICE",
+            "number": "Invoice No.",
+            "date": "Invoice Date",
+            "due": "Due Date",
+            "bill_to": "Bill To",
+            "desc": "Description",
+            "qty": "Qty",
+            "unit": "Unit Price",
+            "amount": "Amount",
+            "subtotal": "Subtotal",
+            "total": "Total Due",
+            "vat_id": "VAT Reg. No.",
+            "bank": "Bank",
+            "terms": "Payment terms",
+            "thanks": "Thank you for your business.",
         },
         "tax_label": "VAT {rate}%",
         "terms": "Payment due within {days} days of invoice date",
@@ -110,16 +207,35 @@ LOCALES: dict[str, dict] = {
             ("Cloud hosting - business plan", 25, 300, False),
             ("Graphic design (hours)", 45, 120, True),
         ),
-        "banks": (("NatWest", "NWBKGB2L", "NWBK"), ("Barclays Bank UK PLC", "BUKBGB22", "BUKB"),
-                  ("Lloyds Bank", "LOYDGB2L", "LOYD"), ("HSBC UK Bank", "HBUKGB4B", "HBUK")),
+        "banks": (
+            ("NatWest", "NWBKGB2L", "NWBK"),
+            ("Barclays Bank UK PLC", "BUKBGB22", "BUKB"),
+            ("Lloyds Bank", "LOYDGB2L", "LOYD"),
+            ("HSBC UK Bank", "HBUKGB4B", "HBUK"),
+        ),
     },
     "de": {
-        "country": "DE", "currency": "EUR", "symbol": "€", "symbol_after": True, "vat_rate": 19,
+        "country": "DE",
+        "currency": "EUR",
+        "symbol": "€",
+        "symbol_after": True,
+        "vat_rate": 19,
         "labels": {
-            "invoice": "RECHNUNG", "number": "Rechnungsnummer", "date": "Datum", "due": "Fällig am",
-            "bill_to": "Rechnungsempfänger", "desc": "Beschreibung", "qty": "Menge", "unit": "Einzelpreis",
-            "amount": "Betrag", "subtotal": "Zwischensumme", "total": "Gesamtbetrag", "vat_id": "USt-IdNr.",
-            "bank": "Bank", "terms": "Zahlungsbedingungen", "thanks": "Vielen Dank für Ihren Auftrag.",
+            "invoice": "RECHNUNG",
+            "number": "Rechnungsnummer",
+            "date": "Datum",
+            "due": "Fällig am",
+            "bill_to": "Rechnungsempfänger",
+            "desc": "Beschreibung",
+            "qty": "Menge",
+            "unit": "Einzelpreis",
+            "amount": "Betrag",
+            "subtotal": "Zwischensumme",
+            "total": "Gesamtbetrag",
+            "vat_id": "USt-IdNr.",
+            "bank": "Bank",
+            "terms": "Zahlungsbedingungen",
+            "thanks": "Vielen Dank für Ihren Auftrag.",
         },
         "tax_label": "MwSt. {rate} %",
         "terms": "Zahlbar innerhalb von {days} Tagen ohne Abzug",
@@ -149,16 +265,35 @@ LOCALES: dict[str, dict] = {
             ("Cloud-Hosting Business-Tarif", 30, 320, False),
             ("Grafikdesign (Stunden)", 55, 130, True),
         ),
-        "banks": (("Deutsche Bank", "DEUTDEFFXXX"), ("Commerzbank", "COBADEFFXXX"),
-                  ("Sparkasse KölnBonn", "COLSDE33XXX"), ("Berliner Volksbank", "BEVODEBBXXX")),
+        "banks": (
+            ("Deutsche Bank", "DEUTDEFFXXX"),
+            ("Commerzbank", "COBADEFFXXX"),
+            ("Sparkasse KölnBonn", "COLSDE33XXX"),
+            ("Berliner Volksbank", "BEVODEBBXXX"),
+        ),
     },
     "fr": {
-        "country": "FR", "currency": "EUR", "symbol": "€", "symbol_after": True, "vat_rate": 20,
+        "country": "FR",
+        "currency": "EUR",
+        "symbol": "€",
+        "symbol_after": True,
+        "vat_rate": 20,
         "labels": {
-            "invoice": "FACTURE", "number": "N° de facture", "date": "Date de facture", "due": "Date d'échéance",
-            "bill_to": "Facturé à", "desc": "Désignation", "qty": "Qté", "unit": "Prix unitaire HT",
-            "amount": "Montant HT", "subtotal": "Total HT", "total": "Total TTC", "vat_id": "N° TVA intracom.",
-            "bank": "Banque", "terms": "Conditions de paiement", "thanks": "Merci de votre confiance.",
+            "invoice": "FACTURE",
+            "number": "N° de facture",
+            "date": "Date de facture",
+            "due": "Date d'échéance",
+            "bill_to": "Facturé à",
+            "desc": "Désignation",
+            "qty": "Qté",
+            "unit": "Prix unitaire HT",
+            "amount": "Montant HT",
+            "subtotal": "Total HT",
+            "total": "Total TTC",
+            "vat_id": "N° TVA intracom.",
+            "bank": "Banque",
+            "terms": "Conditions de paiement",
+            "thanks": "Merci de votre confiance.",
         },
         "tax_label": "TVA {rate} %",
         "terms": "Paiement à {days} jours à réception de facture",
@@ -188,16 +323,34 @@ LOCALES: dict[str, dict] = {
             ("Hébergement cloud - offre Pro", 30, 300, False),
             ("Création graphique (heures)", 50, 120, True),
         ),
-        "banks": (("BNP Paribas", "BNPAFRPPXXX"), ("Crédit Agricole", "AGRIFRPPXXX"),
-                  ("Société Générale", "SOGEFRPPXXX")),
+        "banks": (
+            ("BNP Paribas", "BNPAFRPPXXX"),
+            ("Crédit Agricole", "AGRIFRPPXXX"),
+            ("Société Générale", "SOGEFRPPXXX"),
+        ),
     },
     "es": {
-        "country": "ES", "currency": "EUR", "symbol": "€", "symbol_after": True, "vat_rate": 21,
+        "country": "ES",
+        "currency": "EUR",
+        "symbol": "€",
+        "symbol_after": True,
+        "vat_rate": 21,
         "labels": {
-            "invoice": "FACTURA", "number": "Nº de factura", "date": "Fecha de factura",
-            "due": "Fecha de vencimiento", "bill_to": "Facturar a", "desc": "Descripción", "qty": "Cant.",
-            "unit": "Precio unitario", "amount": "Importe", "subtotal": "Base imponible", "total": "Total factura",
-            "vat_id": "NIF-IVA", "bank": "Banco", "terms": "Forma de pago", "thanks": "Gracias por su confianza.",
+            "invoice": "FACTURA",
+            "number": "Nº de factura",
+            "date": "Fecha de factura",
+            "due": "Fecha de vencimiento",
+            "bill_to": "Facturar a",
+            "desc": "Descripción",
+            "qty": "Cant.",
+            "unit": "Precio unitario",
+            "amount": "Importe",
+            "subtotal": "Base imponible",
+            "total": "Total factura",
+            "vat_id": "NIF-IVA",
+            "bank": "Banco",
+            "terms": "Forma de pago",
+            "thanks": "Gracias por su confianza.",
         },
         "tax_label": "IVA {rate}%",
         "terms": "Transferencia bancaria a {days} días",
@@ -230,12 +383,27 @@ LOCALES: dict[str, dict] = {
         "banks": (("Banco Santander", "BSCHESMMXXX"), ("BBVA", "BBVAESMMXXX"), ("CaixaBank", "CAIXESBBXXX")),
     },
     "it": {
-        "country": "IT", "currency": "EUR", "symbol": "€", "symbol_after": False, "vat_rate": 22,
+        "country": "IT",
+        "currency": "EUR",
+        "symbol": "€",
+        "symbol_after": False,
+        "vat_rate": 22,
         "labels": {
-            "invoice": "FATTURA", "number": "Fattura n.", "date": "Data fattura", "due": "Scadenza",
-            "bill_to": "Destinatario", "desc": "Descrizione", "qty": "Q.tà", "unit": "Prezzo unitario",
-            "amount": "Importo", "subtotal": "Imponibile", "total": "Totale documento", "vat_id": "Partita IVA",
-            "bank": "Banca", "terms": "Modalità di pagamento", "thanks": "Grazie per la preferenza.",
+            "invoice": "FATTURA",
+            "number": "Fattura n.",
+            "date": "Data fattura",
+            "due": "Scadenza",
+            "bill_to": "Destinatario",
+            "desc": "Descrizione",
+            "qty": "Q.tà",
+            "unit": "Prezzo unitario",
+            "amount": "Importo",
+            "subtotal": "Imponibile",
+            "total": "Totale documento",
+            "vat_id": "Partita IVA",
+            "bank": "Banca",
+            "terms": "Modalità di pagamento",
+            "thanks": "Grazie per la preferenza.",
         },
         "tax_label": "IVA {rate}%",
         "terms": "Bonifico bancario a {days} giorni data fattura",
@@ -265,15 +433,34 @@ LOCALES: dict[str, dict] = {
             ("Hosting cloud - piano business", 25, 290, False),
             ("Progettazione grafica (ore)", 45, 115, True),
         ),
-        "banks": (("Intesa Sanpaolo", "BCITITMMXXX"), ("UniCredit", "UNCRITMMXXX"), ("Banco BPM", "BAPPIT21XXX")),
+        "banks": (
+            ("Intesa Sanpaolo", "BCITITMMXXX"),
+            ("UniCredit", "UNCRITMMXXX"),
+            ("Banco BPM", "BAPPIT21XXX"),
+        ),
     },
     "pt": {
-        "country": "PT", "currency": "EUR", "symbol": "€", "symbol_after": True, "vat_rate": 23,
+        "country": "PT",
+        "currency": "EUR",
+        "symbol": "€",
+        "symbol_after": True,
+        "vat_rate": 23,
         "labels": {
-            "invoice": "FATURA", "number": "Fatura n.º", "date": "Data da fatura", "due": "Data de vencimento",
-            "bill_to": "Cliente", "desc": "Descrição", "qty": "Qtd.", "unit": "Preço unitário", "amount": "Valor",
-            "subtotal": "Subtotal", "total": "Total a pagar", "vat_id": "NIF", "bank": "Banco",
-            "terms": "Condições de pagamento", "thanks": "Obrigado pela preferência.",
+            "invoice": "FATURA",
+            "number": "Fatura n.º",
+            "date": "Data da fatura",
+            "due": "Data de vencimento",
+            "bill_to": "Cliente",
+            "desc": "Descrição",
+            "qty": "Qtd.",
+            "unit": "Preço unitário",
+            "amount": "Valor",
+            "subtotal": "Subtotal",
+            "total": "Total a pagar",
+            "vat_id": "NIF",
+            "bank": "Banco",
+            "terms": "Condições de pagamento",
+            "thanks": "Obrigado pela preferência.",
         },
         "tax_label": "IVA {rate}%",
         "terms": "Pagamento a {days} dias por transferência bancária",
@@ -303,15 +490,33 @@ LOCALES: dict[str, dict] = {
             ("Alojamento cloud - plano empresarial", 25, 260, False),
             ("Design gráfico (horas)", 40, 100, True),
         ),
-        "banks": (("Caixa Geral de Depósitos", "CGDIPTPLXXX"), ("Millennium bcp", "BCOMPTPLXXX"),
-                  ("Novo Banco", "BESCPTPLXXX")),
+        "banks": (
+            ("Caixa Geral de Depósitos", "CGDIPTPLXXX"),
+            ("Millennium bcp", "BCOMPTPLXXX"),
+            ("Novo Banco", "BESCPTPLXXX"),
+        ),
     },
     "ja": {
-        "country": "JP", "currency": "JPY", "symbol": "￥", "symbol_after": False, "vat_rate": 10,
+        "country": "JP",
+        "currency": "JPY",
+        "symbol": "￥",
+        "symbol_after": False,
+        "vat_rate": 10,
         "labels": {
-            "invoice": "請求書", "number": "請求書番号", "date": "請求日", "due": "お支払期限", "bill_to": "請求先",
-            "desc": "品目", "qty": "数量", "unit": "単価", "amount": "金額", "subtotal": "小計",
-            "total": "合計金額", "vat_id": "登録番号", "bank": "お振込先", "terms": "お支払条件",
+            "invoice": "請求書",
+            "number": "請求書番号",
+            "date": "請求日",
+            "due": "お支払期限",
+            "bill_to": "請求先",
+            "desc": "品目",
+            "qty": "数量",
+            "unit": "単価",
+            "amount": "金額",
+            "subtotal": "小計",
+            "total": "合計金額",
+            "vat_id": "登録番号",
+            "bank": "お振込先",
+            "terms": "お支払条件",
             "thanks": "今後ともよろしくお願い申し上げます。",
         },
         "tax_label": "消費税（{rate}%）",
@@ -342,8 +547,12 @@ LOCALES: dict[str, dict] = {
             ("クラウドサーバー利用料", 3000, 40000, False),
             ("デザイン制作費", 20000, 150000, False),
         ),
-        "banks": (("三菱UFJ銀行", "渋谷支店"), ("みずほ銀行", "梅田支店"), ("三井住友銀行", "名古屋支店"),
-                  ("りそな銀行", "六本木支店")),
+        "banks": (
+            ("三菱UFJ銀行", "渋谷支店"),
+            ("みずほ銀行", "梅田支店"),
+            ("三井住友銀行", "名古屋支店"),
+            ("りそな銀行", "六本木支店"),
+        ),
     },
 }
 
@@ -487,7 +696,7 @@ def make_iban(country: str, rng: random.Random, bank_code: str = "") -> str:
 
 
 def group_iban(iban: str) -> str:
-    return " ".join(iban[i:i + 4] for i in range(0, len(iban), 4))
+    return " ".join(iban[i : i + 4] for i in range(0, len(iban), 4))
 
 
 def _quantize(value: Decimal, lang: str) -> Decimal:
@@ -526,8 +735,10 @@ def build_spec(lang: str, index: int, rng: random.Random) -> InvoiceSpec:
     else:
         bank = rng.choice(loc["banks"])
         iban = make_iban(loc["country"], rng, bank[2] if len(bank) > 2 else "")
-        bank_lines = (label_value(lang, loc["labels"]["bank"], bank[0]),
-                      f"{label_value(lang, 'IBAN', group_iban(iban))}   {label_value(lang, 'BIC', bank[1])}")
+        bank_lines = (
+            label_value(lang, loc["labels"]["bank"], bank[0]),
+            f"{label_value(lang, 'IBAN', group_iban(iban))}   {label_value(lang, 'BIC', bank[1])}",
+        )
     template_offset = sum(map(ord, lang)) % len(TEMPLATES)
     return InvoiceSpec(
         doc_id=f"synth_{lang}_{index:03d}",
@@ -567,8 +778,10 @@ def gold_for(spec: InvoiceSpec) -> dict:
         invoice_date=spec.invoice_date.isoformat(),
         due_date=spec.due_date.isoformat(),
         currency=spec.locale["currency"],
-        line_items=[LineItem(description=d, quantity=float(q), unit_price=float(u), total=float(t))
-                    for d, q, u, t in spec.items],
+        line_items=[
+            LineItem(description=d, quantity=float(q), unit_price=float(u), total=float(t))
+            for d, q, u, t in spec.items
+        ],
         subtotal=float(spec.subtotal),
         tax_rate=float(spec.vat_rate),
         tax_amount=float(spec.tax_amount),
@@ -584,8 +797,17 @@ def label_value(lang: str, label: str, value: str) -> str:
     return f"{label} : {value}" if lang == "fr" else f"{label}: {value}"
 
 
-def _text(c: Canvas, x: float, y: float, text: str, font: str, size: float, color=INK, align: str = "left",
-          max_width: float | None = None) -> None:
+def _text(
+    c: Canvas,
+    x: float,
+    y: float,
+    text: str,
+    font: str,
+    size: float,
+    color=INK,
+    align: str = "left",
+    max_width: float | None = None,
+) -> None:
     if max_width is not None:
         while size > 6 and pdfmetrics.stringWidth(text, font, size) > max_width:
             size -= 0.25
@@ -607,7 +829,16 @@ def _logo(c: Canvas, x: float, y: float, size: float, spec: InvoiceSpec, fill=No
         c.roundRect(x, y, size, size, size * 0.22, stroke=0, fill=1)
     else:
         c.rect(x, y, size, size, stroke=0, fill=1)
-    _text(c, x + size / 2, y + size / 2 - size * 0.14, spec.initials, "Helvetica-Bold", size * 0.4, ink, "center")
+    _text(
+        c,
+        x + size / 2,
+        y + size / 2 - size * 0.14,
+        spec.initials,
+        "Helvetica-Bold",
+        size * 0.4,
+        ink,
+        "center",
+    )
 
 
 def _meta(spec: InvoiceSpec) -> list[tuple[str, str]]:
@@ -632,11 +863,24 @@ def _bill_to(c: Canvas, spec: InvoiceSpec, x: float, y: float, width: float) -> 
 
 def _draw_items(c: Canvas, spec: InvoiceSpec, style: str, x: float, top: float, width: float) -> float:
     labels = spec.labels
-    cell = ParagraphStyle("cell", fontName=spec.font, fontSize=9, leading=11.5, textColor=INK,
-                          wordWrap="CJK" if spec.lang == "ja" else None)
+    cell = ParagraphStyle(
+        "cell",
+        fontName=spec.font,
+        fontSize=9,
+        leading=11.5,
+        textColor=INK,
+        wordWrap="CJK" if spec.lang == "ja" else None,
+    )
     header = [labels["desc"], labels["qty"], labels["unit"], labels["amount"]]
-    rows = [[Paragraph(escape(d), cell), format_quantity(q, spec.lang), format_number(u, spec.lang),
-             format_number(t, spec.lang)] for d, q, u, t in spec.items]
+    rows = [
+        [
+            Paragraph(escape(d), cell),
+            format_quantity(q, spec.lang),
+            format_number(u, spec.lang),
+            format_number(t, spec.lang),
+        ]
+        for d, q, u, t in spec.items
+    ]
     table = Table([header, *rows], colWidths=[width - 255, 60, 95, 100])
     commands = [
         ("FONTNAME", (0, 0), (-1, 0), spec.bold),
@@ -723,8 +967,9 @@ def _draw_footer(c: Canvas, spec: InvoiceSpec, style: str) -> None:
     _text(c, MARGIN + 10, y - 2, spec.labels["thanks"], spec.font, 8.5, MUTED, max_width=width - 20)
 
 
-def _vendor_block(c: Canvas, spec: InvoiceSpec, x: float, y: float, width: float, align: str,
-                  size: float = 13) -> None:
+def _vendor_block(
+    c: Canvas, spec: InvoiceSpec, x: float, y: float, width: float, align: str, size: float = 13
+) -> None:
     _text(c, x, y, spec.vendor_name, spec.bold, size, align=align, max_width=width)
     lines = [*spec.vendor_lines, label_value(spec.lang, spec.labels["vat_id"], spec.vendor_tax_id)]
     for i, line in enumerate(lines):
@@ -754,8 +999,16 @@ def _layout_band(c: Canvas, spec: InvoiceSpec) -> None:
     joiner = " " if spec.lang == "ja" else ", "
     _text(c, MARGIN, PAGE_H - 40, spec.vendor_name, spec.bold, 17, colors.white, max_width=370)
     _text(c, MARGIN, PAGE_H - 58, joiner.join(spec.vendor_lines), spec.font, 9, colors.white, max_width=370)
-    _text(c, MARGIN, PAGE_H - 72, label_value(spec.lang, spec.labels["vat_id"], spec.vendor_tax_id), spec.font, 9,
-          colors.white, max_width=370)
+    _text(
+        c,
+        MARGIN,
+        PAGE_H - 72,
+        label_value(spec.lang, spec.labels["vat_id"], spec.vendor_tax_id),
+        spec.font,
+        9,
+        colors.white,
+        max_width=370,
+    )
     _logo(c, PAGE_W - MARGIN - 56, PAGE_H - band + 20, 56, spec, fill=colors.white, ink=spec.accent)
     _text(c, MARGIN, PAGE_H - band - 40, spec.labels["invoice"], spec.bold, 22, spec.accent, max_width=230)
     for i, (label, value) in enumerate(_meta(spec)):
@@ -832,8 +1085,12 @@ def degrade(image: Image.Image, rng: random.Random) -> tuple[Image.Image, int]:
     return Image.fromarray(np.clip(pixels, 0, 255).astype(np.uint8)), rng.randint(55, 80)
 
 
-def generate(n_per_lang: int = 8, langs: tuple[str, ...] = LANGS, seed: int = 7,
-             out_dir: Path = DATA_PROCESSED / DATASET) -> list[dict]:
+def generate(
+    n_per_lang: int = 8,
+    langs: tuple[str, ...] = LANGS,
+    seed: int = 7,
+    out_dir: Path = DATA_PROCESSED / DATASET,
+) -> list[dict]:
     """Render n_per_lang invoices per language and write out_dir/samples.jsonl. Deterministic per seed."""
     out_dir = Path(out_dir)
     unknown = [lang for lang in langs if lang not in LOCALES]
@@ -857,17 +1114,19 @@ def generate(n_per_lang: int = 8, langs: tuple[str, ...] = LANGS, seed: int = 7,
             noisy, quality = degrade(clean, rng)
             jpg_path = lang_dir / f"{spec.doc_id}.jpg"
             noisy.save(jpg_path, "JPEG", quality=quality)
-            records.append({
-                "doc_id": spec.doc_id,
-                "dataset": DATASET,
-                "doc_type": "invoice",
-                "language": lang,
-                "split": "test",
-                "image_paths": [str(jpg_path.resolve())],
-                "pdf_path": str(pdf_path.resolve()),
-                "text": None,
-                "gold": gold,
-            })
+            records.append(
+                {
+                    "doc_id": spec.doc_id,
+                    "dataset": DATASET,
+                    "doc_type": "invoice",
+                    "language": lang,
+                    "split": "test",
+                    "image_paths": [str(jpg_path.resolve())],
+                    "pdf_path": str(pdf_path.resolve()),
+                    "text": None,
+                    "gold": gold,
+                }
+            )
     with (out_dir / "samples.jsonl").open("w", encoding="utf-8") as fh:
         for record in records:
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")

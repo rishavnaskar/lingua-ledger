@@ -113,7 +113,9 @@ def line_items_sum_subtotal(data: Data) -> list[RuleResult]:
     tolerance = max(0.02, 0.005 * abs(subtotal))
     if _close(line_sum, subtotal, tolerance):
         return [_result(rule, fields, True, f"Line items sum to the subtotal ({_fmt(subtotal)})")]
-    return [_result(rule, fields, False, f"Line items sum to {_fmt(line_sum)} but subtotal is {_fmt(subtotal)}")]
+    return [
+        _result(rule, fields, False, f"Line items sum to {_fmt(line_sum)} but subtotal is {_fmt(subtotal)}")
+    ]
 
 
 def line_item_arithmetic(data: Data) -> list[RuleResult]:
@@ -126,10 +128,18 @@ def line_item_arithmetic(data: Data) -> list[RuleResult]:
         fields = [f"line_items[{i}].quantity", f"line_items[{i}].unit_price", f"line_items[{i}].total"]
         expected = quantity * unit_price
         if _close(expected, total, max(0.02, 0.005 * abs(total))):
-            results.append(_result(rule, fields, True, f"Line {i + 1}: quantity x unit price = {_fmt(total)}"))
+            results.append(
+                _result(rule, fields, True, f"Line {i + 1}: quantity x unit price = {_fmt(total)}")
+            )
         else:
-            results.append(_result(rule, fields, False,
-                                   f"Line {i + 1}: quantity x unit price is {_fmt(expected)}, total is {_fmt(total)}"))
+            results.append(
+                _result(
+                    rule,
+                    fields,
+                    False,
+                    f"Line {i + 1}: quantity x unit price is {_fmt(expected)}, total is {_fmt(total)}",
+                )
+            )
     return results or [_na(rule, ["line_items"])]
 
 
@@ -142,7 +152,9 @@ def tax_math(data: Data) -> list[RuleResult]:
     expected = subtotal * rate / 100
     if _close(expected, tax, max(0.02, 0.01 * abs(expected))):
         return [_result(rule, fields, True, f"Tax {_fmt(tax)} matches {rate:g}% of {_fmt(subtotal)}")]
-    return [_result(rule, fields, False, f"{rate:g}% of {_fmt(subtotal)} is {_fmt(expected)}, tax is {_fmt(tax)}")]
+    return [
+        _result(rule, fields, False, f"{rate:g}% of {_fmt(subtotal)} is {_fmt(expected)}, tax is {_fmt(tax)}")
+    ]
 
 
 def total_matches_components(data: Data, receipt: bool) -> list[RuleResult]:
@@ -178,7 +190,9 @@ def change_math(data: Data) -> list[RuleResult]:
     expected = cash - total
     if _close(expected, change, max(0.02, 0.001 * abs(cash))):
         return [_result(rule, fields, True, f"Cash paid minus total equals change ({_fmt(change)})")]
-    return [_result(rule, fields, False, f"Cash paid minus total is {_fmt(expected)}, change is {_fmt(change)}")]
+    return [
+        _result(rule, fields, False, f"Cash paid minus total is {_fmt(expected)}, change is {_fmt(change)}")
+    ]
 
 
 def dates_parseable(data: Data, date_fields: tuple[str, ...], rule: str) -> list[RuleResult]:
@@ -266,8 +280,11 @@ def no_duplicate_keys(data: Data) -> list[RuleResult]:
     duplicates = [i for i in present if keys.count(keys[i]) > 1]
     if duplicates:
         names = sorted({str(entries[i].get("key")) for i in duplicates})
-        return [_result(rule, [f"fields[{i}].key" for i in duplicates], None,
-                        f"Duplicate keys {', '.join(names)}")]
+        return [
+            _result(
+                rule, [f"fields[{i}].key" for i in duplicates], None, f"Duplicate keys {', '.join(names)}"
+            )
+        ]
     return [_result(rule, [f"fields[{i}].key" for i in present], True, "All keys are unique")]
 
 
@@ -322,12 +339,25 @@ RECEIPT_RULES: list[Rule] = [
 FORM_RULES: list[Rule] = [fields_non_empty, no_duplicate_keys, min_fields]
 
 CONTRACT_RULES: list[Rule] = [
-    partial(dates_parseable, date_fields=("agreement_date", "effective_date", "expiration_date"),
-            rule="dates_parseable"),
-    partial(date_order, earlier="agreement_date", later="effective_date", rule="effective_not_before_agreement",
-            strict=False),
-    partial(date_order, earlier="effective_date", later="expiration_date", rule="expiration_after_effective",
-            strict=True),
+    partial(
+        dates_parseable,
+        date_fields=("agreement_date", "effective_date", "expiration_date"),
+        rule="dates_parseable",
+    ),
+    partial(
+        date_order,
+        earlier="agreement_date",
+        later="effective_date",
+        rule="effective_not_before_agreement",
+        strict=False,
+    ),
+    partial(
+        date_order,
+        earlier="effective_date",
+        later="expiration_date",
+        rule="expiration_after_effective",
+        strict=True,
+    ),
     parties_count,
     governing_law_present,
 ]
@@ -353,8 +383,11 @@ def validate(doc_type: str | DocType, data: Data | BaseModel | None) -> list[Rul
 def _touches(rule_field: str, field: str) -> bool:
     if rule_field == field:
         return True
-    return any(longer.startswith(shorter + sep)
-               for shorter, longer in ((field, rule_field), (rule_field, field)) for sep in (".", "["))
+    return any(
+        longer.startswith(shorter + sep)
+        for shorter, longer in ((field, rule_field), (rule_field, field))
+        for sep in (".", "[")
+    )
 
 
 def rule_outcome_for_field(results: list[RuleResult], field: str) -> Literal["pass", "fail", "na"]:

@@ -12,8 +12,9 @@ from .config import MAX_PAGES, RENDER_DPI
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff", ".bmp"}
 
 
-def load_pages(source: str | Path | bytes, filename: str | None = None, dpi: int = RENDER_DPI,
-               max_pages: int = MAX_PAGES) -> list[Image.Image]:
+def load_pages(
+    source: str | Path | bytes, filename: str | None = None, dpi: int = RENDER_DPI, max_pages: int = MAX_PAGES
+) -> list[Image.Image]:
     if isinstance(source, (str, Path)):
         path = Path(source)
         data = path.read_bytes()

@@ -18,8 +18,17 @@ PICKS = {
     "funsd": {"per_language": 1, "languages": ["en"], "title": "Form"},
 }
 
-LANG_NAMES = {"de": "German", "fr": "French", "ja": "Japanese", "es": "Spanish", "en": "English", "id": "Indonesian",
-              "zh": "Chinese", "pt": "Portuguese", "it": "Italian"}
+LANG_NAMES = {
+    "de": "German",
+    "fr": "French",
+    "ja": "Japanese",
+    "es": "Spanish",
+    "en": "English",
+    "id": "Indonesian",
+    "zh": "Chinese",
+    "pt": "Portuguese",
+    "it": "Italian",
+}
 
 
 def main() -> None:
@@ -37,15 +46,17 @@ def main() -> None:
                 sample_id = f"{dataset}-{lang}-{i + 1}"
                 dst = OUT / f"{sample_id}{src.suffix.lower()}"
                 shutil.copyfile(src, dst)
-                index.append({
-                    "id": sample_id,
-                    "title": f"{spec['title']} · {LANG_NAMES.get(lang, lang)}",
-                    "doc_type": r["doc_type"],
-                    "language": lang,
-                    "dataset": dataset,
-                    "file": dst.name,
-                    "doc_id": r["doc_id"],
-                })
+                index.append(
+                    {
+                        "id": sample_id,
+                        "title": f"{spec['title']} · {LANG_NAMES.get(lang, lang)}",
+                        "doc_type": r["doc_type"],
+                        "language": lang,
+                        "dataset": dataset,
+                        "file": dst.name,
+                        "doc_id": r["doc_id"],
+                    }
+                )
     (OUT / "index.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
     print(f"{len(index)} samples -> {OUT}")
 

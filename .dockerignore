@@ -1,0 +1,14 @@
+.venv
+node_modules
+web
+deck
+data
+tests
+artifacts/eval
+artifacts/*.pkl
+.env
+.git
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache

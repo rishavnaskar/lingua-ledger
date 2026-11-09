@@ -8,8 +8,17 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-from lingua_ledger.config import ARTIFACTS, DEFAULT_REVIEW_THRESHOLD, ROOT
+from lingua_ledger.config import (
+    ARTIFACTS,
+    CLASSIFY_MODEL,
+    DEFAULT_REVIEW_THRESHOLD,
+    PROVIDER,
+    ROOT,
+    TEXT_MODEL,
+    VISION_MODEL,
+)
 from lingua_ledger.ingest import load_pages, to_png_bytes
+from lingua_ledger.llm import has_api_key
 from lingua_ledger.pipeline import run
 from lingua_ledger.schemas import DocType
 
@@ -21,16 +30,30 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 
 
 def _page_payload(images) -> list[dict]:
-    return [{"index": i, "width": im.width, "height": im.height,
-             "data_url": "data:image/png;base64," + base64.b64encode(to_png_bytes(im)).decode()}
-            for i, im in enumerate(images)]
+    return [
+        {
+            "index": i,
+            "width": im.width,
+            "height": im.height,
+            "data_url": "data:image/png;base64," + base64.b64encode(to_png_bytes(im)).decode(),
+        }
+        for i, im in enumerate(images)
+    ]
 
 
-def _extract(data: bytes, filename: str, doc_type: str | None, language: str | None, threshold: float,
-             paths: str) -> dict:
+def _extract(
+    data: bytes, filename: str, doc_type: str | None, language: str | None, threshold: float, paths: str
+) -> dict:
     images = load_pages(data, filename)
-    result = run(data, filename=filename, doc_type=DocType(doc_type) if doc_type else None, language=language,
-                 threshold=threshold, paths=tuple(p for p in paths.split(",") if p), images=images)
+    result = run(
+        data,
+        filename=filename,
+        doc_type=DocType(doc_type) if doc_type else None,
+        language=language,
+        threshold=threshold,
+        paths=tuple(p for p in paths.split(",") if p),
+        images=images,
+    )
     payload = result.model_dump()
     payload["pages_preview"] = _page_payload(images)
     payload["filename"] = filename
@@ -39,13 +62,24 @@ def _extract(data: bytes, filename: str, doc_type: str | None, language: str | N
 
 @app.get("/health")
 def health() -> dict:
-    return {"ok": True}
+    return {
+        "ok": True,
+        "provider": PROVIDER,
+        "vision_model": VISION_MODEL,
+        "text_model": TEXT_MODEL,
+        "classify_model": CLASSIFY_MODEL,
+        "has_key": has_api_key(),
+    }
 
 
 @app.post("/extract")
-async def extract(file: UploadFile = File(...),  # noqa: B008
-                  doc_type: str | None = Form(None), language: str | None = Form(None),
-                  threshold: float = Form(DEFAULT_REVIEW_THRESHOLD), paths: str = Form("vision,ocr_text")) -> JSONResponse:
+async def extract(
+    file: UploadFile = File(...),  # noqa: B008
+    doc_type: str | None = Form(None),
+    language: str | None = Form(None),
+    threshold: float = Form(DEFAULT_REVIEW_THRESHOLD),
+    paths: str = Form("vision,ocr_text"),
+) -> JSONResponse:
     data = await file.read()
     if len(data) > MAX_UPLOAD_BYTES:
         raise HTTPException(413, "file too large")
@@ -70,10 +104,14 @@ def sample_file(sample_id: str) -> FileResponse:
 
 
 @app.post("/samples/{sample_id}/extract")
-def extract_sample(sample_id: str, threshold: float = DEFAULT_REVIEW_THRESHOLD, paths: str = "vision,ocr_text") -> dict:
+def extract_sample(
+    sample_id: str, threshold: float = DEFAULT_REVIEW_THRESHOLD, paths: str = "vision,ocr_text"
+) -> dict:
     path = _sample_path(sample_id)
     meta = next(s for s in samples() if s["id"] == sample_id)
-    return _extract(path.read_bytes(), path.name, meta.get("doc_type"), meta.get("language"), threshold, paths)
+    return _extract(
+        path.read_bytes(), path.name, meta.get("doc_type"), meta.get("language"), threshold, paths
+    )
 
 
 @app.get("/metrics")

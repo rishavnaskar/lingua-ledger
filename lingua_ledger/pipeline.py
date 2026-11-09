@@ -58,13 +58,22 @@ def reconcile(doc_type: DocType, vision: dict[str, Any], ocr: dict[str, Any]) ->
     return unflatten(merged, template)
 
 
-def score_fields(doc_type: DocType, merged: dict[str, Any], paths: list[PathOutput], rules: list[RuleResult],
-                 ocr: list[OcrPage], threshold: float) -> list[FieldResult]:
+def score_fields(
+    doc_type: DocType,
+    merged: dict[str, Any],
+    paths: list[PathOutput],
+    rules: list[RuleResult],
+    ocr: list[OcrPage],
+    threshold: float,
+) -> list[FieldResult]:
     by_path = {p.path: p for p in paths}
     fv = flatten(by_path["vision"].data) if "vision" in by_path else {}
     fo = flatten(by_path["ocr_text"].data) if "ocr_text" in by_path else {}
-    self_conf = by_path["vision"].self_confidence if "vision" in by_path else (
-        by_path["ocr_text"].self_confidence if "ocr_text" in by_path else {})
+    self_conf = (
+        by_path["vision"].self_confidence
+        if "vision" in by_path
+        else (by_path["ocr_text"].self_confidence if "ocr_text" in by_path else {})
+    )
     cal = calibrator()
     results: list[FieldResult] = []
     for path, value in flatten(merged).items():
@@ -76,19 +85,37 @@ def score_fields(doc_type: DocType, merged: dict[str, Any], paths: list[PathOutp
         sc = self_conf.get(top_name(path))
         raw = raw_score(agree, ocr_conf, outcome, sc, present)
         conf = cal(raw, doc_type.value) if present else 1.0
-        results.append(FieldResult(
-            field=path, value=value, confidence=round(conf, 4), raw_score=round(raw, 4), agree=agree,
-            ocr_conf=None if ocr_conf is None else round(ocr_conf, 3), validator=outcome, self_conf=sc,
-            vision_value=fv.get(path), ocr_value=fo.get(path), bbox=loc[1] if loc else None, page=loc[2] if loc else None,
-            needs_review=present and conf < threshold,
-        ))
+        results.append(
+            FieldResult(
+                field=path,
+                value=value,
+                confidence=round(conf, 4),
+                raw_score=round(raw, 4),
+                agree=agree,
+                ocr_conf=None if ocr_conf is None else round(ocr_conf, 3),
+                validator=outcome,
+                self_conf=sc,
+                vision_value=fv.get(path),
+                ocr_value=fo.get(path),
+                bbox=loc[1] if loc else None,
+                page=loc[2] if loc else None,
+                needs_review=present and conf < threshold,
+            )
+        )
     return results
 
 
-def run(source: str | Path | bytes, filename: str | None = None, doc_type: DocType | None = None,
-        language: str | None = None, threshold: float = DEFAULT_REVIEW_THRESHOLD,
-        paths: tuple[str, ...] = ("vision", "ocr_text"), images: list[Image.Image] | None = None,
-        doc_id: str | None = None, text_layer: str | None = None) -> ExtractionResult:
+def run(
+    source: str | Path | bytes,
+    filename: str | None = None,
+    doc_type: DocType | None = None,
+    language: str | None = None,
+    threshold: float = DEFAULT_REVIEW_THRESHOLD,
+    paths: tuple[str, ...] = ("vision", "ocr_text"),
+    images: list[Image.Image] | None = None,
+    doc_id: str | None = None,
+    text_layer: str | None = None,
+) -> ExtractionResult:
     t0 = time.perf_counter()
     pages = images or load_pages(source, filename)
     ocr: list[OcrPage] = []
@@ -117,7 +144,14 @@ def run(source: str | Path | bytes, filename: str | None = None, doc_type: DocTy
     reviewable = [f for f in fields if f.value not in (None, "", [])]
     review_rate = (sum(f.needs_review for f in reviewable) / len(reviewable)) if reviewable else 0.0
     return ExtractionResult(
-        doc_id=doc_id or uuid.uuid4().hex[:12], classification=cls, data=merged, fields=fields, rules=rules,
-        paths=outputs, review_threshold=threshold, review_rate=round(review_rate, 4), pages=len(pages),
+        doc_id=doc_id or uuid.uuid4().hex[:12],
+        classification=cls,
+        data=merged,
+        fields=fields,
+        rules=rules,
+        paths=outputs,
+        review_threshold=threshold,
+        review_rate=round(review_rate, 4),
+        pages=len(pages),
         latency_s=round(time.perf_counter() - t0, 3),
     )

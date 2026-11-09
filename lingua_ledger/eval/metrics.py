@@ -37,8 +37,14 @@ class Counts:
         return 2 * p * r / (p + r) if p + r else 0.0
 
     def as_dict(self) -> dict[str, float | int]:
-        return {"tp": self.tp, "fp": self.fp, "fn": self.fn, "precision": round(self.precision, 4),
-                "recall": round(self.recall, 4), "f1": round(self.f1, 4)}
+        return {
+            "tp": self.tp,
+            "fp": self.fp,
+            "fn": self.fn,
+            "precision": round(self.precision, 4),
+            "recall": round(self.recall, 4),
+            "f1": round(self.f1, 4),
+        }
 
 
 @dataclass
@@ -64,7 +70,11 @@ def _match_pairs(name: str, pred: list[dict], gold: list[dict]) -> tuple[Counts,
             ka = text_match(str(p.get(a) or ""), str(g.get(a) or ""))
             if ka < 0.75:
                 continue
-            vb = 1.0 if values_match(b, p.get(b), g.get(b)) else text_match(str(p.get(b) or ""), str(g.get(b) or ""))
+            vb = (
+                1.0
+                if values_match(b, p.get(b), g.get(b))
+                else text_match(str(p.get(b) or ""), str(g.get(b) or ""))
+            )
             score = ka * 0.5 + vb * 0.5
             if score > best:
                 best, best_j = score, j
@@ -106,8 +116,11 @@ def score_document(pred: dict[str, Any], gold: dict[str, Any]) -> DocScore:
                             continue
                         if j is not None and sub != a and not _present(gv[j].get(sub)):
                             continue
-                        ok = j is not None and (sub in (a,) or values_match(sub, sv, gv[j].get(sub))
-                                                or text_match(str(sv), str(gv[j].get(sub) or "")) >= 0.85)
+                        ok = j is not None and (
+                            sub in (a,)
+                            or values_match(sub, sv, gv[j].get(sub))
+                            or text_match(str(sv), str(gv[j].get(sub) or "")) >= 0.85
+                        )
                         correct[f"{key}[{i}].{sub}"] = bool(ok)
             else:
                 c, mapping = _match_strings([str(x) for x in pv], [str(x) for x in gv])

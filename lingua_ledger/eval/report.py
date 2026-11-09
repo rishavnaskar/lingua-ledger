@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import csv
 import json
-import os
 from collections import defaultdict
 
 import matplotlib
@@ -20,8 +19,8 @@ from .metrics import Counts, label_fields
 RESULTS_DIR = ARTIFACTS / "eval"
 INK, MUTED, GRID = "#121A2B", "#4A5568", "#D5DCE4"
 TEAL, NAVY, AMBER = "#0F8B8D", "#1F3A5F", "#E8A33D"
-PRICE_IN = float(os.getenv("LL_PRICE_IN_PER_M", "2.0"))
-PRICE_OUT = float(os.getenv("LL_PRICE_OUT_PER_M", "10.0"))
+from ..config import PRICE_IN_PER_M as PRICE_IN
+from ..config import PRICE_OUT_PER_M as PRICE_OUT
 
 
 def _records() -> list[dict]:
@@ -72,7 +71,9 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
             agg[(r["dataset"], r["language"], path)].add(c)
             agg[(r["dataset"], "all", path)].add(c)
             agg[("all", "all", path)].add(c)
-    table = [{"dataset": d, "language": lang, "path": p, **c.as_dict()} for (d, lang, p), c in sorted(agg.items())]
+    table = [
+        {"dataset": d, "language": lang, "path": p, **c.as_dict()} for (d, lang, p), c in sorted(agg.items())
+    ]
     with (ARTIFACTS / "f1_table.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(table[0].keys()) if table else ["dataset"])
         w.writeheader()
@@ -84,8 +85,12 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     if cls:
         summary["classification"] = {
             "n": len(cls),
-            "doc_type_acc": round(np.mean([r["classification"]["doc_type"] == r["doc_type"] for r in cls]), 4),
-            "language_acc": round(np.mean([r["classification"]["language"] == r["language"] for r in cls]), 4),
+            "doc_type_acc": round(
+                np.mean([r["classification"]["doc_type"] == r["doc_type"] for r in cls]), 4
+            ),
+            "language_acc": round(
+                np.mean([r["classification"]["language"] == r["language"] for r in cls]), 4
+            ),
         }
 
     # Calibration on field-level correctness, fit on even-hash docs, evaluate on odd-hash docs.
@@ -106,9 +111,11 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
         correct = np.array([c for _, _, c, _ in test_rows], dtype=float)
         calibrated = np.array([cal(s, d) for d, s, _, _ in test_rows])
         summary["calibration"] = {
-            "fit_fields": len(fit_rows), "test_fields": len(test_rows),
+            "fit_fields": len(fit_rows),
+            "test_fields": len(test_rows),
             "field_accuracy": round(float(correct.mean()), 4),
-            "ece_raw": round(_ece(raw, correct), 4), "ece_calibrated": round(_ece(calibrated, correct), 4),
+            "ece_raw": round(_ece(raw, correct), 4),
+            "ece_calibrated": round(_ece(calibrated, correct), 4),
             "brier_raw": round(float(np.mean((raw - correct) ** 2)), 4),
             "brier_calibrated": round(float(np.mean((calibrated - correct) ** 2)), 4),
         }
@@ -120,12 +127,23 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     lat = [r["latency_s"] for r in rows if "latency_s" in r]
     toks_in = sum(p.get("input_tokens", 0) for r in rows for p in r.get("paths", []))
     toks_out = sum(p.get("output_tokens", 0) for r in rows for p in r.get("paths", []))
-    summary["latency_s"] = {"p50": round(float(np.percentile(lat, 50)), 2), "p95": round(float(np.percentile(lat, 95)), 2)} if lat else {}
-    summary["tokens"] = {"input": toks_in, "output": toks_out, "per_doc_input": round(toks_in / max(1, len(rows))),
-                         "per_doc_output": round(toks_out / max(1, len(rows)))}
+    summary["latency_s"] = (
+        {"p50": round(float(np.percentile(lat, 50)), 2), "p95": round(float(np.percentile(lat, 95)), 2)}
+        if lat
+        else {}
+    )
+    summary["tokens"] = {
+        "input": toks_in,
+        "output": toks_out,
+        "per_doc_input": round(toks_in / max(1, len(rows))),
+        "per_doc_output": round(toks_out / max(1, len(rows))),
+    }
     if PRICE_IN and PRICE_OUT:
         cost = (toks_in * PRICE_IN + toks_out * PRICE_OUT) / 1e6
-        summary["cost_usd"] = {"total": round(cost, 2), "per_1000_docs": round(cost / max(1, len(rows)) * 1000, 2)}
+        summary["cost_usd"] = {
+            "total": round(cost, 2),
+            "per_1000_docs": round(cost / max(1, len(rows)) * 1000, 2),
+        }
 
     _f1_charts(agg)
     (ARTIFACTS / "summary.json").write_text(json.dumps(summary, indent=2))
@@ -148,7 +166,9 @@ def _signal_breakdown(rows: list[dict]) -> dict:
     return out
 
 
-def _review_curve(conf: np.ndarray, correct: np.ndarray, threshold: float, targets: tuple[float, ...]) -> dict:
+def _review_curve(
+    conf: np.ndarray, correct: np.ndarray, threshold: float, targets: tuple[float, ...]
+) -> dict:
     grid = np.linspace(0, 1, 101)
     review, acc = [], []
     for t in grid:
@@ -164,8 +184,10 @@ def _review_curve(conf: np.ndarray, correct: np.ndarray, threshold: float, targe
             res[f"review_rate_at_{int(target * 100)}pct_accuracy"] = round(float(review[i]), 4)
             res[f"threshold_at_{int(target * 100)}pct_accuracy"] = round(float(grid[i]), 2)
     auto = conf >= threshold
-    res[f"at_threshold_{threshold}"] = {"review_rate": round(float(1 - auto.mean()), 4),
-                                        "auto_accuracy": round(float(correct[auto].mean()) if auto.any() else 1.0, 4)}
+    res[f"at_threshold_{threshold}"] = {
+        "review_rate": round(float(1 - auto.mean()), 4),
+        "auto_accuracy": round(float(correct[auto].mean()) if auto.any() else 1.0, 4),
+    }
     fig, ax = plt.subplots(figsize=(6, 3.6), dpi=160)
     ax.plot(review * 100, acc * 100, color=TEAL, linewidth=2)
     ax.axhline(correct.mean() * 100, color=MUTED, linewidth=1, linestyle=(0, (4, 3)))
@@ -175,8 +197,14 @@ def _review_curve(conf: np.ndarray, correct: np.ndarray, threshold: float, targe
         if key in res:
             x = res[key] * 100
             ax.plot([x], [target * 100], marker="o", color=AMBER, markersize=7)
-            ax.annotate(f"{target:.0%} accuracy at {x:.0f}% reviewed", (x, target * 100), xytext=(8, -12),
-                        textcoords="offset points", fontsize=8, color=INK)
+            ax.annotate(
+                f"{target:.0%} accuracy at {x:.0f}% reviewed",
+                (x, target * 100),
+                xytext=(8, -12),
+                textcoords="offset points",
+                fontsize=8,
+                color=INK,
+            )
     ax.set_xlabel("Fields sent to human review (%)")
     ax.set_ylabel("Accuracy of auto-accepted fields (%)")
     ax.set_title("Review load versus accuracy of what posts automatically", fontsize=10, loc="left")
@@ -213,7 +241,9 @@ def _reliability_chart(raw: np.ndarray, calibrated: np.ndarray, correct: np.ndar
 
 
 def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
-    langs = [(lang, c.f1) for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == "merged"]
+    langs = [
+        (lang, c.f1) for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == "merged"
+    ]
     funsd = [c.f1 for (d, lang, p), c in agg.items() if d == "funsd" and lang == "all" and p == "merged"]
     if funsd:
         langs.append(("en", funsd[0]))
@@ -243,7 +273,13 @@ def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
         x = np.arange(len(datasets))
         for i, p in enumerate(paths):
             vals = [agg[(d, "all", p)].f1 * 100 if (d, "all", p) in agg else 0 for d in datasets]
-            ax.bar(x + (i - (len(paths) - 1) / 2) * width, vals, width=width * 0.92, color=colors[p], label=labels[p])
+            ax.bar(
+                x + (i - (len(paths) - 1) / 2) * width,
+                vals,
+                width=width * 0.92,
+                color=colors[p],
+                label=labels[p],
+            )
         ax.set_xticks(x)
         ax.set_xticklabels([d.replace("_", " ") for d in datasets])
         ax.set_ylim(0, 105)

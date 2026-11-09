@@ -107,7 +107,7 @@ def locate_value(value, pages: list[OcrPage]) -> tuple[float, list[int], int] | 
         words = sorted(page.words, key=lambda w: (w.line, w.x0))
         for i in range(len(words)):
             for span in range(1, max_span + 1):
-                chunk = words[i:i + span]
+                chunk = words[i : i + span]
                 if len(chunk) < span:
                     break
                 if span > 1 and chunk[-1].line != chunk[0].line:
@@ -126,5 +126,10 @@ def locate_value(value, pages: list[OcrPage]) -> tuple[float, list[int], int] | 
         return None
     _, chunk, pg = best
     conf = sum(w.conf for w in chunk) / len(chunk) / 100.0
-    bbox = [min(w.x0 for w in chunk), min(w.y0 for w in chunk), max(w.x1 for w in chunk), max(w.y1 for w in chunk)]
+    bbox = [
+        min(w.x0 for w in chunk),
+        min(w.y0 for w in chunk),
+        max(w.x1 for w in chunk),
+        max(w.y1 for w in chunk),
+    ]
     return conf, bbox, pg

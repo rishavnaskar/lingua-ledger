@@ -14,7 +14,7 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY lingua_ledger ./lingua_ledger
 COPY api ./api
 COPY samples ./samples
-COPY artifacts/calibrator.json artifacts/summary.json artifacts/*.png ./artifacts/
+COPY artifacts ./artifacts
 RUN uv sync --frozen --no-dev
 
 ENV PORT=8000

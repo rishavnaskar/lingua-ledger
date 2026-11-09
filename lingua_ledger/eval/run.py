@@ -21,7 +21,16 @@ ALL_DATASETS = [*DATASETS, "synth_invoices"]
 
 EVAL_FIELDS = {
     "sroie": {"merchant_name", "merchant_address", "date", "total"},
-    "cord": {"line_items", "subtotal", "tax_amount", "service_charge", "discount", "total", "cash_paid", "change"},
+    "cord": {
+        "line_items",
+        "subtotal",
+        "tax_amount",
+        "service_charge",
+        "discount",
+        "total",
+        "cash_paid",
+        "change",
+    },
     "cuad": {"document_name", "parties", "agreement_date", "effective_date", "governing_law"},
     "xfund": {"title", "fields"},
     "funsd": {"title", "fields"},
@@ -60,32 +69,54 @@ def _process(sample, paths: tuple[str, ...], classify_too: bool) -> dict:
     images = _images(sample)
     doc_type = DocType(sample.doc_type)
     gold = restrict(sample.gold, sample.dataset)
-    record: dict = {"doc_id": sample.doc_id, "dataset": sample.dataset, "language": sample.language,
-                    "doc_type": sample.doc_type, "gold": gold}
+    record: dict = {
+        "doc_id": sample.doc_id,
+        "dataset": sample.dataset,
+        "language": sample.language,
+        "doc_type": sample.doc_type,
+        "gold": gold,
+    }
     try:
         if images:
-            result = run(b"", filename=None, doc_type=doc_type, language=sample.language, paths=paths,
-                         images=images, doc_id=sample.doc_id, text_layer=sample.text)
+            result = run(
+                b"",
+                filename=None,
+                doc_type=doc_type,
+                language=sample.language,
+                paths=paths,
+                images=images,
+                doc_id=sample.doc_id,
+                text_layer=sample.text,
+            )
         else:
             from ..extract import extract_text
             from ..validate import validate
 
             out = extract_text(sample.text or "", doc_type)
-            record.update({"text_only": True, "pred": out.data, "paths": [out.model_dump()],
-                           "rules": [r.model_dump() for r in validate(doc_type.value, out.data)], "fields": []})
+            record.update(
+                {
+                    "text_only": True,
+                    "pred": out.data,
+                    "paths": [out.model_dump()],
+                    "rules": [r.model_dump() for r in validate(doc_type.value, out.data)],
+                    "fields": [],
+                }
+            )
             record["pred"] = restrict(out.data, sample.dataset)
             record["scores"] = {"merged": score_document(record["pred"], gold).counts.as_dict()}
             record["latency_s"] = round(time.perf_counter() - t0, 3)
             return record
-        record.update({
-            "pred": restrict(result.data, sample.dataset),
-            "pred_full": result.data,
-            "fields": [f.model_dump() for f in result.fields],
-            "rules": [r.model_dump() for r in result.rules],
-            "paths": [p.model_dump() for p in result.paths],
-            "review_rate": result.review_rate,
-            "pages": result.pages,
-        })
+        record.update(
+            {
+                "pred": restrict(result.data, sample.dataset),
+                "pred_full": result.data,
+                "fields": [f.model_dump() for f in result.fields],
+                "rules": [r.model_dump() for r in result.rules],
+                "paths": [p.model_dump() for p in result.paths],
+                "review_rate": result.review_rate,
+                "pages": result.pages,
+            }
+        )
         scores = {"merged": score_document(record["pred"], gold).counts.as_dict()}
         for p in result.paths:
             scores[p.path] = score_document(restrict(p.data, sample.dataset), gold).counts.as_dict()
@@ -99,8 +130,14 @@ def _process(sample, paths: tuple[str, ...], classify_too: bool) -> dict:
     return record
 
 
-def run_eval(datasets: str = "all", limit: int | None = None, paths: tuple[str, ...] = ("vision", "ocr_text"),
-             workers: int = 4, resume: bool = True, classify_too: bool = True) -> Path:
+def run_eval(
+    datasets: str = "all",
+    limit: int | None = None,
+    paths: tuple[str, ...] = ("vision", "ocr_text"),
+    workers: int = 4,
+    resume: bool = True,
+    classify_too: bool = True,
+) -> Path:
     names = ALL_DATASETS if datasets == "all" else [d.strip() for d in datasets.split(",")]
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     tag = "+".join(paths)

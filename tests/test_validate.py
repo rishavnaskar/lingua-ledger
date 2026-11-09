@@ -40,17 +40,32 @@ def outcome(results: list[RuleResult], rule: str) -> bool | None:
 def test_valid_invoice_passes_every_rule():
     results = validate("invoice", INVOICE)
     assert not [r for r in results if r.passed is False]
-    for rule in ("required_fields_present", "total_positive", "line_items_sum_subtotal", "line_item_arithmetic",
-                 "tax_math", "total_equals_subtotal_plus_tax", "date_parseable", "due_after_invoice",
-                 "currency_valid", "iban_valid", "vat_id_valid"):
+    for rule in (
+        "required_fields_present",
+        "total_positive",
+        "line_items_sum_subtotal",
+        "line_item_arithmetic",
+        "tax_math",
+        "total_equals_subtotal_plus_tax",
+        "date_parseable",
+        "due_after_invoice",
+        "currency_valid",
+        "iban_valid",
+        "vat_id_valid",
+    ):
         assert outcome(results, rule) is True, rule
     assert all(isinstance(r, RuleResult) and r.message for r in results)
 
 
 def test_accepts_pydantic_model_and_locale_strings():
     data = copy.deepcopy(INVOICE)
-    data.update(subtotal="250,50", tax_amount="47,60", total="298,10 €", invoice_date="03.11.2026",
-                due_date="3. Dezember 2026")
+    data.update(
+        subtotal="250,50",
+        tax_amount="47,60",
+        total="298,10 €",
+        invoice_date="03.11.2026",
+        due_date="3. Dezember 2026",
+    )
     assert not [r for r in validate("invoice", data) if r.passed is False]
     model = Invoice.model_validate(INVOICE | {"iban": "DE89370400440532013000"})
     assert not [r for r in validate("invoice", model) if r.passed is False]
@@ -91,8 +106,12 @@ def test_line_sum_tolerance_is_half_percent():
 
 
 def test_invoice_bad_dates_iban_vat_currency():
-    data = INVOICE | {"due_date": "2026-10-01", "iban": "DE89 3704 0044 0532 0130 01",
-                      "vendor_tax_id": "DE12345", "currency": "EURO"}
+    data = INVOICE | {
+        "due_date": "2026-10-01",
+        "iban": "DE89 3704 0044 0532 0130 01",
+        "vendor_tax_id": "DE12345",
+        "currency": "EURO",
+    }
     results = validate("invoice", data)
     assert outcome(results, "due_after_invoice") is False
     assert outcome(results, "iban_valid") is False
@@ -117,8 +136,16 @@ def test_required_fields_and_total_positive():
 
 def test_not_applicable_when_inputs_missing():
     results = validate("invoice", {"invoice_number": "1", "total": 10, "invoice_date": "2026-01-01"})
-    for rule in ("line_items_sum_subtotal", "line_item_arithmetic", "tax_math", "total_equals_subtotal_plus_tax",
-                 "due_after_invoice", "currency_valid", "iban_valid", "vat_id_valid"):
+    for rule in (
+        "line_items_sum_subtotal",
+        "line_item_arithmetic",
+        "tax_math",
+        "total_equals_subtotal_plus_tax",
+        "due_after_invoice",
+        "currency_valid",
+        "iban_valid",
+        "vat_id_valid",
+    ):
         assert outcome(results, rule) is None, rule
     assert rule_outcome_for_field(results, "iban") == "na"
     assert rule_outcome_for_field(results, "payment_terms") == "na"
@@ -156,15 +183,21 @@ def test_receipt_required_fields():
     results = validate("receipt", {"total": "27.000"})
     assert outcome(results, "required_fields_present") is False
     assert outcome(results, "total_positive") is True
-    assert outcome(validate("receipt", {"total": "27.000", "date": "03/11/2026"}), "required_fields_present") is True
+    assert (
+        outcome(validate("receipt", {"total": "27.000", "date": "03/11/2026"}), "required_fields_present")
+        is True
+    )
 
 
 def test_form_rules():
-    form = {"title": "Application", "fields": [
-        {"key": "Name", "value": "Ana Silva"},
-        {"key": "Date of birth", "value": ""},
-        {"key": "name", "value": "A. Silva"},
-    ]}
+    form = {
+        "title": "Application",
+        "fields": [
+            {"key": "Name", "value": "Ana Silva"},
+            {"key": "Date of birth", "value": ""},
+            {"key": "name", "value": "A. Silva"},
+        ],
+    }
     results = validate("form", form)
     non_empty = by_rule(results)["fields_non_empty"]
     assert [r.passed for r in non_empty] == [True, False, True]
@@ -202,8 +235,9 @@ def test_contract_rules():
     assert outcome(results, "effective_not_before_agreement") is False
 
 
-@pytest.mark.parametrize(("parties", "expected"), [(["A", "B", "C"], True), (["A"], False), ([], None),
-                                                   (["", None], None)])
+@pytest.mark.parametrize(
+    ("parties", "expected"), [(["A", "B", "C"], True), (["A"], False), ([], None), (["", None], None)]
+)
 def test_contract_parties_count(parties, expected):
     results = validate("contract", {"parties": parties})
     assert outcome(results, "parties_count") is expected

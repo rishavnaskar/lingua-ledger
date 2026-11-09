@@ -62,8 +62,9 @@ def agreement(path: str, a: Any, b: Any) -> bool | None:
     return values_match(leaf_name(path), a, b)
 
 
-def raw_score(agree: bool | None, ocr_conf: float | None, validator: str, self_conf: float | None,
-              present: bool) -> float:
+def raw_score(
+    agree: bool | None, ocr_conf: float | None, validator: str, self_conf: float | None, present: bool
+) -> float:
     if not present:
         return 0.5
     s = 0.55
