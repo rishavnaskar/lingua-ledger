@@ -1,0 +1,874 @@
+{
+ "doc_id": "synth_invoices-es-1",
+ "classification": {
+  "doc_type": "invoice",
+  "language": "es",
+  "confidence": 1.0
+ },
+ "data": {
+  "vendor_name": "Soluciones Informáticas López S.L.",
+  "vendor_address": "Calle Colón 22\n46004 Valencia",
+  "vendor_tax_id": "ESB25979816",
+  "customer_name": "Transportes Jiménez S.A.",
+  "invoice_number": "F2025/0919",
+  "invoice_date": "2025-08-31",
+  "due_date": "2025-09-30",
+  "currency": "EUR",
+  "line_items": [
+   {
+    "description": "Mantenimiento informático mensual",
+    "quantity": 8.0,
+    "unit_price": 344.05,
+    "total": 2752.4
+   },
+   {
+    "description": "Gastos de envío",
+    "quantity": 1.0,
+    "unit_price": 23.52,
+    "total": 23.52
+   },
+   {
+    "description": "Servicios de consultoría (horas)",
+    "quantity": 2.0,
+    "unit_price": 115.14,
+    "total": 230.28
+   }
+  ],
+  "subtotal": 3006.2,
+  "tax_rate": 21.0,
+  "tax_amount": 631.3,
+  "total": 3637.5,
+  "iban": "ES35 7273 6860 6514 5807 6557",
+  "payment_terms": "Transferencia bancaria a 30 días"
+ },
+ "fields": [
+  {
+   "field": "vendor_name",
+   "value": "Soluciones Informáticas López S.L.",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.958,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Soluciones Informáticas López S.L.",
+   "ocr_value": "Soluciones Informáticas López S.L.",
+   "bbox": [
+    223,
+    105,
+    677,
+    131
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_address",
+   "value": "Calle Colón 22\n46004 Valencia",
+   "confidence": 0.995,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Calle Colón 22\n46004 Valencia",
+   "ocr_value": "Calle Colón 22, 46004 Valencia",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_tax_id",
+   "value": "ESB25979816",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.9,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "ESB25979816",
+   "ocr_value": "ESB25979816",
+   "bbox": [
+    301,
+    192,
+    421,
+    207
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "customer_name",
+   "value": "Transportes Jiménez S.A.",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Transportes Jiménez S.A.",
+   "ocr_value": "Transportes Jiménez S.A.",
+   "bbox": [
+    96,
+    378,
+    387,
+    403
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_number",
+   "value": "F2025/0919",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.88,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "F2025/0919",
+   "ocr_value": "F2025/0919",
+   "bbox": [
+    1030,
+    185,
+    1134,
+    200
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_date",
+   "value": "2025-08-31",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-08-31",
+   "ocr_value": "2025-08-31",
+   "bbox": [
+    794,
+    216,
+    1134,
+    236
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "due_date",
+   "value": "2025-09-30",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.953,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-09-30",
+   "ocr_value": "2025-09-30",
+   "bbox": [
+    795,
+    249,
+    1135,
+    268
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "EUR",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "EUR",
+   "ocr_value": "EUR",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "Mantenimiento informático mensual",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Mantenimiento informático mensual",
+   "ocr_value": "Mantenimiento informático mensual",
+   "bbox": [
+    111,
+    597,
+    405,
+    614
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 8.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 8.0,
+   "ocr_value": 8.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 344.05,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 344.05,
+   "ocr_value": 344.05,
+   "bbox": [
+    856,
+    588,
+    917,
+    616
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 2752.4,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2752.4,
+   "ocr_value": 2752.4,
+   "bbox": [
+    1053,
+    590,
+    1125,
+    606
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "Gastos de envío",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Gastos de envío",
+   "ocr_value": "Gastos de envío",
+   "bbox": [
+    111,
+    649,
+    247,
+    664
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": 23.52,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 23.52,
+   "ocr_value": 23.52,
+   "bbox": [
+    871,
+    642,
+    917,
+    658
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 23.52,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 23.52,
+   "ocr_value": 23.52,
+   "bbox": [
+    871,
+    642,
+    917,
+    658
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "Servicios de consultoría (horas)",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.963,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Servicios de consultoría (horas)",
+   "ocr_value": "Servicios de consultoría (horas)",
+   "bbox": [
+    112,
+    698,
+    374,
+    716
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": 2.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2.0,
+   "ocr_value": 2.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": 115.14,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 115.14,
+   "ocr_value": 115.14,
+   "bbox": [
+    863,
+    692,
+    918,
+    708
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 230.28,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 230.28,
+   "ocr_value": 230.28,
+   "bbox": [
+    1070,
+    685,
+    1126,
+    712
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 3006.2,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3006.2,
+   "ocr_value": 3006.2,
+   "bbox": [
+    1047,
+    754,
+    1123,
+    771
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_rate",
+   "value": 21.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 21.0,
+   "ocr_value": 21.0,
+   "bbox": [
+    657,
+    792,
+    695,
+    808
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 631.3,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.75,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 631.3,
+   "ocr_value": 631.3,
+   "bbox": [
+    1063,
+    788,
+    1140,
+    806
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 3637.5,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3637.5,
+   "ocr_value": 3637.5,
+   "bbox": [
+    1028,
+    830,
+    1120,
+    852
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "iban",
+   "value": "ES35 7273 6860 6514 5807 6557",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.932,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "ES35 7273 6860 6514 5807 6557",
+   "ocr_value": "ES35 7273 6860 6514 5807 6557",
+   "bbox": [
+    179,
+    1589,
+    443,
+    1604
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_terms",
+   "value": "Transferencia bancaria a 30 días",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.958,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Transferencia bancaria a 30 días",
+   "ocr_value": "Transferencia bancaria a 30 días",
+   "bbox": [
+    257,
+    1529,
+    516,
+    1545
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "invoice_number",
+    "total",
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "Invoice number, date and total are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 3,637.50 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (3,006.20)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 2,752.40"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[1].quantity",
+    "line_items[1].unit_price",
+    "line_items[1].total"
+   ],
+   "passed": true,
+   "message": "Line 2: quantity x unit price = 23.52"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[2].quantity",
+    "line_items[2].unit_price",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line 3: quantity x unit price = 230.28"
+  },
+  {
+   "rule": "tax_math",
+   "fields": [
+    "subtotal",
+    "tax_rate",
+    "tax_amount"
+   ],
+   "passed": true,
+   "message": "Tax 631.30 matches 21% of 3,006.20"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (3,637.50)"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "invoice_date parses as 2025-08-31"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date parses as 2025-09-30"
+  },
+  {
+   "rule": "due_after_invoice",
+   "fields": [
+    "invoice_date",
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date 2025-09-30 is on or after invoice_date 2025-08-31"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "EUR is an ISO 4217 code"
+  },
+  {
+   "rule": "iban_valid",
+   "fields": [
+    "iban"
+   ],
+   "passed": true,
+   "message": "IBAN checksum is valid"
+  },
+  {
+   "rule": "vat_id_valid",
+   "fields": [
+    "vendor_tax_id"
+   ],
+   "passed": true,
+   "message": "Tax id matches the expected format"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "vendor_name": "Soluciones Informáticas López S.L.",
+    "vendor_address": "Calle Colón 22\n46004 Valencia",
+    "vendor_tax_id": "ESB25979816",
+    "customer_name": "Transportes Jiménez S.A.",
+    "invoice_number": "F2025/0919",
+    "invoice_date": "2025-08-31",
+    "due_date": "2025-09-30",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Mantenimiento informático mensual",
+      "quantity": 8.0,
+      "unit_price": 344.05,
+      "total": 2752.4
+     },
+     {
+      "description": "Gastos de envío",
+      "quantity": 1.0,
+      "unit_price": 23.52,
+      "total": 23.52
+     },
+     {
+      "description": "Servicios de consultoría (horas)",
+      "quantity": 2.0,
+      "unit_price": 115.14,
+      "total": 230.28
+     }
+    ],
+    "subtotal": 3006.2,
+    "tax_rate": 21.0,
+    "tax_amount": 631.3,
+    "total": 3637.5,
+    "iban": "ES35 7273 6860 6514 5807 6557",
+    "payment_terms": "Transferencia bancaria a 30 días"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 12.908,
+   "input_tokens": 1267,
+   "output_tokens": 1235,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "vendor_name": "Soluciones Informáticas López S.L.",
+    "vendor_address": "Calle Colón 22, 46004 Valencia",
+    "vendor_tax_id": "ESB25979816",
+    "customer_name": "Transportes Jiménez S.A.",
+    "invoice_number": "F2025/0919",
+    "invoice_date": "2025-08-31",
+    "due_date": "2025-09-30",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Mantenimiento informático mensual",
+      "quantity": 8.0,
+      "unit_price": 344.05,
+      "total": 2752.4
+     },
+     {
+      "description": "Gastos de envío",
+      "quantity": 1.0,
+      "unit_price": 23.52,
+      "total": 23.52
+     },
+     {
+      "description": "Servicios de consultoría (horas)",
+      "quantity": 2.0,
+      "unit_price": 115.14,
+      "total": 230.28
+     }
+    ],
+    "subtotal": 3006.2,
+    "tax_rate": 21.0,
+    "tax_amount": 631.3,
+    "total": 3637.5,
+    "iban": "ES35 7273 6860 6514 5807 6557",
+    "payment_terms": "Transferencia bancaria a 30 días"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.95,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.95,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 7.768,
+   "input_tokens": 519,
+   "output_tokens": 1495,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 13.398,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 0,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": null
+ },
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "vendor_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

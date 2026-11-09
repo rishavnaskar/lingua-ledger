@@ -154,6 +154,8 @@ export interface PagePreview {
 export interface ExtractResponse extends ExtractionResult {
   pages_preview: PagePreview[];
   filename: string;
+  cached?: boolean;
+  cached_at?: string | null;
 }
 
 export interface Sample {
@@ -250,6 +252,7 @@ export interface ExtractOptions {
   language?: string | null;
   paths?: ReaderPath[];
   arbiter?: boolean;
+  fresh?: boolean;
   signal?: AbortSignal;
 }
 
@@ -270,6 +273,7 @@ export function extractSample(id: string, opts: ExtractOptions): Promise<Extract
     paths: (opts.paths ?? ["vision", "ocr_text"]).join(","),
   });
   if (opts.arbiter !== undefined) params.set("arbiter", String(opts.arbiter));
+  if (opts.fresh) params.set("fresh", "true");
   return request<ExtractResponse>(`/samples/${encodeURIComponent(id)}/extract?${params}`, {
     method: "POST",
     signal: opts.signal,

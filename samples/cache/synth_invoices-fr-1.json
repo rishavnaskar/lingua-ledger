@@ -1,0 +1,996 @@
+{
+ "doc_id": "synth_invoices-fr-1",
+ "classification": {
+  "doc_type": "invoice",
+  "language": "fr",
+  "confidence": 1.0
+ },
+ "data": {
+  "vendor_name": "Bernard Fournitures SARL",
+  "vendor_address": "27 rue Sainte-Catherine\n33000 Bordeaux",
+  "vendor_tax_id": "FR55425539661",
+  "customer_name": "Hôtel Lambert SAS",
+  "invoice_number": "FA2026-1997",
+  "invoice_date": "2026-01-07",
+  "due_date": "2026-01-21",
+  "currency": "EUR",
+  "line_items": [
+   {
+    "description": "Licence logicielle annuelle",
+    "quantity": 1.0,
+    "unit_price": 850.89,
+    "total": 850.89
+   },
+   {
+    "description": "Frais de port et d'emballage",
+    "quantity": 1.0,
+    "unit_price": 7.2,
+    "total": 7.2
+   },
+   {
+    "description": "Fauteuil de bureau ergonomique",
+    "quantity": 5.0,
+    "unit_price": 243.61,
+    "total": 1218.05
+   },
+   {
+    "description": "Formation du personnel (journée)",
+    "quantity": 1.0,
+    "unit_price": 1134.74,
+    "total": 1134.74
+   }
+  ],
+  "subtotal": 3210.88,
+  "tax_rate": 20.0,
+  "tax_amount": 642.18,
+  "total": 3853.06,
+  "iban": "FR09 0801 4101 1014 4822 1312 817",
+  "payment_terms": "Paiement à 14 jours à réception de facture"
+ },
+ "fields": [
+  {
+   "field": "vendor_name",
+   "value": "Bernard Fournitures SARL",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.953,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Bernard Fournitures SARL",
+   "ocr_value": "Bernard Fournitures SARL",
+   "bbox": [
+    237,
+    102,
+    579,
+    125
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_address",
+   "value": "27 rue Sainte-Catherine\n33000 Bordeaux",
+   "confidence": 0.995,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "27 rue Sainte-Catherine\n33000 Bordeaux",
+   "ocr_value": "27 rue Sainte-Catherine 33000 Bordeaux",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_tax_id",
+   "value": "FR55425539661",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "FR55425539661",
+   "ocr_value": "FR55425539661",
+   "bbox": [
+    387,
+    189,
+    532,
+    203
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "customer_name",
+   "value": "Hôtel Lambert SAS",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Hôtel Lambert SAS",
+   "ocr_value": "Hôtel Lambert SAS",
+   "bbox": [
+    106,
+    371,
+    321,
+    392
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_number",
+   "value": "FA2026-1997",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "FA2026-1997",
+   "ocr_value": "FA2026-1997",
+   "bbox": [
+    1028,
+    193,
+    1146,
+    209
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_date",
+   "value": "2026-01-07",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.958,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2026-01-07",
+   "ocr_value": "2026-01-07",
+   "bbox": [
+    720,
+    222,
+    1146,
+    243
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "due_date",
+   "value": "2026-01-21",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2026-01-21",
+   "ocr_value": "2026-01-21",
+   "bbox": [
+    720,
+    254,
+    1145,
+    275
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "EUR",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "EUR",
+   "ocr_value": "EUR",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "Licence logicielle annuelle",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.957,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Licence logicielle annuelle",
+   "ocr_value": "Licence logicielle annuelle",
+   "bbox": [
+    116,
+    591,
+    332,
+    610
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 850.89,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 850.89,
+   "ocr_value": 850.89,
+   "bbox": [
+    865,
+    596,
+    922,
+    613
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 850.89,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 850.89,
+   "ocr_value": 850.89,
+   "bbox": [
+    865,
+    596,
+    922,
+    613
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "Frais de port et d'emballage",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.954,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Frais de port et d'emballage",
+   "ocr_value": "Frais de port et d'emballage",
+   "bbox": [
+    116,
+    641,
+    346,
+    661
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": 7.2,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 7.2,
+   "ocr_value": 7.2,
+   "bbox": [
+    886,
+    647,
+    921,
+    663
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 7.2,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 7.2,
+   "ocr_value": 7.2,
+   "bbox": [
+    886,
+    647,
+    921,
+    663
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "Fauteuil de bureau ergonomique",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Fauteuil de bureau ergonomique",
+   "ocr_value": "Fauteuil de bureau ergonomique",
+   "bbox": [
+    115,
+    691,
+    384,
+    711
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": 5.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 5.0,
+   "ocr_value": 5.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": 243.61,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 243.61,
+   "ocr_value": 243.61,
+   "bbox": [
+    864,
+    696,
+    918,
+    713
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 1218.05,
+   "confidence": 0.995,
+   "raw_score": 0.9513,
+   "agree": true,
+   "ocr_conf": 0.315,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1218.05,
+   "ocr_value": 1218.05,
+   "bbox": [
+    1059,
+    698,
+    1129,
+    715
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].description",
+   "value": "Formation du personnel (journée)",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Formation du personnel (journée)",
+   "ocr_value": "Formation du personnel (journée)",
+   "bbox": [
+    115,
+    741,
+    392,
+    761
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].unit_price",
+   "value": 1134.74,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.76,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1134.74,
+   "ocr_value": 1134.74,
+   "bbox": [
+    850,
+    746,
+    920,
+    763
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].total",
+   "value": 1134.74,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.76,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1134.74,
+   "ocr_value": 1134.74,
+   "bbox": [
+    850,
+    746,
+    920,
+    763
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 3210.88,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3210.88,
+   "ocr_value": 3210.88,
+   "bbox": [
+    1048,
+    812,
+    1124,
+    830
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_rate",
+   "value": 20.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 20.0,
+   "ocr_value": 20.0,
+   "bbox": [
+    664,
+    844,
+    685,
+    859
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 642.18,
+   "confidence": 0.995,
+   "raw_score": 0.8725,
+   "agree": true,
+   "ocr_conf": 0.0,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 642.18,
+   "ocr_value": 642.18,
+   "bbox": [
+    1064,
+    848,
+    1124,
+    865
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 3853.06,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.955,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3853.06,
+   "ocr_value": 3853.06,
+   "bbox": [
+    1028,
+    888,
+    1120,
+    910
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "iban",
+   "value": "FR09 0801 4101 1014 4822 1312 817",
+   "confidence": 0.995,
+   "raw_score": 0.785,
+   "agree": false,
+   "ocr_conf": 0.93,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "FR09 0801 4101 1014 4822 1312 817",
+   "ocr_value": "FRO9 0801 4101 1014 4822 1312817",
+   "bbox": [
+    162,
+    1583,
+    470,
+    1599
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": "FR09 0801 4101 1014 4822 1312 817",
+   "needs_review": false
+  },
+  {
+   "field": "payment_terms",
+   "value": "Paiement à 14 jours à réception de facture",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Paiement à 14 jours à réception de facture",
+   "ocr_value": "Paiement à 14 jours à réception de facture",
+   "bbox": [
+    307,
+    1525,
+    649,
+    1544
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "invoice_number",
+    "total",
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "Invoice number, date and total are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 3,853.06 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total",
+    "line_items[3].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (3,210.88)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 850.89"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[1].quantity",
+    "line_items[1].unit_price",
+    "line_items[1].total"
+   ],
+   "passed": true,
+   "message": "Line 2: quantity x unit price = 7.20"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[2].quantity",
+    "line_items[2].unit_price",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line 3: quantity x unit price = 1,218.05"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[3].quantity",
+    "line_items[3].unit_price",
+    "line_items[3].total"
+   ],
+   "passed": true,
+   "message": "Line 4: quantity x unit price = 1,134.74"
+  },
+  {
+   "rule": "tax_math",
+   "fields": [
+    "subtotal",
+    "tax_rate",
+    "tax_amount"
+   ],
+   "passed": true,
+   "message": "Tax 642.18 matches 20% of 3,210.88"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (3,853.06)"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "invoice_date parses as 2026-01-07"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date parses as 2026-01-21"
+  },
+  {
+   "rule": "due_after_invoice",
+   "fields": [
+    "invoice_date",
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date 2026-01-21 is on or after invoice_date 2026-01-07"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "EUR is an ISO 4217 code"
+  },
+  {
+   "rule": "iban_valid",
+   "fields": [
+    "iban"
+   ],
+   "passed": true,
+   "message": "IBAN checksum is valid"
+  },
+  {
+   "rule": "vat_id_valid",
+   "fields": [
+    "vendor_tax_id"
+   ],
+   "passed": true,
+   "message": "Tax id matches the expected format"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "vendor_name": "Bernard Fournitures SARL",
+    "vendor_address": "27 rue Sainte-Catherine\n33000 Bordeaux",
+    "vendor_tax_id": "FR55425539661",
+    "customer_name": "Hôtel Lambert SAS",
+    "invoice_number": "FA2026-1997",
+    "invoice_date": "2026-01-07",
+    "due_date": "2026-01-21",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Licence logicielle annuelle",
+      "quantity": 1.0,
+      "unit_price": 850.89,
+      "total": 850.89
+     },
+     {
+      "description": "Frais de port et d'emballage",
+      "quantity": 1.0,
+      "unit_price": 7.2,
+      "total": 7.2
+     },
+     {
+      "description": "Fauteuil de bureau ergonomique",
+      "quantity": 5.0,
+      "unit_price": 243.61,
+      "total": 1218.05
+     },
+     {
+      "description": "Formation du personnel (journée)",
+      "quantity": 1.0,
+      "unit_price": 1134.74,
+      "total": 1134.74
+     }
+    ],
+    "subtotal": 3210.88,
+    "tax_rate": 20.0,
+    "tax_amount": 642.18,
+    "total": 3853.06,
+    "iban": "FR09 0801 4101 1014 4822 1312 817",
+    "payment_terms": "Paiement à 14 jours à réception de facture"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 57.477,
+   "input_tokens": 1267,
+   "output_tokens": 1248,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "vendor_name": "Bernard Fournitures SARL",
+    "vendor_address": "27 rue Sainte-Catherine 33000 Bordeaux",
+    "vendor_tax_id": "FR55425539661",
+    "customer_name": "Hôtel Lambert SAS",
+    "invoice_number": "FA2026-1997",
+    "invoice_date": "2026-01-07",
+    "due_date": "2026-01-21",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Licence logicielle annuelle",
+      "quantity": 1.0,
+      "unit_price": 850.89,
+      "total": 850.89
+     },
+     {
+      "description": "Frais de port et d'emballage",
+      "quantity": 1.0,
+      "unit_price": 7.2,
+      "total": 7.2
+     },
+     {
+      "description": "Fauteuil de bureau ergonomique",
+      "quantity": 5.0,
+      "unit_price": 243.61,
+      "total": 1218.05
+     },
+     {
+      "description": "Formation du personnel (journée)",
+      "quantity": 1.0,
+      "unit_price": 1134.74,
+      "total": 1134.74
+     }
+    ],
+    "subtotal": 3210.88,
+    "tax_rate": 20.0,
+    "tax_amount": 642.18,
+    "total": 3853.06,
+    "iban": "FRO9 0801 4101 1014 4822 1312817",
+    "payment_terms": "Paiement à 14 jours à réception de facture"
+   },
+   "self_confidence": {
+    "vendor_name": 0.98,
+    "vendor_address": 0.98,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.98,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.98,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.92,
+    "payment_terms": 0.98
+   },
+   "latency_s": 11.104,
+   "input_tokens": 549,
+   "output_tokens": 2207,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 64.009,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "iban",
+    "vision_value": "FR09 0801 4101 1014 4822 1312 817",
+    "ocr_value": "FRO9 0801 4101 1014 4822 1312817",
+    "choice": "vision",
+    "value": "FR09 0801 4101 1014 4822 1312 817",
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 5.938,
+  "input_tokens": 1310,
+  "output_tokens": 196,
+  "error": null
+ },
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "vendor_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

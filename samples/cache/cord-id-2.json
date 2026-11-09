@@ -1,0 +1,684 @@
+{
+ "doc_id": "cord-id-2",
+ "classification": {
+  "doc_type": "receipt",
+  "language": "id",
+  "confidence": 1.0
+ },
+ "data": {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "time": null,
+  "currency": null,
+  "line_items": [
+   {
+    "description": "J.STB PROMO",
+    "quantity": null,
+    "unit_price": null,
+    "total": 17500.0
+   },
+   {
+    "description": "Y.B.BAT",
+    "quantity": null,
+    "unit_price": null,
+    "total": 46000.0
+   },
+   {
+    "description": "Y.BASO PROM",
+    "quantity": null,
+    "unit_price": null,
+    "total": 27500.0
+   }
+  ],
+  "subtotal": null,
+  "tax_amount": null,
+  "service_charge": null,
+  "discount": null,
+  "total": 91000.0,
+  "cash_paid": 91000.0,
+  "change": null,
+  "payment_method": "CASH"
+ },
+ "fields": [
+  {
+   "field": "merchant_name",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "fail",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "merchant_address",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "date",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "fail",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "time",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "J.STB PROMO",
+   "confidence": 0.9111,
+   "raw_score": 0.3225,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "J.STB PROMO",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 17500.0,
+   "confidence": 0.9257,
+   "raw_score": 0.4075,
+   "agree": false,
+   "ocr_conf": 0.94,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": 17500.0,
+   "ocr_value": null,
+   "bbox": [
+    543,
+    808,
+    817,
+    866
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "Y.B.BAT",
+   "confidence": 0.9111,
+   "raw_score": 0.3225,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Y.B.BAT",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 46000.0,
+   "confidence": 0.9111,
+   "raw_score": 0.3225,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": 46000.0,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "Y.BASO PROM",
+   "confidence": 0.9111,
+   "raw_score": 0.3225,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Y.BASO PROM",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 27500.0,
+   "confidence": 0.9111,
+   "raw_score": 0.3225,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": 27500.0,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "service_charge",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "discount",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 91000.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 91000.0,
+   "ocr_value": 91000.0,
+   "bbox": [
+    543,
+    808,
+    817,
+    866
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "cash_paid",
+   "value": 91000.0,
+   "confidence": 0.9597,
+   "raw_score": 0.6675,
+   "agree": false,
+   "ocr_conf": 0.94,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": 91000.0,
+   "ocr_value": 391000.0,
+   "bbox": [
+    543,
+    808,
+    817,
+    866
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": 91000.0,
+   "needs_review": false
+  },
+  {
+   "field": "change",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_method",
+   "value": "CASH",
+   "confidence": 0.9609,
+   "raw_score": 0.9875,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "CASH",
+   "ocr_value": "CASH",
+   "bbox": [
+    131,
+    883,
+    350,
+    928
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "merchant_name",
+    "date"
+   ],
+   "passed": false,
+   "message": "Missing required fields: merchant_name, date"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 91,000.00 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "service_charge",
+    "discount",
+    "total"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "change_math",
+   "fields": [
+    "cash_paid",
+    "total",
+    "change"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "date"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "time": null,
+    "currency": null,
+    "line_items": [
+     {
+      "description": "J.STB PROMO",
+      "quantity": null,
+      "unit_price": null,
+      "total": 17500.0
+     },
+     {
+      "description": "Y.B.BAT",
+      "quantity": null,
+      "unit_price": null,
+      "total": 46000.0
+     },
+     {
+      "description": "Y.BASO PROM",
+      "quantity": null,
+      "unit_price": null,
+      "total": 27500.0
+     }
+    ],
+    "subtotal": null,
+    "tax_amount": null,
+    "service_charge": null,
+    "discount": null,
+    "total": 91000.0,
+    "cash_paid": 91000.0,
+    "change": null,
+    "payment_method": "CASH"
+   },
+   "self_confidence": {
+    "merchant_name": 0.0,
+    "merchant_address": 0.0,
+    "date": 0.0,
+    "time": 0.0,
+    "currency": 0.0,
+    "line_items": 0.99,
+    "subtotal": 0.0,
+    "tax_amount": 0.0,
+    "service_charge": 0.0,
+    "discount": 0.0,
+    "total": 0.99,
+    "cash_paid": 0.99,
+    "change": 0.0,
+    "payment_method": 0.99
+   },
+   "latency_s": 10.14,
+   "input_tokens": 1239,
+   "output_tokens": 1263,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "time": null,
+    "currency": null,
+    "line_items": [],
+    "subtotal": null,
+    "tax_amount": null,
+    "service_charge": null,
+    "discount": null,
+    "total": 91000.0,
+    "cash_paid": 391000.0,
+    "change": null,
+    "payment_method": "CASH"
+   },
+   "self_confidence": {
+    "total": 0.85,
+    "cash_paid": 0.8,
+    "payment_method": 0.85
+   },
+   "latency_s": 5.236,
+   "input_tokens": 232,
+   "output_tokens": 646,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 13.45,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "cash_paid",
+    "vision_value": 91000.0,
+    "ocr_value": 391000.0,
+    "choice": "vision",
+    "value": 91000.0,
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 3.074,
+  "input_tokens": 1277,
+  "output_tokens": 84,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

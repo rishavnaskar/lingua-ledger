@@ -317,16 +317,20 @@ async function iconPng(name, hex, px = 256) {
       const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
       s.addText(`Results on ${SUMMARY.documents} public benchmark documents`, { placeholder: "title" });
       const hasArb = datasets.some((d) => f1[`${d}/all/arbiter`] != null);
+      const hasLen = datasets.some((d) => f1[`${d}/all/lenient`] != null);
       const th = (t) => ({ text: t, options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } });
-      const rows = [[th("Benchmark"), th("Vision only"), th("OCR + text"), th("Both + validators"), ...(hasArb ? [th("+ arbiter")] : [])]];
+      const rows = [[th("Benchmark"), th("Vision only"), th("OCR + text"), th("Both + validators"), ...(hasArb ? [th("+ arbiter")] : []), ...(hasLen ? [th("Lenient (forms)")] : [])]];
       for (const d of datasets) {
         if (f1[`${d}/all/merged`] == null) continue;
         const merged = pct(f1[`${d}/all/merged`]);
+        const len = f1[`${d}/all/lenient`];
         rows.push([names[d], pct(f1[`${d}/all/vision`]), pct(f1[`${d}/all/ocr_text`]),
           hasArb ? merged : { text: merged, options: { bold: true, color: H.accent1 } },
-          ...(hasArb ? [{ text: pct(f1[`${d}/all/arbiter`]), options: { bold: true, color: H.accent1 } }] : [])]);
+          ...(hasArb ? [{ text: pct(f1[`${d}/all/arbiter`]), options: { bold: true, color: H.accent1 } }] : []),
+          ...(hasLen ? [len == null ? "" : { text: pct(len), options: { color: H.accent4 } }] : [])]);
       }
-      s.addTable(rows, { x: 0.5, y: 1.25, w: 5.6, colW: hasArb ? [2.0, 0.9, 0.9, 0.9, 0.9] : [2.3, 1.1, 1.1, 1.1], fontSize: hasArb ? 10 : 11, color: C.text2,
+      const extra = (hasArb ? 1 : 0) + (hasLen ? 1 : 0);
+      s.addTable(rows, { x: 0.5, y: 1.25, w: 5.6, colW: extra ? [2.0, ...Array(3 + extra).fill(3.6 / (3 + extra))] : [2.3, 1.1, 1.1, 1.1], fontSize: extra ? 10 : 11, color: C.text2,
         border: { type: "solid", pt: 0.5, color: "D5DCE4" }, fill: { color: H.lt1 }, rowH: 0.36, valign: "middle",
         margin: 0.05, objectName: "results table" });
       if (chart("f1_by_language")) {
@@ -447,8 +451,8 @@ async function iconPng(name, hex, px = 256) {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
     s.addText("Roadmap: pipeline, evidence, then production", { placeholder: "title" });
     const phases = [
-      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Two readers, an arbiter for disputes, validators, calibration, and review routing", "198 public benchmark documents, 9 languages, and one command produces all numbers", "Live hosted demo with sample documents, anomaly checks, and calibrator review panel", "237 unit tests released under an MIT licence"], H.accent1],
-      ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini and Claude readers, one environment variable, comparing cost and accuracy", "Japanese, Chinese forms: layout-aware prompts, key normalisation, strict and lenient scoring", "Three-way match: reconciled purchase orders, invoices, and receipts, flagging any mismatches", "Backed vendor memory with a database instead of a file"], H.accent4],
+      ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Two readers, an arbiter for disputes, validators, calibration, and review routing", "198 public benchmark documents, 9 languages, and one command produces all numbers", "Live hosted demo with sample documents, anomaly checks, and calibrator review panel", "Forms scored strict and lenient; prompt updates showed no score gain", "241 unit tests released under an MIT licence"], H.accent1],
+      ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini and Claude readers, one environment variable, comparing cost and accuracy", "Stronger arbiter model and more languages, starting with Hindi and Arabic forms", "Three-way match: reconciled purchase orders, invoices, and receipts, flagging any mismatches", "Backed vendor memory with a database instead of a file"], H.accent4],
       ["Beyond Round 2", "Moving into production", ["Open-weights model path for on-prem use", "Connectors for email inbox, SAP, and Tally", "Full table and handwriting extraction support"], H.dk2],
     ];
     for (let i = 0; i < 3; i++) {
@@ -458,7 +462,7 @@ async function iconPng(name, hex, px = 256) {
       text(s, String(i + 1), { x: x + 0.2, y: y + 0.2, w: 0.42, h: 0.42, fontSize: 14, bold: true, color: H.lt1, align: "center", valign: "middle" });
       text(s, phases[i][0], { x: x + 0.75, y: y + 0.2, w: w - 0.9, h: 0.22, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
       text(s, phases[i][1], { x: x + 0.75, y: y + 0.42, w: w - 0.9, h: 0.62, fontSize: 14, bold: true, color: C.text1, valign: "top" });
-      s.addText(bullets(phases[i][2], 11.5, C.text2, 6), { x: x + 0.2, y: y + 1.15, w: w - 0.4, h: 2.35, isTextBox: true, margin: 0, valign: "top" });
+      s.addText(bullets(phases[i][2], 10.5, C.text2, 4), { x: x + 0.2, y: y + 1.15, w: w - 0.4, h: 2.35, isTextBox: true, margin: 0, valign: "top" });
     }
     s.addNotes("Round 1 already includes the evidence we promised. Round 2 focuses on boosting quality with bigger readers and fixing our weakest languages. Everything in production covers the obvious features enterprise buyers ask for.");
   }

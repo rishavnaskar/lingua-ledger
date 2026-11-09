@@ -15,7 +15,7 @@ import numpy as np
 
 from ..confidence import Calibrator
 from ..config import ARTIFACTS
-from .metrics import Counts, label_fields
+from .metrics import Counts, label_fields, score_form_lenient
 
 RESULTS_DIR = ARTIFACTS / "eval"
 INK, MUTED, GRID = "#121A2B", "#4A5568", "#D5DCE4"
@@ -71,11 +71,15 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     # Field-level F1 per dataset/language and per path.
     agg: dict[tuple[str, str, str], Counts] = defaultdict(Counts)
     for r in rows:
-        for path, sc in r["scores"].items():
+        scores = dict(r["scores"])
+        if isinstance(r["gold"].get("fields"), list):
+            scores["lenient"] = score_form_lenient(r["pred"], r["gold"]).as_dict()
+        for path, sc in scores.items():
             c = Counts(tp=sc["tp"], fp=sc["fp"], fn=sc["fn"])
             agg[(r["dataset"], r["language"], path)].add(c)
             agg[(r["dataset"], "all", path)].add(c)
-            agg[("all", "all", path)].add(c)
+            if path != "lenient":
+                agg[("all", "all", path)].add(c)
     table = [
         {"dataset": d, "language": lang, "path": p, **c.as_dict()} for (d, lang, p), c in sorted(agg.items())
     ]
@@ -356,22 +360,61 @@ def _reliability_chart(raw: np.ndarray, calibrated: np.ndarray, correct: np.ndar
 
 
 def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
-    best = "arbiter" if any(p == "arbiter" for (_, _, p) in agg) else "merged"
-    langs = [(lang, c.f1) for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == best]
-    funsd = [c.f1 for (d, lang, p), c in agg.items() if d == "funsd" and lang == "all" and p == best]
-    if funsd:
-        langs.append(("en", funsd[0]))
-    if langs:
-        langs.sort(key=lambda x: -x[1])
+    strict = {
+        lang: c.f1 for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == "merged"
+    }
+    lenient = {
+        lang: c.f1 for (d, lang, p), c in agg.items() if d == "xfund" and lang != "all" and p == "lenient"
+    }
+    for p, target in (("merged", strict), ("lenient", lenient)):
+        for (d, lang, pp), c in agg.items():
+            if d == "funsd" and lang == "all" and pp == p:
+                target["en"] = c.f1
+    if strict:
+        langs = sorted(strict, key=lambda k: -strict[k])
         fig, ax = plt.subplots(figsize=(6, 3.2), dpi=160)
-        names = [x[0].upper() for x in langs]
-        vals = [x[1] * 100 for x in langs]
-        bars = ax.bar(names, vals, color=TEAL, width=0.6)
-        for b, v in zip(bars, vals):
-            ax.text(b.get_x() + b.get_width() / 2, v + 1, f"{v:.0f}", ha="center", fontsize=8, color=INK)
+        x = np.arange(len(langs))
+        width = 0.38 if lenient else 0.6
+        ax.bar(
+            x - (width / 2 if lenient else 0),
+            [strict[k] * 100 for k in langs],
+            width,
+            color=TEAL,
+            label="Strict pairs",
+        )
+        if lenient:
+            ax.bar(
+                x + width / 2,
+                [lenient.get(k, 0) * 100 for k in langs],
+                width,
+                color="#9FD3C7",
+                label="Lenient, fragment-aware",
+            )
+        for i, k in enumerate(langs):
+            ax.text(
+                i - (width / 2 if lenient else 0),
+                strict[k] * 100 + 1,
+                f"{strict[k] * 100:.0f}",
+                ha="center",
+                fontsize=7,
+                color=INK,
+            )
+            if lenient and k in lenient:
+                ax.text(
+                    i + width / 2,
+                    lenient[k] * 100 + 1,
+                    f"{lenient[k] * 100:.0f}",
+                    ha="center",
+                    fontsize=7,
+                    color=INK,
+                )
+        ax.set_xticks(x)
+        ax.set_xticklabels([k.upper() for k in langs])
         ax.set_ylim(0, 105)
         ax.set_ylabel("Key-value F1 (%)")
-        ax.set_title("Form extraction F1 by language (XFUND, FUNSD)", fontsize=10, loc="left")
+        ax.set_title("Form extraction F1 by language (XFUND, FUNSD)", fontsize=10, loc="left", pad=18)
+        if lenient:
+            ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2)
         _style(ax)
         fig.tight_layout()
         fig.savefig(ARTIFACTS / "f1_by_language.png")

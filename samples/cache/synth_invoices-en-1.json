@@ -1,0 +1,1250 @@
+{
+ "doc_id": "synth_invoices-en-1",
+ "classification": {
+  "doc_type": "invoice",
+  "language": "en",
+  "confidence": 1.0
+ },
+ "data": {
+  "vendor_name": "Hartley & Sons Ltd",
+  "vendor_address": "14 King Street, Manchester M2 4LQ",
+  "vendor_tax_id": "GB684910039",
+  "customer_name": "Greenfield Estates Ltd",
+  "invoice_number": "INV-2025-1135",
+  "invoice_date": "2025-11-21",
+  "due_date": "2025-12-21",
+  "currency": "GBP",
+  "line_items": [
+   {
+    "description": "Website development - phase 1",
+    "quantity": 3.0,
+    "unit_price": 4103.5,
+    "total": 12310.5
+   },
+   {
+    "description": "Graphic design (hours)",
+    "quantity": 7.5,
+    "unit_price": 78.19,
+    "total": 586.43
+   },
+   {
+    "description": "Server maintenance (monthly)",
+    "quantity": 8.0,
+    "unit_price": 101.87,
+    "total": 814.96
+   },
+   {
+    "description": "Cloud hosting - business plan",
+    "quantity": 10.0,
+    "unit_price": 127.04,
+    "total": 1270.4
+   },
+   {
+    "description": "Consulting services (hours)",
+    "quantity": 10.0,
+    "unit_price": 69.97,
+    "total": 699.7
+   },
+   {
+    "description": "A4 copier paper, box of 5 reams",
+    "quantity": 1.0,
+    "unit_price": 21.22,
+    "total": 21.22
+   }
+  ],
+  "subtotal": 15703.21,
+  "tax_rate": 20.0,
+  "tax_amount": 3140.64,
+  "total": 18843.85,
+  "iban": "GB39 HBUK 1067 3174 4598 41",
+  "payment_terms": "Payment due within 30 days of invoice date"
+ },
+ "fields": [
+  {
+   "field": "vendor_name",
+   "value": "Hartley & Sons Ltd",
+   "confidence": 0.995,
+   "raw_score": 0.9888,
+   "agree": true,
+   "ocr_conf": 0.945,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Hartley & Sons Ltd",
+   "ocr_value": "Hartley & Sons Ltd",
+   "bbox": [
+    92,
+    60,
+    404,
+    96
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_address",
+   "value": "14 King Street, Manchester M2 4LQ",
+   "confidence": 0.995,
+   "raw_score": 0.9879,
+   "agree": true,
+   "ocr_conf": 0.942,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "14 King Street, Manchester M2 4LQ",
+   "ocr_value": "14 King Street, Manchester M2 4LQ",
+   "bbox": [
+    93,
+    111,
+    388,
+    131
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_tax_id",
+   "value": "GB684910039",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "GB684910039",
+   "ocr_value": "GB684910039",
+   "bbox": [
+    217,
+    140,
+    336,
+    156
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "customer_name",
+   "value": "Greenfield Estates Ltd",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.963,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Greenfield Estates Ltd",
+   "ocr_value": "Greenfield Estates Ltd",
+   "bbox": [
+    676,
+    282,
+    929,
+    304
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_number",
+   "value": "INV-2025-1135",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "INV-2025-1135",
+   "ocr_value": "INV-2025-1135",
+   "bbox": [
+    340,
+    321,
+    473,
+    337
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_date",
+   "value": "2025-11-21",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.943,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-11-21",
+   "ocr_value": "2025-11-21",
+   "bbox": [
+    94,
+    353,
+    438,
+    372
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "due_date",
+   "value": "2025-12-21",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.957,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-12-21",
+   "ocr_value": "2025-12-21",
+   "bbox": [
+    95,
+    384,
+    438,
+    403
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "GBP",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "GBP",
+   "ocr_value": "GBP",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "Website development - phase 1",
+   "confidence": 0.995,
+   "raw_score": 0.9885,
+   "agree": true,
+   "ocr_conf": 0.944,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Website development - phase 1",
+   "ocr_value": "Website development - phase 1",
+   "bbox": [
+    108,
+    543,
+    369,
+    563
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 3.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3.0,
+   "ocr_value": 3.0,
+   "bbox": [
+    418,
+    1530,
+    437,
+    1544
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 4103.5,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 4103.5,
+   "ocr_value": 4103.5,
+   "bbox": [
+    842,
+    534,
+    915,
+    552
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 12310.5,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 12310.5,
+   "ocr_value": 12310.5,
+   "bbox": [
+    1042,
+    527,
+    1123,
+    554
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "Graphic design (hours)",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Graphic design (hours)",
+   "ocr_value": "Graphic design (hours)",
+   "bbox": [
+    109,
+    594,
+    299,
+    614
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": 7.5,
+   "confidence": 0.995,
+   "raw_score": 0.7525,
+   "agree": false,
+   "ocr_conf": 0.8,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 7.5,
+   "ocr_value": 75.0,
+   "bbox": [
+    692,
+    587,
+    718,
+    601
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": 7.5,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": 78.19,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.93,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 78.19,
+   "ocr_value": 78.19,
+   "bbox": [
+    869,
+    584,
+    916,
+    599
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 586.43,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 586.43,
+   "ocr_value": 586.43,
+   "bbox": [
+    1064,
+    577,
+    1124,
+    605
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "Server maintenance (monthly)",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Server maintenance (monthly)",
+   "ocr_value": "Server maintenance (monthly)",
+   "bbox": [
+    110,
+    643,
+    360,
+    662
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": 8.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 8.0,
+   "ocr_value": 8.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": 101.87,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 101.87,
+   "ocr_value": 101.87,
+   "bbox": [
+    861,
+    634,
+    916,
+    649
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 814.96,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 814.96,
+   "ocr_value": 814.96,
+   "bbox": [
+    1068,
+    627,
+    1125,
+    654
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].description",
+   "value": "Cloud hosting - business plan",
+   "confidence": 0.995,
+   "raw_score": 0.988,
+   "agree": true,
+   "ocr_conf": 0.942,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Cloud hosting - business plan",
+   "ocr_value": "Cloud hosting - business plan",
+   "bbox": [
+    110,
+    693,
+    355,
+    713
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].quantity",
+   "value": 10.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.9,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 10.0,
+   "ocr_value": 10.0,
+   "bbox": [
+    700,
+    687,
+    719,
+    702
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].unit_price",
+   "value": 127.04,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 127.04,
+   "ocr_value": 127.04,
+   "bbox": [
+    861,
+    680,
+    917,
+    706
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].total",
+   "value": 1270.4,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1270.4,
+   "ocr_value": 1270.4,
+   "bbox": [
+    861,
+    680,
+    917,
+    706
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].description",
+   "value": "Consulting services (hours)",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Consulting services (hours)",
+   "ocr_value": "Consulting services (hours)",
+   "bbox": [
+    111,
+    743,
+    338,
+    763
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].quantity",
+   "value": 10.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.9,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 10.0,
+   "ocr_value": 10.0,
+   "bbox": [
+    700,
+    687,
+    719,
+    702
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].unit_price",
+   "value": 69.97,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 69.97,
+   "ocr_value": 69.97,
+   "bbox": [
+    872,
+    734,
+    918,
+    749
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].total",
+   "value": 699.7,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 699.7,
+   "ocr_value": 699.7,
+   "bbox": [
+    872,
+    734,
+    918,
+    749
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[5].description",
+   "value": "A4 copier paper, box of 5 reams",
+   "confidence": 0.995,
+   "raw_score": 0.9825,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "A4 copier paper, box of 5 reams",
+   "ocr_value": "A4 copier paper, box of 5 reams",
+   "bbox": [
+    111,
+    793,
+    378,
+    813
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[5].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.9,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": [
+    700,
+    687,
+    719,
+    702
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[5].unit_price",
+   "value": 21.22,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 21.22,
+   "ocr_value": 21.22,
+   "bbox": [
+    872,
+    784,
+    919,
+    799
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[5].total",
+   "value": 21.22,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 21.22,
+   "ocr_value": 21.22,
+   "bbox": [
+    872,
+    784,
+    919,
+    799
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 15703.21,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 15703.21,
+   "ocr_value": 15703.21,
+   "bbox": [
+    1041,
+    850,
+    1137,
+    868
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_rate",
+   "value": 20.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 20.0,
+   "ocr_value": 20.0,
+   "bbox": [
+    664,
+    890,
+    703,
+    906
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 3140.64,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3140.64,
+   "ocr_value": 3140.64,
+   "bbox": [
+    1053,
+    885,
+    1141,
+    903
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 18843.85,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 18843.85,
+   "ocr_value": 18843.85,
+   "bbox": [
+    1022,
+    926,
+    1141,
+    947
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "iban",
+   "value": "GB39 HBUK 1067 3174 4598 41",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.898,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "GB39 HBUK 1067 3174 4598 41",
+   "ocr_value": "GB39 HBUK 1067 3174 4598 41",
+   "bbox": [
+    182,
+    1589,
+    436,
+    1607
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_terms",
+   "value": "Payment due within 30 days of invoice date",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.955,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Payment due within 30 days of invoice date",
+   "ocr_value": "Payment due within 30 days of invoice date",
+   "bbox": [
+    259,
+    1529,
+    599,
+    1550
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "invoice_number",
+    "total",
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "Invoice number, date and total are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 18,843.85 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total",
+    "line_items[3].total",
+    "line_items[4].total",
+    "line_items[5].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (15,703.21)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 12,310.50"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[1].quantity",
+    "line_items[1].unit_price",
+    "line_items[1].total"
+   ],
+   "passed": true,
+   "message": "Line 2: quantity x unit price = 586.43"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[2].quantity",
+    "line_items[2].unit_price",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line 3: quantity x unit price = 814.96"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[3].quantity",
+    "line_items[3].unit_price",
+    "line_items[3].total"
+   ],
+   "passed": true,
+   "message": "Line 4: quantity x unit price = 1,270.40"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[4].quantity",
+    "line_items[4].unit_price",
+    "line_items[4].total"
+   ],
+   "passed": true,
+   "message": "Line 5: quantity x unit price = 699.70"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[5].quantity",
+    "line_items[5].unit_price",
+    "line_items[5].total"
+   ],
+   "passed": true,
+   "message": "Line 6: quantity x unit price = 21.22"
+  },
+  {
+   "rule": "tax_math",
+   "fields": [
+    "subtotal",
+    "tax_rate",
+    "tax_amount"
+   ],
+   "passed": true,
+   "message": "Tax 3,140.64 matches 20% of 15,703.21"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (18,843.85)"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "invoice_date parses as 2025-11-21"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date parses as 2025-12-21"
+  },
+  {
+   "rule": "due_after_invoice",
+   "fields": [
+    "invoice_date",
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date 2025-12-21 is on or after invoice_date 2025-11-21"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "GBP is an ISO 4217 code"
+  },
+  {
+   "rule": "iban_valid",
+   "fields": [
+    "iban"
+   ],
+   "passed": true,
+   "message": "IBAN checksum is valid"
+  },
+  {
+   "rule": "vat_id_valid",
+   "fields": [
+    "vendor_tax_id"
+   ],
+   "passed": true,
+   "message": "Tax id matches the expected format"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "vendor_name": "Hartley & Sons Ltd",
+    "vendor_address": "14 King Street, Manchester M2 4LQ",
+    "vendor_tax_id": "GB684910039",
+    "customer_name": "Greenfield Estates Ltd",
+    "invoice_number": "INV-2025-1135",
+    "invoice_date": "2025-11-21",
+    "due_date": "2025-12-21",
+    "currency": "GBP",
+    "line_items": [
+     {
+      "description": "Website development - phase 1",
+      "quantity": 3.0,
+      "unit_price": 4103.5,
+      "total": 12310.5
+     },
+     {
+      "description": "Graphic design (hours)",
+      "quantity": 7.5,
+      "unit_price": 78.19,
+      "total": 586.43
+     },
+     {
+      "description": "Server maintenance (monthly)",
+      "quantity": 8.0,
+      "unit_price": 101.87,
+      "total": 814.96
+     },
+     {
+      "description": "Cloud hosting - business plan",
+      "quantity": 10.0,
+      "unit_price": 127.04,
+      "total": 1270.4
+     },
+     {
+      "description": "Consulting services (hours)",
+      "quantity": 10.0,
+      "unit_price": 69.97,
+      "total": 699.7
+     },
+     {
+      "description": "A4 copier paper, box of 5 reams",
+      "quantity": 1.0,
+      "unit_price": 21.22,
+      "total": 21.22
+     }
+    ],
+    "subtotal": 15703.21,
+    "tax_rate": 20.0,
+    "tax_amount": 3140.64,
+    "total": 18843.85,
+    "iban": "GB39 HBUK 1067 3174 4598 41",
+    "payment_terms": "Payment due within 30 days of invoice date"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 11.897,
+   "input_tokens": 1267,
+   "output_tokens": 2025,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "vendor_name": "Hartley & Sons Ltd",
+    "vendor_address": "14 King Street, Manchester M2 4LQ",
+    "vendor_tax_id": "GB684910039",
+    "customer_name": "Greenfield Estates Ltd",
+    "invoice_number": "INV-2025-1135",
+    "invoice_date": "2025-11-21",
+    "due_date": "2025-12-21",
+    "currency": "GBP",
+    "line_items": [
+     {
+      "description": "Website development - phase 1",
+      "quantity": 3.0,
+      "unit_price": 4103.5,
+      "total": 12310.5
+     },
+     {
+      "description": "Graphic design (hours)",
+      "quantity": 75.0,
+      "unit_price": 78.19,
+      "total": 586.43
+     },
+     {
+      "description": "Server maintenance (monthly)",
+      "quantity": 8.0,
+      "unit_price": 101.87,
+      "total": 814.96
+     },
+     {
+      "description": "Cloud hosting - business plan",
+      "quantity": 10.0,
+      "unit_price": 127.04,
+      "total": 1270.4
+     },
+     {
+      "description": "Consulting services (hours)",
+      "quantity": 10.0,
+      "unit_price": 69.97,
+      "total": 699.7
+     },
+     {
+      "description": "A4 copier paper, box of 5 reams",
+      "quantity": 1.0,
+      "unit_price": 21.22,
+      "total": 21.22
+     }
+    ],
+    "subtotal": 15703.21,
+    "tax_rate": 20.0,
+    "tax_amount": 3140.64,
+    "total": 18843.85,
+    "iban": "GB39 HBUK 1067 3174 4598 41",
+    "payment_terms": "Payment due within 30 days of invoice date"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.98,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.95,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.98,
+    "payment_terms": 0.98
+   },
+   "latency_s": 15.463,
+   "input_tokens": 573,
+   "output_tokens": 2393,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 65.368,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "line_items[1].quantity",
+    "vision_value": 7.5,
+    "ocr_value": 75.0,
+    "choice": "vision",
+    "value": 7.5,
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 49.404,
+  "input_tokens": 1246,
+  "output_tokens": 56,
+  "error": null
+ },
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "vendor_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

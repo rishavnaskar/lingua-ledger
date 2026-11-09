@@ -1,6 +1,7 @@
 "use client";
 
-import { CircleCheck, FileJson, FileSpreadsheet, UserCheck } from "lucide-react";
+import { CircleCheck, FileJson, FileSpreadsheet, Play, UserCheck, Zap } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { ThresholdSlider } from "@/components/ui/ThresholdSlider";
@@ -16,6 +17,7 @@ export function ResultHeader({
   total,
   onExportJson,
   onExportCsv,
+  onRunLive,
 }: {
   result: ExtractResponse;
   threshold: number;
@@ -24,6 +26,7 @@ export function ResultHeader({
   total: number;
   onExportJson: () => void;
   onExportCsv: () => void;
+  onRunLive?: () => void;
 }) {
   const c = copy.workbench.result;
   const { doc_type, language, confidence } = result.classification;
@@ -47,6 +50,18 @@ export function ResultHeader({
             <span className="border-l border-line px-2.5 py-1 text-muted">{c.pages(result.pages)}</span>
             <span className="border-l border-line px-2.5 py-1 text-muted">{c.latency(fmt.seconds(result.latency_s))}</span>
           </div>
+          {result.cached && (
+            <div className="mt-2 flex flex-wrap items-center gap-2" title={c.cachedHint}>
+              <Badge tone="navy" icon={Zap}>
+                {c.cached(result.cached_at ?? "")}
+              </Badge>
+              {onRunLive && (
+                <Button variant="ghost" icon={Play} onClick={onRunLive}>
+                  {c.runLive}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
         <div className="flex flex-wrap gap-2">
           <Button icon={FileJson} onClick={onExportJson}>

@@ -1,0 +1,897 @@
+{
+ "doc_id": "synth_invoices-ja-1",
+ "classification": {
+  "doc_type": "invoice",
+  "language": "ja",
+  "confidence": 1.0
+ },
+ "data": {
+  "vendor_name": "佐藤システム株式会社",
+  "vendor_address": "〒530-0001 大阪府大阪市北区梅田2-4-9",
+  "vendor_tax_id": "T3388886341006",
+  "customer_name": "小林クリニック 御中",
+  "invoice_number": "2025-3081",
+  "invoice_date": "2025-04-06",
+  "due_date": "2025-05-21",
+  "currency": "JPY",
+  "line_items": [
+   {
+    "description": "配送料",
+    "quantity": 1.0,
+    "unit_price": 2400.0,
+    "total": 2400.0
+   },
+   {
+    "description": "コピー用紙 A4 500枚×5冊",
+    "quantity": 4.0,
+    "unit_price": 5100.0,
+    "total": 20400.0
+   },
+   {
+    "description": "サーバー保守費用 (月額)",
+    "quantity": 5.0,
+    "unit_price": 30100.0,
+    "total": 150500.0
+   }
+  ],
+  "subtotal": 173300.0,
+  "tax_rate": 10.0,
+  "tax_amount": 17330.0,
+  "total": 190630.0,
+  "iban": null,
+  "payment_terms": "請求日より45日以内にお振込みください"
+ },
+ "fields": [
+  {
+   "field": "vendor_name",
+   "value": "佐藤システム株式会社",
+   "confidence": 0.995,
+   "raw_score": 0.9846,
+   "agree": true,
+   "ocr_conf": 0.929,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "佐藤システム株式会社",
+   "ocr_value": "佐藤システム株式会社",
+   "bbox": [
+    793,
+    104,
+    1044,
+    147
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_address",
+   "value": "〒530-0001 大阪府大阪市北区梅田2-4-9",
+   "confidence": 0.995,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "〒530-0001 大阪府大阪市北区梅田2-4-9",
+   "ocr_value": "〒530-0001 大阪府大阪市北区梅田 2-4-9",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_tax_id",
+   "value": "T3388886341006",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.855,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "T3388886341006",
+   "ocr_value": "T3388886341006",
+   "bbox": [
+    773,
+    188,
+    1040,
+    221
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "customer_name",
+   "value": "小林クリニック 御中",
+   "confidence": 0.9619,
+   "raw_score": 0.669,
+   "agree": false,
+   "ocr_conf": 0.946,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "小林クリニック 御中",
+   "ocr_value": "小林クリニック",
+   "bbox": [
+    111,
+    430,
+    331,
+    471
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": "小林クリニック 御中",
+   "needs_review": false
+  },
+  {
+   "field": "invoice_number",
+   "value": "2025-3081",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-3081",
+   "ocr_value": "2025-3081",
+   "bbox": [
+    114,
+    328,
+    234,
+    349
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_date",
+   "value": "2025-04-06",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.925,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-04-06",
+   "ocr_value": "2025-04-06",
+   "bbox": [
+    114,
+    328,
+    591,
+    359
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "due_date",
+   "value": "2025-05-21",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.927,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2025-05-21",
+   "ocr_value": "2025-05-21",
+   "bbox": [
+    595,
+    340,
+    957,
+    377
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "JPY",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "JPY",
+   "ocr_value": "JPY",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "配送料",
+   "confidence": 0.995,
+   "raw_score": 0.8775,
+   "agree": true,
+   "ocr_conf": 0.5,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "配送料",
+   "ocr_value": "配送料",
+   "bbox": [
+    118,
+    658,
+    173,
+    677
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": [
+    692,
+    870,
+    750,
+    890
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 2400.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2400.0,
+   "ocr_value": 2400.0,
+   "bbox": [
+    869,
+    666,
+    929,
+    706
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 2400.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2400.0,
+   "ocr_value": 2400.0,
+   "bbox": [
+    869,
+    666,
+    929,
+    706
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "コピー用紙 A4 500枚×5冊",
+   "confidence": 0.774,
+   "raw_score": 0.5825,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "コピー用紙 A4 500枚×5冊",
+   "ocr_value": "コビー 用紙 A4 500% x 518",
+   "bbox": null,
+   "page": null,
+   "arbiter": "vision",
+   "arbiter_value": "コピー用紙 A4 500枚×5冊",
+   "needs_review": true
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": 4.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 4.0,
+   "ocr_value": 4.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": 5100.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 5100.0,
+   "ocr_value": 5100.0,
+   "bbox": [
+    869,
+    726,
+    923,
+    744
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 20400.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 20400.0,
+   "ocr_value": 20400.0,
+   "bbox": [
+    1064,
+    721,
+    1134,
+    761
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "サーバー保守費用 (月額)",
+   "confidence": 0.774,
+   "raw_score": 0.5825,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "サーバー保守費用 (月額)",
+   "ocr_value": "サー バー 保守 費用 (AR)",
+   "bbox": null,
+   "page": null,
+   "arbiter": "vision",
+   "arbiter_value": "サーバー保守費用 (月額)",
+   "needs_review": true
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": 5.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.69,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 5.0,
+   "ocr_value": 5.0,
+   "bbox": [
+    247,
+    712,
+    302,
+    730
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": 30100.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 30100.0,
+   "ocr_value": 30100.0,
+   "bbox": [
+    854,
+    776,
+    922,
+    794
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 150500.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 150500.0,
+   "ocr_value": 150500.0,
+   "bbox": [
+    1052,
+    771,
+    1130,
+    810
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 173300.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 173300.0,
+   "ocr_value": 173300.0,
+   "bbox": [
+    1040,
+    845,
+    1141,
+    865
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_rate",
+   "value": 10.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 10.0,
+   "ocr_value": 10.0,
+   "bbox": [
+    869,
+    726,
+    923,
+    744
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 17330.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.89,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 17330.0,
+   "ocr_value": 17330.0,
+   "bbox": [
+    1040,
+    845,
+    1141,
+    865
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 190630.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 190630.0,
+   "ocr_value": 190630.0,
+   "bbox": [
+    1016,
+    920,
+    1139,
+    944
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "iban",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_terms",
+   "value": "請求日より45日以内にお振込みください",
+   "confidence": 0.995,
+   "raw_score": 0.9378,
+   "agree": true,
+   "ocr_conf": 0.741,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "請求日より45日以内にお振込みください",
+   "ocr_value": "請求日より45日以内にお振込みください",
+   "bbox": [
+    105,
+    1538,
+    322,
+    1578
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "invoice_number",
+    "total",
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "Invoice number, date and total are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 190,630.00 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (173,300.00)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 2,400.00"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[1].quantity",
+    "line_items[1].unit_price",
+    "line_items[1].total"
+   ],
+   "passed": true,
+   "message": "Line 2: quantity x unit price = 20,400.00"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[2].quantity",
+    "line_items[2].unit_price",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line 3: quantity x unit price = 150,500.00"
+  },
+  {
+   "rule": "tax_math",
+   "fields": [
+    "subtotal",
+    "tax_rate",
+    "tax_amount"
+   ],
+   "passed": true,
+   "message": "Tax 17,330.00 matches 10% of 173,300.00"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (190,630.00)"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "invoice_date parses as 2025-04-06"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date parses as 2025-05-21"
+  },
+  {
+   "rule": "due_after_invoice",
+   "fields": [
+    "invoice_date",
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date 2025-05-21 is on or after invoice_date 2025-04-06"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "JPY is an ISO 4217 code"
+  },
+  {
+   "rule": "iban_valid",
+   "fields": [
+    "iban"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "vat_id_valid",
+   "fields": [
+    "vendor_tax_id"
+   ],
+   "passed": true,
+   "message": "Tax id matches the expected format"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "vendor_name": "佐藤システム株式会社",
+    "vendor_address": "〒530-0001 大阪府大阪市北区梅田2-4-9",
+    "vendor_tax_id": "T3388886341006",
+    "customer_name": "小林クリニック 御中",
+    "invoice_number": "2025-3081",
+    "invoice_date": "2025-04-06",
+    "due_date": "2025-05-21",
+    "currency": "JPY",
+    "line_items": [
+     {
+      "description": "配送料",
+      "quantity": 1.0,
+      "unit_price": 2400.0,
+      "total": 2400.0
+     },
+     {
+      "description": "コピー用紙 A4 500枚×5冊",
+      "quantity": 4.0,
+      "unit_price": 5100.0,
+      "total": 20400.0
+     },
+     {
+      "description": "サーバー保守費用 (月額)",
+      "quantity": 5.0,
+      "unit_price": 30100.0,
+      "total": 150500.0
+     }
+    ],
+    "subtotal": 173300.0,
+    "tax_rate": 10.0,
+    "tax_amount": 17330.0,
+    "total": 190630.0,
+    "iban": null,
+    "payment_terms": "請求日より45日以内にお振込みください"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 23.244,
+   "input_tokens": 1267,
+   "output_tokens": 2283,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "vendor_name": "佐藤システム株式会社",
+    "vendor_address": "〒530-0001 大阪府大阪市北区梅田 2-4-9",
+    "vendor_tax_id": "T3388886341006",
+    "customer_name": "小林クリニック",
+    "invoice_number": "2025-3081",
+    "invoice_date": "2025-04-06",
+    "due_date": "2025-05-21",
+    "currency": "JPY",
+    "line_items": [
+     {
+      "description": "配送料",
+      "quantity": 1.0,
+      "unit_price": 2400.0,
+      "total": 2400.0
+     },
+     {
+      "description": "コビー 用紙 A4 500% x 518",
+      "quantity": 4.0,
+      "unit_price": 5100.0,
+      "total": 20400.0
+     },
+     {
+      "description": "サー バー 保守 費用 (AR)",
+      "quantity": 5.0,
+      "unit_price": 30100.0,
+      "total": 150500.0
+     }
+    ],
+    "subtotal": 173300.0,
+    "tax_rate": 10.0,
+    "tax_amount": 17330.0,
+    "total": 190630.0,
+    "iban": null,
+    "payment_terms": "請求日より45日以内にお振込みください"
+   },
+   "self_confidence": {
+    "vendor_name": 0.95,
+    "vendor_address": 0.95,
+    "vendor_tax_id": 0.95,
+    "customer_name": 0.95,
+    "invoice_number": 0.95,
+    "invoice_date": 0.95,
+    "due_date": 0.95,
+    "currency": 0.95,
+    "line_items": 0.9,
+    "subtotal": 0.95,
+    "tax_rate": 0.95,
+    "tax_amount": 0.95,
+    "total": 0.95,
+    "iban": 0.95,
+    "payment_terms": 0.9
+   },
+   "latency_s": 12.591,
+   "input_tokens": 563,
+   "output_tokens": 2261,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.08,
+ "pages": 1,
+ "latency_s": 58.729,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 3,
+  "verdicts": [
+   {
+    "field": "customer_name",
+    "vision_value": "小林クリニック 御中",
+    "ocr_value": "小林クリニック",
+    "choice": "vision",
+    "value": "小林クリニック 御中",
+    "confidence": 0.99,
+    "cropped": true
+   },
+   {
+    "field": "line_items[1].description",
+    "vision_value": "コピー用紙 A4 500枚×5冊",
+    "ocr_value": "コビー 用紙 A4 500% x 518",
+    "choice": "vision",
+    "value": "コピー用紙 A4 500枚×5冊",
+    "confidence": 0.99,
+    "cropped": true
+   },
+   {
+    "field": "line_items[2].description",
+    "vision_value": "サーバー保守費用 (月額)",
+    "ocr_value": "サー バー 保守 費用 (AR)",
+    "choice": "vision",
+    "value": "サーバー保守費用 (月額)",
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 34.724,
+  "input_tokens": 3522,
+  "output_tokens": 200,
+  "error": null
+ },
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "vendor_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

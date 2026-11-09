@@ -1,0 +1,1108 @@
+{
+ "doc_id": "synth_invoices-de-1",
+ "classification": {
+  "doc_type": "invoice",
+  "language": "de",
+  "confidence": 1.0
+ },
+ "data": {
+  "vendor_name": "Bergmann Technik AG",
+  "vendor_address": "Industriestraße 48, 70565 Stuttgart",
+  "vendor_tax_id": "DE148300477",
+  "customer_name": "Schulz Handels AG",
+  "invoice_number": "RE-2026-00723",
+  "invoice_date": "2026-03-19",
+  "due_date": "2026-04-02",
+  "currency": "EUR",
+  "line_items": [
+   {
+    "description": "Bürostuhl, ergonomisch",
+    "quantity": 1.0,
+    "unit_price": 423.22,
+    "total": 423.22
+   },
+   {
+    "description": "Mitarbeiterschulung (Tagessatz)",
+    "quantity": 2.0,
+    "unit_price": 755.49,
+    "total": 1510.98
+   },
+   {
+    "description": "Versandkosten",
+    "quantity": 1.0,
+    "unit_price": 44.04,
+    "total": 44.04
+   },
+   {
+    "description": "Wartung Serverinfrastruktur",
+    "quantity": 4.0,
+    "unit_price": 194.9,
+    "total": 779.6
+   },
+   {
+    "description": "Grafikdesign (Stunden)",
+    "quantity": 1.0,
+    "unit_price": 127.28,
+    "total": 127.28
+   }
+  ],
+  "subtotal": 2885.12,
+  "tax_rate": 19.0,
+  "tax_amount": 548.17,
+  "total": 3433.29,
+  "iban": "DE89 0314 6656 5430 7769 55",
+  "payment_terms": "Zahlbar innerhalb von 14 Tagen ohne Abzug"
+ },
+ "fields": [
+  {
+   "field": "vendor_name",
+   "value": "Bergmann Technik AG",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Bergmann Technik AG",
+   "ocr_value": "Bergmann Technik AG",
+   "bbox": [
+    213,
+    107,
+    503,
+    139
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_address",
+   "value": "Industriestraße 48, 70565 Stuttgart",
+   "confidence": 0.995,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Industriestraße 48, 70565 Stuttgart",
+   "ocr_value": "Industriestraße 48\n70565 Stuttgart",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "vendor_tax_id",
+   "value": "DE148300477",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.91,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "DE148300477",
+   "ocr_value": "DE148300477",
+   "bbox": [
+    304,
+    195,
+    422,
+    211
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "customer_name",
+   "value": "Schulz Handels AG",
+   "confidence": 0.9812,
+   "raw_score": 0.6725,
+   "agree": false,
+   "ocr_conf": 0.96,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Schulz Handels AG",
+   "ocr_value": "Schulz Handels AG\nKönigsallee 60\n60311 Frankfurt am Main",
+   "bbox": [
+    90,
+    383,
+    308,
+    406
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": "Schulz Handels AG",
+   "needs_review": false
+  },
+  {
+   "field": "invoice_number",
+   "value": "RE-2026-00723",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "RE-2026-00723",
+   "ocr_value": "RE-2026-00723",
+   "bbox": [
+    987,
+    178,
+    1125,
+    196
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "invoice_date",
+   "value": "2026-03-19",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.955,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2026-03-19",
+   "ocr_value": "2026-03-19",
+   "bbox": [
+    700,
+    209,
+    1126,
+    233
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "due_date",
+   "value": "2026-04-02",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.952,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2026-04-02",
+   "ocr_value": "2026-04-02",
+   "bbox": [
+    701,
+    241,
+    1126,
+    268
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "EUR",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "EUR",
+   "ocr_value": "EUR",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "Bürostuhl, ergonomisch",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Bürostuhl, ergonomisch",
+   "ocr_value": "Bürostuhl, ergonomisch",
+   "bbox": [
+    107,
+    602,
+    303,
+    622
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 423.22,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 423.22,
+   "ocr_value": 423.22,
+   "bbox": [
+    856,
+    588,
+    913,
+    604
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 423.22,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 423.22,
+   "ocr_value": 423.22,
+   "bbox": [
+    856,
+    588,
+    913,
+    604
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].description",
+   "value": "Mitarbeiterschulung (Tagessatz)",
+   "confidence": 0.995,
+   "raw_score": 0.9763,
+   "agree": true,
+   "ocr_conf": 0.895,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Mitarbeiterschulung (Tagessatz)",
+   "ocr_value": "Mitarbeiterschulung (Tagessatz)",
+   "bbox": [
+    108,
+    651,
+    375,
+    671
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].quantity",
+   "value": 2.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2.0,
+   "ocr_value": 2.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].unit_price",
+   "value": 755.49,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 755.49,
+   "ocr_value": 755.49,
+   "bbox": [
+    858,
+    638,
+    914,
+    654
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[1].total",
+   "value": 1510.98,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1510.98,
+   "ocr_value": 1510.98,
+   "bbox": [
+    1052,
+    633,
+    1122,
+    649
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].description",
+   "value": "Versandkosten",
+   "confidence": 0.995,
+   "raw_score": 0.9825,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Versandkosten",
+   "ocr_value": "Versandkosten",
+   "bbox": [
+    108,
+    701,
+    233,
+    729
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].unit_price",
+   "value": 44.04,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 44.04,
+   "ocr_value": 44.04,
+   "bbox": [
+    865,
+    684,
+    915,
+    712
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[2].total",
+   "value": 44.04,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 44.04,
+   "ocr_value": 44.04,
+   "bbox": [
+    865,
+    684,
+    915,
+    712
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].description",
+   "value": "Wartung Serverinfrastruktur",
+   "confidence": 0.995,
+   "raw_score": 0.9813,
+   "agree": true,
+   "ocr_conf": 0.915,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Wartung Serverinfrastruktur",
+   "ocr_value": "Wartung Serverinfrastruktur",
+   "bbox": [
+    110,
+    752,
+    340,
+    773
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].quantity",
+   "value": 4.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 4.0,
+   "ocr_value": 4.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].unit_price",
+   "value": 194.9,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.95,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 194.9,
+   "ocr_value": 194.9,
+   "bbox": [
+    861,
+    734,
+    916,
+    761
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[3].total",
+   "value": 779.6,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 779.6,
+   "ocr_value": 779.6,
+   "bbox": [
+    1068,
+    733,
+    1125,
+    750
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].description",
+   "value": "Grafikdesign (Stunden)",
+   "confidence": 0.995,
+   "raw_score": 0.9888,
+   "agree": true,
+   "ocr_conf": 0.945,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Grafikdesign (Stunden)",
+   "ocr_value": "Grafikdesign (Stunden)",
+   "bbox": [
+    111,
+    803,
+    303,
+    823
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].quantity",
+   "value": 1.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].unit_price",
+   "value": 127.28,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.93,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 127.28,
+   "ocr_value": 127.28,
+   "bbox": [
+    862,
+    788,
+    918,
+    804
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[4].total",
+   "value": 127.28,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.93,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 127.28,
+   "ocr_value": 127.28,
+   "bbox": [
+    862,
+    788,
+    918,
+    804
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 2885.12,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.93,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 2885.12,
+   "ocr_value": 2885.12,
+   "bbox": [
+    1047,
+    847,
+    1123,
+    865
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_rate",
+   "value": 19.0,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.94,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 19.0,
+   "ocr_value": 19.0,
+   "bbox": [
+    1001,
+    211,
+    1026,
+    226
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 548.17,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.92,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 548.17,
+   "ocr_value": 548.17,
+   "bbox": [
+    1061,
+    878,
+    1124,
+    909
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 3433.29,
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.96,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 3433.29,
+   "ocr_value": 3433.29,
+   "bbox": [
+    1029,
+    924,
+    1121,
+    946
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "iban",
+   "value": "DE89 0314 6656 5430 7769 55",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.942,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "DE89 0314 6656 5430 7769 55",
+   "ocr_value": "DE89 0314 6656 5430 776955",
+   "bbox": [
+    189,
+    1592,
+    434,
+    1610
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_terms",
+   "value": "Zahlbar innerhalb von 14 Tagen ohne Abzug",
+   "confidence": 0.995,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.951,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "Zahlbar innerhalb von 14 Tagen ohne Abzug",
+   "ocr_value": "Zahlbar innerhalb von 14 Tagen ohne Abzug",
+   "bbox": [
+    321,
+    1528,
+    671,
+    1548
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "invoice_number",
+    "total",
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "Invoice number, date and total are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 3,433.29 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total",
+    "line_items[1].total",
+    "line_items[2].total",
+    "line_items[3].total",
+    "line_items[4].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (2,885.12)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 423.22"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[1].quantity",
+    "line_items[1].unit_price",
+    "line_items[1].total"
+   ],
+   "passed": true,
+   "message": "Line 2: quantity x unit price = 1,510.98"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[2].quantity",
+    "line_items[2].unit_price",
+    "line_items[2].total"
+   ],
+   "passed": true,
+   "message": "Line 3: quantity x unit price = 44.04"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[3].quantity",
+    "line_items[3].unit_price",
+    "line_items[3].total"
+   ],
+   "passed": true,
+   "message": "Line 4: quantity x unit price = 779.60"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[4].quantity",
+    "line_items[4].unit_price",
+    "line_items[4].total"
+   ],
+   "passed": true,
+   "message": "Line 5: quantity x unit price = 127.28"
+  },
+  {
+   "rule": "tax_math",
+   "fields": [
+    "subtotal",
+    "tax_rate",
+    "tax_amount"
+   ],
+   "passed": true,
+   "message": "Tax 548.17 matches 19% of 2,885.12"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (3,433.29)"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "invoice_date"
+   ],
+   "passed": true,
+   "message": "invoice_date parses as 2026-03-19"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date parses as 2026-04-02"
+  },
+  {
+   "rule": "due_after_invoice",
+   "fields": [
+    "invoice_date",
+    "due_date"
+   ],
+   "passed": true,
+   "message": "due_date 2026-04-02 is on or after invoice_date 2026-03-19"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "EUR is an ISO 4217 code"
+  },
+  {
+   "rule": "iban_valid",
+   "fields": [
+    "iban"
+   ],
+   "passed": true,
+   "message": "IBAN checksum is valid"
+  },
+  {
+   "rule": "vat_id_valid",
+   "fields": [
+    "vendor_tax_id"
+   ],
+   "passed": true,
+   "message": "Tax id matches the expected format"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "vendor_name": "Bergmann Technik AG",
+    "vendor_address": "Industriestraße 48, 70565 Stuttgart",
+    "vendor_tax_id": "DE148300477",
+    "customer_name": "Schulz Handels AG",
+    "invoice_number": "RE-2026-00723",
+    "invoice_date": "2026-03-19",
+    "due_date": "2026-04-02",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Bürostuhl, ergonomisch",
+      "quantity": 1.0,
+      "unit_price": 423.22,
+      "total": 423.22
+     },
+     {
+      "description": "Mitarbeiterschulung (Tagessatz)",
+      "quantity": 2.0,
+      "unit_price": 755.49,
+      "total": 1510.98
+     },
+     {
+      "description": "Versandkosten",
+      "quantity": 1.0,
+      "unit_price": 44.04,
+      "total": 44.04
+     },
+     {
+      "description": "Wartung Serverinfrastruktur",
+      "quantity": 4.0,
+      "unit_price": 194.9,
+      "total": 779.6
+     },
+     {
+      "description": "Grafikdesign (Stunden)",
+      "quantity": 1.0,
+      "unit_price": 127.28,
+      "total": 127.28
+     }
+    ],
+    "subtotal": 2885.12,
+    "tax_rate": 19.0,
+    "tax_amount": 548.17,
+    "total": 3433.29,
+    "iban": "DE89 0314 6656 5430 7769 55",
+    "payment_terms": "Zahlbar innerhalb von 14 Tagen ohne Abzug"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.99,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.99,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 19.383,
+   "input_tokens": 1267,
+   "output_tokens": 2199,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "vendor_name": "Bergmann Technik AG",
+    "vendor_address": "Industriestraße 48\n70565 Stuttgart",
+    "vendor_tax_id": "DE148300477",
+    "customer_name": "Schulz Handels AG\nKönigsallee 60\n60311 Frankfurt am Main",
+    "invoice_number": "RE-2026-00723",
+    "invoice_date": "2026-03-19",
+    "due_date": "2026-04-02",
+    "currency": "EUR",
+    "line_items": [
+     {
+      "description": "Bürostuhl, ergonomisch",
+      "quantity": 1.0,
+      "unit_price": 423.22,
+      "total": 423.22
+     },
+     {
+      "description": "Mitarbeiterschulung (Tagessatz)",
+      "quantity": 2.0,
+      "unit_price": 755.49,
+      "total": 1510.98
+     },
+     {
+      "description": "Versandkosten",
+      "quantity": 1.0,
+      "unit_price": 44.04,
+      "total": 44.04
+     },
+     {
+      "description": "Wartung Serverinfrastruktur",
+      "quantity": 4.0,
+      "unit_price": 194.9,
+      "total": 779.6
+     },
+     {
+      "description": "Grafikdesign (Stunden)",
+      "quantity": 1.0,
+      "unit_price": 127.28,
+      "total": 127.28
+     }
+    ],
+    "subtotal": 2885.12,
+    "tax_rate": 19.0,
+    "tax_amount": 548.17,
+    "total": 3433.29,
+    "iban": "DE89 0314 6656 5430 776955",
+    "payment_terms": "Zahlbar innerhalb von 14 Tagen ohne Abzug"
+   },
+   "self_confidence": {
+    "vendor_name": 0.99,
+    "vendor_address": 0.98,
+    "vendor_tax_id": 0.99,
+    "customer_name": 0.98,
+    "invoice_number": 0.99,
+    "invoice_date": 0.99,
+    "due_date": 0.99,
+    "currency": 0.99,
+    "line_items": 0.99,
+    "subtotal": 0.99,
+    "tax_rate": 0.99,
+    "tax_amount": 0.99,
+    "total": 0.99,
+    "iban": 0.99,
+    "payment_terms": 0.99
+   },
+   "latency_s": 7.359,
+   "input_tokens": 571,
+   "output_tokens": 1251,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 23.526,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "customer_name",
+    "vision_value": "Schulz Handels AG",
+    "ocr_value": "Schulz Handels AG\nKönigsallee 60\n60311 Frankfurt am Main",
+    "choice": "vision",
+    "value": "Schulz Handels AG",
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 3.597,
+  "input_tokens": 1253,
+  "output_tokens": 132,
+  "error": null
+ },
+ "anomalies": [
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "vendor_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

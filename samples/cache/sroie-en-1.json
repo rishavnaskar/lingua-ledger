@@ -1,0 +1,563 @@
+{
+ "doc_id": "sroie-en-1",
+ "classification": {
+  "doc_type": "receipt",
+  "language": "en",
+  "confidence": 1.0
+ },
+ "data": {
+  "merchant_name": "OJC MARKETING SDN BHD",
+  "merchant_address": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+  "date": "2019-01-15",
+  "time": "11:05",
+  "currency": "MYR",
+  "line_items": [
+   {
+    "description": "000000111 KINGS SAFETY SHOES KWD 805",
+    "quantity": 1.0,
+    "unit_price": 193.0,
+    "total": 193.0
+   }
+  ],
+  "subtotal": 193.0,
+  "tax_amount": 0.0,
+  "service_charge": null,
+  "discount": null,
+  "total": 193.0,
+  "cash_paid": 193.0,
+  "change": null,
+  "payment_method": "VISA CARD"
+ },
+ "fields": [
+  {
+   "field": "merchant_name",
+   "value": "OJC MARKETING SDN BHD",
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.828,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "OJC MARKETING SDN BHD",
+   "ocr_value": "OJC MARKETING SDN BHD",
+   "bbox": [
+    90,
+    123,
+    325,
+    137
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "merchant_address",
+   "value": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+   "confidence": 0.9609,
+   "raw_score": 0.9,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.98,
+   "vision_value": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+   "ocr_value": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "date",
+   "value": "2019-01-15",
+   "confidence": 0.9609,
+   "raw_score": 0.9875,
+   "agree": true,
+   "ocr_conf": 0.46,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": "2019-01-15",
+   "ocr_value": "2019-01-15",
+   "bbox": [
+    30,
+    346,
+    221,
+    371
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "time",
+   "value": "11:05",
+   "confidence": 0.9609,
+   "raw_score": 0.9025,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.99,
+   "vision_value": "11:05",
+   "ocr_value": "11:05",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "MYR",
+   "confidence": 0.9597,
+   "raw_score": 0.4325,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.95,
+   "vision_value": null,
+   "ocr_value": "MYR",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "000000111 KINGS SAFETY SHOES KWD 805",
+   "confidence": 0.9111,
+   "raw_score": 0.32,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.98,
+   "vision_value": "000000111 KINGS SAFETY SHOES KWD 805",
+   "ocr_value": "KINGS SAFETY SHOES KWD 805",
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 1.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.98,
+   "vision_value": 1.0,
+   "ocr_value": 1.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 193.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.98,
+   "vision_value": 193.0,
+   "ocr_value": 193.0,
+   "bbox": [
+    221,
+    551,
+    271,
+    564
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 193.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.98,
+   "vision_value": 193.0,
+   "ocr_value": 193.0,
+   "bbox": [
+    221,
+    551,
+    271,
+    564
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 193.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 193.0,
+   "ocr_value": 193.0,
+   "bbox": [
+    221,
+    551,
+    271,
+    564
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 0.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.81,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 0.0,
+   "ocr_value": 0.0,
+   "bbox": [
+    323,
+    637,
+    355,
+    650
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "service_charge",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 1.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "discount",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 1.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 193.0,
+   "confidence": 0.9609,
+   "raw_score": 0.99,
+   "agree": true,
+   "ocr_conf": 0.85,
+   "validator": "pass",
+   "self_conf": 0.99,
+   "vision_value": 193.0,
+   "ocr_value": 193.0,
+   "bbox": [
+    221,
+    551,
+    271,
+    564
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "cash_paid",
+   "value": 193.0,
+   "confidence": 0.9111,
+   "raw_score": 0.375,
+   "agree": false,
+   "ocr_conf": 0.85,
+   "validator": "na",
+   "self_conf": 0.95,
+   "vision_value": 193.0,
+   "ocr_value": null,
+   "bbox": [
+    221,
+    551,
+    271,
+    564
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "change",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 1.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_method",
+   "value": "VISA CARD",
+   "confidence": 0.9111,
+   "raw_score": 0.32,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.98,
+   "vision_value": "VISA CARD",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "total",
+    "merchant_name",
+    "date"
+   ],
+   "passed": true,
+   "message": "Total and merchant name or date are present"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 193.00 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (193.00)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line 1: quantity x unit price = 193.00"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "total"
+   ],
+   "passed": true,
+   "message": "subtotal + tax_amount = total (193.00)"
+  },
+  {
+   "rule": "change_math",
+   "fields": [
+    "cash_paid",
+    "total",
+    "change"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "date"
+   ],
+   "passed": true,
+   "message": "date parses as 2019-01-15"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "MYR is an ISO 4217 code"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "merchant_name": "OJC MARKETING SDN BHD",
+    "merchant_address": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+    "date": "2019-01-15",
+    "time": "11:05",
+    "currency": null,
+    "line_items": [
+     {
+      "description": "000000111 KINGS SAFETY SHOES KWD 805",
+      "quantity": 1.0,
+      "unit_price": 193.0,
+      "total": 193.0
+     }
+    ],
+    "subtotal": 193.0,
+    "tax_amount": 0.0,
+    "service_charge": null,
+    "discount": null,
+    "total": 193.0,
+    "cash_paid": 193.0,
+    "change": null,
+    "payment_method": "VISA CARD"
+   },
+   "self_confidence": {
+    "merchant_name": 0.99,
+    "merchant_address": 0.98,
+    "date": 0.99,
+    "time": 0.99,
+    "currency": 0.95,
+    "line_items": 0.98,
+    "subtotal": 0.99,
+    "tax_amount": 0.99,
+    "service_charge": 1.0,
+    "discount": 1.0,
+    "total": 0.99,
+    "cash_paid": 0.95,
+    "change": 1.0,
+    "payment_method": 0.98
+   },
+   "latency_s": 75.317,
+   "input_tokens": 1279,
+   "output_tokens": 1535,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "merchant_name": "OJC MARKETING SDN BHD",
+    "merchant_address": "NO 2 & 4, JALAN BAYU 4, BANDAR SERI ALAM, 81750 MASAI, JOHOR",
+    "date": "2019-01-15",
+    "time": "11:05",
+    "currency": "MYR",
+    "line_items": [
+     {
+      "description": "KINGS SAFETY SHOES KWD 805",
+      "quantity": 1.0,
+      "unit_price": 193.0,
+      "total": 193.0
+     }
+    ],
+    "subtotal": 193.0,
+    "tax_amount": 0.0,
+    "service_charge": null,
+    "discount": null,
+    "total": 193.0,
+    "cash_paid": null,
+    "change": null,
+    "payment_method": null
+   },
+   "self_confidence": {
+    "merchant_name": 0.99,
+    "merchant_address": 0.99,
+    "date": 0.99,
+    "time": 0.98,
+    "currency": 0.9,
+    "line_items": 0.98,
+    "subtotal": 0.95,
+    "tax_amount": 0.99,
+    "total": 0.99
+   },
+   "latency_s": 9.03,
+   "input_tokens": 519,
+   "output_tokens": 1375,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.0,
+ "pages": 1,
+ "latency_s": 185.293,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [],
+  "latency_s": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\\nPlease retry in 19h34m36.6294222s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://aistudio.google.com/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'description': 'Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.', 'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '70476s'}]}}"
+ },
+ "anomalies": [
+  {
+   "code": "date_stale",
+   "severity": "warn",
+   "message": "Date 2019-01-15 is more than two years old",
+   "fields": [
+    "date"
+   ]
+  },
+  {
+   "code": "new_vendor",
+   "severity": "info",
+   "message": "First document from this vendor; nothing to compare against yet",
+   "fields": [
+    "merchant_name"
+   ]
+  }
+ ],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

@@ -105,6 +105,10 @@ export const copy = {
       accepted: "Accepted",
       needsReview: "Needs review",
       newDocument: "Read another document",
+      cached: (date: string) => `Saved result from ${date}`,
+      cachedHint: "Sample files use saved runs so the demo loads fast. Anomalies and memory are checked live.",
+      runLive: "Run live",
+      live: "Live result",
     },
     viewer: {
       title: "Document",
@@ -379,7 +383,7 @@ export const copy = {
         },
         f1_by_language: {
           title: "Form extraction by language",
-          caption: "Key-value score by language on XFUND, with FUNSD for English, using the full pipeline.",
+          caption: "Key-value F1 by language on XFUND, with FUNSD for English. Dark bars are strict pair matching, light bars are the lenient score.",
         },
         ablation: {
           title: "Ablation",
@@ -397,7 +401,9 @@ export const copy = {
         ocr_text: "OCR + text",
         merged: "Both + validators",
         arbiter: "Both + validators + arbiter",
+        lenient: "Lenient (forms)",
       } as Record<string, string>,
+      lenientNote: "Forms get two scores. Strict matches each fragment on its own. Lenient counts a fragment as found if its text is inside the right field, which is how a person would judge it.",
     },
     signals: {
       title: "What each signal says about accuracy",

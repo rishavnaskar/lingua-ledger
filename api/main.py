@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
+from lingua_ledger.anomaly import detect
 from lingua_ledger.config import (
     ARBITER_ENABLED,
     ARBITER_MODEL,
@@ -26,6 +27,7 @@ from lingua_ledger.learning import learning_state, refit
 from lingua_ledger.llm import has_api_key
 from lingua_ledger.memory import Correction, store
 from lingua_ledger.pipeline import run, set_calibrator
+from lingua_ledger.samples import cached_at, load_cached
 from lingua_ledger.schemas import DocType
 
 SAMPLES_DIR = ROOT / "samples"
@@ -70,8 +72,6 @@ def _extract(
     )
     vendor = store().vendor_for(result.data)
     if vendor is not None or result.classification.doc_type in (DocType.invoice, DocType.receipt):
-        from lingua_ledger.anomaly import detect
-
         result.anomalies = detect(
             result.classification.doc_type, result.data, result.classification.language, vendor
         )
@@ -136,9 +136,28 @@ def extract_sample(
     threshold: float = DEFAULT_REVIEW_THRESHOLD,
     paths: str = "vision,ocr_text",
     arbiter: bool | None = None,
+    fresh: bool = False,
 ) -> dict:
     path = _sample_path(sample_id)
     meta = next(s for s in samples() if s["id"] == sample_id)
+    if not fresh and arbiter is not False and paths == "vision,ocr_text":
+        cached = load_cached(sample_id)
+        if cached is not None:
+            vendor = store().vendor_for(cached.data)
+            cached.anomalies = detect(
+                cached.classification.doc_type, cached.data, cached.classification.language, vendor
+            )
+            cached.memory = {
+                "vendor_seen": bool(vendor),
+                "vendor_documents": (vendor or {}).get("documents", 0),
+            }
+            cached.review_threshold = threshold
+            payload = cached.model_dump()
+            payload["pages_preview"] = _page_payload(load_pages(path))
+            payload["filename"] = path.name
+            payload["cached"] = True
+            payload["cached_at"] = cached_at(sample_id)
+            return payload
     return _extract(
         path.read_bytes(), path.name, meta.get("doc_type"), meta.get("language"), threshold, paths, arbiter
     )

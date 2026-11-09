@@ -152,6 +152,47 @@ def score_document(pred: dict[str, Any], gold: dict[str, Any]) -> DocScore:
     return DocScore(counts=total, per_field=per_field, correct_paths=correct)
 
 
+def _loose_key(a: str, b: str) -> bool:
+    na, nb = normalize_text(a), normalize_text(b)
+    if not na or not nb:
+        return False
+    return na in nb or nb in na or text_match(na, nb) >= 0.6
+
+
+def _squash(s: Any) -> str:
+    return normalize_text(s).replace(" ", "")
+
+
+def score_form_lenient(pred: dict[str, Any], gold: dict[str, Any]) -> Counts:
+    """Fragment-aware scoring for forms: a gold fragment counts as found when its text sits inside a
+    predicted value under a loosely matching key, or equals a predicted value exactly; a predicted pair
+    counts as correct when its value sits inside the gold text for a loosely matching key or equals a gold
+    fragment exactly."""
+    gp = [(str(g.get("key") or ""), _squash(g.get("value"))) for g in gold.get("fields") or []]
+    pp = [(str(p.get("key") or ""), _squash(p.get("value"))) for p in pred.get("fields") or []]
+    gp = [(k, v) for k, v in gp if v]
+    pp = [(k, v) for k, v in pp if v]
+    gold_text = {}
+    for k, v in gp:
+        gold_text.setdefault(normalize_text(k), []).append(v)
+    found = 0
+    for gk, gv in gp:
+        if any((gv in pv and (_loose_key(gk, pk) or len(gv) >= 4)) or gv == pv for pk, pv in pp):
+            found += 1
+    correct = 0
+    for pk, pv in pp:
+        ok = any(pv == gv for _, gv in gp)
+        if not ok:
+            for gk, vals in gold_text.items():
+                if _loose_key(pk, gk) and (
+                    pv in "".join(vals) or any(text_match(pv, v) >= 0.85 for v in vals)
+                ):
+                    ok = True
+                    break
+        correct += ok
+    return Counts(tp=found, fp=len(pp) - correct, fn=len(gp) - found)
+
+
 def label_fields(pred: dict[str, Any], gold: dict[str, Any]) -> dict[str, bool]:
     return score_document(pred, gold).correct_paths
 

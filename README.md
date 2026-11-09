@@ -65,6 +65,8 @@ docker run -p 8000:8000 -e GEMINI_API_KEY=... lingua-ledger
 
 Deployment: vercel.json defines two Vercel services: the Next.js app in web/ and the API container built from the Dockerfile, served under /api on the same domain.
 
+Sample documents in the hosted demo open instantly. We precompute their results using `uv run ll cache-samples` and store them in samples/cache with one JSON file per sample. Clicking a sample displays this saved run with its original date, while anomalies and ledger memory are still checked live against current data. A Run live button reruns the entire extraction with fresh model calls, and any file you upload always runs live. We created the stored sample runs with gemini-3.5-flash because the evaluation used up the daily flash-lite quota. Run `uv run ll cache-samples` again to refresh them with the default model.
+
 ## Reproduce the evaluation
 
 Every number in the deck comes from these commands.
@@ -79,6 +81,7 @@ uv run ll eval run --datasets xfund --limit 70 --workers 2
 uv run ll eval run --datasets sroie --limit 30 --workers 2
 uv run ll eval arbiter --workers 2
 uv run ll eval report --threshold 0.85
+uv run ll cache-samples
 ```
 
 The report outputs artifacts/summary.json, artifacts/f1_table.csv, and four charts: review_curve.png (review rate needed for 95 and 98 percent accuracy on auto-accepted fields), reliability.png (calibration before and after isotonic fitting, with ECE and Brier score), f1_by_language.png, and ablation.png (vision only vs OCR-text only vs merged). summary.json records p50 and p95 latency plus cost per 1,000 documents. Costs follow config list prices: gemini-3.5-flash-lite at 0.30 USD per million input tokens and 2.50 USD per million output tokens (including thinking tokens); override these with LL_PRICE_IN_PER_M and LL_PRICE_OUT_PER_M. The --limit flag distributes documents evenly across languages, so the run above tests the exact same 198-document set every time. Runs are resumable: re-running the same command finishes any documents that failed.
@@ -87,23 +90,27 @@ Each dataset is scored only on the fields it labels: SROIE on merchant name, add
 
 ## Results
 
-We tested this on 198 public benchmark documents: 28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms. We ran the vision reader, the OCR-text reader, and the classifier on gemini-3.5-flash-lite, staying entirely within the Gemini API Free Tier (no paid usage). The run used 2 parallel workers capped at 15 requests per minute. Scores show field-level F1 against the published ground truth, scoring each dataset only on the fields it labels.
+We tested 198 public benchmark documents: 28 synthetic invoices, 30 CORD receipts, 30 SROIE receipts, 20 CUAD contracts, 20 FUNSD forms, and 70 XFUND forms. We ran everything on gemini-3.5-flash-lite for the vision reader, the OCR-text reader, and the classifier. All runs used the Gemini API Free Tier (no paid usage), running 2 parallel workers at 15 requests per minute. Scores show field-level F1 compared to published ground truth, scoring each dataset only on the fields it labels.
 
 ### Field extraction F1
 
-| Benchmark | Documents | Vision only | OCR + text only | Both + validators |
-|---|---|---|---|---|
-| synthetic invoices (DE, EN, ES, FR, IT, JA, PT) | 28 | 98.6% | 95.9% | **98.6%** |
-| CORD receipts (ID) | 30 | 94.9% | 52.4% | **94.7%** |
-| SROIE receipts (EN) | 30 | 95.0% | 88.6% | **95.0%** |
-| CUAD contracts (EN) | 20 | 60.9% | 60.1% | **60.2%** |
-| FUNSD forms (EN) | 20 | 53.9% | 39.0% | **53.3%** |
-| XFUND forms (DE, ES, FR, IT, JA, PT, ZH) | 70 | 50.9% | 31.9% | **50.9%** |
-| All | 198 | 64.2% | 49.7% | **63.9%** |
+| Benchmark | Documents | Vision only | OCR + text only | Both + validators | Lenient (forms) |
+|---|---|---|---|---|---|
+| synthetic invoices (DE, EN, ES, FR, IT, JA, PT) | 28 | 98.6% | 95.9% | **98.6%** |  |
+| CORD receipts (ID) | 30 | 94.9% | 52.4% | **94.7%** |  |
+| SROIE receipts (EN) | 30 | 95.0% | 88.6% | **95.0%** |  |
+| CUAD contracts (EN) | 20 | 60.9% | 60.1% | **60.2%** |  |
+| FUNSD forms (EN) | 20 | 53.9% | 39.0% | **53.3%** | 57.8% |
+| XFUND forms (DE, ES, FR, IT, JA, PT, ZH) | 70 | 50.9% | 31.9% | **50.9%** | 63.4% |
+| All | 198 | 64.2% | 49.7% | **63.9%** | |
 
-Form datasets (XFUND, FUNSD) are scored by strict key-value pair matching against the original linking annotations. Those annotations split a single field into several pieces (for example, marking the postcode, the prefecture, and the street as three separate values under the same key). Because of this, if a reader returns one clean key-value pair, it gets counted as one true positive and several false negatives. You should treat these form scores as a lower bound. Japanese forms are our weakest result (34.6% F1) and our top priority for improvement.
+The form benchmarks (XFUND and FUNSD) use strict key-value matching based on original annotations. Because these annotations split single fields into pieces (like splitting postcode, prefecture, and street into separate entries under one key), a reader that extracts one clean field gets counted as one true positive and multiple false negatives. Because of this, treat form numbers as a lower bound. Japanese forms scored lowest at 34.6% F1, which is our top priority for improvement.
 
-You can view the form F1 scores by language in artifacts/f1_by_language.png, and the complete table with standalone reader scores in artifacts/f1_table.csv.
+We score forms in two ways. Strict scoring follows the published benchmark: every gold text fragment is treated as its own pair and must match a predicted pair on both label and value. Lenient scoring works more like a human grader. A gold fragment counts as found if its text matches or appears inside a predicted value under a similar label, and a predicted pair counts as correct if its value sits inside the gold text for that label. We keep strict scoring for official comparisons, but lenient scoring shows how people actually judge the results. Both come from the same predictions without any extra model calls.
+
+We also changed how we read forms. The prompt now asks for one pair per printed label in reading order, the label exactly as printed without qualifiers or trailing colons, the whole filled value kept together even when it spans a postal code and an address, the ticked option text for checkbox groups instead of true or false, and no inserted spaces in Japanese or Chinese. We also clean keys after extraction by removing trailing colons and dropping boolean and empty values. These prompt changes did not improve the scores. On the 67 XFUND documents that re-ran before the Free Tier day quota ran out, strict F1 went from 50.8% to 51.9% and lenient F1 from 62.5% to 63.2%; on the 10 Japanese forms among them, strict went from 34.6% to 37.2% and lenient from 50.9% to 56.8%. The numbers in the tables are from the original full run, and the remaining form documents will re-run when the quota resets. The gap comes from what the model extracts rather than the prompt wording, so our next step is adding layout input (OCR word boxes passed to the text reader) rather than more prompt changes.
+
+You can see the per-language form F1 in artifacts/f1_by_language.png, and the full table for each reader on its own in artifacts/f1_table.csv.
 
 ### Arbiter
 
@@ -117,11 +124,11 @@ Median arbiter time is 8.3 s per document, using about 2,724 input tokens per do
 
 ### Classification
 
-Document type was detected correctly on 92.4% of documents, and language was detected correctly on 88.9%.
+The model identified document type correctly on 92.4% of documents, and language on 88.9%.
 
 ### Calibration and review routing
 
-We evaluated calibration using two-fold cross-fitting based on document hashes. We fit the calibrator on one half of the documents and scored the other half. That means each of the 4540 fields was evaluated by a calibrator that had never seen its document (2480 and 2060 fields per half). The calibrator included in the demo is fit on all of them.
+We tested calibration with two-fold cross-fitting by document hash. The calibrator trained on one half of the documents scored the other half (2480 and 2060 fields per half), so every one of the 4540 fields was evaluated by a model that had never seen that document. The calibrator included in the demo is fit on all of them.
 
 | | Raw score | Calibrated |
 |---|---|---|
@@ -133,7 +140,7 @@ We evaluated calibration using two-fold cross-fitting based on document hashes. 
 - To reach 98 percent accuracy: send 76.0% of fields to review (threshold 0.94)
 - At the default threshold 0.85: 57.1% of fields reviewed, 94.4% accuracy on what posts automatically
 
-Signals behind the score: when the two readers agree, the field is correct 93.8% of the time; when they disagree, 62.2%. When a validator fails, the field is correct only 14.0% of the time, which is why a failed rule pulls the confidence down hard.
+Signals behind the score: when both readers agree, the field is right 93.8% of the time. When they disagree, it is right 62.2% of the time. When a validator fails, the field is right only 14.0% of the time, which is why a failed rule pulls confidence down fast.
 
 Charts: artifacts/reliability.png and artifacts/review_curve.png.
 
@@ -147,7 +154,7 @@ Charts: artifacts/reliability.png and artifacts/review_curve.png.
 | Reader latency, p50 / p95 | 11.82 s / 43.05 s |
 | End-to-end latency, p50 / p95 | 21.19 s / 63.81 s |
 
-These latency numbers include Free Tier rate limiting (15 requests per minute, plus waits and retries on 429 responses), so they are an upper bound. Without rate limits, a document takes about 7 seconds end to end on the same model.
+These latency numbers include Free Tier rate limits (15 requests per minute, with wait times and retries on 429 responses), so they represent an upper bound. Without those rate limits, the same model takes about 7 seconds end to end per document.
 
 ## Tests
 

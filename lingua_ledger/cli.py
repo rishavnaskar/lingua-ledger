@@ -64,6 +64,7 @@ def eval_run(
     paths: str = "vision,ocr_text",
     workers: int = 4,
     resume: bool = True,
+    classify: bool = True,
 ):
     from .eval.run import run_eval
 
@@ -73,7 +74,17 @@ def eval_run(
         paths=tuple(p.strip() for p in paths.split(",")),
         workers=workers,
         resume=resume,
+        classify_too=classify,
     )
+
+
+@app.command("cache-samples")
+def cache_samples(ids: str = "all", workers: int = 2):
+    """Run the pipeline on the bundled sample documents and store the results next to them."""
+    from .samples import build_cache
+
+    for sample_id, status in build_cache(ids=None if ids == "all" else ids.split(","), workers=workers):
+        typer.echo(f"{sample_id}: {status}")
 
 
 @eval_app.command("arbiter")

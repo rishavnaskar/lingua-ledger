@@ -1,0 +1,558 @@
+{
+ "doc_id": "cord-id-1",
+ "classification": {
+  "doc_type": "receipt",
+  "language": "id",
+  "confidence": 1.0
+ },
+ "data": {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "time": null,
+  "currency": "IDR",
+  "line_items": [
+   {
+    "description": "-TICKET CP",
+    "quantity": 2.0,
+    "unit_price": 60000.0,
+    "total": 60000.0
+   }
+  ],
+  "subtotal": 60000.0,
+  "tax_amount": 5455.0,
+  "service_charge": null,
+  "discount": 60000.0,
+  "total": 60000.0,
+  "cash_paid": null,
+  "change": null,
+  "payment_method": "EDC CIMB NIAGA"
+ },
+ "fields": [
+  {
+   "field": "merchant_name",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "fail",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "merchant_address",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "date",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "fail",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "time",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": 0.0,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "currency",
+   "value": "IDR",
+   "confidence": 0.95,
+   "raw_score": 0.42,
+   "agree": false,
+   "ocr_conf": null,
+   "validator": "pass",
+   "self_conf": 0.9,
+   "vision_value": "IDR",
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].description",
+   "value": "-TICKET CP",
+   "confidence": 0.9609,
+   "raw_score": 0.9,
+   "agree": true,
+   "ocr_conf": 0.63,
+   "validator": "na",
+   "self_conf": 0.95,
+   "vision_value": "-TICKET CP",
+   "ocr_value": "TICKET CP",
+   "bbox": [
+    151,
+    390,
+    218,
+    404
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].quantity",
+   "value": 2.0,
+   "confidence": 0.9597,
+   "raw_score": 0.5425,
+   "agree": true,
+   "ocr_conf": null,
+   "validator": "fail",
+   "self_conf": 0.95,
+   "vision_value": 2.0,
+   "ocr_value": 2.0,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "line_items[0].unit_price",
+   "value": 60000.0,
+   "confidence": 0.4371,
+   "raw_score": 0.0275,
+   "agree": false,
+   "ocr_conf": 0.86,
+   "validator": "fail",
+   "self_conf": 0.95,
+   "vision_value": 60000.0,
+   "ocr_value": null,
+   "bbox": [
+    178,
+    414,
+    219,
+    427
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "line_items[0].total",
+   "value": 60000.0,
+   "confidence": 0.9597,
+   "raw_score": 0.6075,
+   "agree": true,
+   "ocr_conf": 0.86,
+   "validator": "fail",
+   "self_conf": 0.95,
+   "vision_value": 60000.0,
+   "ocr_value": 60000.0,
+   "bbox": [
+    178,
+    414,
+    219,
+    427
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "subtotal",
+   "value": 60000.0,
+   "confidence": 0.9597,
+   "raw_score": 0.615,
+   "agree": true,
+   "ocr_conf": 0.86,
+   "validator": "fail",
+   "self_conf": 0.98,
+   "vision_value": 60000.0,
+   "ocr_value": 60000.0,
+   "bbox": [
+    178,
+    414,
+    219,
+    427
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "tax_amount",
+   "value": 5455.0,
+   "confidence": 0.4331,
+   "raw_score": 0.02,
+   "agree": false,
+   "ocr_conf": 0.77,
+   "validator": "fail",
+   "self_conf": 0.98,
+   "vision_value": 5455.0,
+   "ocr_value": null,
+   "bbox": [
+    317,
+    487,
+    351,
+    501
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": true
+  },
+  {
+   "field": "service_charge",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "discount",
+   "value": 60000.0,
+   "confidence": 0.9111,
+   "raw_score": 0.2875,
+   "agree": false,
+   "ocr_conf": 0.86,
+   "validator": "fail",
+   "self_conf": 0.95,
+   "vision_value": 60000.0,
+   "ocr_value": 10000.0,
+   "bbox": [
+    178,
+    414,
+    219,
+    427
+   ],
+   "page": 0,
+   "arbiter": "vision",
+   "arbiter_value": 60000.0,
+   "needs_review": false
+  },
+  {
+   "field": "total",
+   "value": 60000.0,
+   "confidence": 0.9597,
+   "raw_score": 0.615,
+   "agree": true,
+   "ocr_conf": 0.86,
+   "validator": "fail",
+   "self_conf": 0.98,
+   "vision_value": 60000.0,
+   "ocr_value": 60000.0,
+   "bbox": [
+    178,
+    414,
+    219,
+    427
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "cash_paid",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "change",
+   "value": null,
+   "confidence": 1.0,
+   "raw_score": 0.5,
+   "agree": null,
+   "ocr_conf": null,
+   "validator": "na",
+   "self_conf": null,
+   "vision_value": null,
+   "ocr_value": null,
+   "bbox": null,
+   "page": null,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  },
+  {
+   "field": "payment_method",
+   "value": "EDC CIMB NIAGA",
+   "confidence": 0.9609,
+   "raw_score": 0.96,
+   "agree": true,
+   "ocr_conf": 0.87,
+   "validator": "na",
+   "self_conf": 0.95,
+   "vision_value": "EDC CIMB NIAGA",
+   "ocr_value": "EDC CIMB NIAGA",
+   "bbox": [
+    50,
+    587,
+    165,
+    604
+   ],
+   "page": 0,
+   "arbiter": null,
+   "arbiter_value": null,
+   "needs_review": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "required_fields_present",
+   "fields": [
+    "merchant_name",
+    "date"
+   ],
+   "passed": false,
+   "message": "Missing required fields: merchant_name, date"
+  },
+  {
+   "rule": "total_positive",
+   "fields": [
+    "total"
+   ],
+   "passed": true,
+   "message": "Total 60,000.00 is positive"
+  },
+  {
+   "rule": "line_items_sum_subtotal",
+   "fields": [
+    "subtotal",
+    "line_items[0].total"
+   ],
+   "passed": true,
+   "message": "Line items sum to the subtotal (60,000.00)"
+  },
+  {
+   "rule": "line_item_arithmetic",
+   "fields": [
+    "line_items[0].quantity",
+    "line_items[0].unit_price",
+    "line_items[0].total"
+   ],
+   "passed": false,
+   "message": "Line 1: quantity x unit price is 120,000.00, total is 60,000.00"
+  },
+  {
+   "rule": "total_equals_subtotal_plus_tax",
+   "fields": [
+    "subtotal",
+    "tax_amount",
+    "discount",
+    "total"
+   ],
+   "passed": false,
+   "message": "subtotal + tax_amount - discount = 5,455.00, total is 60,000.00"
+  },
+  {
+   "rule": "change_math",
+   "fields": [
+    "cash_paid",
+    "total",
+    "change"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "date_parseable",
+   "fields": [
+    "date"
+   ],
+   "passed": null,
+   "message": "Not applicable: required inputs are missing"
+  },
+  {
+   "rule": "currency_valid",
+   "fields": [
+    "currency"
+   ],
+   "passed": true,
+   "message": "IDR is an ISO 4217 code"
+  }
+ ],
+ "paths": [
+  {
+   "path": "vision",
+   "data": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "time": null,
+    "currency": "IDR",
+    "line_items": [
+     {
+      "description": "-TICKET CP",
+      "quantity": 2.0,
+      "unit_price": 60000.0,
+      "total": 60000.0
+     }
+    ],
+    "subtotal": 60000.0,
+    "tax_amount": 5455.0,
+    "service_charge": null,
+    "discount": 60000.0,
+    "total": 60000.0,
+    "cash_paid": null,
+    "change": null,
+    "payment_method": "EDC CIMB NIAGA"
+   },
+   "self_confidence": {
+    "merchant_name": 0.0,
+    "merchant_address": 0.0,
+    "date": 0.0,
+    "time": 0.0,
+    "currency": 0.9,
+    "line_items": 0.95,
+    "subtotal": 0.98,
+    "tax_amount": 0.98,
+    "discount": 0.95,
+    "total": 0.98,
+    "payment_method": 0.95
+   },
+   "latency_s": 23.47,
+   "input_tokens": 1255,
+   "output_tokens": 3630,
+   "model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "path": "ocr_text",
+   "data": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "time": null,
+    "currency": null,
+    "line_items": [
+     {
+      "description": "TICKET CP",
+      "quantity": 2.0,
+      "unit_price": null,
+      "total": 60000.0
+     }
+    ],
+    "subtotal": 60000.0,
+    "tax_amount": null,
+    "service_charge": null,
+    "discount": 10000.0,
+    "total": 60000.0,
+    "cash_paid": null,
+    "change": null,
+    "payment_method": "EDC CIMB NIAGA"
+   },
+   "self_confidence": {
+    "merchant_name": 0.0,
+    "merchant_address": 0.0,
+    "date": 0.0,
+    "time": 0.0,
+    "currency": 0.0,
+    "line_items": 0.8,
+    "subtotal": 0.9,
+    "tax_amount": 0.0,
+    "service_charge": 0.0,
+    "discount": 0.7,
+    "total": 0.95,
+    "cash_paid": 0.0,
+    "change": 0.0,
+    "payment_method": 0.85
+   },
+   "latency_s": 68.075,
+   "input_tokens": 308,
+   "output_tokens": 1919,
+   "model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "review_threshold": 0.85,
+ "review_rate": 0.2,
+ "pages": 1,
+ "latency_s": 82.361,
+ "arbiter": {
+  "model": "gemini-3.5-flash",
+  "disputes": 1,
+  "verdicts": [
+   {
+    "field": "discount",
+    "vision_value": 60000.0,
+    "ocr_value": 10000.0,
+    "choice": "vision",
+    "value": 60000.0,
+    "confidence": 0.99,
+    "cropped": true
+   }
+  ],
+  "latency_s": 14.093,
+  "input_tokens": 1264,
+  "output_tokens": 244,
+  "error": null
+ },
+ "anomalies": [],
+ "memory": {
+  "vendor_seen": false,
+  "vendor_documents": 0
+ }
+}

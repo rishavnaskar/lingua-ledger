@@ -19,7 +19,7 @@ import { fmt, languageName } from "@/lib/format";
 
 type State = { status: "loading" } | { status: "error"; message: string } | { status: "ready"; data: MetricsSummary };
 
-const PATH_ORDER = ["arbiter", "merged", "vision", "ocr_text"];
+const PATH_ORDER = ["arbiter", "merged", "lenient", "vision", "ocr_text"];
 
 export function MetricsView() {
   const c = copy.metrics;
@@ -283,6 +283,7 @@ function F1Table({ f1 }: { f1: Record<string, number> }) {
   return (
     <Card>
       <CardTitle>{c.title}</CardTitle>
+      {cols.includes("lenient") && <p className="-mt-1 mb-3 text-sm text-muted">{c.lenientNote}</p>}
       <div className="overflow-x-auto rounded-xl border border-line bg-white">
         <table className="w-full min-w-[420px] text-left text-sm">
           <thead className="text-xs text-muted">

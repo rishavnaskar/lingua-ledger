@@ -53,6 +53,8 @@ def _parse(out: dict[str, Any], doc_type: DocType) -> tuple[dict[str, Any], dict
         data = model.model_validate(raw).model_dump()
     except ValidationError:
         data = model.model_validate({k: v for k, v in raw.items() if k in model.model_fields}).model_dump()
+    if doc_type == DocType.form:
+        data = _clean_form(data)
     raw_conf = out.get("field_confidence") or []
     if isinstance(raw_conf, dict):
         raw_conf = [{"field": k, "confidence": v} for k, v in raw_conf.items()]
@@ -64,9 +66,36 @@ def _parse(out: dict[str, Any], doc_type: DocType) -> tuple[dict[str, Any], dict
     return data, conf
 
 
+FORM_RULES = (
+    " For this form: output one pair per printed label, in reading order, top to bottom and left to right. "
+    "Keep the label exactly as printed, without a trailing colon; do not add qualifiers in brackets. The "
+    "value is everything filled in next to or below that label, kept together as one value even when it "
+    "spans a postal code and an address or several lines. For a group of checkboxes use the group label as "
+    "the key and the text of the ticked option as the value; never output true or false. Skip labels with "
+    "nothing filled in. Keep Japanese and Chinese text exactly as printed, with no spaces inserted."
+)
+
+
+def _task(doc_type: DocType, prefix: str) -> str:
+    text = f"{prefix} the {doc_type.value} data."
+    return text + FORM_RULES if doc_type == DocType.form else text
+
+
+def _clean_form(data: dict[str, Any]) -> dict[str, Any]:
+    fields = []
+    for item in data.get("fields") or []:
+        key = str(item.get("key") or "").strip().rstrip(":：").strip()
+        value = item.get("value")
+        value = "" if value is None else str(value).strip()
+        if not key or value.lower() in ("", "true", "false", "null", "none"):
+            continue
+        fields.append({"key": key, "value": value})
+    return {**data, "fields": fields}
+
+
 def extract_vision(images: list[Image.Image], doc_type: DocType) -> PathOutput:
     content = image_blocks(images)
-    content.append({"type": "text", "text": f"Extract the {doc_type.value} data from these pages."})
+    content.append({"type": "text", "text": _task(doc_type, "Extract") + " Use these pages."})
     try:
         out, meta = call_structured(
             VISION_MODEL, SYSTEM_VISION, content, output_model(doc_type), effort=EFFORT
@@ -88,7 +117,7 @@ def extract_vision(images: list[Image.Image], doc_type: DocType) -> PathOutput:
 
 
 def extract_text(ocr_text: str, doc_type: DocType) -> PathOutput:
-    content = f"OCR text of the document:\n\n{ocr_text}\n\nExtract the {doc_type.value} data."
+    content = f"OCR text of the document:\n\n{ocr_text}\n\n{_task(doc_type, 'Extract')}"
     try:
         out, meta = call_structured(TEXT_MODEL, SYSTEM_TEXT, content, output_model(doc_type), effort=EFFORT)
         data, conf = _parse(out, doc_type)

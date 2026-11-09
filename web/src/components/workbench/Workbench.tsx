@@ -98,14 +98,20 @@ export function Workbench() {
     });
   };
 
-  const handleSample = (sample: Sample) => {
-    const opts = { threshold, arbiter };
+  const handleSample = (sample: Sample, fresh = false) => {
+    const opts = { threshold, arbiter, fresh };
     start({
       name: sample.title,
       preview: IMAGE_FILE.test(sample.file) ? sampleFileUrl(sample.id) : null,
       sampleId: sample.id,
       run: (signal) => extractSample(sample.id, { ...opts, signal }),
     });
+  };
+
+  const runLive = () => {
+    if (!job?.sampleId) return;
+    const opts = { threshold, arbiter, fresh: true };
+    start({ ...job, run: (signal) => extractSample(job.sampleId as string, { ...opts, signal }) });
   };
 
   const commit = useCallback(() => {
@@ -216,6 +222,7 @@ export function Workbench() {
                 total={present.length}
                 onExportJson={exportJson}
                 onExportCsv={exportCsv}
+                onRunLive={result.cached ? runLive : undefined}
               />
               <FieldsTable
                 fields={routed}
