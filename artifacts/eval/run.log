@@ -1,5 +1,5 @@
-synth_invoices [vision+ocr_text]:   0%|          | 0/21 [00:00<?, ?it/s]/Users/rishavnaskar/Documents/Projects/datanova-2026/.venv/lib/python3.12/site-packages/google/genai/types.py:18161: SyntaxWarning: invalid escape sequence '\/'
+synth_invoices [vision+ocr_text]:   0%|          | 0/13 [00:00<?, ?it/s]/Users/rishavnaskar/Documents/Projects/datanova-2026/.venv/lib/python3.12/site-packages/google/genai/types.py:18161: SyntaxWarning: invalid escape sequence '\/'
   description="""Output only. The original name of the uploaded file, taken from the `Content-Disposition` header on upload. Between 1 and 255 characters. Control characters and the characters `<>:"|?*\/` are not accepted.""",
 /Users/rishavnaskar/Documents/Projects/datanova-2026/.venv/lib/python3.12/site-packages/google/genai/types.py:18199: SyntaxWarning: invalid escape sequence '\/'
   """Output only. The original name of the uploaded file, taken from the `Content-Disposition` header on upload. Between 1 and 255 characters. Control characters and the characters `<>:"|?*\/` are not accepted."""
-synth_invoices [vision+ocr_text]:   5%|▍         | 1/21 [00:07<02:24,  7.24s/it]synth_invoices [vision+ocr_text]:  10%|▉         | 2/21 [00:07<01:04,  3.40s/it]synth_invoices [vision+ocr_text]:  14%|█▍        | 3/21 [00:08<00:41,  2.32s/it]
+synth_invoices [vision+ocr_text]:   8%|▊         | 1/13 [00:07<01:27,  7.27s/it]synth_invoices [vision+ocr_text]:  15%|█▌        | 2/13 [00:08<00:42,  3.85s/it]

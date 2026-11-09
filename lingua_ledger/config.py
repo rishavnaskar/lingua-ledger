@@ -37,6 +37,7 @@ VISION_MODEL = os.getenv("LL_VISION_MODEL", _DEFAULTS["vision"])
 TEXT_MODEL = os.getenv("LL_TEXT_MODEL", _DEFAULTS["text"])
 CLASSIFY_MODEL = os.getenv("LL_CLASSIFY_MODEL", _DEFAULTS["classify"])
 FALLBACK_MODELS = [m for m in os.getenv("LL_FALLBACK_MODELS", "gemini-3.5-flash").split(",") if m.strip()]
+GEMINI_RPM = int(os.getenv("LL_GEMINI_RPM", "15"))
 PRICE_IN_PER_M = float(os.getenv("LL_PRICE_IN_PER_M", _DEFAULTS["price_in"]))
 PRICE_OUT_PER_M = float(os.getenv("LL_PRICE_OUT_PER_M", _DEFAULTS["price_out"]))
 

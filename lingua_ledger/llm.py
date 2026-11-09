@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import base64
+import collections
 import json
 import os
+import re
 import threading
 import time
 from functools import lru_cache
@@ -11,7 +13,7 @@ from typing import Any
 from PIL import Image
 from pydantic import BaseModel
 
-from .config import FALLBACK_MODELS, PROVIDER
+from .config import FALLBACK_MODELS, GEMINI_RPM, PROVIDER
 from .ingest import to_jpeg_base64
 
 
@@ -109,6 +111,31 @@ def _anthropic(model, system, content, schema, max_tokens, effort):
 _local = threading.local()
 
 
+class _RateLimiter:
+    def __init__(self, per_minute: int):
+        self.per_minute = per_minute
+        self.lock = threading.Lock()
+        self.sent: collections.deque[float] = collections.deque()
+
+    def wait(self) -> None:
+        if self.per_minute <= 0:
+            return
+        while True:
+            with self.lock:
+                now = time.monotonic()
+                while self.sent and now - self.sent[0] > 60:
+                    self.sent.popleft()
+                if len(self.sent) < self.per_minute:
+                    self.sent.append(now)
+                    return
+                delay = 60 - (now - self.sent[0]) + 0.2
+            time.sleep(max(delay, 0.2))
+
+
+_limiter = _RateLimiter(GEMINI_RPM)
+_retry_in = re.compile(r"retry in ([0-9.]+)s", re.IGNORECASE)
+
+
 def _gemini_client(fresh: bool = False):
     client = None if fresh else getattr(_local, "gemini", None)
     if client is None:
@@ -147,17 +174,23 @@ def _gemini_with_fallback(model, system, content, schema, max_tokens, effort):
 
     candidates = [model, *[m for m in FALLBACK_MODELS if m != model]]
     for i, m in enumerate(candidates):
-        try:
-            data, usage = _gemini(m, system, content, schema, max_tokens, effort)
-            return data, usage, m
-        except RuntimeError as e:
-            if "closed" not in str(e):
-                raise
-            data, usage = _gemini(m, system, content, schema, max_tokens, effort, fresh=True)
-            return data, usage, m
-        except errors.ServerError:
-            if i == len(candidates) - 1:
-                raise
+        for attempt in range(6):
+            _limiter.wait()
+            try:
+                data, usage = _gemini(m, system, content, schema, max_tokens, effort, fresh=attempt > 0)
+                return data, usage, m
+            except errors.ClientError as e:
+                if getattr(e, "code", None) != 429 or attempt == 5:
+                    raise
+                found = _retry_in.search(str(e))
+                time.sleep(min(float(found.group(1)) if found else 10.0, 65.0) + 1.0)
+            except RuntimeError as e:
+                if "closed" not in str(e) or attempt == 5:
+                    raise
+            except errors.ServerError:
+                if i == len(candidates) - 1:
+                    raise
+                break
     raise RuntimeError("no model candidates")
 
 
