@@ -127,8 +127,18 @@ def build_report(threshold: float = 0.85, targets: tuple[float, ...] = (0.95, 0.
     lat = [r["latency_s"] for r in rows if "latency_s" in r]
     toks_in = sum(p.get("input_tokens", 0) for r in rows for p in r.get("paths", []))
     toks_out = sum(p.get("output_tokens", 0) for r in rows for p in r.get("paths", []))
+    reader = [
+        max(p.get("latency_s", 0.0) for p in r["paths"])
+        for r in rows
+        if r.get("paths") and not r.get("text_only")
+    ]
     summary["latency_s"] = (
-        {"p50": round(float(np.percentile(lat, 50)), 2), "p95": round(float(np.percentile(lat, 95)), 2)}
+        {
+            "p50": round(float(np.percentile(lat, 50)), 2),
+            "p95": round(float(np.percentile(lat, 95)), 2),
+            "reader_p50": round(float(np.percentile(reader, 50)), 2) if reader else None,
+            "reader_p95": round(float(np.percentile(reader, 95)), 2) if reader else None,
+        }
         if lat
         else {}
     )
@@ -285,7 +295,7 @@ def _f1_charts(agg: dict[tuple[str, str, str], Counts]) -> None:
         ax.set_ylim(0, 105)
         ax.set_ylabel("Field F1 (%)")
         ax.set_title("Ablation: each reader alone versus the full pipeline", fontsize=10, loc="left")
-        ax.legend(frameon=False, fontsize=8, loc="lower right")
+        ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3)
         _style(ax)
         fig.tight_layout()
         fig.savefig(ARTIFACTS / "ablation.png")

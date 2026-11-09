@@ -106,6 +106,8 @@ def _process(sample, paths: tuple[str, ...], classify_too: bool) -> dict:
             record["scores"] = {"merged": score_document(record["pred"], gold).counts.as_dict()}
             record["latency_s"] = round(time.perf_counter() - t0, 3)
             return record
+        if result.paths and all(p.error for p in result.paths):
+            raise RuntimeError(result.paths[0].error)
         record.update(
             {
                 "pred": restrict(result.data, sample.dataset),

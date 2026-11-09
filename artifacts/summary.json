@@ -1,0 +1,144 @@
+{
+  "documents": 198,
+  "failed_documents": 0,
+  "f1": {
+    "all/all/merged": 0.6395,
+    "all/all/ocr_text": 0.4972,
+    "all/all/vision": 0.6418,
+    "cord/all/merged": 0.9468,
+    "cord/all/ocr_text": 0.5245,
+    "cord/all/vision": 0.9493,
+    "cord/id/merged": 0.9468,
+    "cord/id/ocr_text": 0.5245,
+    "cord/id/vision": 0.9493,
+    "cuad/all/merged": 0.602,
+    "cuad/all/ocr_text": 0.6014,
+    "cuad/all/vision": 0.609,
+    "cuad/en/merged": 0.602,
+    "cuad/en/ocr_text": 0.6014,
+    "cuad/en/vision": 0.609,
+    "funsd/all/merged": 0.5327,
+    "funsd/all/ocr_text": 0.3902,
+    "funsd/all/vision": 0.5388,
+    "funsd/en/merged": 0.5327,
+    "funsd/en/ocr_text": 0.3902,
+    "funsd/en/vision": 0.5388,
+    "sroie/all/merged": 0.95,
+    "sroie/all/ocr_text": 0.8861,
+    "sroie/all/vision": 0.95,
+    "sroie/en/merged": 0.95,
+    "sroie/en/ocr_text": 0.8861,
+    "sroie/en/vision": 0.95,
+    "synth_invoices/all/merged": 0.9861,
+    "synth_invoices/all/ocr_text": 0.9593,
+    "synth_invoices/all/vision": 0.9861,
+    "synth_invoices/de/merged": 0.973,
+    "synth_invoices/de/ocr_text": 0.973,
+    "synth_invoices/de/vision": 0.973,
+    "synth_invoices/en/merged": 0.9865,
+    "synth_invoices/en/ocr_text": 1.0,
+    "synth_invoices/en/vision": 0.9865,
+    "synth_invoices/es/merged": 1.0,
+    "synth_invoices/es/ocr_text": 0.973,
+    "synth_invoices/es/vision": 1.0,
+    "synth_invoices/fr/merged": 0.9859,
+    "synth_invoices/fr/ocr_text": 0.979,
+    "synth_invoices/fr/vision": 0.9859,
+    "synth_invoices/it/merged": 1.0,
+    "synth_invoices/it/ocr_text": 0.9589,
+    "synth_invoices/it/vision": 1.0,
+    "synth_invoices/ja/merged": 0.9692,
+    "synth_invoices/ja/ocr_text": 0.8154,
+    "synth_invoices/ja/vision": 0.9692,
+    "synth_invoices/pt/merged": 0.9861,
+    "synth_invoices/pt/ocr_text": 1.0,
+    "synth_invoices/pt/vision": 0.9861,
+    "xfund/all/merged": 0.5086,
+    "xfund/all/ocr_text": 0.319,
+    "xfund/all/vision": 0.5094,
+    "xfund/de/merged": 0.5012,
+    "xfund/de/ocr_text": 0.4306,
+    "xfund/de/vision": 0.5024,
+    "xfund/es/merged": 0.4798,
+    "xfund/es/ocr_text": 0.3807,
+    "xfund/es/vision": 0.4835,
+    "xfund/fr/merged": 0.6781,
+    "xfund/fr/ocr_text": 0.3392,
+    "xfund/fr/vision": 0.6985,
+    "xfund/it/merged": 0.6525,
+    "xfund/it/ocr_text": 0.5291,
+    "xfund/it/vision": 0.6495,
+    "xfund/ja/merged": 0.3457,
+    "xfund/ja/ocr_text": 0.1278,
+    "xfund/ja/vision": 0.3457,
+    "xfund/pt/merged": 0.4331,
+    "xfund/pt/ocr_text": 0.2923,
+    "xfund/pt/vision": 0.4295,
+    "xfund/zh/merged": 0.4725,
+    "xfund/zh/ocr_text": 0.1323,
+    "xfund/zh/vision": 0.4741
+  },
+  "classification": {
+    "n": 198,
+    "doc_type_acc": 0.9242,
+    "language_acc": 0.8889
+  },
+  "calibration": {
+    "fit_fields": 2278,
+    "test_fields": 2262,
+    "field_accuracy": 0.737,
+    "ece_raw": 0.1352,
+    "ece_calibrated": 0.0288,
+    "brier_raw": 0.177,
+    "brier_calibrated": 0.1455
+  },
+  "review": {
+    "baseline_accuracy_no_review": 0.737,
+    "review_rate_at_95pct_accuracy": 0.5831,
+    "threshold_at_95pct_accuracy": 0.8,
+    "review_rate_at_98pct_accuracy": 0.7546,
+    "threshold_at_98pct_accuracy": 0.94,
+    "at_threshold_0.85": {
+      "review_rate": 0.5911,
+      "auto_accuracy": 0.9557
+    }
+  },
+  "signals": {
+    "agree=False": {
+      "n": 2721,
+      "accuracy": 0.6218
+    },
+    "agree=True": {
+      "n": 1819,
+      "accuracy": 0.9379
+    },
+    "validator=fail": {
+      "n": 157,
+      "accuracy": 0.1401
+    },
+    "validator=na": {
+      "n": 465,
+      "accuracy": 0.8925
+    },
+    "validator=pass": {
+      "n": 3918,
+      "accuracy": 0.7557
+    }
+  },
+  "latency_s": {
+    "p50": 21.19,
+    "p95": 63.81,
+    "reader_p50": 11.82,
+    "reader_p95": 43.05
+  },
+  "tokens": {
+    "input": 482121,
+    "output": 306545,
+    "per_doc_input": 2435,
+    "per_doc_output": 1548
+  },
+  "cost_usd": {
+    "total": 0.91,
+    "per_1000_docs": 4.6
+  }
+}

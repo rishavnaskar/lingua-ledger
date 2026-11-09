@@ -13,3 +13,5 @@ __pycache__/
 web/node_modules/
 web/.next/
 CLAUDE.md
+artifacts/eval/*.log
+deck/render/*.png
