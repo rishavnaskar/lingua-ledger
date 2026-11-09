@@ -120,7 +120,7 @@ async function iconPng(name, hex, px = 256) {
     text(s, "DATANOVA 2026 GLOBAL DATA-THON  ·  TRACK DN-AI-01", { x: 0.6, y: 0.6, w: 8, h: 0.3, fontSize: 11, bold: true, color: H.accent2, charSpacing: 2 });
     s.addText("Lingua Ledger", { placeholder: "title" });
     s.addText([
-      { text: "Self-verifying extraction for multilingual business documents. ", options: { color: H.accent5 } },
+      { text: "Self-checking extraction for multilingual business documents. ", options: { color: H.accent5 } },
       { text: "Every field comes back with a confidence score you can actually trust.", options: { color: H.lt1 } },
     ], { placeholder: "body" });
     // document motif: three stacked "doc" cards with pills
@@ -134,7 +134,7 @@ async function iconPng(name, hex, px = 256) {
       text(s, conf, { x: x + 1.25, y: y + 0.66, w: 0.55, h: 0.24, fontSize: 9, bold: true, color: H.dk1, align: "center", valign: "middle" });
     });
     text(s, "Rishav Naskar  ·  rishavnaskar.r@gmail.com  ·  Round 1 submission, November 2026", { x: 0.6, y: 4.55, w: 8.4, h: 0.3, fontSize: 12, color: H.lt1 });
-    s.addNotes("Lingua Ledger is our entry for DN-AI-01. The one idea to remember: extraction is a solved demo and an unsolved product, because nobody trusts the output. We make the confidence score mean something and prove it with numbers.");
+    s.addNotes("Lingua Ledger is our entry for DN-AI-01. The main takeaway: document extraction works in demos, but fails in production because no one trusts it. We make confidence scores honest and prove it with data.");
   }
 
   // ======================================================================
@@ -142,12 +142,12 @@ async function iconPng(name, hex, px = 256) {
   // 2. Problem
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Problem" });
-    s.addText("Every language and layout arrives. Trust does not", { placeholder: "title" });
+    s.addText("Every layout arrives, but trust does not", { placeholder: "title" });
     text(s, "Official challenge DN-AI-01: extract, classify and structure information from multilingual invoices, contracts and forms with varying layouts and quality, and output structured, validated data with confidence scores.", { x: 0.5, y: 1.15, w: 9.0, h: 0.6, fontSize: 13, italic: true, color: C.text2 });
     const cols = [
-      ["LuLanguages", "Multilingual by default", "Finance, legal and operations teams in India, the EU and South-East Asia process invoices and contracts in 5–10 languages, often mixed on a single page."],
-      ["LuLayoutTemplate", "No two layouts alike", "Template-based OCR breaks on every new vendor. LLMs read anything, but they also confidently invent a VAT number when the scan is blurry."],
-      ["LuUserX", "100% human review, or silent errors", "Because nobody can tell which fields are right, teams either re-key everything or accept errors into the ledger. Both are expensive."],
+      ["LuLanguages", "Multilingual by default", "Teams in India, the EU and South-East Asia handle invoices and contracts in 5 to 10 languages, often mixed on one page."],
+      ["LuLayoutTemplate", "Layouts keep changing", "Template OCR breaks on new vendors. LLMs read anything, but they easily make up a VAT number when a scan is blurry."],
+      ["LuUserX", "100% review or errors", "Without knowing what is accurate, teams must recheck every field or risk costly ledger errors."],
     ];
     for (let i = 0; i < 3; i++) {
       const x = 0.5 + i * 3.05, y = 1.95, w = 2.9, h = 2.95;
@@ -156,16 +156,16 @@ async function iconPng(name, hex, px = 256) {
       text(s, cols[i][1], { x: x + 0.2, y: y + 0.9, w: w - 0.4, h: 0.5, fontSize: 15, bold: true, color: C.text1 });
       text(s, cols[i][2], { x: x + 0.2, y: y + 1.4, w: w - 0.4, h: 1.45, fontSize: 12, color: C.text2, valign: "top" });
     }
-    s.addNotes("Problem framing straight from the DN-AI-01 statement. The pain is not reading the document; it is knowing which of the 40 fields you just extracted can be posted to the ledger without a human looking.");
+    s.addNotes("This problem comes straight from DN-AI-01. The hard part is not reading text; it is knowing which of the 40 extracted fields are safe to post without human review.");
   }
 
   // 3. Insight
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Problem" });
-    s.addText("A confidence score that actually means something", { placeholder: "title" });
+    s.addText("Confidence scores you can actually trust", { placeholder: "title" });
     const rows = [
-      ["Template OCR", "Brittle; fails on new layouts", "Word-level OCR confidence only", "Every exception to a human", "A7B0BC"],
-      ["Prompt-and-pray LLM", "Reads anything", "Self-reported, uncalibrated, often wrong", "All or nothing", "A7B0BC"],
+      ["Template OCR", "Fragile; breaks on new layouts", "Basic word-level OCR confidence only", "Humans must check every exception", "A7B0BC"],
+      ["Prompt-and-pray LLM", "Reads almost anything", "Self-reported, uncalibrated, and often wrong", "All or nothing", "A7B0BC"],
       ["Lingua Ledger", "Vision LLM + OCR LLM, cross-checked", "Calibrated per field: 0.9 means ~90% correct", "Only low-confidence fields", H.accent1],
     ];
     const hdr = ["Approach", "Layout robustness", "Confidence", "Human review"];
@@ -178,8 +178,8 @@ async function iconPng(name, hex, px = 256) {
       text(s, r[0], { x: cx[0] + 0.15, y, w: cw[0] - 0.15, h: 0.82, fontSize: 14, bold: true, color: strong ? H.dk1 : C.text1, valign: "middle" });
       for (let i = 1; i < 4; i++) text(s, r[i], { x: cx[i], y, w: cw[i] - 0.15, h: 0.82, fontSize: 12, color: strong ? H.dk1 : C.text2, valign: "middle" });
     });
-    text(s, "Our headline metric: at a target field accuracy (e.g. 98%), what share of fields still needs a human? Lower is better, and it is measurable.", { x: 0.5, y: 4.6, w: 9.0, h: 0.45, fontSize: 13, italic: true, color: H.accent4 });
-    s.addNotes("Two incumbent approaches, each with a real weakness. We are not claiming better reading; we are claiming trustworthy reading, and we define the metric that proves it: review rate at a fixed accuracy target.");
+    text(s, "Our main metric: at a target field accuracy (like 98%), what share of fields still needs a human? Lower is better, and we measure it directly.", { x: 0.5, y: 4.6, w: 9.0, h: 0.45, fontSize: 13, italic: true, color: H.accent4 });
+    s.addNotes("Current tools have big weaknesses. We do not just claim better reading; we deliver trustworthy output and prove it by measuring human review rates at a fixed accuracy target.");
   }
 
   // ======================================================================
@@ -187,13 +187,13 @@ async function iconPng(name, hex, px = 256) {
   // 4. Solution overview
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-    s.addText("Read twice, validate, calibrate, route", { placeholder: "title" });
+    s.addText("Read twice, validate, score and route", { placeholder: "title" });
     const steps = [
-      ["LuScanLine", "Ingest and classify", "PDF, photo or scan in. Pages rendered, language and document type detected (invoice, receipt, form, contract)."],
-      ["LuCopy", "Extract twice, independently", "Path A: a vision model reads the page against a strict JSON schema. Path B: multilingual OCR text + layout, same schema, text-only model."],
-      ["LuShieldCheck", "Validate deterministically", "Line items must sum, tax maths must hold, dates must parse and order, IBAN / VAT / currency formats must match. Every rule is explainable."],
-      ["LuGauge", "Calibrate confidence per field", "Path agreement, OCR word confidence under the field, validator outcome and model self-report are fused, then isotonic-calibrated on held-out data."],
-      ["LuUserCheck", "Route only what needs eyes", "Fields under the threshold go to a review queue with the source region highlighted. Everything else posts automatically, with an audit trail."],
+      ["LuScanLine", "Ingest and classify", "Drop in a PDF, scan or photo. We render pages and detect the language and document type (invoice, receipt, form, contract)."],
+      ["LuCopy", "Extract twice independently", "Path A: a vision model reads the page against a JSON schema. Path B: multilingual OCR text + layout with a text model."],
+      ["LuShieldCheck", "Check with strict rules", "Line items must sum, tax math must add up, dates must parse, and IBAN / VAT formats must match. Every rule is clear and explainable."],
+      ["LuGauge", "Score confidence per field", "We combine reader agreement, OCR confidence, rule results and model estimates, then calibrate them on held-out test data."],
+      ["LuUserCheck", "Route only doubtful fields", "Fields below the threshold go to a review queue with source crops highlighted. Everything else posts automatically with an audit trail."],
     ];
     for (let i = 0; i < steps.length; i++) {
       const y = 1.2 + i * 0.78;
@@ -201,13 +201,13 @@ async function iconPng(name, hex, px = 256) {
       text(s, steps[i][1], { x: 1.2, y: y, w: 2.6, h: 0.6, fontSize: 15, bold: true, color: C.text1, valign: "middle" });
       text(s, steps[i][2], { x: 3.85, y: y, w: 5.65, h: 0.62, fontSize: 12, color: C.text2, valign: "middle" });
     }
-    s.addNotes("Five stages. The two that are unusual are extracting twice through independent paths and calibrating the fused confidence against held-out ground truth. The rest is engineering discipline that most hackathon entries skip.");
+    s.addNotes("Five stages. The key innovations are extracting twice through separate paths and calibrating scores against held-out ground truth. The rest is solid engineering that most hackathons skip.");
   }
 
   // 5. Architecture
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-    s.addText("Two independent readers, one deterministic judge", { placeholder: "title" });
+    s.addText("Two separate readers, one strict judge", { placeholder: "title" });
     const box = (x, y, w, h, title, sub, fill, fg) => {
       s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h, rectRadius: 0.06, fill: { color: fill }, line: { color: fill, width: 0 }, objectName: title });
       text(s, title, { x: x + 0.1, y: y + 0.08, w: w - 0.2, h: 0.3, fontSize: 12, bold: true, color: fg });
@@ -233,8 +233,8 @@ async function iconPng(name, hex, px = 256) {
     box(2.4, 3.0, 2.1, 0.9, "Review UI", "Next.js · highlights source region · one-click accept/fix", H.lt2, H.dk1);
     arrow(2.4, 3.45, 2.05, 3.45);
     box(0.5, 3.0, 1.55, 0.9, "Eval harness", "XFUND · FUNSD · CORD · SROIE · CUAD", H.lt2, H.dk1);
-    text(s, "Stack: Python 3.13, pydantic schemas, Google Gemini (gemini-3.5-flash-lite for vision, text and classification, structured JSON output; provider switchable to Claude), Tesseract, scikit-learn (isotonic regression), FastAPI, Next.js on Vercel. Public repo, MIT licence, one-command reproduction of every metric.", { x: 0.5, y: 4.2, w: 9.0, h: 0.75, fontSize: 11.5, color: C.text2 });
-    s.addNotes("Walk left to right. Two readers never see each other's output. The validators are pure functions. The confidence engine is the only learned component on top of the LLMs, and it is trained on held-out ground truth so the number is honest.");
+    text(s, "Stack: Python 3.13, pydantic schemas, Google Gemini (gemini-3.5-flash-lite for vision, text and classification, structured JSON output; switchable to Claude), Tesseract, scikit-learn (isotonic regression), FastAPI, Next.js on Vercel. Public repo, MIT licence, one command reproduces every metric.", { x: 0.5, y: 4.2, w: 9.0, h: 0.75, fontSize: 11.5, color: C.text2 });
+    s.addNotes("Look from left to right. The two readers never see each other's work. The validators use clear deterministic rules. The confidence engine is trained on held-out ground truth so the scores stay honest.");
   }
 
   // 6. Confidence engine detail
@@ -242,10 +242,10 @@ async function iconPng(name, hex, px = 256) {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
     s.addText("What makes 0.9 mean ninety percent", { placeholder: "title" });
     const sig = [
-      ["Path agreement", "Do the vision reader and the OCR reader return the same normalised value?", H.accent1],
-      ["OCR evidence", "Mean Tesseract word confidence inside the field's bounding box; low on blur, skew, stamps.", H.accent1],
-      ["Validator outcome", "Passed, failed or not applicable for each deterministic rule touching the field.", H.accent1],
-      ["Model self-report", "The LLM's own 0–1 estimate, used as a weak feature, never as the answer.", H.accent2],
+      ["Both readers agree", "Do the vision reader and the OCR reader return the exact same value?", H.accent1],
+      ["Clear OCR evidence", "Average Tesseract word confidence inside the field box; drops on blur, skew or stamps.", H.accent1],
+      ["Rule check outcome", "Passed, failed or not applicable for every deterministic rule checked against the field.", H.accent1],
+      ["Raw model estimate", "The LLM's own 0 to 1 estimate, used as a small signal, never as the final answer.", H.accent2],
     ];
     text(s, "SIGNALS PER FIELD", { x: 0.5, y: 1.2, w: 4.4, h: 0.3, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
     for (let i = 0; i < sig.length; i++) {
@@ -258,10 +258,10 @@ async function iconPng(name, hex, px = 256) {
     text(s, "CALIBRATION AND ROUTING", { x: 5.3, y: 1.2, w: 4.2, h: 0.3, fontSize: 10, bold: true, color: "9AA5B1", charSpacing: 1 });
     card(s, 5.3, 1.55, 4.2, 3.35, { fill: H.lt2, name: "calibration card" });
     s.addText(bullets([
-      "Signals are fused by a small model, then isotonic-regressed against field correctness on a held-out split, per document type.",
-      "Reported on a reliability diagram with Expected Calibration Error (ECE) before and after calibration.",
-      "A single threshold τ turns confidence into a routing decision; we publish the full review-rate versus accuracy curve so an operator picks their own point.",
-      "Evidence travels with every field: which path, which rules fired, the crop of the page it came from.",
+      "Signals combine through a small model, then calibrate against field accuracy on held-out data per document type.",
+      "Shown on a reliability diagram with Expected Calibration Error (ECE) before and after calibration.",
+      "A single threshold τ controls routing; operators use the curve to pick their own balance between accuracy and review load.",
+      "Every field carries proof: which path found it, which rules passed, and the exact image crop.",
     ], 11.5, C.text2, 5), { x: 5.5, y: 1.7, w: 3.85, h: 3.1, isTextBox: true, margin: 0, valign: "top" });
     s.addNotes("This slide shows where our real innovation happens. Each signal is cheap, but the real power comes from fusing them and calibrating against ground truth so our numbers stay honest. Two slides later, the reliability diagram and review-rate curve show the result on real data.");
   }
@@ -271,11 +271,11 @@ async function iconPng(name, hex, px = 256) {
   // 7. Data & evaluation plan
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
-    s.addText("Public benchmarks, scored per language and per field", { placeholder: "title" });
+    s.addText("Public benchmarks tested by language and field", { placeholder: "title" });
     const rows = [
       [{ text: "Dataset", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } }, { text: "Document type", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } }, { text: "Languages", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } }, { text: "What we measure", options: { bold: true, color: H.lt1, fill: { color: H.accent4 } } }],
-      ["XFUND v1.0 (Microsoft)", "Forms", "ZH, JA, ES, FR, IT, DE, PT", "Key–value extraction F1 per language"],
-      ["FUNSD", "Forms", "EN", "Key–value F1; English baseline"],
+      ["XFUND v1.0 (Microsoft)", "Forms", "ZH, JA, ES, FR, IT, DE, PT", "Key-value extraction F1 per language"],
+      ["FUNSD", "Forms", "EN", "Key-value F1; English baseline"],
       ["CORD v2 (Naver Clova)", "Receipts", "ID (Latin script)", "Field F1; arithmetic validator hit-rate"],
       ["SROIE (ICDAR 2019)", "Receipts / invoices", "EN", "Exact-match F1 on company, date, address, total"],
       ["CUAD (Atticus Project)", "Contracts", "EN", "Clause extraction F1 on parties, dates, governing law, termination"],
@@ -296,7 +296,7 @@ async function iconPng(name, hex, px = 256) {
       text(s, kp[i][1], { x: x + 0.6, y: y - 0.02, w: 2.3, h: 0.28, fontSize: 13, bold: true, color: C.text1 });
       text(s, kp[i][2], { x: x + 0.6, y: y + 0.28, w: 2.35, h: 0.75, fontSize: 10.5, color: C.text2, valign: "top" });
     }
-    text(s, "All datasets are public research benchmarks used under their published licences; no customer documents are used. Synthetic multilingual invoices rendered from templates cover the invoice type across the same seven languages.", { x: 0.5, y: 4.65, w: 9.0, h: 0.45, fontSize: 10, italic: true, color: "7A8696" });
+    text(s, "All datasets are public research benchmarks under open licences; no customer data is used. Synthetic multilingual invoices cover the invoice category across the same seven languages.", { x: 0.5, y: 4.65, w: 9.0, h: 0.45, fontSize: 10, italic: true, color: "7A8696" });
     s.addNotes("We cover nine languages across five datasets, synthetic invoices, and four document types. Every number on the next three slides is reproducible from our public repo with one command.");
   }
 
@@ -335,15 +335,15 @@ async function iconPng(name, hex, px = 256) {
       const cls = SUMMARY.classification || {};
       stat(s, 6.3, 3.3, pct(cls.doc_type_acc), "document type detected correctly", H.accent4, 1.55);
       stat(s, 8.0, 3.3, pct(cls.language_acc), "language detected correctly", H.accent4, 1.55);
-      text(s, "Field-level F1 against published ground truth. Forms: key-value pairs. Receipts and invoices: every labelled field and line item. Contracts: parties, dates, governing law. Same prompts and schema for every path.",
+      text(s, "Field F1 scored against published ground truth. Forms: key-value pairs. Receipts and invoices: every labeled field and line item. Contracts: parties, dates, governing law. Same prompts and schema throughout.",
         { x: 0.5, y: 4.3, w: 5.6, h: 0.7, fontSize: 10, italic: true, color: "7A8696" });
-      s.addNotes("Every number is produced by one command in the public repository. The last column is the full pipeline; the two before it are each reader alone.");
+      s.addNotes("Every result comes from one command in the public repo. The last column is the full pipeline; the previous two show each reader running alone.");
     }
 
     // Calibration and review load
     {
       const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
-      s.addText("Calibrated confidence turns into a review budget", { placeholder: "title" });
+      s.addText("Honest confidence creates a clear review budget", { placeholder: "title" });
       const cal = SUMMARY.calibration || {};
       const rev = SUMMARY.review || {};
       if (chart("reliability")) s.addImage({ path: chart("reliability"), x: 0.5, y: 1.2, w: 4.4, h: 2.08, objectName: "reliability" });
@@ -370,16 +370,16 @@ async function iconPng(name, hex, px = 256) {
       stat(s, 6.3, 1.25, rp50 != null ? `${rp50.toFixed(1)} s` : "n/a", "median model reading time per document, both readers in parallel, Free Tier rate limits included", H.accent4, 3.2);
       stat(s, 6.3, 2.55, lat.p50 != null ? `${lat.p50.toFixed(1)} s` : "n/a", "median end to end, with OCR, classification and throttling waits", H.accent4, 3.2);
       stat(s, 6.3, 3.85, cost.per_1000_docs != null ? `$${cost.per_1000_docs.toFixed(2)}` : "n/a", "model cost per 1,000 documents at list prices", H.accent1, 3.2);
-      text(s, `Tokens per document: about ${tok.per_doc_input || "n/a"} in, ${tok.per_doc_output || "n/a"} out across both readers. Review effort scales with low-confidence fields, not with document volume.`,
+      text(s, `Tokens per document: about ${tok.per_doc_input || "n/a"} in, ${tok.per_doc_output || "n/a"} out across both readers. Review effort scales with low-confidence fields, not document volume.`,
         { x: 0.5, y: 4.0, w: 5.4, h: 0.9, fontSize: 11, color: C.text2 });
-      s.addNotes("Ablation on the left: each reader alone versus the pair with validators. Cost on the right at public list prices, no caching or batching, so this is an upper bound.");
+      s.addNotes("The left shows each reader alone versus the full pair with validators. The right shows standard list pricing without batching or caching, giving a realistic upper bound.");
     }
   }
 
   // 8. Demo
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Evidence" });
-    s.addText("Demo: drop a document, watch it verify itself", { placeholder: "title" });
+    s.addText("Demo: drop a file, watch it self-verify", { placeholder: "title" });
     // mock UI frame
     const fx = 0.5, fy = 1.25, fw = 5.4, fh = 3.7;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: fx, y: fy, w: fw, h: fh, rectRadius: 0.08, fill: { color: H.lt2 }, line: { color: "D5DCE4", width: 0.75 }, objectName: "demo frame" });
@@ -398,18 +398,18 @@ async function iconPng(name, hex, px = 256) {
     text(s, "1 field routed to review: IBAN (OCR evidence low on stamp overlap)", { x: fx + 2.7, y: fy + 3.35, w: 2.6, h: 0.3, fontSize: 8.5, italic: true, color: H.accent3 });
     // right column
     const pts = [
-      ["LuUpload", "Upload any PDF or photo; sample documents in seven languages provided."],
-      ["LuSplit", "Side-by-side view of what each reader saw and where they disagreed."],
-      ["LuBadgeCheck", "Validator panel: which rules fired, which passed, in plain words."],
-      ["LuSlidersHorizontal", "Threshold slider: move τ and watch review load and expected accuracy change live."],
-      ["LuDownload", "Export validated JSON or CSV with the audit trail attached."],
+      ["LuUpload", "Upload any PDF or photo; sample files in seven languages are ready to test."],
+      ["LuSplit", "Side-by-side view showing what each reader saw and where they disagreed."],
+      ["LuBadgeCheck", "Validator panel: see which rules ran and which passed in plain words."],
+      ["LuSlidersHorizontal", "Threshold slider: move τ and watch review workload and expected accuracy update live."],
+      ["LuDownload", "Export verified JSON or CSV with a complete audit trail attached."],
     ];
     for (let i = 0; i < pts.length; i++) {
       const y = 1.3 + i * 0.72;
       await iconCircle(s, 6.2, y, 0.42, pts[i][0], H.accent4, H.lt1);
       text(s, pts[i][1], { x: 6.75, y: y - 0.02, w: 2.75, h: 0.62, fontSize: 11, color: C.text2, valign: "middle" });
     }
-    s.addNotes("The demo is hosted and linked in the submission. The point of the UI is to make the trust story visible: readers, rules, and the one field that genuinely needs a human.");
+    s.addNotes("The hosted demo is linked in the submission. The interface makes trust visible: two readers, clear rules, and only the fields that truly need human eyes.");
   }
 
   // ======================================================================
@@ -417,11 +417,11 @@ async function iconPng(name, hex, px = 256) {
   // 9. Impact & feasibility
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
-    s.addText("Impact: fewer eyes per document, no silent errors", { placeholder: "title" });
+    s.addText("Fewer manual reviews, zero silent errors", { placeholder: "title" });
     const left = [
-      ["LuBuilding2", "Who benefits", "Accounts-payable and procurement teams, legal operations, and BPOs serving multilingual markets (India, EU, South-East Asia, LATAM)."],
-      ["LuCoins", "Economics", "Review effort scales with low-confidence fields, not with document volume. Cost per document is dominated by one or two model calls per page and is reported in the evaluation."],
-      ["LuTrendingUp", "Scalability", "Stateless pipeline; each stage is independently parallel. New document types are a schema and a validator file, not a retrained model."],
+      ["LuBuilding2", "Who benefits", "Finance, accounts-payable, procurement and legal teams, plus BPOs working across India, the EU, South-East Asia and LATAM."],
+      ["LuCoins", "Cost savings", "Review work scales with low-confidence fields, not document count. Document cost is just one or two model calls per page, as shown in our evaluation."],
+      ["LuTrendingUp", "Easy scaling", "Stateless pipeline where every step runs in parallel. Supporting new document types just takes a schema and a rule file, not a new model."],
     ];
     for (let i = 0; i < 3; i++) {
       const y = 1.25 + i * 1.2;
@@ -433,19 +433,19 @@ async function iconPng(name, hex, px = 256) {
     await iconCircle(s, 5.7, 1.45, 0.45, "LuShieldCheck", H.accent2, H.dk1);
     text(s, "Responsible by design", { x: 6.3, y: 1.47, w: 3.0, h: 0.4, fontSize: 14, bold: true, color: C.text1, valign: "middle" });
     s.addText(bullets([
-      "Human stays in the loop exactly where the system is unsure; no autonomous posting below τ.",
-      "Every field carries its evidence, so decisions are auditable after the fact.",
-      "Documents are processed in memory and never used for training; PII fields can be masked in exports.",
-      "Calibration is reported per language and per document type to expose, not hide, weaker segments.",
-      "Public benchmarks, public code, public numbers.",
+      "Humans step in only when confidence is low; nothing posts automatically below τ.",
+      "Every field carries clear evidence, making every decision easy to audit later.",
+      "Documents stay in memory and are never used for training; PII fields can be masked on export.",
+      "Calibration is reported by language and document type to highlight, not hide, weaker areas.",
+      "Built on public benchmarks, public code and verifiable numbers.",
     ], 11, C.text2, 5), { x: 5.7, y: 2.0, w: 3.6, h: 2.8, isTextBox: true, margin: 0, valign: "top" });
-    s.addNotes("Impact is operational: the same team handles more documents in more languages with fewer errors reaching the ledger. Responsible AI is not a slide; it is the routing rule.");
+    s.addNotes("The impact is real: teams process more documents in more languages with fewer mistakes reaching the ledger. Responsible AI is not a buzzword; it is our core routing rule.");
   }
 
   // 10. Roadmap
   {
     const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Impact" });
-    s.addText("Roadmap: pipeline, then evidence, then production", { placeholder: "title" });
+    s.addText("Roadmap: pipeline, evidence, then production", { placeholder: "title" });
     const phases = [
       ["Round 1 \u00b7 10 Nov", "Working pipeline with evidence", ["Runs both readers, validators, calibration, and review routing", "198 public benchmark documents, 9 languages; one command, all numbers", "Live hosted demo with sample documents", "225 unit tests under an MIT licence"], H.accent1],
       ["Round 2 \u00b7 by 25 Nov", "Better readers, same pipeline", ["Bigger Gemini, Claude readers; one environment variable; compared cost, accuracy", "Japanese and Chinese forms: layout-aware prompts, key normalisation", "Lenient form scoring right next to the strict one", "Corrections from the review UI feed the calibrator"], H.accent4],
@@ -481,7 +481,7 @@ async function iconPng(name, hex, px = 256) {
     ], 13, H.lt1, 5), { x: 1.95, y: 2.05, w: 7, h: 1.6, isTextBox: true, margin: 0, valign: "top" });
     text(s, "Third-party components acknowledged in the repository: XFUND, FUNSD, CORD, SROIE and CUAD datasets; Tesseract OCR; Google Gemini API; pypdfium2; scikit-learn; FastAPI; Next.js. All code released under the MIT licence.", { x: 0.6, y: 3.85, w: 8.6, h: 0.55, fontSize: 10, color: "9AA5B1" });
     text(s, "Lingua Ledger  ·  rishavnaskar.r@gmail.com  ·  repo and demo links in the submission form", { x: 0.6, y: 4.55, w: 8.4, h: 0.3, fontSize: 12, color: H.lt1 });
-    s.addNotes("Solo entry. Contributions listed per the submission rules. Links to the repository and hosted demo are in the Devpost and Unstop forms.");
+    s.addNotes("Solo project. All work is detailed per the submission rules. Links to the code repository and live demo are in the Devpost and Unstop forms.");
   }
 
   await pres.writeFile({ fileName: OUT });
