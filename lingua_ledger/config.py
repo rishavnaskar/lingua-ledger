@@ -18,11 +18,11 @@ PROVIDER = os.getenv("LL_PROVIDER") or (
 
 _DEFAULTS = {
     "gemini": {
-        "vision": "gemini-3-flash-preview",
-        "text": "gemini-3-flash-preview",
-        "classify": "gemini-3.1-flash-lite-preview",
-        "price_in": 0.5,
-        "price_out": 3.0,
+        "vision": "gemini-3.6-flash",
+        "text": "gemini-3.6-flash",
+        "classify": "gemini-3.5-flash-lite",
+        "price_in": 0.75,
+        "price_out": 3.75,
     },
     "anthropic": {
         "vision": "claude-sonnet-5-5",
@@ -36,6 +36,7 @@ _DEFAULTS = {
 VISION_MODEL = os.getenv("LL_VISION_MODEL", _DEFAULTS["vision"])
 TEXT_MODEL = os.getenv("LL_TEXT_MODEL", _DEFAULTS["text"])
 CLASSIFY_MODEL = os.getenv("LL_CLASSIFY_MODEL", _DEFAULTS["classify"])
+FALLBACK_MODELS = [m for m in os.getenv("LL_FALLBACK_MODELS", "gemini-3.5-flash").split(",") if m.strip()]
 PRICE_IN_PER_M = float(os.getenv("LL_PRICE_IN_PER_M", _DEFAULTS["price_in"]))
 PRICE_OUT_PER_M = float(os.getenv("LL_PRICE_OUT_PER_M", _DEFAULTS["price_out"]))
 

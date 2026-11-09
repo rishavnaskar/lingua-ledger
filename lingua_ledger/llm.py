@@ -10,7 +10,7 @@ from typing import Any
 from PIL import Image
 from pydantic import BaseModel
 
-from .config import PROVIDER
+from .config import FALLBACK_MODELS, PROVIDER
 from .ingest import to_jpeg_base64
 
 
@@ -64,7 +64,17 @@ def call_structured(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     t0 = time.perf_counter()
     if PROVIDER == "gemini":
-        data, usage = _gemini(model, system, content, schema, max_tokens, effort)
+        from google.genai import errors
+
+        candidates = [model, *[m for m in FALLBACK_MODELS if m != model]]
+        for i, m in enumerate(candidates):
+            try:
+                data, usage = _gemini(m, system, content, schema, max_tokens, effort)
+                model = m
+                break
+            except errors.ServerError:
+                if i == len(candidates) - 1:
+                    raise
     else:
         data, usage = _anthropic(model, system, content, schema, max_tokens, effort)
     usage.update({"latency_s": round(time.perf_counter() - t0, 3), "model": model, "provider": PROVIDER})
