@@ -16,3 +16,4 @@ CLAUDE.md
 artifacts/eval/*.log
 deck/render/*.png
 state/
+submission/video/
