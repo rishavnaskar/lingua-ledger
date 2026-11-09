@@ -18,11 +18,11 @@ PROVIDER = os.getenv("LL_PROVIDER") or (
 
 _DEFAULTS = {
     "gemini": {
-        "vision": "gemini-3.6-flash",
-        "text": "gemini-3.6-flash",
+        "vision": "gemini-3.5-flash-lite",
+        "text": "gemini-3.5-flash-lite",
         "classify": "gemini-3.5-flash-lite",
-        "price_in": 0.75,
-        "price_out": 3.75,
+        "price_in": 0.30,
+        "price_out": 2.50,
     },
     "anthropic": {
         "vision": "claude-sonnet-5-5",
