@@ -331,7 +331,7 @@ function point(
 ) {
   const b = typeof before === "number" ? before : null;
   const a = typeof after === "number" ? after : null;
-  const better = b === null || a === null || a === b ? null : lowerIsBetter ? a < b : a > b;
+  const better = b === null || a === null || f(a) === f(b) ? null : lowerIsBetter ? a < b : a > b;
   return { label, before: b === null ? "" : f(b), after: a === null ? "" : f(a), better };
 }
 
